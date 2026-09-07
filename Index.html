@@ -1,1 +1,255 @@
 
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Medicine Doorstep Delivery</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f8fb;
+      color: #222;
+    }
+
+    header {
+      background: #0b6efd;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 15px;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    .search {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .search input {
+      flex: 1;
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .search button {
+      background: #198754;
+      color: white;
+      border: none;
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin-bottom: 18px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      color: #0b6efd;
+      margin-bottom: 10px;
+    }
+
+    .medicine {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #ddd;
+      padding: 14px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+    .medicine button {
+      background: #0b6efd;
+      color: white;
+      border: none;
+      padding: 9px 14px;
+      border-radius: 6px;
+    }
+
+    .order-box input,
+    .order-box textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+      font-size: 15px;
+    }
+
+    .order-box button {
+      width: 100%;
+      padding: 14px;
+      background: #198754;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    #message {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 7px;
+      display: none;
+      background: #d1e7dd;
+      color: #0f5132;
+    }
+
+    footer {
+      text-align: center;
+      background: #212529;
+      color: white;
+      padding: 20px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>💊 Online Medicine</h1>
+    <p>ওষুধ এখন আপনার দরজায়</p>
+  </header>
+
+  <div class="container">
+
+    <div class="search">
+      <input type="text" id="searchBox" placeholder="ওষুধের নাম লিখুন...">
+      <button onclick="searchMedicine()">Search</button>
+    </div>
+
+    <div class="card">
+      <h2>জনপ্রিয় ওষুধ</h2>
+
+      <div class="medicine">
+        <div>
+          <strong>Paracetamol</strong>
+          <p>জ্বর ও ব্যথার জন্য</p>
+        </div>
+        <button onclick="selectMedicine('Paracetamol')">Order</button>
+      </div>
+
+      <div class="medicine">
+        <div>
+          <strong>ORS</strong>
+          <p>ডিহাইড্রেশনের জন্য</p>
+        </div>
+        <button onclick="selectMedicine('ORS')">Order</button>
+      </div>
+
+      <div class="medicine">
+        <div>
+          <strong>Vitamin C</strong>
+          <p>Vitamin supplement</p>
+        </div>
+        <button onclick="selectMedicine('Vitamin C')">Order</button>
+      </div>
+    </div>
+
+    <div class="card order-box">
+      <h2>🛒 Medicine Order</h2>
+
+      <input type="text" id="medicine" placeholder="Medicine name">
+
+      <input type="text" id="name" placeholder="আপনার নাম">
+
+      <input type="tel" id="phone" placeholder="মোবাইল নম্বর">
+
+      <textarea id="address" rows="4"
+        placeholder="সম্পূর্ণ delivery address"></textarea>
+
+      <button onclick="placeOrder()">Place Order</button>
+
+      <div id="message"></div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 Online Medicine Doorstep Delivery</p>
+    <p>Safe • Fast • Doorstep Delivery</p>
+  </footer>
+
+  <script>
+    function selectMedicine(name) {
+      document.getElementById("medicine").value = name;
+      document.getElementById("medicine").focus();
+    }
+
+    function searchMedicine() {
+      const search = document
+        .getElementById("searchBox")
+        .value
+        .toLowerCase();
+
+      const medicines = document.querySelectorAll(".medicine");
+
+      medicines.forEach(function(item) {
+        const text = item.innerText.toLowerCase();
+
+        if (text.includes(search)) {
+          item.style.display = "flex";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    }
+
+    function placeOrder() {
+      const medicine = document.getElementById("medicine").value;
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const address = document.getElementById("address").value;
+      const message = document.getElementById("message");
+
+      if (!medicine || !name || !phone || !address) {
+        message.style.display = "block";
+        message.style.background = "#f8d7da";
+        message.style.color = "#842029";
+        message.innerText = "⚠️ সব তথ্য পূরণ করুন।";
+        return;
+      }
+
+      message.style.display = "block";
+      message.style.background = "#d1e7dd";
+      message.style.color = "#0f5132";
+
+      message.innerText =
+        "✅ আপনার order request নেওয়া হয়েছে। আমরা শীঘ্রই যোগাযোগ করব।";
+    }
+  </script>
+
+</body>
+</html>
