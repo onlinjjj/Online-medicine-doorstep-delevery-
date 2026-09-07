@@ -1,255 +1,1012 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Medicine Doorstep Delivery</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Medicine Doorstep Delivery</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    body {
-      background: #f4f8fb;
-      color: #222;
-    }
+body{
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+  background:#f4f8fb;
+  color:#18324a;
+}
 
-    header {
-      background: #0b6efd;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
-    header h1 {
-      font-size: 26px;
-      margin-bottom: 8px;
-    }
+/* HEADER */
+.top{
+  background:#fff;
+  border-bottom:1px solid #ddd;
+  padding:10px 4%;
+}
 
-    header p {
-      font-size: 15px;
-    }
+.header{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
 
-    .container {
-      width: 92%;
-      max-width: 900px;
-      margin: 20px auto;
-    }
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:245px;
+}
 
-    .search {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+.logo-icon{
+  width:55px;
+  height:55px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#079447,#1b66c9);
+  display:grid;
+  place-items:center;
+  color:white;
+  font-size:28px;
+  font-weight:800;
+}
 
-    .search input {
-      flex: 1;
-      padding: 14px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-    }
+.logo h1{
+  font-size:23px;
+  color:#0b3f83;
+}
 
-    .search button {
-      background: #198754;
-      color: white;
-      border: none;
-      padding: 14px 18px;
-      border-radius: 8px;
-      font-weight: bold;
-    }
+.logo h1 span{
+  color:#079447;
+}
 
-    .card {
-      background: white;
-      padding: 20px;
-      margin-bottom: 18px;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
+.logo small{
+  display:block;
+  color:#527080;
+  margin-top:3px;
+}
 
-    .card h2 {
-      color: #0b6efd;
-      margin-bottom: 10px;
-    }
+.location{
+  font-weight:700;
+  color:#173e73;
+  white-space:nowrap;
+}
 
-    .medicine {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border: 1px solid #ddd;
-      padding: 14px;
-      border-radius: 8px;
-      margin: 10px 0;
-    }
+.search{
+  display:flex;
+  flex:1;
+  min-width:260px;
+}
 
-    .medicine button {
-      background: #0b6efd;
-      color: white;
-      border: none;
-      padding: 9px 14px;
-      border-radius: 6px;
-    }
+.search input{
+  width:100%;
+  padding:14px;
+  border:1px solid #ccd7df;
+  border-radius:9px 0 0 9px;
+  font-size:15px;
+}
 
-    .order-box input,
-    .order-box textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 7px;
-      font-size: 15px;
-    }
+.search button{
+  border:0;
+  background:#0753a6;
+  color:#fff;
+  padding:0 20px;
+  border-radius:0 9px 9px 0;
+  font-size:20px;
+}
 
-    .order-box button {
-      width: 100%;
-      padding: 14px;
-      background: #198754;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 17px;
-      font-weight: bold;
-      margin-top: 8px;
-    }
+.call{
+  font-weight:700;
+  color:#159447;
+  white-space:nowrap;
+}
 
-    #message {
-      margin-top: 15px;
-      padding: 12px;
-      border-radius: 7px;
-      display: none;
-      background: #d1e7dd;
-      color: #0f5132;
-    }
+/* NAV */
+.nav{
+  background:#0753a6;
+  color:#fff;
+}
 
-    footer {
-      text-align: center;
-      background: #212529;
-      color: white;
-      padding: 20px;
-      margin-top: 30px;
-    }
-  </style>
+.nav-inner{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  gap:30px;
+  align-items:center;
+  padding:13px 4%;
+  font-weight:700;
+}
+
+.nav a:hover{
+  color:#b8f1c8;
+}
+
+/* HERO */
+.hero{
+  max-width:1200px;
+  margin:18px auto;
+  padding:40px 5%;
+  border-radius:16px;
+  background:linear-gradient(110deg,#eefcff,#dff8e9);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+  overflow:hidden;
+}
+
+.hero h2{
+  font-size:44px;
+  color:#083e82;
+  line-height:1.08;
+}
+
+.hero h2 span{
+  color:#079447;
+}
+
+.hero p{
+  font-size:20px;
+  margin:15px 0;
+  color:#365a6d;
+}
+
+.btn{
+  display:inline-block;
+  background:#079447;
+  color:#fff;
+  border:0;
+  padding:13px 23px;
+  border-radius:8px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.hero-art{
+  font-size:100px;
+  min-width:230px;
+  text-align:center;
+}
+
+/* DISCOUNT */
+.discount{
+  max-width:1200px;
+  margin:15px auto;
+  padding:20px;
+  border-radius:14px;
+  background:#dff6dc;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  text-align:center;
+  gap:15px;
+}
+
+.discount strong{
+  font-size:30px;
+  color:#e52237;
+}
+
+.discount span{
+  font-size:24px;
+  color:#087d45;
+  font-weight:800;
+}
+
+/* SECTION */
+.section{
+  max-width:1200px;
+  margin:28px auto;
+  padding:0 4%;
+}
+
+.title{
+  text-align:center;
+  color:#084d9e;
+  font-size:29px;
+  margin-bottom:18px;
+}
+
+/* CATEGORIES */
+.categories{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+}
+
+.cat{
+  background:#fff;
+  border-radius:12px;
+  padding:18px;
+  text-align:center;
+  border:1px solid #e0e8ee;
+  font-weight:700;
+}
+
+.cat div{
+  font-size:34px;
+  margin-bottom:8px;
+}
+
+/* MEDICINE CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid #dce5eb;
+  border-radius:13px;
+  padding:20px;
+  box-shadow:0 3px 12px #0000000c;
+}
+
+.card h3{
+  color:#163c65;
+  font-size:20px;
+}
+
+.card p{
+  color:#667b89;
+  margin:7px 0 15px;
+}
+
+.card .btn{
+  width:100%;
+}
+
+/* ORDER FORM */
+.form-box{
+  background:#fff;
+  border-radius:14px;
+  padding:25px;
+  max-width:760px;
+  margin:auto;
+  box-shadow:0 4px 18px #00000012;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+.field input,
+.field textarea{
+  padding:13px;
+  border:1px solid #ccd7df;
+  border-radius:8px;
+  font-size:15px;
+}
+
+.field textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+.submit{
+  margin-top:16px;
+  width:100%;
+  font-size:16px;
+}
+
+/* FOOTER */
+footer{
+  margin-top:35px;
+  background:#073c7c;
+  color:white;
+  padding:30px 5%;
+}
+
+.footer-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:25px;
+}
+
+.footer-grid h3{
+  margin-bottom:10px;
+}
+
+.footer-grid p{
+  margin:7px 0;
+  color:#dbe9f5;
+}
+
+/* TOAST */
+.toast{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  background:#173e73;
+  color:#fff;
+  padding:14px 18px;
+  border-radius:10px;
+  display:none;
+  z-index:5;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+
+  .header{
+    gap:10px;
+  }
+
+  .logo{
+    min-width:100%;
+  }
+
+  .location{
+    order:2;
+  }
+
+  .call{
+    order:3;
+  }
+
+  .search{
+    order:4;
+    min-width:100%;
+  }
+
+  .nav-inner{
+    overflow:auto;
+    gap:20px;
+    white-space:nowrap;
+  }
+
+  .hero{
+    margin:12px;
+    padding:28px 20px;
+  }
+
+  .hero h2{
+    font-size:32px;
+  }
+
+  .hero-art{
+    font-size:65px;
+    min-width:100px;
+  }
+
+  .discount{
+    margin:12px;
+    flex-direction:column;
+  }
+
+  .discount strong{
+    font-size:25px;
+  }
+
+  .discount span{
+    font-size:19px;
+  }
+
+  .categories{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>💊 Online Medicine</h1>
-    <p>ওষুধ এখন আপনার দরজায়</p>
-  </header>
+<!-- HEADER -->
+<header class="top">
+  <div class="header">
 
-  <div class="container">
+    <div class="logo">
+      <div class="logo-icon">✚</div>
+
+      <div>
+        <h1>
+          Online <span>Medicine</span><br>
+          Doorstep Delivery
+        </h1>
+
+        <small>Your Health • Our Priority</small>
+      </div>
+    </div>
+
+    <div class="location">
+      📍 Narsingarh
+    </div>
 
     <div class="search">
-      <input type="text" id="searchBox" placeholder="ওষুধের নাম লিখুন...">
-      <button onclick="searchMedicine()">Search</button>
+      <input
+        id="searchInput"
+        placeholder="Search for medicines, brands, health products..."
+      >
+
+      <button onclick="searchMedicine()">⌕</button>
     </div>
 
-    <div class="card">
-      <h2>জনপ্রিয় ওষুধ</h2>
-
-      <div class="medicine">
-        <div>
-          <strong>Paracetamol</strong>
-          <p>জ্বর ও ব্যথার জন্য</p>
-        </div>
-        <button onclick="selectMedicine('Paracetamol')">Order</button>
-      </div>
-
-      <div class="medicine">
-        <div>
-          <strong>ORS</strong>
-          <p>ডিহাইড্রেশনের জন্য</p>
-        </div>
-        <button onclick="selectMedicine('ORS')">Order</button>
-      </div>
-
-      <div class="medicine">
-        <div>
-          <strong>Vitamin C</strong>
-          <p>Vitamin supplement</p>
-        </div>
-        <button onclick="selectMedicine('Vitamin C')">Order</button>
-      </div>
+    <div class="call">
+      📞 Order Now<br>
+      <a href="tel:6009415805">6009415805</a>
     </div>
 
-    <div class="card order-box">
-      <h2>🛒 Medicine Order</h2>
+  </div>
+</header>
 
-      <input type="text" id="medicine" placeholder="Medicine name">
 
-      <input type="text" id="name" placeholder="আপনার নাম">
+<!-- NAVIGATION -->
+<nav class="nav">
+  <div class="nav-inner">
 
-      <input type="tel" id="phone" placeholder="মোবাইল নম্বর">
+    <a href="#home">🏠 Home</a>
+    <a href="#about">About Us</a>
+    <a href="#shop">Shop</a>
+    <a href="#offers">Offers</a>
+    <a href="#contact">Contact Us</a>
 
-      <textarea id="address" rows="4"
-        placeholder="সম্পূর্ণ delivery address"></textarea>
+  </div>
+</nav>
 
-      <button onclick="placeOrder()">Place Order</button>
 
-      <div id="message"></div>
+<main id="home">
+
+<!-- HERO -->
+<section class="hero">
+
+  <div>
+
+    <h2>
+      All Your Medicines<br>
+      <span>at Your Doorstep</span>
+    </h2>
+
+    <p>
+      Fast &nbsp; | &nbsp; Safe &nbsp; | &nbsp; Affordable
+    </p>
+
+    <a class="btn" href="#order">
+      Shop Now →
+    </a>
+
+  </div>
+
+  <div class="hero-art">
+    💊 🩺 🚚
+  </div>
+
+</section>
+
+
+<!-- DISCOUNT -->
+<section class="discount" id="offers">
+
+  <strong>
+    Get 10% DISCOUNT
+  </strong>
+
+  <span>
+    🚚 No Delivery Charges
+  </span>
+
+  <b>
+    Use Code: MED10
+  </b>
+
+</section>
+
+
+<!-- CATEGORIES -->
+<section class="section" id="shop">
+
+  <h2 class="title">
+    Shop by Category
+  </h2>
+
+  <div class="categories">
+
+    <div class="cat">
+      <div>💊</div>
+      Pain Relief
+    </div>
+
+    <div class="cat">
+      <div>🌡️</div>
+      Fever & Cold
+    </div>
+
+    <div class="cat">
+      <div>🩸</div>
+      Diabetes Care
+    </div>
+
+    <div class="cat">
+      <div>❤️</div>
+      Heart Care
+    </div>
+
+    <div class="cat">
+      <div>💚</div>
+      Vitamins & Supplements
+    </div>
+
+    <div class="cat">
+      <div>🧴</div>
+      Skin Care
+    </div>
+
+    <div class="cat">
+      <div>👶</div>
+      Baby Care
+    </div>
+
+    <div class="cat">
+      <div>🧼</div>
+      Personal Care
+    </div>
+
+    <div class="cat">
+      <div>🩺</div>
+      Health Devices
+    </div>
+
+    <div class="cat">
+      <div>➕</div>
+      More
     </div>
 
   </div>
 
-  <footer>
-    <p>© 2026 Online Medicine Doorstep Delivery</p>
-    <p>Safe • Fast • Doorstep Delivery</p>
-  </footer>
+</section>
 
-  <script>
-    function selectMedicine(name) {
-      document.getElementById("medicine").value = name;
-      document.getElementById("medicine").focus();
-    }
 
-    function searchMedicine() {
-      const search = document
-        .getElementById("searchBox")
-        .value
-        .toLowerCase();
+<!-- POPULAR MEDICINES -->
+<section class="section" id="popular">
 
-      const medicines = document.querySelectorAll(".medicine");
+  <h2 class="title">
+    Popular Medicines
+  </h2>
 
-      medicines.forEach(function(item) {
-        const text = item.innerText.toLowerCase();
+  <div class="cards">
 
-        if (text.includes(search)) {
-          item.style.display = "flex";
-        } else {
-          item.style.display = "none";
-        }
+    <div class="card">
+
+      <h3>
+        Paracetamol
+      </h3>
+
+      <p>
+        জ্বর ও ব্যথার জন্য
+      </p>
+
+      <button
+        class="btn"
+        onclick="quickOrder('Paracetamol')"
+      >
+        Order Now
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        ORS
+      </h3>
+
+      <p>
+        ডিহাইড্রেশনের জন্য
+      </p>
+
+      <button
+        class="btn"
+        onclick="quickOrder('ORS')"
+      >
+        Order Now
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        Vitamin C
+      </h3>
+
+      <p>
+        Vitamin supplement
+      </p>
+
+      <button
+        class="btn"
+        onclick="quickOrder('Vitamin C')"
+      >
+        Order Now
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ORDER FORM -->
+<section class="section" id="order">
+
+  <h2 class="title">
+    🛒 Medicine Order
+  </h2>
+
+  <div class="form-box">
+
+    <form id="orderForm">
+
+      <div class="form-grid">
+
+        <label class="field">
+          <span>Medicine name *</span>
+
+          <input
+            id="medicine"
+            required
+            placeholder="Medicine name"
+          >
+        </label>
+
+
+        <label class="field">
+          <span>Your name *</span>
+
+          <input
+            id="name"
+            required
+            placeholder="আপনার নাম"
+          >
+        </label>
+
+
+        <label class="field">
+          <span>Mobile number *</span>
+
+          <input
+            id="phone"
+            required
+            type="tel"
+            placeholder="মোবাইল নম্বর"
+          >
+        </label>
+
+
+        <label class="field">
+          <span>Quantity</span>
+
+          <input
+            id="qty"
+            type="number"
+            min="1"
+            value="1"
+          >
+        </label>
+
+
+        <label class="field full">
+
+          <span>
+            Delivery address *
+          </span>
+
+          <textarea
+            id="address"
+            required
+            placeholder="আপনার সম্পূর্ণ ঠিকানা, Narsingarh"
+          ></textarea>
+
+        </label>
+
+      </div>
+
+
+      <button
+        class="btn submit"
+        type="submit"
+      >
+        📲 Send Order Message
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section class="section" id="about">
+
+  <h2 class="title">
+    Why Choose Us?
+  </h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>
+        🛡️ Genuine Medicines
+      </h3>
+
+      <p>
+        ভালো মানের ও নির্ভরযোগ্য ওষুধ।
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>
+        🚚 Fast Home Delivery
+      </h3>
+
+      <p>
+        Narsingarh এলাকায় doorstep delivery.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>
+        💬 Easy Ordering
+      </h3>
+
+      <p>
+        Website থেকে order message পাঠান।
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer id="contact">
+
+  <div class="footer-grid">
+
+    <div>
+
+      <h3>
+        Online Medicine Doorstep Delivery
+      </h3>
+
+      <p>
+        Your Health • Our Priority
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <h3>
+        Order Now
+      </h3>
+
+      <p>
+        📞 6009415805
+      </p>
+
+      <p>
+        📍 Narsingarh, Tripura, India
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <h3>
+        Quick Links
+      </h3>
+
+      <p>
+        Home • About Us • Shop • Offers • Contact Us
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+/* QUICK ORDER */
+function quickOrder(medicine){
+
+  document.getElementById("medicine").value = medicine;
+
+  document
+    .getElementById("order")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+}
+
+
+/* SEARCH */
+function searchMedicine(){
+
+  const q =
+    document
+      .getElementById("searchInput")
+      .value
+      .trim()
+      .toLowerCase();
+
+  if(!q){
+
+    document
+      .getElementById("popular")
+      .scrollIntoView({
+        behavior:"smooth"
       });
-    }
 
-    function placeOrder() {
-      const medicine = document.getElementById("medicine").value;
-      const name = document.getElementById("name").value;
-      const phone = document.getElementById("phone").value;
-      const address = document.getElementById("address").value;
-      const message = document.getElementById("message");
+    return;
+  }
 
-      if (!medicine || !name || !phone || !address) {
-        message.style.display = "block";
-        message.style.background = "#f8d7da";
-        message.style.color = "#842029";
-        message.innerText = "⚠️ সব তথ্য পূরণ করুন।";
-        return;
-      }
 
-      message.style.display = "block";
-      message.style.background = "#d1e7dd";
-      message.style.color = "#0f5132";
+  const cards =
+    [
+      ...document.querySelectorAll(".card")
+    ];
 
-      message.innerText =
-        "✅ আপনার order request নেওয়া হয়েছে। আমরা শীঘ্রই যোগাযোগ করব।";
-    }
-  </script>
+
+  const found =
+    cards.find(card => {
+
+      const title =
+        card.querySelector("h3");
+
+      return title &&
+        title.innerText
+          .toLowerCase()
+          .includes(q);
+
+    });
+
+
+  if(found){
+
+    found.scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
+
+    showToast("Medicine found");
+
+  }else{
+
+    document.getElementById("medicine").value =
+      document.getElementById("searchInput").value;
+
+    document
+      .getElementById("order")
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+
+    showToast(
+      "Medicine name added to order form"
+    );
+  }
+
+}
+
+
+/* TOAST */
+function showToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.textContent = message;
+
+  toast.style.display = "block";
+
+  setTimeout(() => {
+
+    toast.style.display = "none";
+
+  },2500);
+
+}
+
+
+/* WHATSAPP ORDER */
+document
+  .getElementById("orderForm")
+  .addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+
+    const medicine =
+      document.getElementById("medicine").value;
+
+    const name =
+      document.getElementById("name").value;
+
+    const phone =
+      document.getElementById("phone").value;
+
+    const qty =
+      document.getElementById("qty").value;
+
+    const address =
+      document.getElementById("address").value;
+
+
+    const message =
+      `Medicine Order
+
+Medicine: ${medicine}
+Quantity: ${qty}
+Name: ${name}
+Mobile: ${phone}
+Address: ${address}`;
+
+
+    const whatsappURL =
+      "https://wa.me/916009415805?text=" +
+      encodeURIComponent(message);
+
+
+    window.location.href = whatsappURL;
+
+  });
+
+</script>
 
 </body>
 </html>
