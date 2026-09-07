@@ -1,1013 +1,1091 @@
-
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Online Medicine Doorstep Delivery</title>
-
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-body{
-  font-family:Arial,"Noto Sans Bengali",sans-serif;
-  background:#f4f8fb;
-  color:#18324a;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-/* HEADER */
-.top{
-  background:#fff;
-  border-bottom:1px solid #ddd;
-  padding:10px 4%;
-}
-
-.header{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  gap:18px;
-  flex-wrap:wrap;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  min-width:245px;
-}
-
-.logo-icon{
-  width:55px;
-  height:55px;
-  border-radius:14px;
-  background:linear-gradient(135deg,#079447,#1b66c9);
-  display:grid;
-  place-items:center;
-  color:white;
-  font-size:28px;
-  font-weight:800;
-}
-
-.logo h1{
-  font-size:23px;
-  color:#0b3f83;
-}
-
-.logo h1 span{
-  color:#079447;
-}
-
-.logo small{
-  display:block;
-  color:#527080;
-  margin-top:3px;
-}
-
-.location{
-  font-weight:700;
-  color:#173e73;
-  white-space:nowrap;
-}
-
-.search{
-  display:flex;
-  flex:1;
-  min-width:260px;
-}
-
-.search input{
-  width:100%;
-  padding:14px;
-  border:1px solid #ccd7df;
-  border-radius:9px 0 0 9px;
-  font-size:15px;
-}
-
-.search button{
-  border:0;
-  background:#0753a6;
-  color:#fff;
-  padding:0 20px;
-  border-radius:0 9px 9px 0;
-  font-size:20px;
-}
-
-.call{
-  font-weight:700;
-  color:#159447;
-  white-space:nowrap;
-}
-
-/* NAV */
-.nav{
-  background:#0753a6;
-  color:#fff;
-}
-
-.nav-inner{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  gap:30px;
-  align-items:center;
-  padding:13px 4%;
-  font-weight:700;
-}
-
-.nav a:hover{
-  color:#b8f1c8;
-}
-
-/* HERO */
-.hero{
-  max-width:1200px;
-  margin:18px auto;
-  padding:40px 5%;
-  border-radius:16px;
-  background:linear-gradient(110deg,#eefcff,#dff8e9);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:30px;
-  overflow:hidden;
-}
-
-.hero h2{
-  font-size:44px;
-  color:#083e82;
-  line-height:1.08;
-}
-
-.hero h2 span{
-  color:#079447;
-}
-
-.hero p{
-  font-size:20px;
-  margin:15px 0;
-  color:#365a6d;
-}
-
-.btn{
-  display:inline-block;
-  background:#079447;
-  color:#fff;
-  border:0;
-  padding:13px 23px;
-  border-radius:8px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.hero-art{
-  font-size:100px;
-  min-width:230px;
-  text-align:center;
-}
-
-/* DISCOUNT */
-.discount{
-  max-width:1200px;
-  margin:15px auto;
-  padding:20px;
-  border-radius:14px;
-  background:#dff6dc;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  text-align:center;
-  gap:15px;
-}
-
-.discount strong{
-  font-size:30px;
-  color:#e52237;
-}
-
-.discount span{
-  font-size:24px;
-  color:#087d45;
-  font-weight:800;
-}
-
-/* SECTION */
-.section{
-  max-width:1200px;
-  margin:28px auto;
-  padding:0 4%;
-}
-
-.title{
-  text-align:center;
-  color:#084d9e;
-  font-size:29px;
-  margin-bottom:18px;
-}
-
-/* CATEGORIES */
-.categories{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:12px;
-}
-
-.cat{
-  background:#fff;
-  border-radius:12px;
-  padding:18px;
-  text-align:center;
-  border:1px solid #e0e8ee;
-  font-weight:700;
-}
-
-.cat div{
-  font-size:34px;
-  margin-bottom:8px;
-}
-
-/* MEDICINE CARDS */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.card{
-  background:#fff;
-  border:1px solid #dce5eb;
-  border-radius:13px;
-  padding:20px;
-  box-shadow:0 3px 12px #0000000c;
-}
-
-.card h3{
-  color:#163c65;
-  font-size:20px;
-}
-
-.card p{
-  color:#667b89;
-  margin:7px 0 15px;
-}
-
-.card .btn{
-  width:100%;
-}
-
-/* ORDER FORM */
-.form-box{
-  background:#fff;
-  border-radius:14px;
-  padding:25px;
-  max-width:760px;
-  margin:auto;
-  box-shadow:0 4px 18px #00000012;
-}
-
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-
-.field{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
-.field.full{
-  grid-column:1/-1;
-}
-
-.field input,
-.field textarea{
-  padding:13px;
-  border:1px solid #ccd7df;
-  border-radius:8px;
-  font-size:15px;
-}
-
-.field textarea{
-  min-height:90px;
-  resize:vertical;
-}
-
-.submit{
-  margin-top:16px;
-  width:100%;
-  font-size:16px;
-}
-
-/* FOOTER */
-footer{
-  margin-top:35px;
-  background:#073c7c;
-  color:white;
-  padding:30px 5%;
-}
-
-.footer-grid{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:25px;
-}
-
-.footer-grid h3{
-  margin-bottom:10px;
-}
-
-.footer-grid p{
-  margin:7px 0;
-  color:#dbe9f5;
-}
-
-/* TOAST */
-.toast{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  background:#173e73;
-  color:#fff;
-  padding:14px 18px;
-  border-radius:10px;
-  display:none;
-  z-index:5;
-}
-
-/* MOBILE */
-@media(max-width:800px){
-
-  .header{
-    gap:10px;
-  }
-
-  .logo{
-    min-width:100%;
-  }
-
-  .location{
-    order:2;
-  }
-
-  .call{
-    order:3;
-  }
-
-  .search{
-    order:4;
-    min-width:100%;
-  }
-
-  .nav-inner{
-    overflow:auto;
-    gap:20px;
-    white-space:nowrap;
-  }
-
-  .hero{
-    margin:12px;
-    padding:28px 20px;
-  }
-
-  .hero h2{
-    font-size:32px;
-  }
-
-  .hero-art{
-    font-size:65px;
-    min-width:100px;
-  }
-
-  .discount{
-    margin:12px;
-    flex-direction:column;
-  }
-
-  .discount strong{
-    font-size:25px;
-  }
-
-  .discount span{
-    font-size:19px;
-  }
-
-  .categories{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .cards{
-    grid-template-columns:1fr;
-  }
-
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
-  .field.full{
-    grid-column:auto;
-  }
-
-  .footer-grid{
-    grid-template-columns:1fr;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Online Medicine Delivery</title>
+
+  <style>
+    :root {
+      --blue: #064b91;
+      --dark-blue: #06376d;
+      --green: #079447;
+      --light-green: #e8f8ed;
+      --light-blue: #eaf5ff;
+      --text: #12365c;
+      --white: #ffffff;
+      --shadow: 0 5px 20px rgba(0, 50, 100, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7fbfd;
+      color: var(--text);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* ================= HEADER ================= */
+
+    .top-header {
+      background: white;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .header-inner {
+      max-width: 1250px;
+      margin: auto;
+      min-height: 88px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo {
+      min-width: 280px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 62px;
+      height: 62px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #078f4b, #0870ad);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .logo-text {
+      line-height: 1;
+    }
+
+    .logo-text h1 {
+      font-size: 24px;
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .logo-text h1 span {
+      color: var(--green);
+    }
+
+    .logo-text small {
+      display: block;
+      margin-top: 7px;
+      color: #31577c;
+      font-weight: bold;
+      font-size: 12px;
+      letter-spacing: .5px;
+    }
+
+    .location {
+      white-space: nowrap;
+      font-weight: bold;
+      color: var(--blue);
+      font-size: 16px;
+    }
+
+    .search-area {
+      flex: 1;
+      display: flex;
+      max-width: 520px;
+      border: 1px solid #ccd9e4;
+      border-radius: 15px;
+      overflow: hidden;
+      height: 48px;
+    }
+
+    .search-area input {
+      width: 100%;
+      border: none;
+      outline: none;
+      padding: 0 16px;
+      font-size: 14px;
+    }
+
+    .search-area button {
+      width: 58px;
+      border: none;
+      background: var(--blue);
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .order-phone {
+      color: var(--green);
+      font-weight: bold;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .order-phone strong {
+      display: block;
+      color: var(--blue);
+      font-size: 17px;
+    }
+
+    .header-action {
+      text-align: center;
+      color: var(--blue);
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .cart-button {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -9px;
+      right: -8px;
+      background: #e51d35;
+      color: white;
+      border-radius: 50%;
+      min-width: 20px;
+      height: 20px;
+      font-size: 11px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ================= NAV ================= */
+
+    .nav {
+      background: var(--blue);
+      color: white;
+    }
+
+    .nav-inner {
+      max-width: 1250px;
+      margin: auto;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+    }
+
+    .categories-menu {
+      padding: 14px 25px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      font-size: 24px;
+      margin-right: 15px;
+    }
+
+    .nav-links {
+      display: flex;
+      height: 50px;
+    }
+
+    .nav-links a {
+      min-width: 125px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(255,255,255,.08);
+    }
+
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      right: 25%;
+      height: 4px;
+      background: #51e36c;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      max-width: 1250px;
+      margin: 0 auto;
+      min-height: 390px;
+      padding: 40px 45px;
+      background:
+        radial-gradient(circle at 80% 50%, rgba(113, 230, 80, .45), transparent 28%),
+        linear-gradient(110deg, #f8ffff 0%, #eefaff 50%, #dffff0 100%);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-content {
+      width: 55%;
+      z-index: 2;
+    }
+
+    .hero-tag {
+      color: var(--green);
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .hero h2 {
+      color: var(--blue);
+      font-size: clamp(35px, 5vw, 61px);
+      line-height: 1.02;
+      margin-bottom: 15px;
+    }
+
+    .hero h2 span {
+      color: var(--green);
+    }
+
+    .hero-subtitle {
+      font-size: 23px;
+      color: #163d68;
+      font-weight: bold;
+      margin-bottom: 24px;
+    }
+
+    .hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .hero-feature {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: bold;
+      color: #174873;
+    }
+
+    .hero-feature span {
+      color: var(--green);
+      font-size: 23px;
+    }
+
+    .shop-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      background: var(--green);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    .hero-art {
+      position: absolute;
+      right: 20px;
+      width: 43%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone {
+      width: 190px;
+      height: 325px;
+      background: white;
+      border: 9px solid #112e4f;
+      border-radius: 28px;
+      box-shadow: 0 15px 30px rgba(0,0,0,.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .phone-logo {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+
+    .phone h3 {
+      text-align: center;
+      color: var(--blue);
+      font-size: 20px;
+    }
+
+    .phone button {
+      margin-top: 20px;
+      border: none;
+      background: var(--green);
+      color: white;
+      border-radius: 25px;
+      padding: 12px 22px;
+      font-weight: bold;
+    }
+
+    .medicine-art {
+      position: absolute;
+      bottom: 45px;
+      left: 10px;
+      font-size: 62px;
+      z-index: 3;
+    }
+
+    .delivery-art {
+      position: absolute;
+      right: 0;
+      bottom: 40px;
+      font-size: 105px;
+    }
+
+    /* ================= OFFER ================= */
+
+    .offer {
+      max-width: 1210px;
+      margin: 12px auto;
+      min-height: 120px;
+      padding: 15px 30px;
+      border-radius: 17px;
+      background: linear-gradient(90deg, #ffe9ed, #e8ffe8);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .offer-red {
+      color: #e1163e;
+      font-size: 38px;
+      font-weight: 900;
+    }
+
+    .offer-green {
+      color: #087d45;
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .offer-code {
+      border: 3px solid #298b60;
+      border-radius: 15px;
+      padding: 15px;
+      color: #087d45;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    /* ================= SECTION ================= */
+
+    .section {
+      max-width: 1210px;
+      margin: 35px auto;
+      padding: 0 15px;
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--blue);
+      font-size: 30px;
+      margin-bottom: 22px;
+      font-weight: 800;
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      width: 100px;
+      height: 2px;
+      background: #4c9d78;
+      margin: 0 15px;
+    }
+
+    /* ================= CATEGORIES ================= */
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 8px;
+    }
+
+    .category {
+      min-height: 120px;
+      padding: 12px 5px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: .2s;
+      font-weight: bold;
+      color: #173e66;
+    }
+
+    .category:nth-child(odd) {
+      background: #e8f7ff;
+    }
+
+    .category:nth-child(even) {
+      background: #eaf9f0;
+    }
+
+    .category:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .category-icon {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    /* ================= MEDICINES ================= */
+
+    .medicine-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .medicine-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid #e3edf3;
+    }
+
+    .medicine-icon {
+      width: 70px;
+      height: 70px;
+      margin: auto;
+      border-radius: 50%;
+      background: #e9f7ef;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 37px;
+    }
+
+    .medicine-card h3 {
+      margin-top: 14px;
+      color: var(--blue);
+      text-align: center;
+    }
+
+    .medicine-card p {
+      text-align: center;
+      color: #667b8e;
+      margin: 7px 0 15px;
+      min-height: 35px;
+    }
+
+    .medicine-card button {
+      width: 100%;
+      border: none;
+      background: var(--green);
+      color: white;
+      padding: 11px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Deliberately no medicine prices/rates */
+
+    /* ================= WHY US ================= */
+
+    .why-us {
+      background: #eaf6ff;
+      border-radius: 18px;
+      padding: 25px 15px;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .why-item {
+      text-align: center;
+      padding: 10px 20px;
+      border-right: 1px solid #cbdce9;
+    }
+
+    .why-item:last-child {
+      border: none;
+    }
+
+    .why-icon {
+      width: 60px;
+      height: 60px;
+      margin: auto;
+      border-radius: 50%;
+      background: #079467;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .why-item h3 {
+      color: #16446f;
+      font-size: 16px;
+    }
+
+    /* ================= CART ================= */
+
+    .cart-box,
+    .order-box {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: var(--shadow);
+    }
+
+    .cart-empty {
+      text-align: center;
+      color: #718496;
+      padding: 25px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5px;
+      border-bottom: 1px solid #e5e9ed;
+      gap: 15px;
+    }
+
+    .cart-item-name {
+      font-weight: bold;
+      color: var(--blue);
+    }
+
+    .qty {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qty button {
+      width: 32px;
+      height: 32px;
+      border: none;
+      border-radius: 8px;
+      background: var(--blue);
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .remove-btn {
+      border: none;
+      background: #e74c3c;
+      color: white;
+      padding: 7px 11px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    .cart-bottom {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .clear-btn {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 11px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    /* ================= ORDER ================= */
+
+    .order-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .form-title {
+      color: var(--blue);
+      margin-bottom: 18px;
+      font-size: 22px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      color: #315674;
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccd9e2;
+      border-radius: 9px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--blue);
+    }
+
+    .upload-box {
+      border: 2px dashed #6cb58f;
+      background: #f1fbf5;
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* ================= CONFIRMATION ================= */
+
+    .confirmation {
+      display: none;
+      margin-top: 25px;
+      background: #e8fff0;
+      border: 2px solid var(--green);
+      border-radius: 18px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .confirmation-icon {
+      font-size: 55px;
+    }
+
+    .confirmation h2 {
+      color: var(--green);
+      margin: 10px;
+    }
+
+    .order-id {
+      display: inline-block;
+      background: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      color: var(--blue);
+      font-weight: bold;
+      font-size: 20px;
+      margin: 10px;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: var(--dark-blue);
+      color: white;
+      margin-top: 50px;
+    }
+
+    .footer-main {
+      max-width: 1250px;
+      margin: auto;
+      padding: 35px 20px;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr;
+      gap: 25px;
+    }
+
+    .footer-logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .footer-logo span {
+      color: #55d56e;
+    }
+
+    .footer-main h3 {
+      margin-bottom: 15px;
+    }
+
+    .footer-main p {
+      margin: 8px 0;
+      color: #e0edf9;
+    }
+
+    .footer-links a {
+      display: block;
+      margin: 8px 0;
+      color: #dbeaf7;
+    }
+
+    .social {
+      display: flex;
+      gap: 10px;
+      font-size: 25px;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,.2);
+      padding: 15px;
+      text-align: center;
+      color: #d5e4f2;
+    }
+
+    /* ================= FLOATING BUTTONS ================= */
+
+    .floating-buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 18px;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .float-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 23px;
+      box-shadow: 0 5px 15px rgba(0,0,0,.25);
+    }
+
+    .whatsapp {
+      background: #20c863;
+    }
+
+    .phone-float {
+      background: var(--blue);
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 1100px) {
+
+      .header-inner {
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        min-width: auto;
+      }
+
+      .search-area {
+        order: 5;
+        max-width: 100%;
+        flex-basis: 100%;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .medicine-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 800px) {
+
+      .header-inner {
+        padding: 10px;
+      }
+
+      .location,
+      .order-phone {
+        display: none;
+      }
+
+      .logo-text h1 {
+        font-size: 19px;
+      }
+
+      .logo-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 27px;
+      }
+
+      .header-actions {
+        margin-left: auto;
+      }
+
+      .nav-inner {
+        overflow-x: auto;
+      }
+
+      .categories-menu {
+        padding: 14px;
+        white-space: nowrap;
+      }
+
+      .nav-links a {
+        min-width: 90px;
+      }
+
+      .hero {
+        min-height: 500px;
+        padding: 30px 20px;
+      }
+
+      .hero-content {
+        width: 100%;
+      }
+
+      .hero h2 {
+        font-size: 39px;
+      }
+
+      .hero-art {
+        opacity: .18;
+        width: 100%;
+        right: 0;
+      }
+
+      .offer {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .medicine-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .why-item {
+        border-right: none;
+        border-bottom: 1px solid #cbdce9;
+        padding: 20px 10px;
+      }
+
+      .order-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      .header-actions {
+        gap: 8px;
+      }
+
+      .header-action {
+        font-size: 12px;
+      }
+
+      .hero {
+        min-height: 470px;
+      }
+
+      .hero h2 {
+        font-size: 34px;
+      }
+
+      .hero-subtitle {
+        font-size: 18px;
+      }
+
+      .hero-features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .medicine-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-item {
+        flex-wrap: wrap;
+      }
+
+      .cart-bottom {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .section-title::before,
+      .section-title::after {
+        width: 30px;
+        margin: 0 6px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header class="top">
-  <div class="header">
+<!-- ================= HEADER ================= -->
 
-    <div class="logo">
-      <div class="logo-icon">✚</div>
+<header class="top-header">
 
-      <div>
-        <h1>
-          Online <span>Medicine</span><br>
-          Doorstep Delivery
-        </h1>
+  <div class="header-inner">
 
+    <a href="#home" class="logo">
+      <div class="logo-icon">💊</div>
+
+      <div class="logo-text">
+        <h1>Online Medicine <span>Delivery</span></h1>
         <small>Your Health • Our Priority</small>
       </div>
-    </div>
+    </a>
 
     <div class="location">
       📍 Narsingarh
     </div>
 
-    <div class="search">
+    <div class="search-area">
       <input
+        type="text"
         id="searchInput"
         placeholder="Search for medicines, brands, health products..."
-      >
+        oninput="searchMedicines()">
 
-      <button onclick="searchMedicine()">⌕</button>
+      <button onclick="searchMedicines()">🔎</button>
     </div>
 
-    <div class="call">
-      📞 Order Now<br>
-      <a href="tel:6009415805">6009415805</a>
+    <div class="header-actions">
+
+      <a href="tel:6009415805" class="order-phone">
+        📞 Order Now
+        <strong>6009415805</strong>
+      </a>
+
+      <a href="#order" class="header-action">
+        👤<br>
+        Order
+      </a>
+
+      <a href="#cart" class="header-action cart-button">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+        <br>
+        Cart
+      </a>
+
     </div>
 
   </div>
+
 </header>
 
 
-<!-- NAVIGATION -->
+<!-- ================= NAV ================= -->
+
 <nav class="nav">
+
   <div class="nav-inner">
 
-    <a href="#home">🏠 Home</a>
-    <a href="#about">About Us</a>
-    <a href="#shop">Shop</a>
-    <a href="#offers">Offers</a>
-    <a href="#contact">Contact Us</a>
-
-  </div>
-</nav>
-
-
-<main id="home">
-
-<!-- HERO -->
-<section class="hero">
-
-  <div>
-
-    <h2>
-      All Your Medicines<br>
-      <span>at Your Doorstep</span>
-    </h2>
-
-    <p>
-      Fast &nbsp; | &nbsp; Safe &nbsp; | &nbsp; Affordable
-    </p>
-
-    <a class="btn" href="#order">
-      Shop Now →
-    </a>
-
-  </div>
-
-  <div class="hero-art">
-    💊 🩺 🚚
-  </div>
-
-</section>
-
-
-<!-- DISCOUNT -->
-<section class="discount" id="offers">
-
-  <strong>
-    Get 10% DISCOUNT
-  </strong>
-
-  <span>
-    🚚 No Delivery Charges
-  </span>
-
-  <b>
-    Use Code: MED10
-  </b>
-
-</section>
-
-
-<!-- CATEGORIES -->
-<section class="section" id="shop">
-
-  <h2 class="title">
-    Shop by Category
-  </h2>
-
-  <div class="categories">
-
-    <div class="cat">
-      <div>💊</div>
-      Pain Relief
+    <div class="categories-menu">
+      <span class="hamburger">☰</span>
+      All Categories ▾
     </div>
 
-    <div class="cat">
-      <div>🌡️</div>
-      Fever & Cold
-    </div>
+    <div class="nav-links">
 
-    <div class="cat">
-      <div>🩸</div>
-      Diabetes Care
-    </div>
-
-    <div class="cat">
-      <div>❤️</div>
-      Heart Care
-    </div>
-
-    <div class="cat">
-      <div>💚</div>
-      Vitamins & Supplements
-    </div>
-
-    <div class="cat">
-      <div>🧴</div>
-      Skin Care
-    </div>
-
-    <div class="cat">
-      <div>👶</div>
-      Baby Care
-    </div>
-
-    <div class="cat">
-      <div>🧼</div>
-      Personal Care
-    </div>
-
-    <div class="cat">
-      <div>🩺</div>
-      Health Devices
-    </div>
-
-    <div class="cat">
-      <div>➕</div>
-      More
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- POPULAR MEDICINES -->
-<section class="section" id="popular">
-
-  <h2 class="title">
-    Popular Medicines
-  </h2>
-
-  <div class="cards">
-
-    <div class="card">
-
-      <h3>
-        Paracetamol
-      </h3>
-
-      <p>
-        জ্বর ও ব্যথার জন্য
-      </p>
-
-      <button
-        class="btn"
-        onclick="quickOrder('Paracetamol')"
-      >
-        Order Now
-      </button>
-
-    </div>
-
-
-    <div class="card">
-
-      <h3>
-        ORS
-      </h3>
-
-      <p>
-        ডিহাইড্রেশনের জন্য
-      </p>
-
-      <button
-        class="btn"
-        onclick="quickOrder('ORS')"
-      >
-        Order Now
-      </button>
-
-    </div>
-
-
-    <div class="card">
-
-      <h3>
-        Vitamin C
-      </h3>
-
-      <p>
-        Vitamin supplement
-      </p>
-
-      <button
-        class="btn"
-        onclick="quickOrder('Vitamin C')"
-      >
-        Order Now
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ORDER FORM -->
-<section class="section" id="order">
-
-  <h2 class="title">
-    🛒 Medicine Order
-  </h2>
-
-  <div class="form-box">
-
-    <form id="orderForm">
-
-      <div class="form-grid">
-
-        <label class="field">
-          <span>Medicine name *</span>
-
-          <input
-            id="medicine"
-            required
-            placeholder="Medicine name"
-          >
-        </label>
-
-
-        <label class="field">
-          <span>Your name *</span>
-
-          <input
-            id="name"
-            required
-            placeholder="আপনার নাম"
-          >
-        </label>
-
-
-        <label class="field">
-          <span>Mobile number *</span>
-
-          <input
-            id="phone"
-            required
-            type="tel"
-            placeholder="মোবাইল নম্বর"
-          >
-        </label>
-
-
-        <label class="field">
-          <span>Quantity</span>
-
-          <input
-            id="qty"
-            type="number"
-            min="1"
-            value="1"
-          >
-        </label>
-
-
-        <label class="field full">
-
-          <span>
-            Delivery address *
-          </span>
-
-          <textarea
-            id="address"
-            required
-            placeholder="আপনার সম্পূর্ণ ঠিকানা, Narsingarh"
-          ></textarea>
-
-        </label>
-
-      </div>
-
-
-      <button
-        class="btn submit"
-        type="submit"
-      >
-        📲 Send Order Message
-      </button>
-
-    </form>
-
-  </div>
-
-</section>
-
-
-<!-- ABOUT -->
-<section class="section" id="about">
-
-  <h2 class="title">
-    Why Choose Us?
-  </h2>
-
-  <div class="cards">
-
-    <div class="card">
-      <h3>
-        🛡️ Genuine Medicines
-      </h3>
-
-      <p>
-        ভালো মানের ও নির্ভরযোগ্য ওষুধ।
-      </p>
-    </div>
-
-
-    <div class="card">
-      <h3>
-        🚚 Fast Home Delivery
-      </h3>
-
-      <p>
-        Narsingarh এলাকায় doorstep delivery.
-      </p>
-    </div>
-
-
-    <div class="card">
-      <h3>
-        💬 Easy Ordering
-      </h3>
-
-      <p>
-        Website থেকে order message পাঠান।
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<!-- FOOTER -->
-<footer id="contact">
-
-  <div class="footer-grid">
-
-    <div>
-
-      <h3>
-        Online Medicine Doorstep Delivery
-      </h3>
-
-      <p>
-        Your Health • Our Priority
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <h3>
-        Order Now
-      </h3>
-
-      <p>
-        📞 6009415805
-      </p>
-
-      <p>
-        📍 Narsingarh, Tripura, India
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <h3>
-        Quick Links
-      </h3>
-
-      <p>
-        Home • About Us • Shop • Offers • Contact Us
-      </p>
-
-    </div>
-
-  </div>
-
-</footer>
-
-
-<div class="toast" id="toast"></div>
-
-
-<script>
-
-/* QUICK ORDER */
-function quickOrder(medicine){
-
-  document.getElementById("medicine").value = medicine;
-
-  document
-    .getElementById("order")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-}
-
-
-/* SEARCH */
-function searchMedicine(){
-
-  const q =
-    document
-      .getElementById("searchInput")
-      .value
-      .trim()
-      .toLowerCase();
-
-  if(!q){
-
-    document
-      .getElementById("popular")
-      .scrollIntoView({
-        behavior:"smooth"
-      });
-
-    return;
-  }
-
-
-  const cards =
-    [
-      ...document.querySelectorAll(".card")
-    ];
-
-
-  const found =
-    cards.find(card => {
-
-      const title =
-        card.querySelector("h3");
-
-      return title &&
-        title.innerText
-          .toLowerCase()
-          .includes(q);
-
-    });
-
-
-  if(found){
-
-    found.scrollIntoView({
-      behavior:"smooth",
-      block:"center"
-    });
-
-    showToast("Medicine found");
-
-  }else{
-
-    document.getElementById("medicine").value =
-      document.getElementById("searchInput").value;
-
-    document
-      .getElementById("order")
-      .scrollIntoView({
-        behavior:"smooth"
-      });
-
-    showToast(
-      "Medicine name added to order form"
-    );
-  }
-
-}
-
-
-/* TOAST */
-function showToast(message){
-
-  const toast =
-    document.getElementById("toast");
-
-  toast.textContent = message;
-
-  toast.style.display = "block";
-
-  setTimeout(() => {
-
-    toast.style.display = "none";
-
-  },2500);
-
-}
-
-
-/* WHATSAPP ORDER */
-document
-  .getElementById("orderForm")
-  .addEventListener("submit",function(e){
-
-    e.preventDefault();
-
-
-    const medicine =
-      document.getElementById("medicine").value;
-
-    const name =
-      document.getElementById("name").value;
-
-    const phone =
-      document.getElementById("phone").value;
-
-    const qty =
-      document.getElementById("qty").value;
-
-    const address =
-      document.getElementById("address").value;
-
-
-    const message =
-      `Medicine Order
-
-Medicine: ${medicine}
-Quantity: ${qty}
-Name: ${name}
-Mobile: ${phone}
-Address: ${address}`;
-
-
-    const whatsappURL =
-      "https://wa.me/916009415805?text=" +
-      encodeURIComponent(message);
-
-
-    window.location.href = whatsappURL;
-
-  });
-
-</script>
-
-</body>
-</html>
+      <a href="#home" class="
