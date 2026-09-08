@@ -1532,39 +1532,19 @@ Healthcare at your doorstep.
 
 </footer>
 
-
-
-<!-- =========================
-     FIREBASE
-========================= -->
-
+<!-- FIREBASE -->
 <script type="module">
 
-
-/* FIREBASE APP */
-
-import {
-    initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
-
-/* FIRESTORE */
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
-    getFirestore,
-    collection,
-    addDoc,
-    serverTimestamp,
-    query,
-    where,
-    getDocs,
-    limit
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
 }
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
 /* =========================
@@ -1572,197 +1552,351 @@ from
 ========================= */
 
 const firebaseConfig = {
-
-    apiKey:
-    "AIzaSyABmq9B4NEvgtsrJIEfUhjZOqMCjGGHfpI",
-
-    authDomain:
-    "medicine-doorstep-delivery.firebaseapp.com",
-
-    projectId:
-    "medicine-doorstep-delivery",
-
-    storageBucket:
-    "medicine-doorstep-delivery.firebasestorage.app",
-
-    messagingSenderId:
-    "703468135334",
-
-    appId:
-    "1:703468135334:web:e1e7040b5426f93f71a567",
-
-    measurementId:
-    "G-K3H1PQ6MKD"
-
+  apiKey: "AIzaSyABmq9B4NEvgtsrJIEfUhjZOqMCjGGHfpI",
+  authDomain: "medicine-doorstep-delivery.firebaseapp.com",
+  projectId: "medicine-doorstep-delivery",
+  storageBucket: "medicine-doorstep-delivery.firebasestorage.app",
+  messagingSenderId: "703468135334",
+  appId: "1:703468135334:web:e1e7040b5426f93f71a567",
+  measurementId: "G-K3H1PQ6MKD"
 };
 
 
-
 /* =========================
-   INITIALIZE
+   START FIREBASE
 ========================= */
 
-const app =
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-const db =
-getFirestore(app);
-
+console.log("Firebase Connected Successfully");
 
 
 /* =========================
-   ELEMENTS
+   GET ELEMENTS
 ========================= */
 
-const form =
-document.getElementById("orderForm");
+const form = document.getElementById("orderForm");
+const prescriptionInput = document.getElementById("prescription");
+const fileMessage = document.getElementById("fileMessage");
 
-const submitBtn =
-document.getElementById("submitBtn");
+const delivery = document.getElementById("delivery");
+const deliveryNotice = document.getElementById("deliveryNotice");
 
-const success =
-document.getElementById("success");
-
-const error =
-document.getElementById("error");
-
-const prescriptionInput =
-document.getElementById("prescription");
-
-const fileMessage =
-document.getElementById("fileMessage");
-
-const delivery =
-document.getElementById("delivery");
-
-const deliveryNotice =
-document.getElementById("deliveryNotice");
-
-const trackOrderId =
-document.getElementById("trackOrderId");
-
-const trackBtn =
-document.getElementById("trackBtn");
-
-const trackResult =
-document.getElementById("trackResult");
-
+const success = document.getElementById("success");
+const error = document.getElementById("error");
+const submitBtn = document.getElementById("submitBtn");
 
 
 /* =========================
-   PRESCRIPTION
+   DELIVERY STATUS
 ========================= */
 
-prescriptionInput.addEventListener(
-"change",
-function(){
+if (delivery) {
 
-    const file =
-    prescriptionInput.files[0];
+  delivery.addEventListener("change", () => {
 
-    if(!file){
-
-        fileMessage.innerHTML = "";
-
-        return;
-
+    if (delivery.value === "Out of Delivery") {
+      deliveryNotice.style.display = "block";
+    } else {
+      deliveryNotice.style.display = "none";
     }
 
+  });
+
+}
+
+
+/* =========================
+   PRESCRIPTION CHECK
+========================= */
+
+if (prescriptionInput) {
+
+  prescriptionInput.addEventListener("change", () => {
+
+    const file = prescriptionInput.files[0];
+
+    if (!file) {
+      fileMessage.innerHTML = "";
+      return;
+    }
+
+    const maxSize = 50 * 1024 * 1024;
 
     const allowedTypes = [
-
-        "image/jpeg",
-        "image/png",
-        "application/pdf"
-
+      "image/jpeg",
+      "image/png",
+      "application/pdf"
     ];
 
+    if (!allowedTypes.includes(file.type)) {
 
-    const maxSize =
-    50 * 1024 * 1024;
-
-
-    if(!allowedTypes.includes(file.type)){
-
-        fileMessage.innerHTML =
+      fileMessage.innerHTML =
         "<p style='color:red;font-weight:bold;margin-top:10px'>" +
-        "❌ Only JPG, PNG or PDF is allowed." +
+        "❌ Only JPG, PNG or PDF allowed." +
         "</p>";
 
-        prescriptionInput.value = "";
-
-        return;
-
+      prescriptionInput.value = "";
+      return;
     }
 
+    if (file.size > maxSize) {
 
-    if(file.size > maxSize){
-
-        fileMessage.innerHTML =
+      fileMessage.innerHTML =
         "<p style='color:red;font-weight:bold;margin-top:10px'>" +
-        "❌ Maximum file size is 50 MB." +
+        "❌ File size must be below 50 MB." +
         "</p>";
 
-        prescriptionInput.value = "";
-
-        return;
-
+      prescriptionInput.value = "";
+      return;
     }
-
 
     fileMessage.innerHTML =
-    "<p style='color:green;font-weight:bold;margin-top:10px'>" +
-    "✅ File selected: " +
-    file.name +
-    "</p>";
+      "<p style='color:green;font-weight:bold;margin-top:10px'>" +
+      "✅ " + file.name + " selected" +
+      "</p>";
 
-});
+  });
 
-
-
-/* =========================
-   DELIVERY
-========================= */
-
-delivery.addEventListener(
-"change",
-function(){
-
-    if(
-        delivery.value ===
-        "Out of Delivery"
-    ){
-
-        deliveryNotice.style.display =
-        "block";
-
-    }else{
-
-        deliveryNotice.style.display =
-        "none";
-
-    }
-
-});
-
+}
 
 
 /* =========================
-   SAVE ORDER
+   ORDER SUBMIT
 ========================= */
 
-form.addEventListener(
-"submit",
-async function(e){
+form.addEventListener("submit", async (e) => {
 
-    e.preventDefault();
+  e.preventDefault();
 
+  success.style.display = "none";
+  error.style.display = "none";
 
-    success.style.display =
-    "none";
-
-    error.style.display =
-    "none";
+  submitBtn.disabled = true;
+  submitBtn.textContent = "⏳ Saving Order...";
 
 
-    c
+  /* GET FORM DATA */
+
+  const name =
+    document.getElementById("name").value.trim();
+
+  const mobile =
+    document.getElementById("mobile").value.trim();
+
+  const medicine =
+    document.getElementById("medicine").value.trim();
+
+  const quantity =
+    Number(document.getElementById("quantity").value) || 1;
+
+  const address =
+    document.getElementById("address").value.trim();
+
+  const deliveryStatus =
+    delivery.value;
+
+  const prescription =
+    prescriptionInput.files[0];
+
+
+  /* =========================
+     VALIDATION
+  ========================= */
+
+  if (!name || !mobile || !medicine || !address) {
+
+    error.textContent =
+      "❌ Please fill all required fields.";
+
+    error.style.display = "block";
+
+    submitBtn.disabled = false;
+    submitBtn.textContent =
+      "📲 Save Order & Send WhatsApp";
+
+    return;
+  }
+
+
+  if (!/^[0-9]{10}$/.test(mobile)) {
+
+    error.textContent =
+      "❌ Please enter a valid 10 digit mobile number.";
+
+    error.style.display = "block";
+
+    submitBtn.disabled = false;
+    submitBtn.textContent =
+      "📲 Save Order & Send WhatsApp";
+
+    return;
+  }
+
+
+  /* =========================
+     ORDER DATA
+  ========================= */
+
+  const orderData = {
+
+    customerName: name,
+
+    name: name,
+
+    mobile: mobile,
+
+    phone: mobile,
+
+    medicine: medicine,
+
+    quantity: quantity,
+
+    address: address,
+
+    deliveryArea: deliveryStatus,
+
+    deliveryStatus: deliveryStatus,
+
+    orderStatus: "Pending",
+
+    status: "Pending",
+
+    prescriptionName:
+      prescription ? prescription.name : "",
+
+    prescriptionType:
+      prescription ? prescription.type : "",
+
+    createdAt: serverTimestamp()
+
+  };
+
+
+  /* =========================
+     SAVE FIRESTORE
+  ========================= */
+
+  try {
+
+    const orderRef = await addDoc(
+      collection(db, "orders"),
+      orderData
+    );
+
+
+    console.log(
+      "ORDER SAVED:",
+      orderRef.id
+    );
+
+
+    /* =========================
+       WHATSAPP
+    ========================= */
+
+    const prescriptionText =
+      prescription
+        ? "📄 Prescription: " + prescription.name
+        : "📄 Prescription: Not uploaded";
+
+
+    const message =
+
+`🏥 *MEDICINE DOORSTEP DELIVERY*
+
+📋 *NEW MEDICINE ORDER*
+
+🆔 Order ID: ${orderRef.id}
+
+👤 Customer: ${name}
+
+📱 Mobile: ${mobile}
+
+💊 Medicine: ${medicine}
+
+🔢 Quantity: ${quantity}
+
+📍 Address:
+${address}
+
+🚚 Delivery Area:
+${deliveryStatus}
+
+${prescriptionText}
+
+🎉 10% Discount
+
+Please confirm my order.`;
+
+
+    /* SUCCESS MESSAGE */
+
+    success.innerHTML =
+      "✅ <b>Order Saved Successfully!</b><br>" +
+      "🆔 Order ID: " + orderRef.id +
+      "<br><br>" +
+      "Opening WhatsApp...";
+
+    success.style.display = "block";
+
+
+    /* OPEN WHATSAPP */
+
+    const whatsappURL =
+      "https://wa.me/916009415805?text=" +
+      encodeURIComponent(message);
+
+
+    setTimeout(() => {
+
+      window.open(
+        whatsappURL,
+        "_blank"
+      );
+
+    }, 700);
+
+
+    /* RESET FORM */
+
+    form.reset();
+
+    fileMessage.innerHTML = "";
+
+    deliveryNotice.style.display = "none";
+
+
+  }
+
+  catch (err) {
+
+    console.error(
+      "FIREBASE ERROR:",
+      err
+    );
+
+
+    error.innerHTML =
+      "❌ <b>Order save হয়নি.</b><br><br>" +
+      "Firebase Firestore Rules check করুন.<br>" +
+      "Error: " + err.message;
+
+
+    error.style.display = "block";
+
+  }
+
+
+  submitBtn.disabled = false;
+
+  submitBtn.textContent =
+    "📲 Save Order & Send WhatsApp";
+
+});
+
+</script>
+
+     
+
