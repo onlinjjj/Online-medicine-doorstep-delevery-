@@ -1,74 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Online Medicine Delivery</title>
+<title>Online Medicine Dorstop Delivery</title>
 
 <style>
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
-}
-
-html{
     scroll-behavior:smooth;
 }
 
 body{
     font-family:Arial,Helvetica,sans-serif;
     background:#fff;
-    color:#123b78;
+    color:#12345b;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
 }
 
 /* ================= HEADER ================= */
 
-.top-header{
-    min-height:92px;
+.header{
+    background:white;
     display:flex;
     align-items:center;
-    gap:18px;
-    padding:8px 28px;
-    background:#fff;
-    border-bottom:1px solid #ddd;
+    justify-content:space-between;
+    padding:10px 4%;
+    gap:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.12);
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
 .logo{
     display:flex;
     align-items:center;
-    min-width:315px;
+    gap:10px;
 }
 
-.logo-symbol{
-    width:62px;
-    height:62px;
+.logo-icon{
+    width:60px;
+    height:60px;
     border-radius:12px;
-    background:linear-gradient(135deg,#079548,#76d735);
+    background:linear-gradient(135deg,#079447,#0753a4);
+    color:white;
     display:flex;
     align-items:center;
     justify-content:center;
-    color:white;
-    font-size:37px;
-    margin-right:9px;
+    font-size:32px;
+    font-weight:bold;
 }
 
-.logo-title{
-    color:#073b7b;
-    font-size:25px;
-    line-height:22px;
+.logo-text{
+    font-size:23px;
     font-weight:800;
+    line-height:1.05;
 }
 
-.logo-title span{
-    color:#079548;
+.logo-text span{
+    color:#079447;
 }
 
 .tagline{
-    font-size:12px;
+    font-size:11px;
+    margin-top:5px;
     font-weight:bold;
-    margin-top:8px;
 }
 
 .location{
@@ -76,809 +81,577 @@ body{
     white-space:nowrap;
 }
 
-.search-box{
-    height:48px;
-    flex:1;
+.search{
     display:flex;
-    max-width:410px;
-    border:1px solid #ccd7e0;
-    border-radius:12px;
-    overflow:hidden;
-}
-
-.search-box input{
     flex:1;
-    border:0;
-    outline:0;
-    padding:0 15px;
-    font-size:14px;
+    max-width:480px;
 }
 
-.search-box button{
-    width:58px;
-    border:0;
-    background:#07549b;
-    color:#fff;
+.search input{
+    width:100%;
+    padding:14px;
+    border:1px solid #ccd8e5;
+    border-radius:10px 0 0 10px;
+    outline:none;
+}
+
+.search button{
+    width:55px;
+    border:none;
+    background:#0753a4;
+    color:white;
+    border-radius:0 10px 10px 0;
+    cursor:pointer;
     font-size:20px;
-    cursor:pointer;
 }
 
-.order-now{
-    color:#079548;
-    font-weight:bold;
-    text-align:center;
-    white-space:nowrap;
-}
-
-.order-number{
-    display:block;
-    color:#123b78;
-    font-size:17px;
-}
-
-.login{
-    text-align:center;
-    white-space:nowrap;
-    font-size:13px;
-}
-
-.cart{
-    background:#fff;
-    border:0;
-    cursor:pointer;
-    color:#123b78;
-    font-weight:bold;
-    position:relative;
-}
-
-.cart-icon{
-    font-size:27px;
-}
-
-.cart-count{
-    position:absolute;
-    top:-5px;
-    right:-7px;
-    background:#e21b2d;
-    color:#fff;
-    width:18px;
-    height:18px;
-    border-radius:50%;
+.header-actions{
     display:flex;
     align-items:center;
-    justify-content:center;
-    font-size:10px;
+    gap:15px;
 }
 
-/* ================= NAV ================= */
+.call{
+    color:#079447;
+    font-weight:bold;
+    text-align:center;
+}
+
+.call strong{
+    display:block;
+    color:#0753a4;
+    font-size:16px;
+}
+
+/* ================= NAVBAR ================= */
 
 .navbar{
-    height:54px;
-    background:#07549b;
+    background:#0753a4;
+    color:white;
     display:flex;
     align-items:center;
-    overflow-x:auto;
-}
-
-.navbar a{
-    color:#fff;
-    text-decoration:none;
-    height:54px;
-    display:flex;
-    align-items:center;
-    padding:0 25px;
-    font-weight:bold;
-    white-space:nowrap;
-}
-
-.navbar a:hover{
-    background:#0968bb;
+    padding:0 4%;
 }
 
 .menu{
-    font-size:27px;
+    font-weight:bold;
+    padding:17px 25px 17px 0;
+}
+
+.nav-links{
+    display:flex;
+}
+
+.nav-links a{
+    padding:17px 25px;
+    font-weight:bold;
+}
+
+.nav-links a:hover{
+    background:#0a65bd;
+    border-bottom:4px solid #57d66d;
 }
 
 /* ================= HERO ================= */
 
 .hero{
-    min-height:410px;
-    padding:35px 40px;
+    min-height:420px;
+    padding:50px 5%;
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    background:
-    radial-gradient(circle at 70% 45%,#dff9d7,#f4ffff 32%,#fff 72%);
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(110deg,#effcff,#fff,#edfff3);
 }
 
 .hero-content{
-    width:54%;
+    max-width:680px;
+    z-index:2;
 }
 
 .trusted{
-    color:#078b48;
+    color:#079447;
     font-size:20px;
     font-weight:bold;
-    margin-bottom:8px;
 }
 
 .hero h1{
-    color:#073b7b;
-    font-size:50px;
+    color:#063875;
+    font-size:53px;
     line-height:1.05;
+    margin:10px 0;
 }
 
 .hero h1 span{
-    color:#079548;
+    color:#079447;
 }
 
-.hero-subtitle{
-    font-size:23px;
+.hero-sub{
+    font-size:21px;
     font-weight:bold;
-    margin:16px 0 24px;
+    margin:15px 0;
 }
 
 .hero-features{
     display:flex;
-    gap:20px;
     flex-wrap:wrap;
-    margin-bottom:25px;
-}
-
-.hero-feature{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    font-size:13px;
+    gap:18px;
     font-weight:bold;
-}
-
-.feature-icon{
-    width:39px;
-    height:39px;
-    border-radius:50%;
-    background:#e5f8ea;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:21px;
+    margin:20px 0;
 }
 
 .shop-btn{
-    border:0;
-    background:#12a74e;
+    display:inline-block;
+    background:#079447;
     color:white;
     padding:15px 32px;
     border-radius:30px;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.hero-visual{
-    width:43%;
-    min-height:350px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
-}
-
-.green-circle{
-    width:335px;
-    height:335px;
-    border-radius:50%;
-    background:linear-gradient(135deg,#a4ee70,#0baa4c);
-    position:absolute;
-}
-
-.phone{
-    position:relative;
-    z-index:3;
-    width:190px;
-    height:310px;
-    background:white;
-    border:9px solid #102f4d;
-    border-radius:30px;
-    padding:45px 10px 10px;
-    text-align:center;
-    box-shadow:0 12px 30px #0003;
-}
-
-.phone-notch{
-    position:absolute;
-    top:-2px;
-    left:55px;
-    width:70px;
-    height:20px;
-    background:#102f4d;
-    border-radius:0 0 12px 12px;
-}
-
-.phone-logo{
-    width:55px;
-    height:55px;
-    margin:auto;
-    border-radius:10px;
-    background:linear-gradient(135deg,#079548,#76d735);
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:30px;
-}
-
-.phone h2{
-    margin:12px 0 20px;
-    font-size:20px;
-    line-height:20px;
-}
-
-.phone button{
-    border:0;
-    background:#13a84e;
-    color:white;
-    padding:11px 20px;
-    border-radius:25px;
     font-weight:bold;
 }
 
-.rider{
+.hero-art{
     position:absolute;
-    right:0;
-    bottom:10px;
-    font-size:95px;
-    z-index:4;
+    right:5%;
+    font-size:120px;
+    opacity:.85;
 }
 
-/* ================= OFFER ================= */
-
-.offer{
-    margin:8px 20px;
-    min-height:145px;
-    border-radius:15px;
-    background:linear-gradient(90deg,#f5ffe9,#e5ffe9);
-    display:flex;
-    align-items:center;
-    justify-content:space-around;
-    gap:20px;
-    padding:15px;
-    text-align:center;
-}
+/* ================= DISCOUNT ================= */
 
 .discount{
-    color:#e51435;
-    font-size:29px;
+    margin:12px 2%;
+    padding:22px;
+    border-radius:18px;
+    border:2px dashed #42a95f;
+    background:#efffe7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:35px;
+    flex-wrap:wrap;
+    text-align:center;
+}
+
+.discount-big{
+    font-size:42px;
+    color:#e31e24;
     font-weight:900;
 }
 
-.discount strong{
-    color:#ffd000;
-    font-size:58px;
-}
-
-.delivery-offer{
-    color:#087d43;
+.discount-green{
     font-size:25px;
+    color:#08763e;
     font-weight:900;
 }
 
-.coupon{
-    border:2px solid #159548;
-    border-radius:15px;
-    padding:14px 24px;
-    color:#087d43;
-    font-size:18px;
+.code{
+    font-size:20px;
     font-weight:bold;
 }
 
-/* ================= TITLES ================= */
+/* ================= SECTIONS ================= */
+
+.section{
+    max-width:1250px;
+    margin:auto;
+    padding:35px 4%;
+}
 
 .section-title{
     text-align:center;
-    color:#123b78;
-    font-size:29px;
-    margin:22px 0 15px;
+    color:#063875;
+    font-size:30px;
+    margin-bottom:25px;
 }
 
 .section-title:before,
 .section-title:after{
     content:"";
     display:inline-block;
-    width:100px;
-    height:2px;
-    background:#4e9d83;
+    width:80px;
+    height:3px;
+    background:#3da37a;
     vertical-align:middle;
     margin:0 18px;
 }
 
-/* ================= CATEGORY ================= */
+/* ================= CATEGORIES ================= */
 
 .categories{
     display:grid;
-    grid-template-columns:repeat(10,1fr);
-    gap:8px;
-    padding:0 20px;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
 }
 
 .category{
+    background:#eef8ff;
+    border-radius:13px;
     min-height:125px;
-    background:#edf9ff;
-    border-radius:10px;
+    padding:18px 8px;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:8px;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.category:hover{
-    transform:translateY(-4px);
-    box-shadow:0 5px 15px #0001;
+    font-weight:bold;
+    box-shadow:0 2px 8px rgba(0,0,0,.07);
 }
 
 .category-icon{
-    font-size:40px;
+    font-size:42px;
     margin-bottom:8px;
 }
 
-.category-name{
-    font-size:13px;
-    font-weight:bold;
-}
-
-/* ================= WHY ================= */
+/* ================= WHY CHOOSE US ================= */
 
 .why{
-    margin:22px 20px;
     background:#edf8ff;
-    border-radius:12px;
-    padding-bottom:15px;
-}
-
-.why-grid{
+    border-radius:15px;
     display:grid;
     grid-template-columns:repeat(4,1fr);
+    overflow:hidden;
 }
 
 .why-item{
-    min-height:80px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:12px;
+    padding:25px 15px;
     text-align:center;
-    border-right:1px solid #c6d8e3;
+    border-right:1px solid #c8dce9;
 }
 
 .why-item:last-child{
-    border-right:0;
+    border-right:none;
 }
 
 .why-icon{
-    width:58px;
-    height:58px;
-    background:#0b9860;
+    width:60px;
+    height:60px;
     border-radius:50%;
-    color:#fff;
+    background:#079447;
+    color:white;
+    margin:0 auto 10px;
     display:flex;
-    justify-content:center;
     align-items:center;
-    font-size:27px;
+    justify-content:center;
+    font-size:28px;
 }
 
 /* ================= ORDER ================= */
 
-.order-section{
+.order-area{
+    background:#f3f9fd;
+    padding:45px 4%;
+}
+
+.order-box{
     max-width:900px;
-    margin:35px auto;
-    padding:30px;
+    margin:auto;
+    background:white;
     border-radius:18px;
-    background:#f2fff7;
-    border:2px dashed #159548;
+    padding:30px;
+    box-shadow:0 8px 25px rgba(0,50,100,.12);
 }
 
-.order-section h2{
-    text-align:center;
-    color:#07549b;
-    font-size:29px;
-}
-
-.order-subtitle{
-    text-align:center;
-    color:#555;
-    margin:8px 0 22px;
-}
-
-.order-form{
+.order-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:12px;
+    gap:16px;
 }
 
-.order-form input,
-.order-form textarea,
-.order-form select{
-    width:100%;
-    padding:14px;
-    border:1px solid #ccd8e2;
-    border-radius:8px;
-    outline:none;
-    font-size:14px;
-    background:#fff;
-}
-
-.order-form textarea{
-    min-height:90px;
-    resize:vertical;
-    grid-column:1/-1;
-}
-
-.full{
-    grid-column:1/-1;
-}
-
-.upload-area{
-    grid-column:1/-1;
-    border:2px dashed #159548;
-    padding:20px;
-    border-radius:12px;
-    text-align:center;
-    background:#fff;
-}
-
-.upload-label{
-    display:inline-block;
-    padding:13px 25px;
-    background:#07549b;
-    color:white;
-    border-radius:25px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-#prescriptionFile{
-    display:none;
-}
-
-.file-name{
-    margin-top:10px;
-    color:#079548;
-    font-weight:bold;
-}
-
-.preview{
-    display:none;
-    max-width:250px;
-    max-height:200px;
-    margin:15px auto 0;
-    border-radius:10px;
-}
-
-.submit-btn{
-    grid-column:1/-1;
-    border:0;
-    background:#12a74e;
-    color:white;
-    padding:16px;
-    border-radius:28px;
-    font-size:17px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.submit-btn:hover{
-    background:#078b40;
-}
-
-/* ================= ORDER RECEIVED ================= */
-
-.order-received{
-    display:none;
-    max-width:900px;
-    margin:30px auto;
-    padding:35px 25px;
-    border-radius:18px;
-    background:#effff5;
-    border:2px solid #16a052;
-    text-align:center;
-}
-
-.success-icon{
-    width:75px;
-    height:75px;
-    margin:auto;
-    border-radius:50%;
-    background:#13a84e;
-    color:#fff;
+.field{
     display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:40px;
+    flex-direction:column;
+    gap:7px;
 }
 
-.order-received h2{
-    color:#078b48;
-    margin:15px 0 7px;
+.field.full{
+    grid-column:1/-1;
 }
 
-.order-id{
-    display:inline-block;
-    background:#07549b;
-    color:white;
-    padding:9px 18px;
-    border-radius:20px;
+.field label{
     font-weight:bold;
-    margin:10px;
 }
 
-.received-details{
-    background:white;
-    border-radius:12px;
+.field input,
+.field textarea{
+    padding:13px;
+    border:1px solid #cbd8e7;
+    border-radius:10px;
+    outline:none;
+}
+
+.field textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.upload{
     padding:18px;
-    text-align:left;
-    margin:18px 0;
-    line-height:1.8;
+    border:2px dashed #42a95f;
+    background:#f7fff8;
+    border-radius:12px;
 }
 
-.whatsapp-btn{
-    display:inline-block;
-    background:#25D366;
+.order-button{
+    width:100%;
+    border:none;
+    background:#079447;
     color:white;
-    padding:14px 25px;
-    border-radius:28px;
-    text-decoration:none;
-    font-weight:bold;
-    margin:5px;
-}
-
-.new-order-btn{
-    border:0;
-    background:#07549b;
-    color:white;
-    padding:14px 25px;
-    border-radius:28px;
+    padding:16px;
+    border-radius:10px;
     font-weight:bold;
     cursor:pointer;
-    margin:5px;
+    font-size:17px;
 }
 
-/* ================= MY ORDERS ================= */
-
-.my-orders{
-    max-width:900px;
-    margin:25px auto;
-    padding:0 20px;
+.order-button:hover{
+    background:#067c3b;
 }
 
-.my-orders h2{
+.note{
+    margin-top:8px;
+    font-size:13px;
+    color:#60758b;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.contact-card{
+    background:#f3faff;
+    border-radius:15px;
+    padding:25px;
     text-align:center;
-    color:#07549b;
-    margin-bottom:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
 }
 
-.order-card{
-    background:#fff;
-    border:1px solid #d7e1e8;
-    border-radius:12px;
-    padding:16px;
+.contact-icon{
+    font-size:40px;
     margin-bottom:10px;
-    box-shadow:0 3px 12px #0000000d;
-}
-
-.order-card strong{
-    color:#07549b;
-}
-
-.status{
-    color:#079548;
-    font-weight:bold;
 }
 
 /* ================= FOOTER ================= */
 
-footer{
-    margin-top:35px;
-    background:#063773;
+.footer{
+    background:#063875;
     color:white;
+    padding:38px 5% 20px;
 }
 
-.footer-main{
-    padding:28px 4%;
+.footer-grid{
     display:grid;
-    grid-template-columns:2fr 1.3fr 1.3fr 1.3fr;
-    gap:25px;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:30px;
 }
 
-.footer-logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
+.footer h3{
+    margin-bottom:12px;
 }
 
-.footer-symbol{
-    width:55px;
-    height:55px;
-    border-radius:10px;
-    background:linear-gradient(135deg,#079548,#76d735);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:30px;
-}
-
-.footer-brand{
-    font-size:22px;
-    font-weight:bold;
-}
-
-.footer-brand span{
-    color:#67d83c;
-}
-
-.footer-column h3{
-    margin-bottom:10px;
-}
-
-.footer-column p{
-    line-height:1.8;
+.footer a{
+    display:block;
+    margin:8px 0;
+    color:#dcecff;
 }
 
 .footer-bottom{
-    border-top:1px solid #ffffff40;
-    padding:13px 4%;
-    display:flex;
-    justify-content:space-between;
+    border-top:1px solid rgba(255,255,255,.3);
+    margin-top:25px;
+    padding-top:15px;
+    text-align:center;
     font-size:13px;
+}
+
+/* ================= MOBILE CALL ================= */
+
+.mobile-call{
+    display:none;
+}
+
+/* ================= TABLET ================= */
+
+@media(max-width:950px){
+
+    .header{
+        flex-wrap:wrap;
+    }
+
+    .search{
+        order:3;
+        flex-basis:100%;
+        max-width:none;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .categories{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .why{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .why-item:nth-child(2){
+        border-right:none;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
 }
 
 /* ================= MOBILE ================= */
 
-@media(max-width:1100px){
+@media(max-width:650px){
 
-    .logo{
-        min-width:250px;
+    .header{
+        padding:9px 4%;
+        gap:10px;
     }
 
-    .logo-title{
-        font-size:20px;
+    .logo-icon{
+        width:45px;
+        height:45px;
+        font-size:23px;
     }
 
-    .categories{
-        grid-template-columns:repeat(5,1fr);
+    .logo-text{
+        font-size:18px;
+    }
+
+    .tagline{
+        font-size:9px;
     }
 
     .location{
         display:none;
     }
-}
 
-@media(max-width:800px){
-
-    .top-header{
-        flex-wrap:wrap;
-        padding:10px 15px;
-    }
-
-    .logo{
-        width:100%;
-    }
-
-    .order-now,
-    .login{
+    .header-actions .order{
         display:none;
     }
 
-    .search-box{
-        order:5;
-        width:100%;
-        max-width:none;
+    .navbar{
+        overflow-x:auto;
+    }
+
+    .menu{
+        display:none;
+    }
+
+    .nav-links a{
+        padding:14px 16px;
+        white-space:nowrap;
     }
 
     .hero{
-        flex-direction:column;
-        text-align:center;
-        padding:30px 18px;
-    }
-
-    .hero-content,
-    .hero-visual{
-        width:100%;
+        padding:40px 6%;
+        min-height:430px;
     }
 
     .hero h1{
-        font-size:38px;
+        font-size:37px;
+    }
+
+    .hero-sub{
+        font-size:18px;
+    }
+
+    .hero-art{
+        font-size:75px;
+        opacity:.18;
+        right:0;
     }
 
     .hero-features{
-        justify-content:center;
+        gap:10px;
+        font-size:14px;
     }
 
-    .hero-visual{
-        margin-top:20px;
+    .discount{
+        padding:18px 10px;
+        gap:10px;
     }
 
-    .offer{
-        flex-direction:column;
+    .discount-big{
+        font-size:34px;
+    }
+
+    .discount-green{
+        font-size:19px;
     }
 
     .categories{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .why-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .why-item{
-        border-bottom:1px solid #c6d8e3;
-    }
-
-    .footer-main{
-        grid-template-columns:1fr 1fr;
-    }
-}
-
-@media(max-width:500px){
-
-    .hero h1{
-        font-size:32px;
-    }
-
-    .green-circle{
-        width:270px;
-        height:270px;
-    }
-
-    .phone{
-        width:165px;
-        height:275px;
-    }
-
-    .rider{
-        font-size:65px;
+    .category{
+        min-height:110px;
     }
 
     .section-title{
-        font-size:22px;
+        font-size:25px;
     }
 
     .section-title:before,
     .section-title:after{
-        width:35px;
+        width:30px;
         margin:0 7px;
     }
 
-    .why-grid{
+    .order-grid{
         grid-template-columns:1fr;
     }
 
-    .order-form{
+    .field.full{
+        grid-column:auto;
+    }
+
+    .why{
         grid-template-columns:1fr;
     }
 
-    .order-form textarea,
-    .full,
-    .submit-btn{
-        grid-column:1;
+    .why-item{
+        border-right:none;
+        border-bottom:1px solid #c8dce9;
     }
 
-    .footer-main{
+    .why-item:last-child{
+        border-bottom:none;
+    }
+
+    .contact-grid{
         grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .mobile-call{
+        display:block;
+        position:fixed;
+        bottom:12px;
+        left:12px;
+        right:12px;
+        background:#079447;
+        color:white;
         text-align:center;
+        padding:14px;
+        border-radius:30px;
+        font-weight:bold;
+        z-index:2000;
     }
 
-    .footer-logo{
-        justify-content:center;
-    }
-
-    .footer-bottom{
-        flex-direction:column;
-        gap:8px;
-        text-align:center;
+    .footer{
+        padding-bottom:80px;
     }
 }
 </style>
@@ -888,13 +661,14 @@ footer{
 
 <!-- ================= HEADER ================= -->
 
-<header class="top-header">
+<header class="header">
 
-    <div class="logo">
-        <div class="logo-symbol">🌿</div>
+    <a href="#home" class="logo">
+
+        <div class="logo-icon">✚</div>
 
         <div>
-            <div class="logo-title">
+            <div class="logo-text">
                 Online <span>Medicine</span><br>
                 Delivery
             </div>
@@ -903,65 +677,77 @@ footer{
                 Your Health • Our Priority
             </div>
         </div>
-    </div>
+
+    </a>
 
     <div class="location">
         📍 Narsingarh
     </div>
 
-    <div class="search-box">
+    <div class="search">
+
         <input
-            id="searchInput"
-            type="text"
-            placeholder="Search for medicines, brands, health products..."
+            id="searchBox"
+            type="search"
+            placeholder="Search medicines, brands, health products..."
+            oninput="searchCategory()"
         >
 
-        <button onclick="searchMedicine()">🔍</button>
+        <button onclick="searchCategory()">🔍</button>
+
     </div>
 
-    <div class="order-now">
-        📞 Order Now
-        <span class="order-number">6009415805</span>
-    </div>
+    <div class="header-actions">
 
-    <div class="login">
-        👤<br>
-        Login / Signup
-    </div>
+        <a href="tel:+916009415805" class="call">
+            📞
+            <strong>6009415805</strong>
+            Order Now
+        </a>
 
-    <button class="cart" onclick="showOrders()">
-        <div class="cart-icon">🛒</div>
-        Cart
-        <span class="cart-count" id="cartCount">0</span>
-    </button>
+        <a href="#order" class="order">
+            📋
+            <strong>Order</strong>
+            Online
+        </a>
+
+        <a href="#order">
+            🛒
+        </a>
+
+    </div>
 
 </header>
 
 
-<!-- ================= NAVIGATION ================= -->
+<!-- ================= NAVBAR ================= -->
 
 <nav class="navbar">
 
-    <a href="#" class="menu">☰</a>
+    <div class="menu">
+        ☰ &nbsp; All Categories
+    </div>
 
-    <a href="#categories">All Categories⌄</a>
+    <div class="nav-links">
 
-    <a href="#home">Home</a>
+        <a href="#home">Home</a>
 
-    <a href="#about">About Us</a>
+        <a href="#about">About Us</a>
 
-    <a href="#shop">Shop</a>
+        <a href="#shop">Shop</a>
 
-    <a href="#offers">Offers</a>
+        <a href="#offers">Offers</a>
 
-    <a href="#contact">Contact Us</a>
+        <a href="#contact">Contact Us</a>
+
+    </div>
 
 </nav>
 
 
 <!-- ================= HERO ================= -->
 
-<section class="hero" id="home">
+<section id="home" class="hero">
 
     <div class="hero-content">
 
@@ -970,74 +756,34 @@ footer{
         </div>
 
         <h1>
-            All Your Medicines
-            <br>
+            All Your Medicines<br>
             <span>at Your Doorstep</span>
         </h1>
 
-        <div class="hero-subtitle">
+        <div class="hero-sub">
             Fast &nbsp; | &nbsp; Safe &nbsp; | &nbsp; Affordable
         </div>
 
         <div class="hero-features">
 
-            <div class="hero-feature">
-                <div class="feature-icon">✓</div>
-                Genuine<br>Medicines
-            </div>
+            <span>🛡️ Genuine Medicines</span>
 
-            <div class="hero-feature">
-                <div class="feature-icon">🚚</div>
-                Quick<br>Delivery
-            </div>
+            <span>🚚 Quick Delivery</span>
 
-            <div class="hero-feature">
-                <div class="feature-icon">📱</div>
-                Easy<br>Ordering
-            </div>
+            <span>📱 Easy Ordering</span>
 
-            <div class="hero-feature">
-                <div class="feature-icon">🎧</div>
-                Expert<br>Support
-            </div>
+            <span>🎧 Expert Support</span>
 
         </div>
 
-        <button class="shop-btn" onclick="goOrder()">
+        <a href="#order" class="shop-btn">
             Shop Now →
-        </button>
+        </a>
 
     </div>
 
-
-    <div class="hero-visual">
-
-        <div class="green-circle"></div>
-
-        <div class="phone">
-
-            <div class="phone-notch"></div>
-
-            <div class="phone-logo">
-                🌿
-            </div>
-
-            <h2>
-                Online<br>
-                Medicine<br>
-                Delivery
-            </h2>
-
-            <button onclick="goOrder()">
-                Order Now
-            </button>
-
-        </div>
-
-        <div class="rider">
-            🛵
-        </div>
-
+    <div class="hero-art">
+        💊 🧴 🩺 📱
     </div>
 
 </section>
@@ -1045,85 +791,86 @@ footer{
 
 <!-- ================= OFFER ================= -->
 
-<section class="offer" id="offers">
+<section id="offers" class="discount">
 
-    <div class="discount">
-        Get <strong>10%</strong>
-        <br>
-        DISCOUNT
+    <div class="discount-big">
+        GET 10% DISCOUNT
     </div>
 
-    <div class="delivery-offer">
-        🚚 FAST & RELIABLE
-        <br>
-        DELIVERY
+    <div class="discount-green">
+        🚚 DELIVERY AVAILABLE
     </div>
 
-    <div class="coupon">
-        Use Code & Save More
-        <br>
-        <b>SAVE10</b>
+    <div class="code">
+        Use Code:
+        <b style="color:#08763e">
+            SAVE10
+        </b>
     </div>
 
 </section>
 
 
-<!-- ================= CATEGORIES ================= -->
+<!-- ================= SHOP ================= -->
 
-<h2 class="section-title">
-    Shop by Category
-</h2>
+<section id="shop" class="section">
 
-<section class="categories" id="categories">
+    <h2 class="section-title">
+        Shop by Category
+    </h2>
 
-    <div class="category" onclick="category('Pain Relief')">
-        <div class="category-icon">💊</div>
-        <div class="category-name">Pain Relief</div>
-    </div>
+    <div class="categories" id="categories">
 
-    <div class="category" onclick="category('Fever & Cold')">
-        <div class="category-icon">🌡️</div>
-        <div class="category-name">Fever & Cold</div>
-    </div>
+        <a href="#order" class="category" data-name="pain relief">
+            <div class="category-icon">💊</div>
+            Pain Relief
+        </a>
 
-    <div class="category" onclick="category('Diabetes Care')">
-        <div class="category-icon">🩸</div>
-        <div class="category-name">Diabetes Care</div>
-    </div>
+        <a href="#order" class="category" data-name="fever cold">
+            <div class="category-icon">🌡️</div>
+            Fever & Cold
+        </a>
 
-    <div class="category" onclick="category('Heart Care')">
-        <div class="category-icon">❤️</div>
-        <div class="category-name">Heart Care</div>
-    </div>
+        <a href="#order" class="category" data-name="diabetes care">
+            <div class="category-icon">🩸</div>
+            Diabetes Care
+        </a>
 
-    <div class="category" onclick="category('Vitamins')">
-        <div class="category-icon">💊</div>
-        <div class="category-name">Vitamins &<br>Supplements</div>
-    </div>
+        <a href="#order" class="category" data-name="heart care">
+            <div class="category-icon">❤️</div>
+            Heart Care
+        </a>
 
-    <div class="category" onclick="category('Skin Care')">
-        <div class="category-icon">🧴</div>
-        <div class="category-name">Skin Care</div>
-    </div>
+        <a href="#order" class="category" data-name="vitamins supplements">
+            <div class="category-icon">🧴</div>
+            Vitamins & Supplements
+        </a>
 
-    <div class="category" onclick="category('Baby Care')">
-        <div class="category-icon">👶</div>
-        <div class="category-name">Baby Care</div>
-    </div>
+        <a href="#order" class="category" data-name="skin care">
+            <div class="category-icon">🧴</div>
+            Skin Care
+        </a>
 
-    <div class="category" onclick="category('Personal Care')">
-        <div class="category-icon">🧴</div>
-        <div class="category-name">Personal Care</div>
-    </div>
+        <a href="#order" class="category" data-name="baby care">
+            <div class="category-icon">👶</div>
+            Baby Care
+        </a>
 
-    <div class="category" onclick="category('Health Devices')">
-        <div class="category-icon">🌡️</div>
-        <div class="category-name">Health Devices</div>
-    </div>
+        <a href="#order" class="category" data-name="personal care">
+            <div class="category-icon">🧼</div>
+            Personal Care
+        </a>
 
-    <div class="category" onclick="category('More')">
-        <div class="category-icon">⠿</div>
-        <div class="category-name">More</div>
+        <a href="#order" class="category" data-name="health devices">
+            <div class="category-icon">🩺</div>
+            Health Devices
+        </a>
+
+        <a href="#order" class="category" data-name="more">
+            <div class="category-icon">⠿</div>
+            More
+        </a>
+
     </div>
 
 </section>
@@ -1131,32 +878,63 @@ footer{
 
 <!-- ================= WHY CHOOSE US ================= -->
 
-<section class="why" id="about">
+<section id="about" class="section">
 
     <h2 class="section-title">
         Why Choose Us?
     </h2>
 
-    <div class="why-grid">
+    <div class="why">
 
         <div class="why-item">
-            <div class="why-icon">✓</div>
-            <b>100% Genuine<br>Medicines</b>
+
+            <div class="why-icon">
+                ✓
+            </div>
+
+            <b>
+                100% Genuine & Branded Medicines
+            </b>
+
         </div>
 
-        <div class="why-item">
-            <div class="why-icon">🚚</div>
-            <b>Fast & Reliable<br>Home Delivery</b>
-        </div>
 
         <div class="why-item">
-            <div class="why-icon">💳</div>
-            <b>Easy & Secure<br>Payment Options</b>
+
+            <div class="why-icon">
+                🚚
+            </div>
+
+            <b>
+                Fast & Reliable Home Delivery
+            </b>
+
         </div>
 
+
         <div class="why-item">
-            <div class="why-icon">🎧</div>
-            <b>Dedicated Customer<br>Support</b>
+
+            <div class="why-icon">
+                🔒
+            </div>
+
+            <b>
+                Easy & Secure Payment Options
+            </b>
+
+        </div>
+
+
+        <div class="why-item">
+
+            <div class="why-icon">
+                🎧
+            </div>
+
+            <b>
+                Dedicated Customer Support
+            </b>
+
         </div>
 
     </div>
@@ -1166,6 +944,399 @@ footer{
 
 <!-- ================= ORDER FORM ================= -->
 
-<section class="order-section" id="shop">
+<section id="order" class="order-area">
 
-    <h2>
+    <div class="order-box">
+
+        <h2 class="section-title">
+            Order Medicine
+        </h2>
+
+        <form id="orderForm">
+
+            <div class="order-grid">
+
+                <div class="field">
+
+                    <label>
+                        Full Name *
+                    </label>
+
+                    <input
+                        id="name"
+                        type="text"
+                        required
+                        placeholder="Enter your name"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Phone Number *
+                    </label>
+
+                    <input
+                        id="phone"
+                        type="tel"
+                        required
+                        placeholder="10-digit mobile number"
+                    >
+
+                </div>
+
+
+                <div class="field full">
+
+                    <label>
+                        Delivery Address *
+                    </label>
+
+                    <textarea
+                        id="address"
+                        required
+                        placeholder="House / Area / Landmark, Narsingarh, Tripura"
+                    ></textarea>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Medicine / Product *
+                    </label>
+
+                    <input
+                        id="medicine"
+                        required
+                        placeholder="Medicine name"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Quantity
+                    </label>
+
+                    <input
+                        id="quantity"
+                        type="number"
+                        min="1"
+                        value="1"
+                    >
+
+                </div>
+
+
+                <div class="field full">
+
+                    <label>
+                        📋 Prescription Upload
+                    </label>
+
+                    <div class="upload">
+
+                        <input
+                            id="prescription"
+                            type="file"
+                            accept="image/*,.pdf"
+                        >
+
+                        <div class="note">
+                            Upload your prescription if required.
+                            After WhatsApp opens, attach the prescription file/photo manually.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="field full">
+
+                    <label>
+                        Additional Notes
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        placeholder="Any additional instructions..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="field full">
+
+                    <button
+                        type="submit"
+                        class="order-button"
+                    >
+                        📱 Send Order on WhatsApp
+                    </button>
+
+                    <div class="note">
+                        Your order details will open in WhatsApp.
+                        Please review before sending.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact" class="section">
+
+    <h2 class="section-title">
+        Contact Us
+    </h2>
+
+    <div class="contact-grid">
+
+        <a
+            class="contact-card"
+            href="tel:+916009415805"
+        >
+
+            <div class="contact-icon">
+                📞
+            </div>
+
+            <b>Call Now</b>
+
+            <br>
+
+            6009415805
+
+        </a>
+
+
+        <a
+            class="contact-card"
+            href="https://wa.me/916009415805"
+            target="_blank"
+        >
+
+            <div class="contact-icon">
+                💬
+            </div>
+
+            <b>WhatsApp</b>
+
+            <br>
+
+            6009415805
+
+        </a>
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                📍
+            </div>
+
+            <b>Location</b>
+
+            <br>
+
+            Narsingarh, Tripura, India
+
+        </div>
+
+    </div>
+
+</se
+
+  </div>
+
+<div class="footer-bottom">
+
+2026 Online Medicine Dorstop
+
+Delivery.
+
+All Rights Reserved.
+
+</div>
+
+</footer>
+
+<!-- MOBILE CALL BUTTON -->
+
+<a
+
+>
+
+href="tel:+916009415805"
+
+class="mobile-call"
+
+Call Now: 6009415805
+
+</a>
+
+<script>
+
+/*
+
+=====
+
+==
+
+== CATEGORY SEARCH
+
+function searchCategory(){
+
+const search =
+
+document
+
+.getElementById("searchBox")
+
+value
+
+.toLowerCase()
+
+.trim();
+
+const categories =
+
+document.querySelectorAll(".category");
+
+categories forEach(function(category){
+    const name =
+
+category
+
+.getAttribute("data-name")
+
+.toLowerCase();
+
+if(search ===
+
+name.includes (search)) {
+
+category.style.display =
+
+"flex";
+
+}else{
+
+category.style.display =
+
+"none";
+
+}
+
+});
+
+}
+
+====== WHATSAPP ORDER
+
+document
+
+.getElementById("order Form")
+
+.addEventListener("submit", function(event) {
+
+event.preventDefault();
+
+const name =
+
+document.getElementById("name").value.trim( );
+
+const phone =
+
+document.getElementById("phone").value.trim
+
+();
+   const address =
+
+document.getElementById("address").value.tr im();
+
+const medicine =
+
+document.getElementById("medicine").value.t rim();
+
+const quantity =
+
+document.getElementById("quantity").value;
+
+const notes =
+
+document.getElementById("notes").value.trim ();
+
+const prescription =
+
+document.getElementById("prescription").fil es[0];
+
+let message =
+
+`Hello Online Medicine Dorstop Delivery,
+
+I want to order medicine.
+
+Name: ${name}
+
+Phone: ${phone}
+
+Medicine/Product: ${medicine}
+
+Quantity: ${quantity}
+
+Delivery Address:
+
+${address}
+
+Prescription:
+
+${prescription ? "Yes I will attach it in
+
+WhatsApp": "No"}
+
+Additional Notes:
+${notes || "None"}
+
+Discount Code: SAVE10
+
+Location: Narsingarh, Tripura
+
+Thank you.'`;
+
+const whatsappURL =
+
+"https://wa.me/916009415805?text=" + encodeURIComponent(message);
+
+window.open( whatsappURL, "_blank" );
+
+});
+
+/* ================= FIX PAGE HEIGHT
+
+window.addEventListener("load",function(){
+
+document.body.style.height = "auto";
+
+});
+
+</script>
+
+</body>
+
+</html>
