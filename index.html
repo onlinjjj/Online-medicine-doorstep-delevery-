@@ -4,9 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description"
-content="Medicine Doorstep Delivery - Order medicines online with doorstep delivery.">
-
 <title>Medicine Doorstep Delivery</title>
 
 <style>
@@ -31,7 +28,7 @@ header{
     position:sticky;
     top:0;
     z-index:1000;
-    background:white;
+    background:#fff;
     box-shadow:0 3px 15px rgba(0,0,0,.08);
 }
 
@@ -69,7 +66,8 @@ header{
 
 nav{
     display:flex;
-    gap:28px;
+    gap:22px;
+    flex-wrap:wrap;
 }
 
 nav a{
@@ -102,7 +100,6 @@ nav a:hover{
     align-items:center;
     justify-content:space-between;
     gap:40px;
-    overflow:hidden;
 }
 
 .hero-content{
@@ -152,6 +149,7 @@ nav a:hover{
     font-weight:bold;
     cursor:pointer;
     text-decoration:none;
+    display:inline-block;
 }
 
 .primary-btn{
@@ -217,20 +215,11 @@ section{
     text-align:center;
     border-radius:18px;
     box-shadow:0 5px 20px rgba(0,0,0,.06);
-    transition:.3s;
-}
-
-.category:hover{
-    transform:translateY(-5px);
 }
 
 .category-icon{
     font-size:40px;
     margin-bottom:12px;
-}
-
-.category h3{
-    font-size:15px;
 }
 
 /* FEATURES */
@@ -263,8 +252,9 @@ section{
     line-height:1.5;
 }
 
-/* ORDER */
-.order-box{
+/* BOX */
+.order-box,
+.status-box{
     background:white;
     max-width:800px;
     margin:auto;
@@ -273,6 +263,7 @@ section{
     box-shadow:0 10px 35px rgba(0,0,0,.08);
 }
 
+/* FORM */
 .form-group{
     margin-bottom:18px;
 }
@@ -305,6 +296,7 @@ textarea{
     resize:vertical;
 }
 
+/* FILE */
 .file-box{
     border:2px dashed #8ccdb8;
     background:#f1fbf7;
@@ -318,35 +310,129 @@ textarea{
     background:transparent;
 }
 
-.delivery-status{
-    padding:15px;
-    background:#fff7e8;
-    border-left:5px solid #ff9800;
-    border-radius:10px;
-    margin-top:10px;
-    display:none;
-}
-
-.success{
-    display:none;
-    margin-top:20px;
-    background:#e7f8ef;
-    color:#087a56;
-    padding:16px;
-    border-radius:12px;
-    text-align:center;
-    font-weight:bold;
-}
-
+/* MESSAGES */
+.success,
 .error{
     display:none;
     margin-top:20px;
-    background:#fff0f0;
-    color:#b00020;
     padding:16px;
     border-radius:12px;
     text-align:center;
     font-weight:bold;
+}
+
+.success{
+    background:#e7f8ef;
+    color:#087a56;
+}
+
+.error{
+    background:#fff0f0;
+    color:#b00020;
+}
+
+/* ORDER ID */
+.order-id-box{
+    display:none;
+    margin-top:20px;
+    padding:20px;
+    background:#e7f8ef;
+    border:2px solid #8ccdb8;
+    border-radius:15px;
+    text-align:center;
+}
+
+.order-id-box strong{
+    display:block;
+    margin-top:8px;
+    font-size:20px;
+    color:#087a56;
+    word-break:break-all;
+}
+
+/* STATUS */
+.status-result{
+    display:none;
+    margin-top:20px;
+}
+
+.status-card{
+    background:#f8fffc;
+    border:1px solid #d7eee5;
+    border-radius:18px;
+    padding:22px;
+}
+
+.status-card h3{
+    color:#087a56;
+    margin-bottom:15px;
+}
+
+.status-line{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:11px 0;
+    border-bottom:1px solid #e4eee9;
+}
+
+.status-line:last-child{
+    border-bottom:0;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.badge-new{
+    background:#fff3cd;
+    color:#856404;
+}
+
+.badge-confirmed{
+    background:#dff8ee;
+    color:#087a56;
+}
+
+.badge-delivery{
+    background:#dbeafe;
+    color:#075985;
+}
+
+.badge-delivered{
+    background:#ede9fe;
+    color:#6b21a8;
+}
+
+.badge-cancelled{
+    background:#fee2e2;
+    color:#b91c1c;
+}
+
+/* TRACKING STEPS */
+.steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:20px;
+}
+
+.step{
+    padding:13px 5px;
+    border-radius:12px;
+    background:#edf2f0;
+    text-align:center;
+    font-size:12px;
+    font-weight:bold;
+    color:#60736c;
+}
+
+.step.active{
+    background:#087a56;
+    color:white;
 }
 
 /* ABOUT */
@@ -354,7 +440,6 @@ textarea{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:35px;
-    align-items:center;
 }
 
 .about-card{
@@ -421,6 +506,7 @@ footer strong{
     .hero{
         flex-direction:column;
         text-align:center;
+        margin:15px;
     }
 
     .hero h1{
@@ -453,7 +539,6 @@ footer strong{
 @media(max-width:600px){
 
     .navbar{
-        height:auto;
         padding:12px 15px;
         flex-wrap:wrap;
     }
@@ -462,11 +547,11 @@ footer strong{
         order:3;
         width:100%;
         justify-content:center;
-        gap:18px;
+        gap:13px;
     }
 
     nav a{
-        font-size:14px;
+        font-size:13px;
     }
 
     .call-btn{
@@ -484,7 +569,6 @@ footer strong{
     }
 
     .hero{
-        margin:15px;
         padding:40px 18px;
         border-radius:22px;
     }
@@ -505,7 +589,8 @@ footer strong{
         grid-template-columns:1fr;
     }
 
-    .order-box{
+    .order-box,
+    .status-box{
         padding:22px 17px;
     }
 
@@ -515,6 +600,19 @@ footer strong{
 
     .section-title h2{
         font-size:28px;
+    }
+
+    .steps{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .status-line{
+        display:block;
+    }
+
+    .status-line span{
+        display:block;
+        margin-top:5px;
     }
 }
 </style>
@@ -536,6 +634,7 @@ Medicine Doorstep
 <a href="#home">Home</a>
 <a href="#about">About</a>
 <a href="#order">Order</a>
+<a href="#status">Track Order</a>
 <a href="#contact">Contact</a>
 </nav>
 
@@ -574,8 +673,8 @@ to your doorstep.
 🛒 Order Medicine
 </a>
 
-<a href="tel:6009415805" class="secondary-btn">
-☎ Call Now
+<a href="#status" class="secondary-btn">
+📦 Track Order
 </a>
 
 </div>
@@ -651,54 +750,27 @@ Find the medicines and healthcare products you need.
 <div class="features">
 
 <div class="feature">
-
 <div class="feature-icon">🚚</div>
-
 <h3>Doorstep Delivery</h3>
-
-<p>
-Get your medicine delivered conveniently.
-</p>
-
+<p>Get your medicine delivered conveniently.</p>
 </div>
 
-
 <div class="feature">
-
 <div class="feature-icon">📄</div>
-
 <h3>Prescription Upload</h3>
-
-<p>
-Simply upload your prescription with your order.
-</p>
-
+<p>Upload your prescription with your order.</p>
 </div>
 
-
 <div class="feature">
-
 <div class="feature-icon">💰</div>
-
 <h3>10% Discount</h3>
-
-<p>
-Enjoy a special 10% discount on your order.
-</p>
-
+<p>Enjoy a special 10% discount on your order.</p>
 </div>
 
-
 <div class="feature">
-
 <div class="feature-icon">📱</div>
-
 <h3>Easy Ordering</h3>
-
-<p>
-Order easily using your mobile or computer.
-</p>
-
+<p>Order easily using your mobile or computer.</p>
 </div>
 
 </div>
@@ -719,11 +791,9 @@ Fill the form and send your order.
 
 </div>
 
-
 <div class="order-box">
 
 <form id="orderForm">
-
 
 <div class="form-group">
 
@@ -810,7 +880,7 @@ required
 <div class="form-group">
 
 <label for="delivery">
-Delivery Status
+Delivery Area
 </label>
 
 <select id="delivery">
@@ -825,16 +895,6 @@ Out of Delivery
 
 </select>
 
-<div
-id="deliveryNotice"
-class="delivery-status"
->
-
-⚠️ Currently showing Out of Delivery.
-Please contact us for assistance.
-
-</div>
-
 </div>
 
 
@@ -846,9 +906,7 @@ Prescription Upload
 
 <div class="file-box">
 
-<p>
-📄 Upload JPG, PNG or PDF
-</p>
+<p>📄 Upload JPG, PNG or PDF</p>
 
 <p>
 Maximum size:
@@ -882,23 +940,89 @@ style="width:100%;border:0"
 </button>
 
 
-<div id="success" class="success">
+<div id="success" class="success"></div>
 
-✅ Order saved successfully.
-Opening WhatsApp...
+<div id="error" class="error"></div>
 
+
+<div id="orderIdBox" class="order-id-box">
+
+<div>
+✅ Order submitted successfully!
 </div>
 
-
-<div id="error" class="error">
-
-❌ Could not save the order.
-Please try again or call us.
-
+<div style="margin-top:8px;">
+Your Order ID:
 </div>
 
+<strong id="newOrderId"></strong>
+
+<p style="margin-top:10px;font-size:13px;color:#60736c;">
+Save this Order ID to check your order status.
+</p>
+
+</div>
 
 </form>
+
+</div>
+
+</section>
+
+
+<!-- TRACK ORDER -->
+<section id="status">
+
+<div class="section-title">
+
+<h2>
+📦 Track Your Order
+</h2>
+
+<p>
+Enter your Order ID to check your latest order status.
+</p>
+
+</div>
+
+
+<div class="status-box">
+
+<form id="statusForm">
+
+<div class="form-group">
+
+<label for="trackId">
+Order ID *
+</label>
+
+<input
+type="text"
+id="trackId"
+placeholder="Enter your Order ID"
+required
+>
+
+</div>
+
+
+<button
+type="submit"
+id="trackBtn"
+class="primary-btn"
+style="width:100%;border:0"
+>
+
+🔎 Check Order Status
+
+</button>
+
+</form>
+
+
+<div id="statusError" class="error"></div>
+
+<div id="statusResult" class="status-result"></div>
 
 </div>
 
@@ -918,7 +1042,6 @@ About Medicine Doorstep Delivery
 
 
 <div class="about">
-
 
 <div class="about-card">
 
@@ -954,7 +1077,7 @@ How It Works
 
 4️⃣ Send the order through WhatsApp.<br><br>
 
-5️⃣ Confirm your delivery with us.
+5️⃣ Save your Order ID and track the status.
 
 </p>
 
@@ -1028,7 +1151,9 @@ import {
 getFirestore,
 collection,
 addDoc,
-serverTimestamp
+serverTimestamp,
+doc,
+getDoc
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
@@ -1062,7 +1187,7 @@ measurementId:
 };
 
 
-/* INITIALIZE FIREBASE */
+/* INITIALIZE */
 
 const app =
 initializeApp(firebaseConfig);
@@ -1082,12 +1207,6 @@ document.getElementById("prescription");
 const fileMessage =
 document.getElementById("fileMessage");
 
-const delivery =
-document.getElementById("delivery");
-
-const deliveryNotice =
-document.getElementById("deliveryNotice");
-
 const success =
 document.getElementById("success");
 
@@ -1097,8 +1216,150 @@ document.getElementById("error");
 const submitBtn =
 document.getElementById("submitBtn");
 
+const orderIdBox =
+document.getElementById("orderIdBox");
 
-/* PRESCRIPTION CHECK */
+const newOrderId =
+document.getElementById("newOrderId");
+
+const statusForm =
+document.getElementById("statusForm");
+
+const trackId =
+document.getElementById("trackId");
+
+const trackBtn =
+document.getElementById("trackBtn");
+
+const statusError =
+document.getElementById("statusError");
+
+const statusResult =
+document.getElementById("statusResult");
+
+
+/* ESCAPE HTML */
+
+function escapeHtml(value){
+
+return String(value || "").replace(
+/[&<>"']/g,
+function(char){
+
+return {
+
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+
+}[char];
+
+}
+);
+
+}
+
+
+/* STATUS CLASS */
+
+function getStatusClass(status){
+
+const s =
+String(status || "").toLowerCase();
+
+if(s.includes("confirm")){
+return "badge-confirmed";
+}
+
+if(s.includes("out")){
+return "badge-delivery";
+}
+
+if(
+s.includes("deliver") &&
+!s.includes("out")
+){
+return "badge-delivered";
+}
+
+if(s.includes("cancel")){
+return "badge-cancelled";
+}
+
+return "badge-new";
+
+}
+
+
+/* STATUS STEP */
+
+function getStep(status){
+
+const s =
+String(status || "").toLowerCase();
+
+if(s.includes("cancel")){
+return -1;
+}
+
+if(
+s.includes("deliver") &&
+!s.includes("out")
+){
+return 4;
+}
+
+if(s.includes("out")){
+return 3;
+}
+
+if(s.includes("confirm")){
+return 2;
+}
+
+return 1;
+
+}
+
+
+/* DATE */
+
+function formatDate(timestamp){
+
+if(!timestamp){
+return "Not available";
+}
+
+try{
+
+const date =
+timestamp.toDate
+? timestamp.toDate()
+: new Date(timestamp);
+
+return date.toLocaleString(
+"en-IN",
+{
+day:"2-digit",
+month:"2-digit",
+year:"numeric",
+hour:"2-digit",
+minute:"2-digit"
+}
+);
+
+}catch(e){
+
+return "Not available";
+
+}
+
+}
+
+
+/* FILE CHECK */
 
 prescriptionInput.addEventListener(
 "change",
@@ -1115,19 +1376,13 @@ return;
 
 }
 
-
 const maxSize =
 50 * 1024 * 1024;
 
-
 const allowedTypes = [
-
 "image/jpeg",
-
 "image/png",
-
 "application/pdf"
-
 ];
 
 
@@ -1135,7 +1390,7 @@ if(!allowedTypes.includes(file.type)){
 
 fileMessage.innerHTML =
 "<p style='color:red;margin-top:10px;font-weight:bold'>" +
-"❌ Only JPG, PNG or PDF is allowed." +
+"❌ Only JPG, PNG or PDF allowed." +
 "</p>";
 
 prescriptionInput.value = "";
@@ -1168,59 +1423,7 @@ escapeHtml(file.name) +
 });
 
 
-/* DELIVERY STATUS */
-
-delivery.addEventListener(
-"change",
-function(){
-
-if(
-delivery.value ===
-"Out of Delivery"
-){
-
-deliveryNotice.style.display =
-"block";
-
-}else{
-
-deliveryNotice.style.display =
-"none";
-
-}
-
-});
-
-
-/* SAFE TEXT */
-
-function escapeHtml(value){
-
-return value.replace(
-/[&<>"']/g,
-function(char){
-
-return {
-
-"&":"&amp;",
-
-"<":"&lt;",
-
-">":"&gt;",
-
-'"':"&quot;",
-
-"'":"&#039;"
-
-}[char];
-
-}
-);
-
-}
-
-
-/* ORDER FORM */
+/* SAVE ORDER */
 
 form.addEventListener(
 "submit",
@@ -1228,11 +1431,13 @@ async function(e){
 
 e.preventDefault();
 
-
 success.style.display =
 "none";
 
 error.style.display =
+"none";
+
+orderIdBox.style.display =
 "none";
 
 
@@ -1240,36 +1445,30 @@ const name =
 document.getElementById("name")
 .value.trim();
 
-
 const mobile =
 document.getElementById("mobile")
 .value.trim();
-
 
 const medicine =
 document.getElementById("medicine")
 .value.trim();
 
-
 const quantity =
-document.getElementById("quantity")
-.value;
-
+Number(
+document.getElementById("quantity").value
+) || 1;
 
 const address =
 document.getElementById("address")
 .value.trim();
 
-
-const deliveryStatus =
-delivery.value;
-
+const delivery =
+document.getElementById("delivery")
+.value;
 
 const prescription =
 prescriptionInput.files[0];
 
-
-/* MOBILE CHECK */
 
 if(
 ! /^[0-9]{10}$/.test(mobile)
@@ -1286,27 +1485,6 @@ return;
 }
 
 
-/* FILE CHECK */
-
-if(
-prescription &&
-prescription.size >
-50 * 1024 * 1024
-){
-
-error.textContent =
-"❌ Prescription file is larger than 50 MB.";
-
-error.style.display =
-"block";
-
-return;
-
-}
-
-
-/* BUTTON */
-
 submitBtn.disabled =
 true;
 
@@ -1316,8 +1494,10 @@ submitBtn.textContent =
 
 try{
 
-
-/* ORDER DATA */
+/*
+ORDER STATUS:
+New
+*/
 
 const orderData = {
 
@@ -1327,155 +1507,15 @@ mobile:mobile,
 
 medicine:medicine,
 
-quantity:
-Number(quantity) || 1,
+quantity:quantity,
 
 address:address,
 
-deliveryStatus:
-deliveryStatus,
+deliveryStatus:delivery,
 
 prescriptionName:
-prescription ?
-prescription.name :
-"",
-
-prescriptionType:
-prescription ?
-prescription.type :
-"",
-
-orderStatus:
-"New",
-
-createdAt:
-serverTimestamp()
-
-};
-
-
-/* SAVE TO FIRESTORE */
-
-await addDoc(
-collection(db,"orders"),
-orderData
-);
-
-
-/* WHATSAPP MESSAGE */
-
-const prescriptionText =
 prescription
-?
-"📄 Prescription file: " +
-prescription.name
-:
-"📄 No prescription uploaded";
+? prescription.name
+: "",
 
-
-const whatsappMessage =
-
-`🏥 *MEDICINE DOORSTEP DELIVERY*
-
-📋 *New Medicine Order*
-
-👤 Name: ${name}
-📱 Mobile: ${mobile}
-
-💊 Medicine: ${medicine}
-🔢 Quantity: ${quantity}
-
-📍 Address:
-${address}
-
-🚚 Delivery Status:
-${deliveryStatus}
-
-${prescriptionText}
-
-🎉 Discount: 10% OFF
-
-Please confirm my order.`;
-
-
-/* SUCCESS */
-
-success.style.display =
-"block";
-
-
-/* WHATSAPP */
-
-const whatsappURL =
-
-"https://wa.me/916009415805?text=" +
-
-encodeURIComponent(
-whatsappMessage
-);
-
-
-setTimeout(
-function(){
-
-window.open(
-whatsappURL,
-"_blank"
-);
-
-
-form.reset();
-
-fileMessage.innerHTML =
-"";
-
-deliveryNotice.style.display =
-"none";
-
-
-submitBtn.disabled =
-false;
-
-submitBtn.textContent =
-"📲 Save Order & Send WhatsApp";
-
-},
-700
-);
-
-
-}catch(err){
-
-console.error(
-"Firebase Error:",
-err
-);
-
-
-error.textContent =
-"❌ Order save হয়নি। Firebase Firestore Rules check করুন অথবা Call করুন: 6009415805";
-
-
-error.style.display =
-"block";
-
-
-submitBtn.disabled =
-false;
-
-submitBtn.textContent =
-"📲 Save Order & Send WhatsApp";
-
-}
-
-});
-
-
-console.log(
-"Firebase Connected Successfully!"
-);
-
-</script>
-
-</body>
-</html>
+prescriptionType
