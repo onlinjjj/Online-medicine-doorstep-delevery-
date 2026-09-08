@@ -11,198 +11,191 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    background:#f5fbff;
-    color:#17324d;
+    background:#f5fbf8;
+    color:#18332b;
 }
 
+/* HEADER */
 header{
-    background:white;
-    box-shadow:0 3px 15px #0002;
     position:sticky;
     top:0;
-    z-index:100;
+    z-index:1000;
+    background:white;
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
 }
 
 .navbar{
-    max-width:1250px;
+    max-width:1200px;
     margin:auto;
-    padding:15px 20px;
+    height:75px;
     display:flex;
     align-items:center;
-    gap:20px;
+    justify-content:space-between;
+    padding:0 20px;
 }
 
 .logo{
     display:flex;
     align-items:center;
     gap:10px;
-    font-size:22px;
-    font-weight:bold;
-    color:#064b91;
+    font-size:21px;
+    font-weight:800;
+    color:#087a56;
 }
 
 .logo-icon{
-    width:50px;
-    height:50px;
-    border-radius:14px;
-    background:linear-gradient(135deg,#07915b,#55c943);
-    color:white;
-    display:grid;
-    place-items:center;
-    font-size:30px;
-}
-
-.logo span{
-    color:#07915b;
-}
-
-.search{
-    flex:1;
-    display:flex;
-    border:2px solid #d9e7ef;
+    width:45px;
+    height:45px;
     border-radius:12px;
+    background:#087a56;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+}
+
+nav{
+    display:flex;
+    gap:28px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#18332b;
+    font-weight:600;
+}
+
+nav a:hover{
+    color:#087a56;
+}
+
+.call-btn{
+    text-decoration:none;
+    background:#087a56;
+    color:white;
+    padding:12px 18px;
+    border-radius:25px;
+    font-weight:bold;
+}
+
+/* HERO */
+.hero{
+    max-width:1200px;
+    margin:30px auto;
+    padding:60px 30px;
+    border-radius:30px;
+    background:linear-gradient(135deg,#dff8ee,#eef8ff);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
     overflow:hidden;
 }
 
-.search input{
-    width:100%;
-    border:0;
-    outline:0;
-    padding:13px;
+.hero-content{
+    max-width:650px;
 }
 
-.search button{
-    border:0;
-    background:#064b91;
-    color:white;
-    padding:0 20px;
-    cursor:pointer;
-}
-
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.nav-links a{
-    text-decoration:none;
-    color:#17324d;
-    font-weight:bold;
-}
-
-.btn{
-    border:0;
-    padding:13px 20px;
-    border-radius:10px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.green{
-    background:#07915b;
-    color:white;
-}
-
-.blue{
-    background:#064b91;
-    color:white;
-}
-
-.hero{
-    max-width:1250px;
-    margin:25px auto;
-    padding:50px 30px;
-    border-radius:25px;
-    background:linear-gradient(120deg,#eafff4,#edf7ff);
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:30px;
-    align-items:center;
-}
-
-.badge{
+.discount{
     display:inline-block;
-    padding:8px 15px;
-    border-radius:30px;
-    background:#d8f6e8;
-    color:#08784f;
+    background:#ff7a00;
+    color:white;
+    padding:9px 17px;
+    border-radius:25px;
     font-weight:bold;
+    margin-bottom:18px;
 }
 
 .hero h1{
-    margin-top:15px;
-    font-size:clamp(40px,5vw,65px);
+    font-size:52px;
+    line-height:1.08;
     color:#064b91;
+    margin-bottom:20px;
 }
 
 .hero h1 span{
-    color:#07915b;
+    color:#087a56;
 }
 
 .hero p{
-    margin:18px 0;
     font-size:18px;
-    line-height:1.6;
+    line-height:1.7;
+    color:#50645d;
+    margin-bottom:28px;
 }
 
 .hero-buttons{
     display:flex;
-    gap:12px;
+    gap:15px;
     flex-wrap:wrap;
 }
 
-.hero-card{
+.primary-btn,
+.secondary-btn{
+    border:none;
+    padding:15px 24px;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:none;
+}
+
+.primary-btn{
+    background:#087a56;
+    color:white;
+}
+
+.secondary-btn{
     background:white;
-    padding:30px;
-    border-radius:25px;
-    text-align:center;
-    box-shadow:0 15px 40px #16466d22;
+    color:#087a56;
+    border:2px solid #087a56;
 }
 
-.medicine-icon{
-    font-size:90px;
+.hero-art{
+    width:360px;
+    height:300px;
+    border-radius:40px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:130px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
 }
 
-.discount{
-    max-width:1250px;
-    margin:20px auto;
-    padding:25px;
-    border-radius:18px;
-    background:#efffea;
-    text-align:center;
-}
-
-.discount h2{
-    color:#e21d3a;
-    font-size:38px;
-}
-
+/* SECTION */
 section{
-    max-width:1250px;
-    margin:60px auto;
+    max-width:1200px;
+    margin:70px auto;
     padding:0 20px;
 }
 
-.title{
+.section-title{
     text-align:center;
-    margin-bottom:30px;
+    margin-bottom:35px;
 }
 
-.title h2{
+.section-title h2{
     color:#064b91;
-    font-size:32px;
+    font-size:34px;
+    margin-bottom:10px;
 }
 
-.title p{
-    margin-top:8px;
-    color:#718496;
+.section-title p{
+    color:#667a73;
 }
 
+/* CATEGORIES */
 .categories{
     display:grid;
     grid-template-columns:repeat(6,1fr);
@@ -214,176 +207,205 @@ section{
     padding:25px 10px;
     text-align:center;
     border-radius:18px;
-    box-shadow:0 6px 20px #0001;
-    cursor:pointer;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+    transition:.3s;
 }
 
 .category:hover{
-    transform:translateY(-4px);
+    transform:translateY(-5px);
 }
 
-.category .icon{
+.category-icon{
     font-size:40px;
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
-.order-grid{
+.category h3{
+    font-size:15px;
+}
+
+/* FEATURES */
+.features{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
 }
 
-.card{
+.feature{
     background:white;
-    padding:25px;
+    padding:30px 20px;
     border-radius:20px;
-    box-shadow:0 8px 30px #123c5a15;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
 }
 
-.card h3{
+.feature-icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.feature h3{
     color:#064b91;
+    margin-bottom:8px;
+}
+
+.feature p{
+    color:#687a74;
+    line-height:1.5;
+}
+
+/* ORDER */
+.order-box{
+    background:white;
+    max-width:800px;
+    margin:auto;
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
+
+.form-group{
     margin-bottom:18px;
 }
 
-.field{
-    margin:12px 0;
-}
-
-.field label{
+.form-group label{
     display:block;
     font-weight:bold;
-    margin-bottom:6px;
+    margin-bottom:7px;
 }
 
-.field input,
-.field select{
+.form-group input,
+.form-group textarea,
+.form-group select{
     width:100%;
-    padding:13px;
-    border:1px solid #d5e2e9;
-    border-radius:10px;
-    outline:none;
-}
-
-.upload{
-    border:2px dashed #77cda5;
-    padding:30px;
-    text-align:center;
-    border-radius:15px;
-    background:#f3fcf7;
-    cursor:pointer;
-}
-
-.upload input{
-    display:none;
-}
-
-.status{
-    display:none;
-    margin-top:15px;
     padding:14px;
+    border:1px solid #d4e2dd;
+    border-radius:12px;
+    outline:none;
+    font-size:15px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    border-color:#087a56;
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.file-box{
+    border:2px dashed #8ccdb8;
+    background:#f1fbf7;
+    padding:22px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.file-box input{
+    border:none;
+    background:transparent;
+}
+
+/* DELIVERY */
+.delivery-status{
+    padding:15px;
+    background:#fff7e8;
+    border-left:5px solid #ff9800;
     border-radius:10px;
-    background:#e7f8ef;
-    color:#07623f;
+    margin-top:10px;
+    display:none;
+}
+
+/* ABOUT */
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+    align-items:center;
+}
+
+.about-card{
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+.about-card h2{
+    color:#064b91;
+    margin-bottom:15px;
+}
+
+.about-card p{
+    line-height:1.8;
+    color:#60736c;
+}
+
+/* CONTACT */
+.contact{
+    background:#064b91;
+    color:white;
+    border-radius:25px;
+    padding:45px 25px;
+    text-align:center;
+}
+
+.contact h2{
+    font-size:32px;
+    margin-bottom:12px;
+}
+
+.contact p{
+    margin-bottom:20px;
+}
+
+.contact a{
+    display:inline-block;
+    background:white;
+    color:#064b91;
+    text-decoration:none;
+    padding:14px 25px;
+    border-radius:30px;
     font-weight:bold;
 }
 
-.steps{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.step{
-    background:white;
-    padding:25px;
-    text-align:center;
-    border-radius:18px;
-    border-top:4px solid #07915b;
-    box-shadow:0 5px 20px #0001;
-}
-
-.step b{
-    display:block;
-    margin:10px 0;
-    color:#064b91;
-}
-
+/* FOOTER */
 footer{
-    background:#06345f;
+    background:#102c26;
+    color:#c8d8d3;
+    text-align:center;
+    padding:30px 15px;
+    margin-top:70px;
+}
+
+footer strong{
     color:white;
-    padding:45px 20px 20px;
 }
 
-.footer-grid{
-    max-width:1250px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr;
-    gap:30px;
-}
-
-footer p{
-    color:#c9dbea;
-    line-height:1.8;
-    margin-top:8px;
-}
-
-.copy{
-    max-width:1250px;
-    margin:30px auto 0;
-    border-top:1px solid #ffffff33;
-    padding-top:15px;
-    color:#c9dbea;
-}
-
-.modal{
+/* SUCCESS */
+.success{
     display:none;
-    position:fixed;
-    inset:0;
-    background:#0008;
-    z-index:200;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
+    margin-top:20px;
+    background:#e7f8ef;
+    color:#087a56;
+    padding:16px;
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
 }
 
-.modal.show{
-    display:flex;
-}
-
-.modal-box{
-    background:white;
-    width:420px;
-    max-width:100%;
-    padding:25px;
-    border-radius:20px;
-    position:relative;
-}
-
-.close{
-    position:absolute;
-    right:15px;
-    top:10px;
-    border:0;
-    background:none;
-    font-size:28px;
-    cursor:pointer;
-}
-
+/* MOBILE */
 @media(max-width:900px){
-
-    .navbar{
-        flex-wrap:wrap;
-    }
-
-    .search{
-        order:3;
-        flex-basis:100%;
-    }
-
     .hero{
-        grid-template-columns:1fr;
+        flex-direction:column;
         text-align:center;
+    }
+
+    .hero h1{
+        font-size:40px;
     }
 
     .hero-buttons{
@@ -394,48 +416,82 @@ footer p{
         grid-template-columns:repeat(3,1fr);
     }
 
-    .order-grid{
+    .features{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .about{
         grid-template-columns:1fr;
     }
 
-    .steps{
-        grid-template-columns:repeat(2,1fr);
+    .hero-art{
+        width:280px;
+        height:220px;
+        font-size:90px;
     }
 }
 
-@media(max-width:550px){
-
-    .nav-links a{
-        display:none;
+@media(max-width:600px){
+    .navbar{
+        height:auto;
+        padding:12px 15px;
+        flex-wrap:wrap;
+        gap:12px;
     }
 
-    .navbar{
-        padding:10px;
+    nav{
+        order:3;
+        width:100%;
+        justify-content:center;
+        gap:18px;
+    }
+
+    .call-btn{
+        padding:9px 13px;
+        font-size:13px;
+    }
+
+    .logo{
+        font-size:16px;
+    }
+
+    .logo-icon{
+        width:38px;
+        height:38px;
     }
 
     .hero{
-        margin:12px;
-        padding:30px 18px;
+        margin:15px;
+        padding:40px 18px;
+        border-radius:22px;
     }
 
     .hero h1{
-        font-size:40px;
+        font-size:34px;
+    }
+
+    .hero p{
+        font-size:16px;
     }
 
     .categories{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .steps{
+    .features{
         grid-template-columns:1fr;
     }
 
-    .footer-grid{
-        grid-template-columns:1fr;
+    .order-box{
+        padding:22px 17px;
     }
 
-    .discount h2{
-        font-size:30px;
+    section{
+        margin:50px auto;
+    }
+
+    .section-title h2{
+        font-size:28px;
     }
 }
 </style>
@@ -443,690 +499,447 @@ footer p{
 
 <body>
 
+<!-- HEADER -->
 <header>
-
 <div class="navbar">
 
-<a class="logo" href="#">
-<div class="logo-icon">✚</div>
-<div>
-Medicine Doorstep
-<span>Delivery</span>
-</div>
-</a>
+    <div class="logo">
+        <div class="logo-icon">⚕</div>
+        Medicine Doorstep
+    </div>
 
-<div class="search">
-<input id="searchBox"
-placeholder="Search medicines, brands, health products...">
-<button onclick="searchMedicine()">🔍</button>
-</div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#order">Order</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-<div class="nav-links">
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#order">Order</a>
-<button class="btn green" onclick="openLogin()">
-Login / Signup
-</button>
-</div>
+    <a class="call-btn" href="tel:6009415805">
+        ☎ Call
+    </a>
 
 </div>
-
 </header>
 
 
-<main id="home">
+<!-- HERO -->
+<div class="hero" id="home">
 
-<section class="hero">
+    <div class="hero-content">
 
-<div>
+        <div class="discount">
+            🎉 GET 10% OFF
+        </div>
 
-<div class="badge">
-Trusted Online Medicine Delivery
-</div>
+        <h1>
+            Your Medicines.<br>
+            <span>Delivered to Your Door.</span>
+        </h1>
 
-<h1>
-Medicine at your
-<span>Doorstep.</span>
-</h1>
+        <p>
+            Order your medicines online quickly and conveniently.
+            Upload your prescription and get your order delivered
+            to your doorstep.
+        </p>
 
-<p>
-Order medicines and healthcare products online.
-Upload your prescription and get doorstep delivery.
-</p>
+        <div class="hero-buttons">
+            <a href="#order" class="primary-btn">
+                🛒 Order Medicine
+            </a>
 
-<div class="hero-buttons">
+            <a href="tel:6009415805" class="secondary-btn">
+                ☎ Call Now
+            </a>
+        </div>
 
-<a href="#order" class="btn green">
-Order Medicine →
-</a>
+    </div>
 
-<a href="#prescription" class="btn blue">
-Upload Prescription
-</a>
-
-</div>
-
-</div>
-
-
-<div class="hero-card">
-
-<div class="medicine-icon">
-💊
-</div>
-
-<h2>
-10% Discount
-</h2>
-
-<p>
-Get 10% discount on eligible online orders.
-</p>
-
-<a href="#order" class="btn green">
-Shop Now
-</a>
-
-</div>
-
-</section>
-
-
-<div class="discount">
-
-<h2>
-GET 10% DISCOUNT
-</h2>
-
-<p>
-Use our online ordering service and save more.
-</p>
+    <div class="hero-art">
+        💊
+    </div>
 
 </div>
 
 
-<section id="about">
+<!-- CATEGORIES -->
+<section>
 
-<div class="title">
-
-<h2>
-Shop by Category
-</h2>
-
-<p>
-Healthcare products for your everyday needs
-</p>
-
+<div class="section-title">
+    <h2>Shop by Category</h2>
+    <p>Find the medicines and healthcare products you need.</p>
 </div>
-
 
 <div class="categories">
 
-<div class="category">
-<div class="icon">💊</div>
-<b>Pain Relief</b>
-</div>
+    <div class="category">
+        <div class="category-icon">💊</div>
+        <h3>Pain Relief</h3>
+    </div>
 
-<div class="category">
-<div class="icon">🌡️</div>
-<b>Fever & Cold</b>
-</div>
+    <div class="category">
+        <div class="category-icon">🌡️</div>
+        <h3>Fever & Cold</h3>
+    </div>
 
-<div class="category">
-<div class="icon">🩸</div>
-<b>Diabetes Care</b>
-</div>
+    <div class="category">
+        <div class="category-icon">🩸</div>
+        <h3>Diabetes Care</h3>
+    </div>
 
-<div class="category">
-<div class="icon">❤️</div>
-<b>Heart Care</b>
-</div>
+    <div class="category">
+        <div class="category-icon">❤️</div>
+        <h3>Heart Care</h3>
+    </div>
 
-<div class="category">
-<div class="icon">🧴</div>
-<b>Skin Care</b>
-</div>
+    <div class="category">
+        <div class="category-icon">🧴</div>
+        <h3>Skin Care</h3>
+    </div>
 
-<div class="category">
-<div class="icon">👶</div>
-<b>Baby Care</b>
-</div>
-
-</div>
-
-</section>
-
-
-<section id="order">
-
-<div class="title">
-
-<h2>
-Place Your Order
-</h2>
-
-<p>
-Order medicines online or upload your prescription
-</p>
-
-</div>
-
-
-<div class="order-grid">
-
-
-<div class="card">
-
-<h3>
-🛒 Online Website Order
-</h3>
-
-<div class="field">
-<label>Name</label>
-<input id="customerName"
-placeholder="Enter your name">
-</div>
-
-<div class="field">
-<label>Mobile Number</label>
-<input id="customerPhone"
-type="tel"
-maxlength="10"
-placeholder="10 digit mobile">
-</div>
-
-<div class="field">
-<label>Medicine / Product</label>
-<input id="medicine"
-placeholder="Example: Paracetamol 650">
-</div>
-
-<div class="field">
-<label>Quantity</label>
-<input id="quantity"
-type="number"
-value="1"
-min="1">
-</div>
-
-<div class="field">
-<label>Delivery Address</label>
-<input id="address"
-placeholder="Enter complete address">
-</div>
-
-<button
-class="btn green"
-style="width:100%"
-onclick="placeOrder()">
-
-Place Order
-
-</button>
-
-<div id="orderStatus" class="status"></div>
-
-</div>
-
-
-<div class="card" id="prescription">
-
-<h3>
-📄 Prescription Upload
-</h3>
-
-<p style="margin-bottom:15px">
-Maximum file size: <b>50 MB</b>
-</p>
-
-
-<label class="upload">
-
-<div style="font-size:45px">
-⬆️
-</div>
-
-<b>
-Click to upload prescription
-</b>
-
-<br>
-
-<small>
-JPG / JPEG / PNG / PDF
-</small>
-
-<input
-id="prescriptionFile"
-type="file"
-accept=".jpg,.jpeg,.png,.pdf"
-onchange="checkFile(this)">
-
-</label>
-
-<p id="fileName"
-style="margin-top:10px;font-size:13px">
-</p>
-
-
-<div class="field">
-
-<label>Patient Name</label>
-
-<input id="patientName"
-placeholder="Patient name">
-
-</div>
-
-
-<div class="field">
-
-<label>Mobile Number</label>
-
-<input id="rxPhone"
-type="tel"
-maxlength="10"
-placeholder="10 digit mobile">
-
-</div>
-
-
-<button
-class="btn blue"
-style="width:100%"
-onclick="submitPrescription()">
-
-Submit Prescription
-
-</button>
-
-<div id="rxStatus" class="status"></div>
-
-</div>
+    <div class="category">
+        <div class="category-icon">👶</div>
+        <h3>Baby Care</h3>
+    </div>
 
 </div>
 
 </section>
 
 
+<!-- FEATURES -->
 <section>
 
-<div class="title">
-
-<h2>
-How It Works
-</h2>
-
+<div class="section-title">
+    <h2>Why Choose Us?</h2>
 </div>
 
+<div class="features">
 
-<div class="steps">
+    <div class="feature">
+        <div class="feature-icon">🚚</div>
+        <h3>Doorstep Delivery</h3>
+        <p>Get your medicine delivered conveniently.</p>
+    </div>
 
-<div class="step">
-<div style="font-size:30px">1️⃣</div>
-<b>Login / Signup</b>
-Create your account.
-</div>
+    <div class="feature">
+        <div class="feature-icon">📄</div>
+        <h3>Prescription Upload</h3>
+        <p>Simply upload your prescription with your order.</p>
+    </div>
 
-<div class="step">
-<div style="font-size:30px">2️⃣</div>
-<b>Order</b>
-Search or upload prescription.
-</div>
+    <div class="feature">
+        <div class="feature-icon">💰</div>
+        <h3>10% Discount</h3>
+        <p>Enjoy a special 10% discount on your order.</p>
+    </div>
 
-<div class="step">
-<div style="font-size:30px">3️⃣</div>
-<b>Order Response</b>
-Our team confirms availability.
-</div>
-
-<div class="step">
-<div style="font-size:30px">4️⃣</div>
-<b>Delivery</b>
-Get medicines at your doorstep.
-</div>
+    <div class="feature">
+        <div class="feature-icon">📱</div>
+        <h3>Easy Ordering</h3>
+        <p>Order easily using your mobile or computer.</p>
+    </div>
 
 </div>
 
 </section>
 
-</main>
+
+<!-- ORDER -->
+<section id="order">
+
+<div class="section-title">
+    <h2>Order Your Medicine</h2>
+    <p>Fill the form and send your order.</p>
+</div>
+
+<div class="order-box">
+
+<form id="orderForm">
+
+    <div class="form-group">
+        <label>Full Name *</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+    </div>
+
+    <div class="form-group">
+        <label>Mobile Number *</label>
+        <input type="tel" id="mobile"
+               placeholder="Enter 10 digit mobile number"
+               pattern="[0-9]{10}" required>
+    </div>
+
+    <div class="form-group">
+        <label>Medicine / Product *</label>
+        <input type="text" id="medicine"
+               placeholder="Medicine name or product"
+               required>
+    </div>
+
+    <div class="form-group">
+        <label>Quantity</label>
+        <input type="number" id="quantity"
+               min="1" value="1">
+    </div>
+
+    <div class="form-group">
+        <label>Delivery Address *</label>
+        <textarea id="address"
+                  placeholder="Enter complete delivery address"
+                  required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Delivery Status</label>
+
+        <select id="delivery" onchange="checkDelivery()">
+            <option value="Available">Delivery Available</option>
+            <option value="Out of Delivery">Out of Delivery</option>
+        </select>
+
+        <div id="deliveryNotice" class="delivery-status">
+            ⚠️ Currently showing Out of Delivery.
+            Please contact us for assistance.
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <label>Prescription Upload</label>
+
+        <div class="file-box">
+
+            <p>📄 Upload JPG, PNG or PDF</p>
+            <p>Maximum size: <strong>50 MB</strong></p>
+
+            <br>
+
+            <input type="file"
+                   id="prescription"
+                   accept=".jpg,.jpeg,.png,.pdf">
+
+            <div id="fileMessage"></div>
+
+        </div>
+
+    </div>
+
+    <button type="submit" class="primary-btn"
+            style="width:100%;border:0;">
+        📲 Send Order on WhatsApp
+    </button>
+
+    <div id="success" class="success">
+        ✅ Order details are ready. Opening WhatsApp...
+    </div>
+
+</form>
+
+</div>
+
+</section>
 
 
+<!-- ABOUT -->
+<section id="about">
+
+<div class="section-title">
+    <h2>About Medicine Doorstep Delivery</h2>
+</div>
+
+<div class="about">
+
+    <div class="about-card">
+        <h2>Healthcare Made Easy</h2>
+
+        <p>
+            Medicine Doorstep Delivery makes ordering medicines
+            simple and convenient. Customers can submit their
+            medicine requirements and prescription online and
+            contact us directly for order confirmation.
+        </p>
+    </div>
+
+    <div class="about-card">
+        <h2>How It Works</h2>
+
+        <p>
+            1️⃣ Enter your details.<br><br>
+            2️⃣ Add your medicine.<br><br>
+            3️⃣ Upload prescription if required.<br><br>
+            4️⃣ Send the order through WhatsApp.<br><br>
+            5️⃣ Confirm your delivery with us.
+        </p>
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+
+<div class="contact">
+
+    <h2>Need Help With Your Order?</h2>
+
+    <p>
+        Contact Medicine Doorstep Delivery
+    </p>
+
+    <a href="https://wa.me/916009415805"
+       target="_blank">
+        💬 WhatsApp: 6009415805
+    </a>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
 <footer>
 
-<div class="footer-grid">
+    <p>
+        © 2026 <strong>Medicine Doorstep Delivery</strong>
+    </p>
 
-<div>
-<h3>
-💚 Medicine Doorstep Delivery
-</h3>
+    <p style="margin-top:8px;">
+        ☎ 6009415805
+    </p>
 
-<p>
-Your Health • Our Priority
-</p>
-
-<p>
-Online medicine ordering and doorstep delivery.
-</p>
-</div>
-
-
-<div>
-
-<h3>
-Quick Links
-</h3>
-
-<p>
-<a href="#home">Home</a>
-</p>
-
-<p>
-<a href="#about">About</a>
-</p>
-
-<p>
-<a href="#order">Order</a>
-</p>
-
-</div>
-
-
-<div>
-
-<h3>
-Contact Us
-</h3>
-
-<p>
-📞 6009415805
-</p>
-
-<p>
-📱 Call / WhatsApp
-</p>
-
-<p>
-📍 Narsingarh, Tripura
-</p>
-
-</div>
-
-</div>
-
-
-<div class="copy">
-
-© 2026 Medicine Doorstep Delivery.
-All Rights Reserved.
-
-</div>
+    <p style="margin-top:8px;font-size:13px;">
+        Healthcare at your doorstep.
+    </p>
 
 </footer>
 
 
-<!-- LOGIN MODAL -->
-
-<div id="loginModal" class="modal">
-
-<div class="modal-box">
-
-<button class="close" onclick="closeLogin()">
-×
-</button>
-
-<h2 style="color:#064b91">
-Login / Signup
-</h2>
-
-<br>
-
-<div class="field">
-
-<label>Mobile Number</label>
-
-<input
-id="loginPhone"
-type="tel"
-maxlength="10"
-placeholder="10 digit mobile">
-
-</div>
-
-
-<div class="field">
-
-<label>Password</label>
-
-<input
-id="password"
-type="password"
-placeholder="Password">
-
-</div>
-
-
-<button
-class="btn green"
-style="width:100%"
-onclick="loginUser()">
-
-Continue
-
-</button>
-
-<div id="loginStatus" class="status"></div>
-
-</div>
-
-</div>
-
-
 <script>
 
-function openLogin(){
+/* PRESCRIPTION SIZE CHECK */
 
-document
-.getElementById("loginModal")
-.classList.add("show");
+document.getElementById("prescription").addEventListener("change", function(){
 
-}
+    const file = this.files[0];
+    const message = document.getElementById("fileMessage");
 
+    if(!file){
+        message.innerHTML = "";
+        return;
+    }
 
-function closeLogin(){
+    const maxSize = 50 * 1024 * 1024;
 
-document
-.getElementById("loginModal")
-.classList.remove("show");
+    if(file.size > maxSize){
 
-}
+        message.innerHTML =
+        "<p style='color:red;margin-top:10px;font-weight:bold;'>❌ File is larger than 50 MB.</p>";
 
+        this.value = "";
 
-function loginUser(){
+    }else{
 
-let phone =
-document.getElementById("loginPhone").value;
+        message.innerHTML =
+        "<p style='color:green;margin-top:10px;font-weight:bold;'>✅ File selected: "
+        + file.name +
+        "</p>";
 
-if(!/^[0-9]{10}$/.test(phone)){
+    }
 
-showStatus(
-"loginStatus",
-"Please enter a valid 10 digit mobile number."
-);
-
-return;
-
-}
-
-localStorage.setItem(
-"medicineUser",
-phone
-);
-
-showStatus(
-"loginStatus",
-"Login successful!"
-);
-
-}
-
-
-function checkFile(input){
-
-let file=input.files[0];
-
-if(!file)return;
-
-let maxSize=50*1024*1024;
-
-if(file.size>maxSize){
-
-alert("Prescription file must be less than 50 MB.");
-
-input.value="";
-
-return;
-
-}
-
-document.getElementById("fileName")
-.innerText=
-"Selected: "+file.name;
-
-}
-
-
-function submitPrescription(){
-
-let file =
-document.getElementById("prescriptionFile").files[0];
-
-let name =
-document.getElementById("patientName").value;
-
-let phone =
-document.getElementById("rxPhone").value;
-
-if(!file || !name || !/^[0-9]{10}$/.test(phone)){
-
-showStatus(
-"rxStatus",
-"Please enter patient details and upload prescription."
-);
-
-return;
-
-}
-
-showStatus(
-"rxStatus",
-"Prescription received. Our team will review and send an order response."
-);
-
-}
-
-
-function placeOrder(){
-
-let name =
-document.getElementById("customerName").value;
-
-let phone =
-document.getElementById("customerPhone").value;
-
-let medicine =
-document.getElementById("medicine").value;
-
-let quantity =
-document.getElementById("quantity").value;
-
-let address =
-document.getElementById("address").value;
-
-
-if(
-!name ||
-!/^[0-9]{10}$/.test(phone) ||
-!medicine ||
-!address
-){
-
-showStatus(
-"orderStatus",
-"Please fill all required details."
-);
-
-return;
-
-}
-
-
-showStatus(
-"orderStatus",
-"Order request received. Our team will contact you with availability and price."
-);
-
-
-/* WhatsApp Order */
-
-let message =
-"Medicine Doorstep Delivery Order\n\n"+
-"Name: "+name+"\n"+
-"Mobile: "+phone+"\n"+
-"Medicine: "+medicine+"\n"+
-"Quantity: "+quantity+"\n"+
-"Address: "+address;
-
-
-let whatsapp =
-"https://wa.me/916009415805?text="+
-encodeURIComponent(message);
-
-window.open(whatsapp,"_blank");
-
-}
-
-
-function searchMedicine(){
-
-let value =
-document.getElementById("searchBox").value;
-
-if(value.trim()===""){
-
-alert("Please enter a medicine name.");
-
-return;
-
-}
-
-document
-.getElementById("medicine")
-.value=value;
-
-document
-.getElementById("order")
-.scrollIntoView({
-behavior:"smooth"
 });
 
+
+/* DELIVERY CHECK */
+
+function checkDelivery(){
+
+    const delivery =
+    document.getElementById("delivery").value;
+
+    const notice =
+    document.getElementById("deliveryNotice");
+
+    if(delivery === "Out of Delivery"){
+        notice.style.display = "block";
+    }else{
+        notice.style.display = "none";
+    }
+
 }
 
 
-function showStatus(id,message){
+/* ORDER FORM */
 
-let element =
-document.getElementById(id);
+document.getElementById("orderForm").addEventListener("submit",function(e){
 
-element.innerText=message;
+    e.preventDefault();
 
-element.style.display="block";
+    const name =
+    document.getElementById("name").value;
 
-}
+    const mobile =
+    document.getElementById("mobile").value;
+
+    const medicine =
+    document.getElementById("medicine").value;
+
+    const quantity =
+    document.getElementById("quantity").value;
+
+    const address =
+    document.getElementById("address").value;
+
+    const delivery =
+    document.getElementById("delivery").value;
+
+    const prescription =
+    document.getElementById("prescription").files[0];
+
+    let prescriptionText = "No prescription uploaded";
+
+    if(prescription){
+        prescriptionText =
+        "Prescription: " + prescription.name;
+    }
+
+    const message =
+`🏥 *MEDICINE DOORSTEP DELIVERY*
+
+📋 *New Medicine Order*
+
+👤 Name: ${name}
+📱 Mobile: ${mobile}
+
+💊 Medicine: ${medicine}
+🔢 Quantity: ${quantity}
+
+📍 Address:
+${address}
+
+🚚 Delivery Status:
+${delivery}
+
+📄 ${prescriptionText}
+
+🎉 Discount: 10% OFF
+
+Please confirm my order.`;
+
+    document.getElementById("success").style.display="block";
+
+    const whatsappURL =
+    "https://wa.me/916009415805?text="
+    + encodeURIComponent(message);
+
+    setTimeout(function(){
+        window.open(whatsappURL,"_blank");
+    },700);
+
+});
 
 </script>
 
 </body>
-    </html>
+</html>
