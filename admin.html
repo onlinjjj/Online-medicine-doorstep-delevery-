@@ -762,7 +762,56 @@ const firebaseConfig = {
     "click",
     loadOrders
   );
+// ===============================
+// ORDER DELETE + DELIVERY STATUS
+// ===============================
 
+async function deleteOrder(orderId) {
+  if (!confirm("এই Order টি Delete করতে চান?")) {
+    return;
+  }
+
+  try {
+    await deleteDoc(doc(db, "orders", orderId));
+
+    alert("✅ Order Deleted Successfully");
+
+    loadOrders();
+
+  } catch (error) {
+    console.error(error);
+    alert("❌ Order Delete হয়নি: " + error.message);
+  }
+}
+
+
+// Delivery Status Update
+async function updateDeliveryStatus(orderId, status) {
+
+  try {
+
+    await updateDoc(
+      doc(db, "orders", orderId),
+      {
+        status: status,
+        updatedAt: new Date().toISOString()
+      }
+    );
+
+    alert("✅ Delivery Status Updated: " + status);
+
+    loadOrders();
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      "❌ Status Update হয়নি: " +
+      error.message
+    );
+  }
+}
 </script>
 
 </body>
