@@ -1,152 +1,562 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Medicine Delivery - Admin Panel</title>
+<title>Medicine Doorstep Delivery - Admin Panel</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
 }
 
 body{
-    background:#f4f6f8;
+  background:#f3f6f9;
+  color:#222;
 }
 
-.header{
-    background:#0d6efd;
-    color:white;
-    padding:18px;
-    text-align:center;
+header{
+  background:#087f5b;
+  color:white;
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header h2{
+  font-size:20px;
+}
+
+button{
+  border:0;
+  border-radius:8px;
+  padding:11px 16px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.logout{
+  background:#fff;
+  color:#087f5b;
 }
 
 .container{
-    padding:20px;
+  max-width:1100px;
+  margin:20px auto;
+  padding:0 15px;
 }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:15px;
+.login-box{
+  max-width:400px;
+  margin:80px auto;
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 5px 25px rgba(0,0,0,.1);
 }
 
-.card{
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
-    text-align:center;
+.login-box h2{
+  text-align:center;
+  margin-bottom:20px;
+  color:#087f5b;
 }
 
-.card h2{
-    color:#0d6efd;
-    margin-bottom:8px;
+input{
+  width:100%;
+  padding:13px;
+  margin:8px 0 15px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  font-size:15px;
+}
+
+.login-btn{
+  width:100%;
+  background:#087f5b;
+  color:white;
+}
+
+.error{
+  color:#d00000;
+  margin-top:10px;
+  text-align:center;
+}
+
+.dashboard{
+  display:none;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.stat{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+
+.stat h3{
+  font-size:28px;
+  color:#087f5b;
 }
 
 .orders{
-    margin-top:25px;
-    background:white;
-    padding:20px;
-    border-radius:12px;
+  background:white;
+  border-radius:12px;
+  padding:15px;
+  overflow-x:auto;
 }
 
-.orders h2{
-    margin-bottom:15px;
+.order{
+  border:1px solid #e2e2e2;
+  border-radius:10px;
+  padding:16px;
+  margin-bottom:12px;
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
+.order h3{
+  color:#087f5b;
+  margin-bottom:8px;
 }
 
-th,td{
-    padding:12px;
-    border-bottom:1px solid #ddd;
-    text-align:left;
+.order p{
+  margin:5px 0;
 }
 
-th{
-    background:#f1f3f5;
+.status{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:20px;
+  background:#fff3cd;
+  color:#856404;
+  font-size:13px;
+  font-weight:bold;
 }
 
-@media(max-width:600px){
-    .orders{
-        overflow-x:auto;
-    }
+.status-btn{
+  background:#087f5b;
+  color:white;
+  margin-top:10px;
+}
 
-    table{
-        min-width:700px;
-    }
+.delete-btn{
+  background:#dc3545;
+  color:white;
+  margin-top:10px;
+  margin-left:5px;
+}
+
+@media(max-width:700px){
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  header{
+    padding:14px;
+  }
+
+  header h2{
+    font-size:16px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-    <h1>💊 Medicine Delivery Admin</h1>
-    <p>Admin Dashboard</p>
+<!-- LOGIN -->
+<div id="loginPage" class="login-box">
+  <h2>💊 Admin Login</h2>
+
+  <input
+    type="email"
+    id="email"
+    placeholder="Admin Email"
+  >
+
+  <input
+    type="password"
+    id="password"
+    placeholder="Password"
+  >
+
+  <button class="login-btn" onclick="login()">
+    Login
+  </button>
+
+  <div id="loginError" class="error"></div>
 </div>
+
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="dashboard">
+
+<header>
+  <h2>💊 Medicine Doorstep Delivery</h2>
+  <button class="logout" onclick="logout()">Logout</button>
+</header>
 
 <div class="container">
 
-    <div class="cards">
+  <div class="stats">
 
-        <div class="card">
-            <h2 id="totalOrders">0</h2>
-            <p>Total Orders</p>
-        </div>
-
-        <div class="card">
-            <h2 id="pendingOrders">0</h2>
-            <p>Pending Orders</p>
-        </div>
-
-        <div class="card">
-            <h2 id="confirmedOrders">0</h2>
-            <p>Confirmed Orders</p>
-        </div>
-
-        <div class="card">
-            <h2 id="deliveredOrders">0</h2>
-            <p>Delivered Orders</p>
-        </div>
-
+    <div class="stat">
+      <p>Total Orders</p>
+      <h3 id="totalOrders">0</h3>
     </div>
 
-    <div class="orders">
-
-        <h2>📦 Recent Orders</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>Customer</th>
-                    <th>Medicine</th>
-                    <th>Phone</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-
-            <tbody id="ordersTable">
-                <tr>
-                    <td colspan="5" style="text-align:center;">
-                        No orders yet
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
+    <div class="stat">
+      <p>Pending Orders</p>
+      <h3 id="pendingOrders">0</h3>
     </div>
+
+    <div class="stat">
+      <p>Completed Orders</p>
+      <h3 id="completedOrders">0</h3>
+    </div>
+
+  </div>
+
+  <div class="orders">
+
+    <h2 style="margin-bottom:15px;">
+      📦 Customer Orders
+    </h2>
+
+    <div id="ordersList">
+      Loading orders...
+    </div>
+
+  </div>
 
 </div>
+</div>
+
+
+<!-- Firebase -->
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  onSnapshot,
+  doc,
+  updateDoc,
+  deleteDoc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+/* =====================================
+   YOUR FIREBASE CONFIG
+   ===================================== */
+
+const firebaseConfig = {
+
+  apiKey: "YOUR_API_KEY",
+
+  authDomain:
+    "YOUR_PROJECT.firebaseapp.com",
+
+  projectId:
+    "YOUR_PROJECT_ID",
+
+  storageBucket:
+    "YOUR_PROJECT.appspot.com",
+
+  messagingSenderId:
+    "YOUR_MESSAGING_SENDER_ID",
+
+  appId:
+    "YOUR_APP_ID"
+
+};
+
+
+/* Firebase Start */
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+
+/* =====================================
+   ADMIN LOGIN
+   ===================================== */
+
+window.login = async function(){
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  const error =
+    document.getElementById("loginError");
+
+  error.innerText = "";
+
+  if(!email || !password){
+
+    error.innerText =
+      "Please enter email and password.";
+
+    return;
+  }
+
+  try{
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  }catch(err){
+
+    error.innerText =
+      "Login failed: " + err.message;
+
+  }
+
+};
+
+
+/* =====================================
+   LOGOUT
+   ===================================== */
+
+window.logout = async function(){
+
+  await signOut(auth);
+
+};
+
+
+/* =====================================
+   AUTH CHECK
+   ===================================== */
+
+onAuthStateChanged(auth, user => {
+
+  if(user){
+
+    document.getElementById("loginPage")
+      .style.display = "none";
+
+    document.getElementById("dashboard")
+      .style.display = "block";
+
+    loadOrders();
+
+  }else{
+
+    document.getElementById("loginPage")
+      .style.display = "block";
+
+    document.getElementById("dashboard")
+      .style.display = "none";
+
+  }
+
+});
+
+
+/* =====================================
+   LOAD ORDERS
+   ===================================== */
+
+function loadOrders(){
+
+  const ordersRef =
+    collection(db,"orders");
+
+  onSnapshot(ordersRef, snapshot => {
+
+    const list =
+      document.getElementById("ordersList");
+
+    list.innerHTML = "";
+
+    let total = 0;
+    let pending = 0;
+    let completed = 0;
+
+    if(snapshot.empty){
+
+      list.innerHTML =
+        "<p>No orders received yet.</p>";
+
+    }
+
+    snapshot.forEach(orderDoc => {
+
+      total++;
+
+      const data = orderDoc.data();
+
+      const status =
+        data.status || "Pending";
+
+      if(status === "Completed"){
+        completed++;
+      }else{
+        pending++;
+      }
+
+      const order =
+        document.createElement("div");
+
+      order.className = "order";
+
+      order.innerHTML = `
+
+        <h3>
+          📦 Order #${orderDoc.id}
+        </h3>
+
+        <p>
+          <b>Customer:</b>
+          ${data.name || "Not provided"}
+        </p>
+
+        <p>
+          <b>Phone:</b>
+          ${data.phone || "Not provided"}
+        </p>
+
+        <p>
+          <b>Address:</b>
+          ${data.address || "Not provided"}
+        </p>
+
+        <p>
+          <b>Medicine:</b>
+          ${data.medicine || data.items || "Not provided"}
+        </p>
+
+        <p>
+          <b>Message:</b>
+          ${data.message || "No message"}
+        </p>
+
+        <p>
+          <b>Status:</b>
+          <span class="status">
+            ${status}
+          </span>
+        </p>
+
+        <button
+          class="status-btn"
+          onclick="completeOrder('${orderDoc.id}')">
+          ✅ Mark Completed
+        </button>
+
+        <button
+          class="delete-btn"
+          onclick="removeOrder('${orderDoc.id}')">
+          🗑 Delete
+        </button>
+
+      `;
+
+      list.appendChild(order);
+
+    });
+
+    document.getElementById("totalOrders")
+      .innerText = total;
+
+    document.getElementById("pendingOrders")
+      .innerText = pending;
+
+    document.getElementById("completedOrders")
+      .innerText = completed;
+
+  });
+
+}
+
+
+/* =====================================
+   COMPLETE ORDER
+   ===================================== */
+
+window.completeOrder = async function(id){
+
+  try{
+
+    await updateDoc(
+      doc(db,"orders",id),
+      {
+        status:"Completed"
+      }
+    );
+
+  }catch(error){
+
+    alert(
+      "Could not update order: "
+      + error.message
+    );
+
+  }
+
+};
+
+
+/* =====================================
+   DELETE ORDER
+   ===================================== */
+
+window.removeOrder = async function(id){
+
+  if(!confirm("Delete this order?")){
+    return;
+  }
+
+  try{
+
+    await deleteDoc(
+      doc(db,"orders",id)
+    );
+
+  }catch(error){
+
+    alert(
+      "Could not delete order: "
+      + error.message
+    );
+
+  }
+
+};
+
+</script>
 
 </body>
 </html>
