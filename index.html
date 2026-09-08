@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="Medicine Doorstep Delivery - Order medicines online with doorstep delivery.">
 
 <title>Medicine Doorstep Delivery</title>
 
 <style>
+
+/* =========================
+   RESET
+========================= */
+
 *{
     margin:0;
     padding:0;
@@ -19,86 +31,111 @@ html{
 }
 
 body{
-    background:#f5fbf8;
-    color:#18332b;
+    background:#f4faf8;
+    color:#17372e;
 }
 
-/* HEADER */
+
+/* =========================
+   HEADER
+========================= */
+
 header{
     position:sticky;
     top:0;
-    z-index:1000;
+    z-index:9999;
     background:#fff;
-    box-shadow:0 3px 15px rgba(0,0,0,.08);
+    box-shadow:0 3px 18px rgba(0,0,0,.08);
 }
 
 .navbar{
     max-width:1200px;
     margin:auto;
-    min-height:75px;
+    min-height:78px;
+    padding:12px 20px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:12px 20px;
     gap:15px;
 }
 
 .logo{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:12px;
+
+    color:#087c59;
     font-size:21px;
     font-weight:800;
-    color:#087a56;
 }
 
 .logo-icon{
-    width:45px;
-    height:45px;
-    border-radius:12px;
-    background:#087a56;
-    color:white;
+    width:48px;
+    height:48px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:25px;
+
+    background:#087c59;
+    color:#fff;
+
+    border-radius:14px;
+    font-size:27px;
 }
 
 nav{
     display:flex;
-    gap:22px;
-    flex-wrap:wrap;
+    align-items:center;
+    gap:25px;
 }
 
 nav a{
     text-decoration:none;
-    color:#18332b;
-    font-weight:600;
+    color:#18372f;
+    font-weight:700;
 }
 
 nav a:hover{
-    color:#087a56;
+    color:#087c59;
 }
 
 .call-btn{
-    text-decoration:none;
-    background:#087a56;
+    background:#087c59;
     color:white;
-    padding:12px 18px;
-    border-radius:25px;
+    text-decoration:none;
+
+    padding:13px 20px;
+    border-radius:28px;
+
     font-weight:bold;
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+========================= */
+
 .hero{
     max-width:1200px;
-    margin:30px auto;
-    padding:60px 30px;
+    margin:28px auto;
+
+    padding:65px 35px;
+
     border-radius:30px;
-    background:linear-gradient(135deg,#dff8ee,#eef8ff);
+
+    background:
+    linear-gradient(
+        135deg,
+        #dcf8ed,
+        #edf8ff
+    );
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     gap:40px;
 }
 
@@ -108,29 +145,36 @@ nav a:hover{
 
 .discount{
     display:inline-block;
-    background:#ff7a00;
+
+    background:#ff7900;
     color:white;
-    padding:9px 17px;
+
+    padding:10px 18px;
     border-radius:25px;
+
     font-weight:bold;
     margin-bottom:18px;
 }
 
 .hero h1{
     font-size:52px;
-    line-height:1.08;
+    line-height:1.1;
+
     color:#064b91;
+
     margin-bottom:20px;
 }
 
 .hero h1 span{
-    color:#087a56;
+    color:#087c59;
 }
 
 .hero p{
+    color:#526961;
+
     font-size:18px;
     line-height:1.7;
-    color:#50645d;
+
     margin-bottom:28px;
 }
 
@@ -142,45 +186,61 @@ nav a:hover{
 
 .primary-btn,
 .secondary-btn{
-    border:none;
-    padding:15px 24px;
+    display:inline-block;
+
+    padding:15px 25px;
+
     border-radius:30px;
+
     font-size:16px;
     font-weight:bold;
-    cursor:pointer;
+
     text-decoration:none;
-    display:inline-block;
+    cursor:pointer;
+
+    border:none;
 }
 
 .primary-btn{
-    background:#087a56;
-    color:white;
+    background:#087c59;
+    color:#fff;
 }
 
 .secondary-btn{
-    background:white;
-    color:#087a56;
-    border:2px solid #087a56;
+    background:#fff;
+    color:#087c59;
+
+    border:2px solid #087c59;
 }
 
 .primary-btn:disabled{
-    opacity:.7;
+    opacity:.65;
     cursor:not-allowed;
 }
 
 .hero-art{
-    width:360px;
-    height:300px;
+    width:350px;
+    height:290px;
+
+    background:#fff;
+
     border-radius:40px;
-    background:white;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:130px;
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+    font-size:125px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.08);
 }
 
-/* SECTIONS */
+
+/* =========================
+   SECTIONS
+========================= */
+
 section{
     max-width:1200px;
     margin:70px auto;
@@ -199,22 +259,39 @@ section{
 }
 
 .section-title p{
-    color:#667a73;
+    color:#687b74;
 }
 
-/* CATEGORIES */
+
+/* =========================
+   CATEGORIES
+========================= */
+
 .categories{
     display:grid;
-    grid-template-columns:repeat(6,1fr);
+    grid-template-columns:
+    repeat(6,1fr);
+
     gap:15px;
 }
 
 .category{
-    background:white;
+    background:#fff;
+
     padding:25px 10px;
+
     text-align:center;
+
     border-radius:18px;
-    box-shadow:0 5px 20px rgba(0,0,0,.06);
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,.06);
+
+    transition:.3s;
+}
+
+.category:hover{
+    transform:translateY(-5px);
 }
 
 .category-icon{
@@ -222,19 +299,35 @@ section{
     margin-bottom:12px;
 }
 
-/* FEATURES */
+.category h3{
+    font-size:15px;
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
 .features{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+    repeat(4,1fr);
+
     gap:20px;
 }
 
 .feature{
-    background:white;
+    background:#fff;
+
     padding:30px 20px;
+
     border-radius:20px;
+
     text-align:center;
-    box-shadow:0 5px 20px rgba(0,0,0,.06);
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,.06);
 }
 
 .feature-icon{
@@ -252,56 +345,83 @@ section{
     line-height:1.5;
 }
 
-/* BOX */
-.order-box,
-.status-box{
-    background:white;
+
+/* =========================
+   ORDER BOX
+========================= */
+
+.order-box{
+    background:#fff;
+
     max-width:800px;
     margin:auto;
+
     padding:35px;
+
     border-radius:25px;
-    box-shadow:0 10px 35px rgba(0,0,0,.08);
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,.08);
 }
 
-/* FORM */
 .form-group{
-    margin-bottom:18px;
+    margin-bottom:20px;
 }
 
 .form-group label{
     display:block;
+
     font-weight:bold;
-    margin-bottom:7px;
+
+    margin-bottom:8px;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select{
+
     width:100%;
-    padding:14px;
-    border:1px solid #d4e2dd;
+
+    padding:15px;
+
+    border:
+    1px solid #d4e2dd;
+
     border-radius:12px;
+
     outline:none;
-    font-size:15px;
+
+    font-size:16px;
+
+    background:#fff;
 }
 
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus{
-    border-color:#087a56;
+    border-color:#087c59;
 }
 
 textarea{
-    min-height:100px;
+    min-height:110px;
     resize:vertical;
 }
 
-/* FILE */
+
+/* =========================
+   FILE
+========================= */
+
 .file-box{
-    border:2px dashed #8ccdb8;
+    border:
+    2px dashed #8bcdb8;
+
     background:#f1fbf7;
+
     padding:22px;
+
     border-radius:15px;
+
     text-align:center;
 }
 
@@ -310,143 +430,170 @@ textarea{
     background:transparent;
 }
 
-/* MESSAGES */
-.success,
-.error{
+
+/* =========================
+   STATUS MESSAGE
+========================= */
+
+.delivery-status{
+    padding:15px;
+
+    background:#fff7e8;
+
+    border-left:
+    5px solid #ff9800;
+
+    border-radius:10px;
+
+    margin-top:10px;
+
     display:none;
-    margin-top:20px;
-    padding:16px;
-    border-radius:12px;
-    text-align:center;
-    font-weight:bold;
 }
 
 .success{
+    display:none;
+
+    margin-top:20px;
+
     background:#e7f8ef;
-    color:#087a56;
+    color:#087c59;
+
+    padding:18px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    line-height:1.7;
 }
 
 .error{
+    display:none;
+
+    margin-top:20px;
+
     background:#fff0f0;
     color:#b00020;
-}
 
-/* ORDER ID */
-.order-id-box{
-    display:none;
-    margin-top:20px;
-    padding:20px;
-    background:#e7f8ef;
-    border:2px solid #8ccdb8;
-    border-radius:15px;
-    text-align:center;
-}
+    padding:18px;
 
-.order-id-box strong{
-    display:block;
-    margin-top:8px;
-    font-size:20px;
-    color:#087a56;
-    word-break:break-all;
-}
-
-/* STATUS */
-.status-result{
-    display:none;
-    margin-top:20px;
-}
-
-.status-card{
-    background:#f8fffc;
-    border:1px solid #d7eee5;
-    border-radius:18px;
-    padding:22px;
-}
-
-.status-card h3{
-    color:#087a56;
-    margin-bottom:15px;
-}
-
-.status-line{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    padding:11px 0;
-    border-bottom:1px solid #e4eee9;
-}
-
-.status-line:last-child{
-    border-bottom:0;
-}
-
-.badge{
-    display:inline-block;
-    padding:8px 14px;
-    border-radius:20px;
-    font-weight:bold;
-}
-
-.badge-new{
-    background:#fff3cd;
-    color:#856404;
-}
-
-.badge-confirmed{
-    background:#dff8ee;
-    color:#087a56;
-}
-
-.badge-delivery{
-    background:#dbeafe;
-    color:#075985;
-}
-
-.badge-delivered{
-    background:#ede9fe;
-    color:#6b21a8;
-}
-
-.badge-cancelled{
-    background:#fee2e2;
-    color:#b91c1c;
-}
-
-/* TRACKING STEPS */
-.steps{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
-    margin-top:20px;
-}
-
-.step{
-    padding:13px 5px;
     border-radius:12px;
-    background:#edf2f0;
+
     text-align:center;
-    font-size:12px;
+
     font-weight:bold;
-    color:#60736c;
+
+    line-height:1.6;
 }
 
-.step.active{
-    background:#087a56;
-    color:white;
+
+/* =========================
+   TRACK ORDER
+========================= */
+
+.track-box{
+    max-width:700px;
+    margin:auto;
+
+    background:#fff;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,.08);
+
+    text-align:center;
 }
 
-/* ABOUT */
+.track-box h3{
+    color:#087c59;
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.track-box p{
+    color:#687a74;
+    margin-bottom:20px;
+}
+
+.track-input{
+    display:flex;
+    gap:10px;
+}
+
+.track-input input{
+    flex:1;
+
+    padding:15px;
+
+    border:
+    1px solid #d4e2dd;
+
+    border-radius:12px;
+
+    font-size:16px;
+    outline:none;
+}
+
+.track-result{
+    display:none;
+
+    margin-top:25px;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    background:#f2faf7;
+
+    text-align:left;
+}
+
+.status-badge{
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:25px;
+
+    background:#fff0c2;
+
+    color:#806300;
+
+    font-weight:bold;
+
+    margin-top:10px;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
 .about{
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+    1fr 1fr;
+
     gap:35px;
+
+    align-items:center;
 }
 
 .about-card{
-    background:white;
+    background:#fff;
+
     padding:35px;
+
     border-radius:25px;
-    box-shadow:0 8px 25px rgba(0,0,0,.06);
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.06);
 }
 
 .about-card h2{
@@ -459,12 +606,20 @@ textarea{
     color:#60736c;
 }
 
-/* CONTACT */
+
+/* =========================
+   CONTACT
+========================= */
+
 .contact{
     background:#064b91;
-    color:white;
+
+    color:#fff;
+
     border-radius:25px;
+
     padding:45px 25px;
+
     text-align:center;
 }
 
@@ -479,34 +634,51 @@ textarea{
 
 .contact a{
     display:inline-block;
-    background:white;
+
+    background:#fff;
+
     color:#064b91;
+
     text-decoration:none;
+
     padding:14px 25px;
+
     border-radius:30px;
+
     font-weight:bold;
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
     background:#102c26;
+
     color:#c8d8d3;
+
     text-align:center;
+
     padding:30px 15px;
+
     margin-top:70px;
 }
 
 footer strong{
-    color:white;
+    color:#fff;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:900px){
 
     .hero{
         flex-direction:column;
         text-align:center;
-        margin:15px;
     }
 
     .hero h1{
@@ -518,11 +690,13 @@ footer strong{
     }
 
     .categories{
-        grid-template-columns:repeat(3,1fr);
+        grid-template-columns:
+        repeat(3,1fr);
     }
 
     .features{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+        repeat(2,1fr);
     }
 
     .about{
@@ -534,28 +708,34 @@ footer strong{
         height:220px;
         font-size:90px;
     }
+
 }
 
 @media(max-width:600px){
 
     .navbar{
+        height:auto;
         padding:12px 15px;
+
         flex-wrap:wrap;
     }
 
     nav{
         order:3;
+
         width:100%;
+
         justify-content:center;
-        gap:13px;
+
+        gap:16px;
     }
 
     nav a{
-        font-size:13px;
+        font-size:14px;
     }
 
     .call-btn{
-        padding:9px 13px;
+        padding:10px 14px;
         font-size:13px;
     }
 
@@ -564,11 +744,12 @@ footer strong{
     }
 
     .logo-icon{
-        width:38px;
-        height:38px;
+        width:40px;
+        height:40px;
     }
 
     .hero{
+        margin:15px;
         padding:40px 18px;
         border-radius:22px;
     }
@@ -582,16 +763,24 @@ footer strong{
     }
 
     .categories{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+        repeat(2,1fr);
     }
 
     .features{
         grid-template-columns:1fr;
     }
 
-    .order-box,
-    .status-box{
+    .order-box{
         padding:22px 17px;
+    }
+
+    .track-box{
+        padding:25px 17px;
+    }
+
+    .track-input{
+        flex-direction:column;
     }
 
     section{
@@ -602,44 +791,66 @@ footer strong{
         font-size:28px;
     }
 
-    .steps{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .status-line{
-        display:block;
-    }
-
-    .status-line span{
-        display:block;
-        margin-top:5px;
-    }
 }
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- HEADER -->
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
 <div class="navbar">
 
 <div class="logo">
-<div class="logo-icon">⚕</div>
-Medicine Doorstep
+
+<div class="logo-icon">
+⚕
 </div>
 
+Medicine Doorstep
+
+</div>
+
+
 <nav>
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#order">Order</a>
-<a href="#status">Track Order</a>
-<a href="#contact">Contact</a>
+
+<a href="#home">
+Home
+</a>
+
+<a href="#about">
+About
+</a>
+
+<a href="#order">
+Order
+</a>
+
+<a href="#track">
+Track Order
+</a>
+
+<a href="#contact">
+Contact
+</a>
+
 </nav>
 
-<a class="call-btn" href="tel:6009415805">
+
+<a
+class="call-btn"
+href="tel:6009415805">
+
 ☎ Call
+
 </a>
 
 </div>
@@ -647,8 +858,14 @@ Medicine Doorstep
 </header>
 
 
-<!-- HERO -->
-<div class="hero" id="home">
+
+<!-- =========================
+     HERO
+========================= -->
+
+<div
+class="hero"
+id="home">
 
 <div class="hero-content">
 
@@ -657,29 +874,48 @@ Medicine Doorstep
 </div>
 
 <h1>
+
 Your Medicines.<br>
-<span>Delivered to Your Door.</span>
+
+<span>
+Delivered to Your Door.
+</span>
+
 </h1>
 
 <p>
-Order your medicines online quickly and conveniently.
-Upload your prescription and get your order delivered
-to your doorstep.
+
+Order your medicines online quickly
+and conveniently. Upload your
+prescription and get your order
+delivered to your doorstep.
+
 </p>
+
 
 <div class="hero-buttons">
 
-<a href="#order" class="primary-btn">
+<a
+href="#order"
+class="primary-btn">
+
 🛒 Order Medicine
+
 </a>
 
-<a href="#status" class="secondary-btn">
+
+<a
+href="#track"
+class="secondary-btn">
+
 📦 Track Order
+
 </a>
 
 </div>
 
 </div>
+
 
 <div class="hero-art">
 💊
@@ -688,102 +924,221 @@ to your doorstep.
 </div>
 
 
-<!-- CATEGORIES -->
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
 <section>
 
 <div class="section-title">
 
-<h2>Shop by Category</h2>
+<h2>
+Shop by Category
+</h2>
 
 <p>
-Find the medicines and healthcare products you need.
+Find the medicines and healthcare
+products you need.
 </p>
 
 </div>
 
+
 <div class="categories">
 
-<div class="category">
-<div class="category-icon">💊</div>
-<h3>Pain Relief</h3>
-</div>
 
 <div class="category">
-<div class="category-icon">🌡️</div>
-<h3>Fever &amp; Cold</h3>
+
+<div class="category-icon">
+💊
 </div>
 
-<div class="category">
-<div class="category-icon">🩸</div>
-<h3>Diabetes Care</h3>
+<h3>
+Pain Relief
+</h3>
+
 </div>
 
-<div class="category">
-<div class="category-icon">❤️</div>
-<h3>Heart Care</h3>
-</div>
 
 <div class="category">
-<div class="category-icon">🧴</div>
-<h3>Skin Care</h3>
+
+<div class="category-icon">
+🌡️
 </div>
 
-<div class="category">
-<div class="category-icon">👶</div>
-<h3>Baby Care</h3>
+<h3>
+Fever & Cold
+</h3>
+
 </div>
+
+
+<div class="category">
+
+<div class="category-icon">
+🩸
+</div>
+
+<h3>
+Diabetes Care
+</h3>
+
+</div>
+
+
+<div class="category">
+
+<div class="category-icon">
+❤️
+</div>
+
+<h3>
+Heart Care
+</h3>
+
+</div>
+
+
+<div class="category">
+
+<div class="category-icon">
+🧴
+</div>
+
+<h3>
+Skin Care
+</h3>
+
+</div>
+
+
+<div class="category">
+
+<div class="category-icon">
+👶
+</div>
+
+<h3>
+Baby Care
+</h3>
+
+</div>
+
 
 </div>
 
 </section>
 
 
-<!-- FEATURES -->
+
+<!-- =========================
+     FEATURES
+========================= -->
+
 <section>
 
 <div class="section-title">
 
-<h2>Why Choose Us?</h2>
+<h2>
+Why Choose Us?
+</h2>
 
 </div>
+
 
 <div class="features">
 
-<div class="feature">
-<div class="feature-icon">🚚</div>
-<h3>Doorstep Delivery</h3>
-<p>Get your medicine delivered conveniently.</p>
-</div>
 
 <div class="feature">
-<div class="feature-icon">📄</div>
-<h3>Prescription Upload</h3>
-<p>Upload your prescription with your order.</p>
+
+<div class="feature-icon">
+🚚
 </div>
 
-<div class="feature">
-<div class="feature-icon">💰</div>
-<h3>10% Discount</h3>
-<p>Enjoy a special 10% discount on your order.</p>
+<h3>
+Doorstep Delivery
+</h3>
+
+<p>
+Get your medicine delivered
+conveniently.
+</p>
+
 </div>
 
+
 <div class="feature">
-<div class="feature-icon">📱</div>
-<h3>Easy Ordering</h3>
-<p>Order easily using your mobile or computer.</p>
+
+<div class="feature-icon">
+📄
 </div>
+
+<h3>
+Prescription Upload
+</h3>
+
+<p>
+Upload your prescription
+with your order.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+💰
+</div>
+
+<h3>
+10% Discount
+</h3>
+
+<p>
+Enjoy a special 10% discount
+on your order.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+📱
+</div>
+
+<h3>
+Easy Ordering
+</h3>
+
+<p>
+Order easily using mobile
+or computer.
+</p>
+
+</div>
+
 
 </div>
 
 </section>
 
 
-<!-- ORDER -->
+
+<!-- =========================
+     ORDER
+========================= -->
+
 <section id="order">
 
 <div class="section-title">
 
-<h2>Order Your Medicine</h2>
+<h2>
+Order Your Medicine
+</h2>
 
 <p>
 Fill the form and send your order.
@@ -791,13 +1146,16 @@ Fill the form and send your order.
 
 </div>
 
+
 <div class="order-box">
+
 
 <form id="orderForm">
 
+
 <div class="form-group">
 
-<label for="name">
+<label>
 Full Name *
 </label>
 
@@ -805,15 +1163,14 @@ Full Name *
 type="text"
 id="name"
 placeholder="Enter your name"
-required
->
+required>
 
 </div>
 
 
 <div class="form-group">
 
-<label for="mobile">
+<label>
 Mobile Number *
 </label>
 
@@ -824,15 +1181,14 @@ placeholder="Enter 10 digit mobile number"
 inputmode="numeric"
 pattern="[0-9]{10}"
 maxlength="10"
-required
->
+required>
 
 </div>
 
 
 <div class="form-group">
 
-<label for="medicine">
+<label>
 Medicine / Product *
 </label>
 
@@ -840,15 +1196,14 @@ Medicine / Product *
 type="text"
 id="medicine"
 placeholder="Medicine name or product"
-required
->
+required>
 
 </div>
 
 
 <div class="form-group">
 
-<label for="quantity">
+<label>
 Quantity
 </label>
 
@@ -857,35 +1212,34 @@ type="number"
 id="quantity"
 min="1"
 value="1"
->
+required>
 
 </div>
 
 
 <div class="form-group">
 
-<label for="address">
+<label>
 Delivery Address *
 </label>
 
 <textarea
 id="address"
 placeholder="Enter complete delivery address"
-required
-></textarea>
+required></textarea>
 
 </div>
 
 
 <div class="form-group">
 
-<label for="delivery">
+<label>
 Delivery Area
 </label>
 
 <select id="delivery">
 
-<option value="Available">
+<option value="Delivery Available">
 Delivery Available
 </option>
 
@@ -895,18 +1249,31 @@ Out of Delivery
 
 </select>
 
+
+<div
+id="deliveryNotice"
+class="delivery-status">
+
+⚠️ Currently showing
+Out of Delivery.
+Please contact us for assistance.
+
+</div>
+
 </div>
 
 
 <div class="form-group">
 
-<label for="prescription">
+<label>
 Prescription Upload
 </label>
 
 <div class="file-box">
 
-<p>📄 Upload JPG, PNG or PDF</p>
+<p>
+📄 Upload JPG, PNG or PDF
+</p>
 
 <p>
 Maximum size:
@@ -918,10 +1285,10 @@ Maximum size:
 <input
 type="file"
 id="prescription"
-accept=".jpg,.jpeg,.png,.pdf"
->
+accept=".jpg,.jpeg,.png,.pdf">
 
-<div id="fileMessage"></div>
+<div id="fileMessage">
+</div>
 
 </div>
 
@@ -932,36 +1299,24 @@ accept=".jpg,.jpeg,.png,.pdf"
 type="submit"
 id="submitBtn"
 class="primary-btn"
-style="width:100%;border:0"
->
+style="width:100%;">
 
-📲 Save Order &amp; Send WhatsApp
+📲 Save Order & Send WhatsApp
 
 </button>
 
 
-<div id="success" class="success"></div>
-
-<div id="error" class="error"></div>
-
-
-<div id="orderIdBox" class="order-id-box">
-
-<div>
-✅ Order submitted successfully!
+<div
+id="success"
+class="success">
 </div>
 
-<div style="margin-top:8px;">
-Your Order ID:
+
+<div
+id="error"
+class="error">
 </div>
 
-<strong id="newOrderId"></strong>
-
-<p style="margin-top:10px;font-size:13px;color:#60736c;">
-Save this Order ID to check your order status.
-</p>
-
-</div>
 
 </form>
 
@@ -970,8 +1325,12 @@ Save this Order ID to check your order status.
 </section>
 
 
-<!-- TRACK ORDER -->
-<section id="status">
+
+<!-- =========================
+     TRACK ORDER
+========================= -->
+
+<section id="track">
 
 <div class="section-title">
 
@@ -980,56 +1339,59 @@ Save this Order ID to check your order status.
 </h2>
 
 <p>
-Enter your Order ID to check your latest order status.
+Enter your Order ID to check your
+latest order status.
 </p>
 
 </div>
 
 
-<div class="status-box">
+<div class="track-box">
 
-<form id="statusForm">
+<h3>
+Check Order Status
+</h3>
 
-<div class="form-group">
+<p>
+Your Order ID was shown after placing
+your order.
+</p>
 
-<label for="trackId">
-Order ID *
-</label>
+
+<div class="track-input">
 
 <input
 type="text"
-id="trackId"
-placeholder="Enter your Order ID"
-required
->
+id="trackOrderId"
+placeholder="Enter Order ID">
+
+<button
+class="primary-btn"
+id="trackBtn">
+
+🔍 Track
+
+</button>
 
 </div>
 
 
-<button
-type="submit"
-id="trackBtn"
-class="primary-btn"
-style="width:100%;border:0"
->
+<div
+id="trackResult"
+class="track-result">
 
-🔎 Check Order Status
-
-</button>
-
-</form>
-
-
-<div id="statusError" class="error"></div>
-
-<div id="statusResult" class="status-result"></div>
+</div>
 
 </div>
 
 </section>
 
 
-<!-- ABOUT -->
+
+<!-- =========================
+     ABOUT
+========================= -->
+
 <section id="about">
 
 <div class="section-title">
@@ -1043,6 +1405,7 @@ About Medicine Doorstep Delivery
 
 <div class="about">
 
+
 <div class="about-card">
 
 <h2>
@@ -1051,10 +1414,12 @@ Healthcare Made Easy
 
 <p>
 
-Medicine Doorstep Delivery makes ordering medicines
-simple and convenient. Customers can submit their
-medicine requirements and prescription online and
-contact us directly for order confirmation.
+Medicine Doorstep Delivery makes
+ordering medicines simple and convenient.
+Customers can submit their medicine
+requirements and prescription online
+and contact us directly for order
+confirmation.
 
 </p>
 
@@ -1069,26 +1434,43 @@ How It Works
 
 <p>
 
-1️⃣ Enter your details.<br><br>
+1️⃣ Enter your details.
 
-2️⃣ Add your medicine.<br><br>
+<br><br>
 
-3️⃣ Upload prescription if required.<br><br>
+2️⃣ Add your medicine.
 
-4️⃣ Send the order through WhatsApp.<br><br>
+<br><br>
 
-5️⃣ Save your Order ID and track the status.
+3️⃣ Upload prescription if required.
+
+<br><br>
+
+4️⃣ Save your order.
+
+<br><br>
+
+5️⃣ Send order through WhatsApp.
+
+<br><br>
+
+6️⃣ Track your order status.
 
 </p>
 
 </div>
+
 
 </div>
 
 </section>
 
 
-<!-- CONTACT -->
+
+<!-- =========================
+     CONTACT
+========================= -->
+
 <section id="contact">
 
 <div class="contact">
@@ -1101,11 +1483,11 @@ Need Help With Your Order?
 Contact Medicine Doorstep Delivery
 </p>
 
+
 <a
 href="https://wa.me/916009415805"
 target="_blank"
-rel="noopener"
->
+rel="noopener">
 
 💬 WhatsApp: 6009415805
 
@@ -1116,78 +1498,109 @@ rel="noopener"
 </section>
 
 
-<!-- FOOTER -->
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
 <p>
+
 © 2026
+
 <strong>
 Medicine Doorstep Delivery
 </strong>
+
 </p>
+
 
 <p style="margin-top:8px;">
+
 ☎ 6009415805
+
 </p>
 
-<p style="margin-top:8px;font-size:13px;">
+
+<p
+style="margin-top:8px;font-size:13px;">
+
 Healthcare at your doorstep.
+
 </p>
 
 </footer>
 
 
-<!-- FIREBASE -->
+
+<!-- =========================
+     FIREBASE
+========================= -->
+
 <script type="module">
 
+
+/* FIREBASE APP */
+
 import {
-initializeApp
+    initializeApp
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
+/* FIRESTORE */
+
 import {
-getFirestore,
-collection,
-addDoc,
-serverTimestamp,
-doc,
-getDoc
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp,
+    query,
+    where,
+    getDocs,
+    limit
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* FIREBASE CONFIG */
+
+/* =========================
+   FIREBASE CONFIG
+========================= */
 
 const firebaseConfig = {
 
-apiKey:
-"AIzaSyABmq9B4NEvgtsrJIEfUhjZOqMCjGGHfpI",
+    apiKey:
+    "AIzaSyABmq9B4NEvgtsrJIEfUhjZOqMCjGGHfpI",
 
-authDomain:
-"medicine-doorstep-delivery.firebaseapp.com",
+    authDomain:
+    "medicine-doorstep-delivery.firebaseapp.com",
 
-projectId:
-"medicine-doorstep-delivery",
+    projectId:
+    "medicine-doorstep-delivery",
 
-storageBucket:
-"medicine-doorstep-delivery.firebasestorage.app",
+    storageBucket:
+    "medicine-doorstep-delivery.firebasestorage.app",
 
-messagingSenderId:
-"703468135334",
+    messagingSenderId:
+    "703468135334",
 
-appId:
-"1:703468135334:web:e1e7040b5426f93f71a567",
+    appId:
+    "1:703468135334:web:e1e7040b5426f93f71a567",
 
-measurementId:
-"G-K3H1PQ6MKD"
+    measurementId:
+    "G-K3H1PQ6MKD"
 
 };
 
 
-/* INITIALIZE */
+
+/* =========================
+   INITIALIZE
+========================= */
 
 const app =
 initializeApp(firebaseConfig);
@@ -1196,16 +1609,16 @@ const db =
 getFirestore(app);
 
 
-/* ELEMENTS */
+
+/* =========================
+   ELEMENTS
+========================= */
 
 const form =
 document.getElementById("orderForm");
 
-const prescriptionInput =
-document.getElementById("prescription");
-
-const fileMessage =
-document.getElementById("fileMessage");
+const submitBtn =
+document.getElementById("submitBtn");
 
 const success =
 document.getElementById("success");
@@ -1213,309 +1626,143 @@ document.getElementById("success");
 const error =
 document.getElementById("error");
 
-const submitBtn =
-document.getElementById("submitBtn");
+const prescriptionInput =
+document.getElementById("prescription");
 
-const orderIdBox =
-document.getElementById("orderIdBox");
+const fileMessage =
+document.getElementById("fileMessage");
 
-const newOrderId =
-document.getElementById("newOrderId");
+const delivery =
+document.getElementById("delivery");
 
-const statusForm =
-document.getElementById("statusForm");
+const deliveryNotice =
+document.getElementById("deliveryNotice");
 
-const trackId =
-document.getElementById("trackId");
+const trackOrderId =
+document.getElementById("trackOrderId");
 
 const trackBtn =
 document.getElementById("trackBtn");
 
-const statusError =
-document.getElementById("statusError");
-
-const statusResult =
-document.getElementById("statusResult");
+const trackResult =
+document.getElementById("trackResult");
 
 
-/* ESCAPE HTML */
 
-function escapeHtml(value){
-
-return String(value || "").replace(
-/[&<>"']/g,
-function(char){
-
-return {
-
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-
-}[char];
-
-}
-);
-
-}
-
-
-/* STATUS CLASS */
-
-function getStatusClass(status){
-
-const s =
-String(status || "").toLowerCase();
-
-if(s.includes("confirm")){
-return "badge-confirmed";
-}
-
-if(s.includes("out")){
-return "badge-delivery";
-}
-
-if(
-s.includes("deliver") &&
-!s.includes("out")
-){
-return "badge-delivered";
-}
-
-if(s.includes("cancel")){
-return "badge-cancelled";
-}
-
-return "badge-new";
-
-}
-
-
-/* STATUS STEP */
-
-function getStep(status){
-
-const s =
-String(status || "").toLowerCase();
-
-if(s.includes("cancel")){
-return -1;
-}
-
-if(
-s.includes("deliver") &&
-!s.includes("out")
-){
-return 4;
-}
-
-if(s.includes("out")){
-return 3;
-}
-
-if(s.includes("confirm")){
-return 2;
-}
-
-return 1;
-
-}
-
-
-/* DATE */
-
-function formatDate(timestamp){
-
-if(!timestamp){
-return "Not available";
-}
-
-try{
-
-const date =
-timestamp.toDate
-? timestamp.toDate()
-: new Date(timestamp);
-
-return date.toLocaleString(
-"en-IN",
-{
-day:"2-digit",
-month:"2-digit",
-year:"numeric",
-hour:"2-digit",
-minute:"2-digit"
-}
-);
-
-}catch(e){
-
-return "Not available";
-
-}
-
-}
-
-
-/* FILE CHECK */
+/* =========================
+   PRESCRIPTION
+========================= */
 
 prescriptionInput.addEventListener(
 "change",
 function(){
 
-const file =
-prescriptionInput.files[0];
+    const file =
+    prescriptionInput.files[0];
 
-if(!file){
+    if(!file){
 
-fileMessage.innerHTML = "";
+        fileMessage.innerHTML = "";
 
-return;
+        return;
 
-}
-
-const maxSize =
-50 * 1024 * 1024;
-
-const allowedTypes = [
-"image/jpeg",
-"image/png",
-"application/pdf"
-];
+    }
 
 
-if(!allowedTypes.includes(file.type)){
+    const allowedTypes = [
 
-fileMessage.innerHTML =
-"<p style='color:red;margin-top:10px;font-weight:bold'>" +
-"❌ Only JPG, PNG or PDF allowed." +
-"</p>";
+        "image/jpeg",
+        "image/png",
+        "application/pdf"
 
-prescriptionInput.value = "";
-
-return;
-
-}
+    ];
 
 
-if(file.size > maxSize){
-
-fileMessage.innerHTML =
-"<p style='color:red;margin-top:10px;font-weight:bold'>" +
-"❌ File is larger than 50 MB." +
-"</p>";
-
-prescriptionInput.value = "";
-
-return;
-
-}
+    const maxSize =
+    50 * 1024 * 1024;
 
 
-fileMessage.innerHTML =
-"<p style='color:green;margin-top:10px;font-weight:bold'>" +
-"✅ File selected: " +
-escapeHtml(file.name) +
-"</p>";
+    if(!allowedTypes.includes(file.type)){
+
+        fileMessage.innerHTML =
+        "<p style='color:red;font-weight:bold;margin-top:10px'>" +
+        "❌ Only JPG, PNG or PDF is allowed." +
+        "</p>";
+
+        prescriptionInput.value = "";
+
+        return;
+
+    }
+
+
+    if(file.size > maxSize){
+
+        fileMessage.innerHTML =
+        "<p style='color:red;font-weight:bold;margin-top:10px'>" +
+        "❌ Maximum file size is 50 MB." +
+        "</p>";
+
+        prescriptionInput.value = "";
+
+        return;
+
+    }
+
+
+    fileMessage.innerHTML =
+    "<p style='color:green;font-weight:bold;margin-top:10px'>" +
+    "✅ File selected: " +
+    file.name +
+    "</p>";
 
 });
 
 
-/* SAVE ORDER */
+
+/* =========================
+   DELIVERY
+========================= */
+
+delivery.addEventListener(
+"change",
+function(){
+
+    if(
+        delivery.value ===
+        "Out of Delivery"
+    ){
+
+        deliveryNotice.style.display =
+        "block";
+
+    }else{
+
+        deliveryNotice.style.display =
+        "none";
+
+    }
+
+});
+
+
+
+/* =========================
+   SAVE ORDER
+========================= */
 
 form.addEventListener(
 "submit",
 async function(e){
 
-e.preventDefault();
-
-success.style.display =
-"none";
-
-error.style.display =
-"none";
-
-orderIdBox.style.display =
-"none";
+    e.preventDefault();
 
 
-const name =
-document.getElementById("name")
-.value.trim();
+    success.style.display =
+    "none";
 
-const mobile =
-document.getElementById("mobile")
-.value.trim();
-
-const medicine =
-document.getElementById("medicine")
-.value.trim();
-
-const quantity =
-Number(
-document.getElementById("quantity").value
-) || 1;
-
-const address =
-document.getElementById("address")
-.value.trim();
-
-const delivery =
-document.getElementById("delivery")
-.value;
-
-const prescription =
-prescriptionInput.files[0];
+    error.style.display =
+    "none";
 
 
-if(
-! /^[0-9]{10}$/.test(mobile)
-){
-
-error.textContent =
-"❌ Please enter a valid 10 digit mobile number.";
-
-error.style.display =
-"block";
-
-return;
-
-}
-
-
-submitBtn.disabled =
-true;
-
-submitBtn.textContent =
-"⏳ Saving Order...";
-
-
-try{
-
-/*
-ORDER STATUS:
-New
-*/
-
-const orderData = {
-
-name:name,
-
-mobile:mobile,
-
-medicine:medicine,
-
-quantity:quantity,
-
-address:address,
-
-deliveryStatus:delivery,
-
-prescriptionName:
-prescription
-? prescription.name
-: "",
-
-prescriptionType
+    c
