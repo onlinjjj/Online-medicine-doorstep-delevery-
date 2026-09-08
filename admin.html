@@ -1,65 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Medicine Delivery - Admin Panel</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f3f6f9;
+      color: #222;
+    }
+
+    header {
+      background: #087f5b;
+      color: white;
+      padding: 18px;
+      text-align: center;
+      box-shadow: 0 2px 8px #999;
+    }
+
+    header h1 {
+      font-size: 22px;
+    }
+
+    #loginBox {
+      width: 92%;
+      max-width: 420px;
+      margin: 50px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px #ccc;
+    }
+
+    #loginBox h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #087f5b;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    button {
+      border: none;
+      border-radius: 8px;
+      padding: 12px 18px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    #loginBtn {
+      width: 100%;
+      background: #087f5b;
+      color: white;
+      margin-top: 10px;
+    }
+
+    #logoutBtn {
+      background: #dc3545;
+      color: white;
+      float: right;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 15px;
+      color: #dc3545;
+    }
+
+    #adminPanel {
+      display: none;
+    }
+
+    .container {
+      width: 94%;
+      max-width: 1200px;
+      margin: 25px auto;
+    }
+
+    .topbar {
+      background: white;
+      padding: 18px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 12px #ddd;
+      overflow: hidden;
+    }
+
+    .topbar h2 {
+      color: #087f5b;
+      margin-bottom: 7px;
+    }
+
+    .email {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px #ddd;
+      text-align: center;
+    }
+
+    .card h3 {
+      font-size: 30px;
+      color: #087f5b;
+      margin-bottom: 5px;
+    }
+
+    .card p {
+      color: #666;
+    }
+
+    .ordersBox {
+      background: white;
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px #ddd;
+    }
+
+    .ordersBox h2 {
+      color: #087f5b;
+      margin-bottom: 15px;
+    }
+
+    .order {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      background: #fafafa;
+    }
+
+    .order strong {
+      color: #087f5b;
+    }
+
+    .order p {
+      margin: 6px 0;
+      line-height: 1.4;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 20px;
+      background: #fff3cd;
+      color: #856404;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 30px;
+      color: #777;
+    }
+
+    .refresh {
+      background: #087f5b;
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    @media(max-width:600px) {
+      header h1 {
+        font-size: 18px;
+      }
+
+      .container {
+        width: 94%;
+      }
+
+      #logoutBtn {
+        margin-top: -5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>💊 Online Medicine Doorstep Delivery</h1>
+  <p>Admin Panel</p>
+</header>
+
+
+<!-- LOGIN -->
+<div id="loginBox">
+
+  <h2>🔐 Admin Login</h2>
+
+  <input
+    type="email"
+    id="email"
+    placeholder="Admin Email"
+    autocomplete="email"
+  >
+
+  <input
+    type="password"
+    id="password"
+    placeholder="Password"
+    autocomplete="current-password"
+  >
+
+  <button id="loginBtn">
+    Login
+  </button>
+
+  <div id="message"></div>
+
+</div>
+
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+
+  <div class="container">
+
+    <div class="topbar">
+
+      <button id="logoutBtn">
+        Logout
+      </button>
+
+      <h2>📊 Admin Dashboard</h2>
+
+      <div class="email">
+        Logged in as: <span id="adminEmail"></span>
+      </div>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <div class="cards">
+
+      <div class="card">
+        <h3 id="totalOrders">0</h3>
+        <p>Total Orders</p>
+      </div>
+
+      <div class="card">
+        <h3 id="pendingOrders">0</h3>
+        <p>Pending</p>
+      </div>
+
+      <div class="card">
+        <h3 id="confirmedOrders">0</h3>
+        <p>Confirmed</p>
+      </div>
+
+      <div class="card">
+        <h3 id="deliveredOrders">0</h3>
+        <p>Delivered</p>
+      </div>
+
+    </div>
+
+
+    <!-- ORDERS -->
+
+    <div class="ordersBox">
+
+      <h2>📦 Customer Orders</h2>
+
+      <button class="refresh" id="refreshBtn">
+        🔄 Refresh Orders
+      </button>
+
+      <div id="orders">
+        <div class="empty">
+          Loading orders...
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- FIREBASE -->
+
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.firebasestorage.app",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
+  import {
+    initializeApp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+  import {
+    getAuth,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-const ADMIN_EMAIL = "abhijit123kar12@gmail.com";
+  import {
+    getFirestore,
+    collection,
+    getDocs,
+    query,
+    orderBy
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// Admin login
-async function adminLogin() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
 
-  if (email !== ADMIN_EMAIL) {
-    alert("Only Admin can login!");
-    return;
+  /* =====================================================
+     FIREBASE CONFIG
+     =====================================================
+
+     এখানে আপনার Firebase Console-এর আসল config বসাবেন.
+  */
+
+  const firebaseConfig = {
+
+    apiKey: "YOUR_API_KEY",
+
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+
+    projectId: "YOUR_PROJECT_ID",
+
+    storageBucket: "YOUR_PROJECT.firebasestorage.app",
+
+    messagingSenderId: "YOUR_SENDER_ID",
+
+    appId: "YOUR_APP_ID"
+
+  };
+
+
+  /* =====================================================
+     ADMIN EMAIL
+     ===================================================== */
+
+  const ADMIN_EMAIL = "abhijit123kar12@gmail.com";
+
+
+  /* =====================================================
+     FIREBASE START
+     ===================================================== */
+
+  const app = initializeApp(firebaseConfig);
+
+  const auth = getAuth(app);
+
+  const db = getFirestore(app);
+
+
+  /* =====================================================
+     ELEMENTS
+     ===================================================== */
+
+  const loginBox = document.getElementById("loginBox");
+
+  const adminPanel = document.getElementById("adminPanel");
+
+  const emailInput = document.getElementById("email");
+
+  const passwordInput = document.getElementById("password");
+
+  const loginBtn = document.getElementById("loginBtn");
+
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  const message = document.getElementById("message");
+
+  const adminEmail = document.getElementById("adminEmail");
+
+  const ordersDiv = document.getElementById("orders");
+
+  const refreshBtn = document.getElementById("refreshBtn");
+
+
+  /* =====================================================
+     LOGIN
+     ===================================================== */
+
+  loginBtn.addEventListener("click", async () => {
+
+    const email = emailInput.value.trim();
+
+    const password = passwordInput.value;
+
+    message.textContent = "";
+
+    if (!email || !password) {
+
+      message.textContent =
+        "Please enter email and password.";
+
+      return;
+    }
+
+
+    if (email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
+
+      message.textContent =
+        "❌ This email is not authorized as admin.";
+
+      return;
+    }
+
+
+    loginBtn.disabled = true;
+
+    loginBtn.textContent = "Logging in...";
+
+
+    try {
+
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+    } catch (error) {
+
+      console.error(error);
+
+      message.textContent =
+        "❌ Login failed: " + error.message;
+
+      loginBtn.disabled = false;
+
+      loginBtn.textContent = "Login";
+
+    }
+
+  });
+
+
+  /* =====================================================
+     AUTH STATE
+     ===================================================== */
+
+  onAuthStateChanged(auth, async (user) => {
+
+    if (user) {
+
+      /* Admin email verification */
+
+      if (
+        user.email.toLowerCase() !==
+        ADMIN_EMAIL.toLowerCase()
+      ) {
+
+        await signOut(auth);
+
+        message.textContent =
+          "❌ You are not authorized.";
+
+        return;
+      }
+
+
+      /* Show admin panel */
+
+      loginBox.style.display = "none";
+
+      adminPanel.style.display = "block";
+
+      adminEmail.textContent = user.email;
+
+
+      /* Load orders */
+
+      loadOrders();
+
+    } else {
+
+      loginBox.style.display = "block";
+
+      adminPanel.style.display = "none";
+
+    }
+
+  });
+
+
+  /* =====================================================
+     LOGOUT
+     ===================================================== */
+
+  logoutBtn.addEventListener("click", async () => {
+
+    await signOut(auth);
+
+    location.reload();
+
+  });
+
+
+  /* =====================================================
+     LOAD ORDERS
+     ===================================================== */
+
+  async function loadOrders() {
+
+    ordersDiv.innerHTML =
+      '<div class="empty">Loading orders...</div>';
+
+    try {
+
+      const ordersRef = collection(db, "orders");
+
+      let snapshot;
+
+      try {
+
+        const q = query(
+          ordersRef,
+          orderBy("createdAt", "desc")
+        );
+
+        snapshot = await getDocs(q);
+
+      } catch (error) {
+
+        /* If createdAt does not exist */
+
+        snapshot = await getDocs(ordersRef);
+
+      }
+
+
+      let total = 0;
+
+      let pending = 0;
+
+      let confirmed = 0;
+
+      let delivered = 0;
+
+
+      ordersDiv.innerHTML = "";
+
+
+      if (snapshot.empty) {
+
+        ordersDiv.innerHTML = `
+          <div class="empty">
+            📦 No orders received yet.
+          </div>
+        `;
+
+        updateStats(0, 0, 0, 0);
+
+        return;
+      }
+
+
+      snapshot.forEach((doc) => {
+
+        const order = doc.data();
+
+        total++;
+
+
+        const status =
+          order.status || "Pending";
+
+
+        if (
+          status.toLowerCase() === "pending"
+        ) {
+
+          pending++;
+
+        } else if (
+          status.toLowerCase() === "confirmed"
+        ) {
+
+          confirmed++;
+
+        } else if (
+          status.toLowerCase() === "delivered"
+        ) {
+
+          delivered++;
+
+        }
+
+
+        const orderDiv =
+          document.createElement("div");
+
+        orderDiv.className = "order";
+
+
+        orderDiv.innerHTML = `
+
+          <p>
+            <strong>Order ID:</strong>
+            ${escapeHTML(doc.id)}
+          </p>
+
+          <p>
+            <strong>Customer:</strong>
+            ${escapeHTML(
+              order.name ||
+              order.customerName ||
+              "Not provided"
+            )}
+          </p>
+
+          <p>
+            <strong>Phone:</strong>
+            ${escapeHTML(
+              order.phone ||
+              order.mobile ||
+              "Not provided"
+            )}
+          </p>
+
+          <p>
+            <strong>Address:</strong>
+            ${escapeHTML(
+              order.address ||
+              "Not provided"
+            )}
+          </p>
+
+          <p>
+            <strong>Medicine:</strong>
+            ${escapeHTML(
+              order.medicine ||
+              order.medicines ||
+              order.items ||
+              "Not provided"
+            )}
+          </p>
+
+          <p>
+            <strong>Amount:</strong>
+            ₹${escapeHTML(
+              String(
+                order.total ||
+                order.amount ||
+                "0"
+              )
+            )}
+          </p>
+
+          <span class="status">
+            ${escapeHTML(status)}
+          </span>
+
+        `;
+
+
+        ordersDiv.appendChild(orderDiv);
+
+      });
+
+
+      updateStats(
+        total,
+        pending,
+        confirmed,
+        delivered
+      );
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      ordersDiv.innerHTML = `
+        <div class="empty">
+          ❌ Unable to load orders.<br><br>
+          Check Firebase Firestore Rules.
+        </div>
+      `;
+
+    }
+
   }
 
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-  } catch (error) {
-    alert(error.message);
+
+  /* =====================================================
+     UPDATE STATS
+     ===================================================== */
+
+  function updateStats(
+    total,
+    pending,
+    confirmed,
+    delivered
+  ) {
+
+    document.getElementById(
+      "totalOrders"
+    ).textContent = total;
+
+    document.getElementById(
+      "pendingOrders"
+    ).textContent = pending;
+
+    document.getElementById(
+      "confirmedOrders"
+    ).textContent = confirmed;
+
+    document.getElementById(
+      "deliveredOrders"
+    ).textContent = delivered;
+
   }
-}
 
-// Check Admin
-onAuthStateChanged(auth, (user) => {
-  if (user && user.email === ADMIN_EMAIL) {
-    document.getElementById("loginBox").style.display = "none";
-    document.getElementById("adminPanel").style.display = "block";
-  } else {
-    document.getElementById("loginBox").style.display = "block";
-    document.getElementById("adminPanel").style.display = "none";
+
+  /* =====================================================
+     SECURITY: HTML ESCAPE
+     ===================================================== */
+
+  function escapeHTML(value) {
+
+    return String(value)
+
+      .replaceAll("&", "&amp;")
+
+      .replaceAll("<", "&lt;")
+
+      .replaceAll(">", "&gt;")
+
+      .replaceAll('"', "&quot;")
+
+      .replaceAll("'", "&#039;");
+
   }
-});
 
-window.adminLogin = adminLogin;
 
-window.logout = () => signOut(auth);
+  /* =====================================================
+     REFRESH
+     ===================================================== */
 
-const firebaseConfig = {
-  apiKey: "আপনার আসল API KEY",
-  authDomain: "medicine-doorstep-delivery.firebaseapp.com",
-  projectId: "medicine-doorstep-delivery",
-  storageBucket: "medicine-doorstep-delivery.firebasestorage.app",
-  messagingSenderId: "703468135334",
-  appId: "1:703468135334:web:e1e7040b5426f93f71a567"
-};
+  refreshBtn.addEventListener(
+    "click",
+    loadOrders
+  );
 
-const ADMIN_EMAIL = "abhijit123kar12@gmail.com";</script>
+</script>
+
+</body>
+</html>
