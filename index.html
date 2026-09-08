@@ -943,3 +943,283 @@ Please confirm my order.`;
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Doorstep</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #222;
+        }
+
+        header {
+            background: #0b8f55;
+            color: white;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .cart {
+            background: white;
+            color: #0b8f55;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: white;
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px 0 0 8px;
+            font-size: 16px;
+        }
+
+        .search-box button {
+            padding: 15px 25px;
+            border: none;
+            background: #0b8f55;
+            color: white;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+        }
+
+        .section {
+            padding: 30px 5%;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+        }
+
+        .medicines {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .medicine {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .medicine h3 {
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: #0b8f55;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .medicine button {
+            width: 100%;
+            padding: 10px;
+            background: #0b8f55;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .tracking {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .status {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .step {
+            flex: 1;
+            color: #aaa;
+        }
+
+        .step.active {
+            color: #0b8f55;
+            font-weight: bold;
+        }
+
+        .step span {
+            display: block;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">💊 Medicine Doorstep</div>
+    <div class="cart">🛒 Cart: <span id="cartCount">0</span></div>
+</header>
+
+<section class="hero">
+    <h1>Medicine Delivered to Your Doorstep</h1>
+    <p>Order medicines easily and get fast home delivery.</p>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search medicine...">
+        <button onclick="searchMedicine()">Search</button>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Popular Medicines</h2>
+
+    <div class="medicines">
+
+        <div class="medicine">
+            <h3>Paracetamol</h3>
+            <p>500mg Tablet</p>
+            <div class="price">₹25</div>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+
+        <div class="medicine">
+            <h3>Vitamin C</h3>
+            <p>Tablets</p>
+            <div class="price">₹120</div>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+
+        <div class="medicine">
+            <h3>ORS</h3>
+            <p>Oral Rehydration</p>
+            <div class="price">₹30</div>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+
+        <div class="medicine">
+            <h3>Antacid</h3>
+            <p>Tablets</p>
+            <div class="price">₹60</div>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h2>📦 Track Your Order</h2>
+
+    <div class="tracking">
+
+        <p><b>Order ID:</b> #1001</p>
+
+        <div class="status">
+
+            <div class="step active">
+                <span>✓</span>
+                Order Placed
+            </div>
+
+            <div class="step active">
+                <span>⚙️</span>
+                Processing
+            </div>
+
+            <div class="step active">
+                <span>🚚</span>
+                Out for Delivery
+            </div>
+
+            <div class="step">
+                <span>✓</span>
+                Delivered
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    © 2026 Medicine Doorstep | Fast & Reliable Delivery
+</footer>
+
+<script>
+
+    let cartCount = 0;
+
+    function addToCart() {
+        cartCount++;
+        document.getElementById("cartCount").innerText = cartCount;
+        alert("Medicine added to cart!");
+    }
+
+    function searchMedicine() {
+
+        let medicine = document.getElementById("searchInput").value;
+
+        if (medicine === "") {
+            alert("Please enter medicine name.");
+        } else {
+            alert("Searching for: " + medicine);
+        }
+
+    }
+
+</script>
+
+</body>
+</html>
