@@ -156,7 +156,63 @@
       margin-bottom: 15px;
       background: #fafafa;
     }
+.order-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
 
+.order-actions button {
+  color: white;
+  font-weight: bold;
+}
+
+.confirm-btn {
+  background: #198754;
+}
+
+.delivery-btn {
+  background: #0d6efd;
+}
+
+.delivered-btn {
+  background: #6f42c1;
+}
+
+.delete-btn {
+  background: #dc3545;
+}
+
+.order-actions button:active {
+  transform: scale(0.97);
+}
+
+.status.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status.confirmed {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.status.out {
+  background: #cfe2ff;
+  color: #084298;
+}
+
+.status.delivered {
+  background: #e2d9f3;
+  color: #432874;
+}
+
+@media(max-width:600px) {
+  .order-actions button {
+    flex: 1 1 45%;
+  }
+}
     .order strong {
       color: #087f5b;
     }
@@ -326,12 +382,15 @@
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
   import {
-    getFirestore,
-    collection,
-    getDocs,
-    query,
-    orderBy
-  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  orderBy,
+  doc,
+  deleteDoc,
+  updateDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
   /* =====================================================
@@ -671,7 +730,33 @@ const firebaseConfig = {
             ${escapeHTML(status)}
           </span>
 
-        `;
+        `;<div class="order-actions">
+
+  <button
+    class="confirm-btn"
+    onclick="updateDeliveryStatus('${doc.id}', 'Confirmed')">
+    ✅ Confirm Order
+  </button>
+
+  <button
+    class="delivery-btn"
+    onclick="updateDeliveryStatus('${doc.id}', 'Out for Delivery')">
+    🚚 Out for Delivery
+  </button>
+
+  <button
+    class="delivered-btn"
+    onclick="updateDeliveryStatus('${doc.id}', 'Delivered')">
+    📦 Delivered
+  </button>
+
+  <button
+    class="delete-btn"
+    onclick="deleteOrder('${doc.id}')">
+    🗑️ Delete Order
+  </button>
+
+</div>
 
 
         ordersDiv.appendChild(orderDiv);
