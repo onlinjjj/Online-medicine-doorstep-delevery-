@@ -1,1021 +1,891 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Online Medicine Delivery</title>
-
-  <style>
-    :root {
-      --blue: #064b91;
-      --dark-blue: #06376d;
-      --green: #079447;
-      --light-green: #e8f8ed;
-      --light-blue: #eaf5ff;
-      --text: #12365c;
-      --white: #ffffff;
-      --shadow: 0 5px 20px rgba(0, 50, 100, 0.12);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f7fbfd;
-      color: var(--text);
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button {
-      font-family: inherit;
-    }
-
-    /* ================= HEADER ================= */
-
-    .top-header {
-      background: white;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .header-inner {
-      max-width: 1250px;
-      margin: auto;
-      min-height: 88px;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .logo {
-      min-width: 280px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-icon {
-      width: 62px;
-      height: 62px;
-      border-radius: 12px;
-      background: linear-gradient(145deg, #078f4b, #0870ad);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 34px;
-      box-shadow: var(--shadow);
-    }
-
-    .logo-text {
-      line-height: 1;
-    }
-
-    .logo-text h1 {
-      font-size: 24px;
-      color: var(--blue);
-      font-weight: 800;
-    }
-
-    .logo-text h1 span {
-      color: var(--green);
-    }
-
-    .logo-text small {
-      display: block;
-      margin-top: 7px;
-      color: #31577c;
-      font-weight: bold;
-      font-size: 12px;
-      letter-spacing: .5px;
-    }
-
-    .location {
-      white-space: nowrap;
-      font-weight: bold;
-      color: var(--blue);
-      font-size: 16px;
-    }
-
-    .search-area {
-      flex: 1;
-      display: flex;
-      max-width: 520px;
-      border: 1px solid #ccd9e4;
-      border-radius: 15px;
-      overflow: hidden;
-      height: 48px;
-    }
-
-    .search-area input {
-      width: 100%;
-      border: none;
-      outline: none;
-      padding: 0 16px;
-      font-size: 14px;
-    }
-
-    .search-area button {
-      width: 58px;
-      border: none;
-      background: var(--blue);
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .order-phone {
-      color: var(--green);
-      font-weight: bold;
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    .order-phone strong {
-      display: block;
-      color: var(--blue);
-      font-size: 17px;
-    }
-
-    .header-action {
-      text-align: center;
-      color: var(--blue);
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    .cart-button {
-      position: relative;
-      cursor: pointer;
-    }
-
-    .cart-count {
-      position: absolute;
-      top: -9px;
-      right: -8px;
-      background: #e51d35;
-      color: white;
-      border-radius: 50%;
-      min-width: 20px;
-      height: 20px;
-      font-size: 11px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* ================= NAV ================= */
-
-    .nav {
-      background: var(--blue);
-      color: white;
-    }
-
-    .nav-inner {
-      max-width: 1250px;
-      margin: auto;
-      min-height: 50px;
-      display: flex;
-      align-items: center;
-    }
-
-    .categories-menu {
-      padding: 14px 25px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .hamburger {
-      font-size: 24px;
-      margin-right: 15px;
-    }
-
-    .nav-links {
-      display: flex;
-      height: 50px;
-    }
-
-    .nav-links a {
-      min-width: 125px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: bold;
-      position: relative;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      background: rgba(255,255,255,.08);
-    }
-
-    .nav-links a.active::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 25%;
-      right: 25%;
-      height: 4px;
-      background: #51e36c;
-    }
-
-    /* ================= HERO ================= */
-
-    .hero {
-      max-width: 1250px;
-      margin: 0 auto;
-      min-height: 390px;
-      padding: 40px 45px;
-      background:
-        radial-gradient(circle at 80% 50%, rgba(113, 230, 80, .45), transparent 28%),
-        linear-gradient(110deg, #f8ffff 0%, #eefaff 50%, #dffff0 100%);
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .hero-content {
-      width: 55%;
-      z-index: 2;
-    }
-
-    .hero-tag {
-      color: var(--green);
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .hero h2 {
-      color: var(--blue);
-      font-size: clamp(35px, 5vw, 61px);
-      line-height: 1.02;
-      margin-bottom: 15px;
-    }
-
-    .hero h2 span {
-      color: var(--green);
-    }
-
-    .hero-subtitle {
-      font-size: 23px;
-      color: #163d68;
-      font-weight: bold;
-      margin-bottom: 24px;
-    }
-
-    .hero-features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
-    .hero-feature {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-weight: bold;
-      color: #174873;
-    }
-
-    .hero-feature span {
-      color: var(--green);
-      font-size: 23px;
-    }
-
-    .shop-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 15px;
-      background: var(--green);
-      color: white;
-      padding: 14px 28px;
-      border-radius: 30px;
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-    }
-
-    .hero-art {
-      position: absolute;
-      right: 20px;
-      width: 43%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .phone {
-      width: 190px;
-      height: 325px;
-      background: white;
-      border: 9px solid #112e4f;
-      border-radius: 28px;
-      box-shadow: 0 15px 30px rgba(0,0,0,.2);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 2;
-    }
-
-    .phone-logo {
-      font-size: 48px;
-      margin-bottom: 12px;
-    }
-
-    .phone h3 {
-      text-align: center;
-      color: var(--blue);
-      font-size: 20px;
-    }
-
-    .phone button {
-      margin-top: 20px;
-      border: none;
-      background: var(--green);
-      color: white;
-      border-radius: 25px;
-      padding: 12px 22px;
-      font-weight: bold;
-    }
-
-    .medicine-art {
-      position: absolute;
-      bottom: 45px;
-      left: 10px;
-      font-size: 62px;
-      z-index: 3;
-    }
-
-    .delivery-art {
-      position: absolute;
-      right: 0;
-      bottom: 40px;
-      font-size: 105px;
-    }
-
-    /* ================= OFFER ================= */
-
-    .offer {
-      max-width: 1210px;
-      margin: 12px auto;
-      min-height: 120px;
-      padding: 15px 30px;
-      border-radius: 17px;
-      background: linear-gradient(90deg, #ffe9ed, #e8ffe8);
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 20px;
-      align-items: center;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .offer-red {
-      color: #e1163e;
-      font-size: 38px;
-      font-weight: 900;
-    }
-
-    .offer-green {
-      color: #087d45;
-      font-size: 25px;
-      font-weight: 900;
-    }
-
-    .offer-code {
-      border: 3px solid #298b60;
-      border-radius: 15px;
-      padding: 15px;
-      color: #087d45;
-      font-weight: bold;
-      font-size: 18px;
-    }
-
-    /* ================= SECTION ================= */
-
-    .section {
-      max-width: 1210px;
-      margin: 35px auto;
-      padding: 0 15px;
-    }
-
-    .section-title {
-      text-align: center;
-      color: var(--blue);
-      font-size: 30px;
-      margin-bottom: 22px;
-      font-weight: 800;
-    }
-
-    .section-title::before,
-    .section-title::after {
-      content: "";
-      display: inline-block;
-      vertical-align: middle;
-      width: 100px;
-      height: 2px;
-      background: #4c9d78;
-      margin: 0 15px;
-    }
-
-    /* ================= CATEGORIES ================= */
-
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      gap: 8px;
-    }
-
-    .category {
-      min-height: 120px;
-      padding: 12px 5px;
-      border-radius: 12px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      cursor: pointer;
-      transition: .2s;
-      font-weight: bold;
-      color: #173e66;
-    }
-
-    .category:nth-child(odd) {
-      background: #e8f7ff;
-    }
-
-    .category:nth-child(even) {
-      background: #eaf9f0;
-    }
-
-    .category:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
-    }
-
-    .category-icon {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
-
-    /* ================= MEDICINES ================= */
-
-    .medicine-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .medicine-card {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: var(--shadow);
-      border: 1px solid #e3edf3;
-    }
-
-    .medicine-icon {
-      width: 70px;
-      height: 70px;
-      margin: auto;
-      border-radius: 50%;
-      background: #e9f7ef;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 37px;
-    }
-
-    .medicine-card h3 {
-      margin-top: 14px;
-      color: var(--blue);
-      text-align: center;
-    }
-
-    .medicine-card p {
-      text-align: center;
-      color: #667b8e;
-      margin: 7px 0 15px;
-      min-height: 35px;
-    }
-
-    .medicine-card button {
-      width: 100%;
-      border: none;
-      background: var(--green);
-      color: white;
-      padding: 11px;
-      border-radius: 25px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    /* Deliberately no medicine prices/rates */
-
-    /* ================= WHY US ================= */
-
-    .why-us {
-      background: #eaf6ff;
-      border-radius: 18px;
-      padding: 25px 15px;
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .why-item {
-      text-align: center;
-      padding: 10px 20px;
-      border-right: 1px solid #cbdce9;
-    }
-
-    .why-item:last-child {
-      border: none;
-    }
-
-    .why-icon {
-      width: 60px;
-      height: 60px;
-      margin: auto;
-      border-radius: 50%;
-      background: #079467;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      margin-bottom: 12px;
-    }
-
-    .why-item h3 {
-      color: #16446f;
-      font-size: 16px;
-    }
-
-    /* ================= CART ================= */
-
-    .cart-box,
-    .order-box {
-      background: white;
-      border-radius: 18px;
-      padding: 25px;
-      box-shadow: var(--shadow);
-    }
-
-    .cart-empty {
-      text-align: center;
-      color: #718496;
-      padding: 25px;
-    }
-
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 5px;
-      border-bottom: 1px solid #e5e9ed;
-      gap: 15px;
-    }
-
-    .cart-item-name {
-      font-weight: bold;
-      color: var(--blue);
-    }
-
-    .qty {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .qty button {
-      width: 32px;
-      height: 32px;
-      border: none;
-      border-radius: 8px;
-      background: var(--blue);
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    .remove-btn {
-      border: none;
-      background: #e74c3c;
-      color: white;
-      padding: 7px 11px;
-      border-radius: 7px;
-      cursor: pointer;
-    }
-
-    .cart-bottom {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .clear-btn {
-      background: #e74c3c;
-      color: white;
-      border: none;
-      padding: 11px 18px;
-      border-radius: 25px;
-      cursor: pointer;
-    }
-
-    /* ================= ORDER ================= */
-
-    .order-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 25px;
-    }
-
-    .form-title {
-      color: var(--blue);
-      margin-bottom: 18px;
-      font-size: 22px;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 6px;
-      color: #315674;
-      font-weight: bold;
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #ccd9e2;
-      border-radius: 9px;
-      outline: none;
-      font-size: 15px;
-    }
-
-    .form-group textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--blue);
-    }
-
-    .upload-box {
-      border: 2px dashed #6cb58f;
-      background: #f1fbf5;
-      border-radius: 12px;
-      padding: 18px;
-      text-align: center;
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 15px;
-      background: var(--green);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    /* ================= CONFIRMATION ================= */
-
-    .confirmation {
-      display: none;
-      margin-top: 25px;
-      background: #e8fff0;
-      border: 2px solid var(--green);
-      border-radius: 18px;
-      padding: 30px;
-      text-align: center;
-    }
-
-    .confirmation-icon {
-      font-size: 55px;
-    }
-
-    .confirmation h2 {
-      color: var(--green);
-      margin: 10px;
-    }
-
-    .order-id {
-      display: inline-block;
-      background: white;
-      padding: 12px 25px;
-      border-radius: 8px;
-      color: var(--blue);
-      font-weight: bold;
-      font-size: 20px;
-      margin: 10px;
-    }
-
-    /* ================= FOOTER ================= */
-
-    footer {
-      background: var(--dark-blue);
-      color: white;
-      margin-top: 50px;
-    }
-
-    .footer-main {
-      max-width: 1250px;
-      margin: auto;
-      padding: 35px 20px;
-      display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr 1fr;
-      gap: 25px;
-    }
-
-    .footer-logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .footer-logo span {
-      color: #55d56e;
-    }
-
-    .footer-main h3 {
-      margin-bottom: 15px;
-    }
-
-    .footer-main p {
-      margin: 8px 0;
-      color: #e0edf9;
-    }
-
-    .footer-links a {
-      display: block;
-      margin: 8px 0;
-      color: #dbeaf7;
-    }
-
-    .social {
-      display: flex;
-      gap: 10px;
-      font-size: 25px;
-    }
-
-    .copyright {
-      border-top: 1px solid rgba(255,255,255,.2);
-      padding: 15px;
-      text-align: center;
-      color: #d5e4f2;
-    }
-
-    /* ================= FLOATING BUTTONS ================= */
-
-    .floating-buttons {
-      position: fixed;
-      bottom: 20px;
-      right: 18px;
-      z-index: 200;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .float-btn {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 23px;
-      box-shadow: 0 5px 15px rgba(0,0,0,.25);
-    }
-
-    .whatsapp {
-      background: #20c863;
-    }
-
-    .phone-float {
-      background: var(--blue);
-    }
-
-    /* ================= RESPONSIVE ================= */
-
-    @media (max-width: 1100px) {
-
-      .header-inner {
-        flex-wrap: wrap;
-      }
-
-      .logo {
-        min-width: auto;
-      }
-
-      .search-area {
-        order: 5;
-        max-width: 100%;
-        flex-basis: 100%;
-      }
-
-      .category-grid {
-        grid-template-columns: repeat(5, 1fr);
-      }
-
-      .medicine-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 800px) {
-
-      .header-inner {
-        padding: 10px;
-      }
-
-      .location,
-      .order-phone {
-        display: none;
-      }
-
-      .logo-text h1 {
-        font-size: 19px;
-      }
-
-      .logo-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 27px;
-      }
-
-      .header-actions {
-        margin-left: auto;
-      }
-
-      .nav-inner {
-        overflow-x: auto;
-      }
-
-      .categories-menu {
-        padding: 14px;
-        white-space: nowrap;
-      }
-
-      .nav-links a {
-        min-width: 90px;
-      }
-
-      .hero {
-        min-height: 500px;
-        padding: 30px 20px;
-      }
-
-      .hero-content {
-        width: 100%;
-      }
-
-      .hero h2 {
-        font-size: 39px;
-      }
-
-      .hero-art {
-        opacity: .18;
-        width: 100%;
-        right: 0;
-      }
-
-      .offer {
-        grid-template-columns: 1fr;
-        padding: 20px;
-      }
-
-      .category-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .medicine-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .why-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .why-item {
-        border-right: none;
-        border-bottom: 1px solid #cbdce9;
-        padding: 20px 10px;
-      }
-
-      .order-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-main {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 500px) {
-
-      .header-actions {
-        gap: 8px;
-      }
-
-      .header-action {
-        font-size: 12px;
-      }
-
-      .hero {
-        min-height: 470px;
-      }
-
-      .hero h2 {
-        font-size: 34px;
-      }
-
-      .hero-subtitle {
-        font-size: 18px;
-      }
-
-      .hero-features {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .category-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .medicine-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .why-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-main {
-        grid-template-columns: 1fr;
-      }
-
-      .cart-item {
-        flex-wrap: wrap;
-      }
-
-      .cart-bottom {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .section-title {
-        font-size: 24px;
-      }
-
-      .section-title::before,
-      .section-title::after {
-        width: 30px;
-        margin: 0 6px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Online Medicine Delivery</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#fff;
+    color:#123b78;
+}
+
+/* ================= HEADER ================= */
+
+.top-header{
+    min-height:92px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:8px 28px;
+    background:#fff;
+    border-bottom:1px solid #ddd;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    min-width:315px;
+}
+
+.logo-symbol{
+    width:62px;
+    height:62px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#079548,#76d735);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:37px;
+    margin-right:9px;
+}
+
+.logo-title{
+    color:#073b7b;
+    font-size:25px;
+    line-height:22px;
+    font-weight:800;
+}
+
+.logo-title span{
+    color:#079548;
+}
+
+.tagline{
+    font-size:12px;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.location{
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.search-box{
+    height:48px;
+    flex:1;
+    display:flex;
+    max-width:410px;
+    border:1px solid #ccd7e0;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.search-box input{
+    flex:1;
+    border:0;
+    outline:0;
+    padding:0 15px;
+    font-size:14px;
+}
+
+.search-box button{
+    width:58px;
+    border:0;
+    background:#07549b;
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.order-now{
+    color:#079548;
+    font-weight:bold;
+    text-align:center;
+    white-space:nowrap;
+}
+
+.order-number{
+    display:block;
+    color:#123b78;
+    font-size:17px;
+}
+
+.login{
+    text-align:center;
+    white-space:nowrap;
+    font-size:13px;
+}
+
+.cart{
+    background:#fff;
+    border:0;
+    cursor:pointer;
+    color:#123b78;
+    font-weight:bold;
+    position:relative;
+}
+
+.cart-icon{
+    font-size:27px;
+}
+
+.cart-count{
+    position:absolute;
+    top:-5px;
+    right:-7px;
+    background:#e21b2d;
+    color:#fff;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:10px;
+}
+
+/* ================= NAV ================= */
+
+.navbar{
+    height:54px;
+    background:#07549b;
+    display:flex;
+    align-items:center;
+    overflow-x:auto;
+}
+
+.navbar a{
+    color:#fff;
+    text-decoration:none;
+    height:54px;
+    display:flex;
+    align-items:center;
+    padding:0 25px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.navbar a:hover{
+    background:#0968bb;
+}
+
+.menu{
+    font-size:27px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:410px;
+    padding:35px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:
+    radial-gradient(circle at 70% 45%,#dff9d7,#f4ffff 32%,#fff 72%);
+}
+
+.hero-content{
+    width:54%;
+}
+
+.trusted{
+    color:#078b48;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.hero h1{
+    color:#073b7b;
+    font-size:50px;
+    line-height:1.05;
+}
+
+.hero h1 span{
+    color:#079548;
+}
+
+.hero-subtitle{
+    font-size:23px;
+    font-weight:bold;
+    margin:16px 0 24px;
+}
+
+.hero-features{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.hero-feature{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.feature-icon{
+    width:39px;
+    height:39px;
+    border-radius:50%;
+    background:#e5f8ea;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:21px;
+}
+
+.shop-btn{
+    border:0;
+    background:#12a74e;
+    color:white;
+    padding:15px 32px;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.hero-visual{
+    width:43%;
+    min-height:350px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.green-circle{
+    width:335px;
+    height:335px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#a4ee70,#0baa4c);
+    position:absolute;
+}
+
+.phone{
+    position:relative;
+    z-index:3;
+    width:190px;
+    height:310px;
+    background:white;
+    border:9px solid #102f4d;
+    border-radius:30px;
+    padding:45px 10px 10px;
+    text-align:center;
+    box-shadow:0 12px 30px #0003;
+}
+
+.phone-notch{
+    position:absolute;
+    top:-2px;
+    left:55px;
+    width:70px;
+    height:20px;
+    background:#102f4d;
+    border-radius:0 0 12px 12px;
+}
+
+.phone-logo{
+    width:55px;
+    height:55px;
+    margin:auto;
+    border-radius:10px;
+    background:linear-gradient(135deg,#079548,#76d735);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+}
+
+.phone h2{
+    margin:12px 0 20px;
+    font-size:20px;
+    line-height:20px;
+}
+
+.phone button{
+    border:0;
+    background:#13a84e;
+    color:white;
+    padding:11px 20px;
+    border-radius:25px;
+    font-weight:bold;
+}
+
+.rider{
+    position:absolute;
+    right:0;
+    bottom:10px;
+    font-size:95px;
+    z-index:4;
+}
+
+/* ================= OFFER ================= */
+
+.offer{
+    margin:8px 20px;
+    min-height:145px;
+    border-radius:15px;
+    background:linear-gradient(90deg,#f5ffe9,#e5ffe9);
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    gap:20px;
+    padding:15px;
+    text-align:center;
+}
+
+.discount{
+    color:#e51435;
+    font-size:29px;
+    font-weight:900;
+}
+
+.discount strong{
+    color:#ffd000;
+    font-size:58px;
+}
+
+.delivery-offer{
+    color:#087d43;
+    font-size:25px;
+    font-weight:900;
+}
+
+.coupon{
+    border:2px solid #159548;
+    border-radius:15px;
+    padding:14px 24px;
+    color:#087d43;
+    font-size:18px;
+    font-weight:bold;
+}
+
+/* ================= TITLES ================= */
+
+.section-title{
+    text-align:center;
+    color:#123b78;
+    font-size:29px;
+    margin:22px 0 15px;
+}
+
+.section-title:before,
+.section-title:after{
+    content:"";
+    display:inline-block;
+    width:100px;
+    height:2px;
+    background:#4e9d83;
+    vertical-align:middle;
+    margin:0 18px;
+}
+
+/* ================= CATEGORY ================= */
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(10,1fr);
+    gap:8px;
+    padding:0 20px;
+}
+
+.category{
+    min-height:125px;
+    background:#edf9ff;
+    border-radius:10px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:8px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.category:hover{
+    transform:translateY(-4px);
+    box-shadow:0 5px 15px #0001;
+}
+
+.category-icon{
+    font-size:40px;
+    margin-bottom:8px;
+}
+
+.category-name{
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* ================= WHY ================= */
+
+.why{
+    margin:22px 20px;
+    background:#edf8ff;
+    border-radius:12px;
+    padding-bottom:15px;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.why-item{
+    min-height:80px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    text-align:center;
+    border-right:1px solid #c6d8e3;
+}
+
+.why-item:last-child{
+    border-right:0;
+}
+
+.why-icon{
+    width:58px;
+    height:58px;
+    background:#0b9860;
+    border-radius:50%;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:27px;
+}
+
+/* ================= ORDER ================= */
+
+.order-section{
+    max-width:900px;
+    margin:35px auto;
+    padding:30px;
+    border-radius:18px;
+    background:#f2fff7;
+    border:2px dashed #159548;
+}
+
+.order-section h2{
+    text-align:center;
+    color:#07549b;
+    font-size:29px;
+}
+
+.order-subtitle{
+    text-align:center;
+    color:#555;
+    margin:8px 0 22px;
+}
+
+.order-form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.order-form input,
+.order-form textarea,
+.order-form select{
+    width:100%;
+    padding:14px;
+    border:1px solid #ccd8e2;
+    border-radius:8px;
+    outline:none;
+    font-size:14px;
+    background:#fff;
+}
+
+.order-form textarea{
+    min-height:90px;
+    resize:vertical;
+    grid-column:1/-1;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+.upload-area{
+    grid-column:1/-1;
+    border:2px dashed #159548;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    background:#fff;
+}
+
+.upload-label{
+    display:inline-block;
+    padding:13px 25px;
+    background:#07549b;
+    color:white;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+#prescriptionFile{
+    display:none;
+}
+
+.file-name{
+    margin-top:10px;
+    color:#079548;
+    font-weight:bold;
+}
+
+.preview{
+    display:none;
+    max-width:250px;
+    max-height:200px;
+    margin:15px auto 0;
+    border-radius:10px;
+}
+
+.submit-btn{
+    grid-column:1/-1;
+    border:0;
+    background:#12a74e;
+    color:white;
+    padding:16px;
+    border-radius:28px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.submit-btn:hover{
+    background:#078b40;
+}
+
+/* ================= ORDER RECEIVED ================= */
+
+.order-received{
+    display:none;
+    max-width:900px;
+    margin:30px auto;
+    padding:35px 25px;
+    border-radius:18px;
+    background:#effff5;
+    border:2px solid #16a052;
+    text-align:center;
+}
+
+.success-icon{
+    width:75px;
+    height:75px;
+    margin:auto;
+    border-radius:50%;
+    background:#13a84e;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:40px;
+}
+
+.order-received h2{
+    color:#078b48;
+    margin:15px 0 7px;
+}
+
+.order-id{
+    display:inline-block;
+    background:#07549b;
+    color:white;
+    padding:9px 18px;
+    border-radius:20px;
+    font-weight:bold;
+    margin:10px;
+}
+
+.received-details{
+    background:white;
+    border-radius:12px;
+    padding:18px;
+    text-align:left;
+    margin:18px 0;
+    line-height:1.8;
+}
+
+.whatsapp-btn{
+    display:inline-block;
+    background:#25D366;
+    color:white;
+    padding:14px 25px;
+    border-radius:28px;
+    text-decoration:none;
+    font-weight:bold;
+    margin:5px;
+}
+
+.new-order-btn{
+    border:0;
+    background:#07549b;
+    color:white;
+    padding:14px 25px;
+    border-radius:28px;
+    font-weight:bold;
+    cursor:pointer;
+    margin:5px;
+}
+
+/* ================= MY ORDERS ================= */
+
+.my-orders{
+    max-width:900px;
+    margin:25px auto;
+    padding:0 20px;
+}
+
+.my-orders h2{
+    text-align:center;
+    color:#07549b;
+    margin-bottom:15px;
+}
+
+.order-card{
+    background:#fff;
+    border:1px solid #d7e1e8;
+    border-radius:12px;
+    padding:16px;
+    margin-bottom:10px;
+    box-shadow:0 3px 12px #0000000d;
+}
+
+.order-card strong{
+    color:#07549b;
+}
+
+.status{
+    color:#079548;
+    font-weight:bold;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    margin-top:35px;
+    background:#063773;
+    color:white;
+}
+
+.footer-main{
+    padding:28px 4%;
+    display:grid;
+    grid-template-columns:2fr 1.3fr 1.3fr 1.3fr;
+    gap:25px;
+}
+
+.footer-logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.footer-symbol{
+    width:55px;
+    height:55px;
+    border-radius:10px;
+    background:linear-gradient(135deg,#079548,#76d735);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+}
+
+.footer-brand{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.footer-brand span{
+    color:#67d83c;
+}
+
+.footer-column h3{
+    margin-bottom:10px;
+}
+
+.footer-column p{
+    line-height:1.8;
+}
+
+.footer-bottom{
+    border-top:1px solid #ffffff40;
+    padding:13px 4%;
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1100px){
+
+    .logo{
+        min-width:250px;
+    }
+
+    .logo-title{
+        font-size:20px;
+    }
+
+    .categories{
+        grid-template-columns:repeat(5,1fr);
+    }
+
+    .location{
+        display:none;
+    }
+}
+
+@media(max-width:800px){
+
+    .top-header{
+        flex-wrap:wrap;
+        padding:10px 15px;
+    }
+
+    .logo{
+        width:100%;
+    }
+
+    .order-now,
+    .login{
+        display:none;
+    }
+
+    .search-box{
+        order:5;
+        width:100%;
+        max-width:none;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding:30px 18px;
+    }
+
+    .hero-content,
+    .hero-visual{
+        width:100%;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero-features{
+        justify-content:center;
+    }
+
+    .hero-visual{
+        margin-top:20px;
+    }
+
+    .offer{
+        flex-direction:column;
+    }
+
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .why-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .why-item{
+        border-bottom:1px solid #c6d8e3;
+    }
+
+    .footer-main{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:500px){
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .green-circle{
+        width:270px;
+        height:270px;
+    }
+
+    .phone{
+        width:165px;
+        height:275px;
+    }
+
+    .rider{
+        font-size:65px;
+    }
+
+    .section-title{
+        font-size:22px;
+    }
+
+    .section-title:before,
+    .section-title:after{
+        width:35px;
+        margin:0 7px;
+    }
+
+    .why-grid{
+        grid-template-columns:1fr;
+    }
+
+    .order-form{
+        grid-template-columns:1fr;
+    }
+
+    .order-form textarea,
+    .full,
+    .submit-btn{
+        grid-column:1;
+    }
+
+    .footer-main{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .footer-logo{
+        justify-content:center;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        gap:8px;
+        text-align:center;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -1024,68 +894,282 @@
 
 <header class="top-header">
 
-  <div class="header-inner">
+    <div class="logo">
+        <div class="logo-symbol">🌿</div>
 
-    <a href="#home" class="logo">
-      <div class="logo-icon">💊</div>
+        <div>
+            <div class="logo-title">
+                Online <span>Medicine</span><br>
+                Delivery
+            </div>
 
-      <div class="logo-text">
-        <h1>Online Medicine <span>Delivery</span></h1>
-        <small>Your Health • Our Priority</small>
-      </div>
-    </a>
+            <div class="tagline">
+                Your Health • Our Priority
+            </div>
+        </div>
+    </div>
 
     <div class="location">
-      📍 Narsingarh
+        📍 Narsingarh
     </div>
 
-    <div class="search-area">
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search for medicines, brands, health products..."
-        oninput="searchMedicines()">
+    <div class="search-box">
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="Search for medicines, brands, health products..."
+        >
 
-      <button onclick="searchMedicines()">🔎</button>
+        <button onclick="searchMedicine()">🔍</button>
     </div>
 
-    <div class="header-actions">
-
-      <a href="tel:6009415805" class="order-phone">
+    <div class="order-now">
         📞 Order Now
-        <strong>6009415805</strong>
-      </a>
-
-      <a href="#order" class="header-action">
-        👤<br>
-        Order
-      </a>
-
-      <a href="#cart" class="header-action cart-button">
-        🛒
-        <span class="cart-count" id="cartCount">0</span>
-        <br>
-        Cart
-      </a>
-
+        <span class="order-number">6009415805</span>
     </div>
 
-  </div>
+    <div class="login">
+        👤<br>
+        Login / Signup
+    </div>
+
+    <button class="cart" onclick="showOrders()">
+        <div class="cart-icon">🛒</div>
+        Cart
+        <span class="cart-count" id="cartCount">0</span>
+    </button>
 
 </header>
 
 
-<!-- ================= NAV ================= -->
+<!-- ================= NAVIGATION ================= -->
 
-<nav class="nav">
+<nav class="navbar">
 
-  <div class="nav-inner">
+    <a href="#" class="menu">☰</a>
 
-    <div class="categories-menu">
-      <span class="hamburger">☰</span>
-      All Categories ▾
+    <a href="#categories">All Categories⌄</a>
+
+    <a href="#home">Home</a>
+
+    <a href="#about">About Us</a>
+
+    <a href="#shop">Shop</a>
+
+    <a href="#offers">Offers</a>
+
+    <a href="#contact">Contact Us</a>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="trusted">
+            Trusted Online Pharmacy
+        </div>
+
+        <h1>
+            All Your Medicines
+            <br>
+            <span>at Your Doorstep</span>
+        </h1>
+
+        <div class="hero-subtitle">
+            Fast &nbsp; | &nbsp; Safe &nbsp; | &nbsp; Affordable
+        </div>
+
+        <div class="hero-features">
+
+            <div class="hero-feature">
+                <div class="feature-icon">✓</div>
+                Genuine<br>Medicines
+            </div>
+
+            <div class="hero-feature">
+                <div class="feature-icon">🚚</div>
+                Quick<br>Delivery
+            </div>
+
+            <div class="hero-feature">
+                <div class="feature-icon">📱</div>
+                Easy<br>Ordering
+            </div>
+
+            <div class="hero-feature">
+                <div class="feature-icon">🎧</div>
+                Expert<br>Support
+            </div>
+
+        </div>
+
+        <button class="shop-btn" onclick="goOrder()">
+            Shop Now →
+        </button>
+
     </div>
 
-    <div class="nav-links">
 
-      <a href="#home" class="
+    <div class="hero-visual">
+
+        <div class="green-circle"></div>
+
+        <div class="phone">
+
+            <div class="phone-notch"></div>
+
+            <div class="phone-logo">
+                🌿
+            </div>
+
+            <h2>
+                Online<br>
+                Medicine<br>
+                Delivery
+            </h2>
+
+            <button onclick="goOrder()">
+                Order Now
+            </button>
+
+        </div>
+
+        <div class="rider">
+            🛵
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= OFFER ================= -->
+
+<section class="offer" id="offers">
+
+    <div class="discount">
+        Get <strong>10%</strong>
+        <br>
+        DISCOUNT
+    </div>
+
+    <div class="delivery-offer">
+        🚚 FAST & RELIABLE
+        <br>
+        DELIVERY
+    </div>
+
+    <div class="coupon">
+        Use Code & Save More
+        <br>
+        <b>SAVE10</b>
+    </div>
+
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<h2 class="section-title">
+    Shop by Category
+</h2>
+
+<section class="categories" id="categories">
+
+    <div class="category" onclick="category('Pain Relief')">
+        <div class="category-icon">💊</div>
+        <div class="category-name">Pain Relief</div>
+    </div>
+
+    <div class="category" onclick="category('Fever & Cold')">
+        <div class="category-icon">🌡️</div>
+        <div class="category-name">Fever & Cold</div>
+    </div>
+
+    <div class="category" onclick="category('Diabetes Care')">
+        <div class="category-icon">🩸</div>
+        <div class="category-name">Diabetes Care</div>
+    </div>
+
+    <div class="category" onclick="category('Heart Care')">
+        <div class="category-icon">❤️</div>
+        <div class="category-name">Heart Care</div>
+    </div>
+
+    <div class="category" onclick="category('Vitamins')">
+        <div class="category-icon">💊</div>
+        <div class="category-name">Vitamins &<br>Supplements</div>
+    </div>
+
+    <div class="category" onclick="category('Skin Care')">
+        <div class="category-icon">🧴</div>
+        <div class="category-name">Skin Care</div>
+    </div>
+
+    <div class="category" onclick="category('Baby Care')">
+        <div class="category-icon">👶</div>
+        <div class="category-name">Baby Care</div>
+    </div>
+
+    <div class="category" onclick="category('Personal Care')">
+        <div class="category-icon">🧴</div>
+        <div class="category-name">Personal Care</div>
+    </div>
+
+    <div class="category" onclick="category('Health Devices')">
+        <div class="category-icon">🌡️</div>
+        <div class="category-name">Health Devices</div>
+    </div>
+
+    <div class="category" onclick="category('More')">
+        <div class="category-icon">⠿</div>
+        <div class="category-name">More</div>
+    </div>
+
+</section>
+
+
+<!-- ================= WHY CHOOSE US ================= -->
+
+<section class="why" id="about">
+
+    <h2 class="section-title">
+        Why Choose Us?
+    </h2>
+
+    <div class="why-grid">
+
+        <div class="why-item">
+            <div class="why-icon">✓</div>
+            <b>100% Genuine<br>Medicines</b>
+        </div>
+
+        <div class="why-item">
+            <div class="why-icon">🚚</div>
+            <b>Fast & Reliable<br>Home Delivery</b>
+        </div>
+
+        <div class="why-item">
+            <div class="why-icon">💳</div>
+            <b>Easy & Secure<br>Payment Options</b>
+        </div>
+
+        <div class="why-item">
+            <div class="why-icon">🎧</div>
+            <b>Dedicated Customer<br>Support</b>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ORDER FORM ================= -->
+
+<section class="order-section" id="shop">
+
+    <h2>
