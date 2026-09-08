@@ -1156,6 +1156,34 @@ Please confirm my order.`;
 });
 
 </script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+  const firebaseConfig = {
+    apiKey: "AIzaSyABmq9B4NEvgtsrJIEfUhjZOqMCjGGHfpI",
+    authDomain: "medicine-doorstep-delivery.firebaseapp.com",
+    projectId: "medicine-doorstep-delivery",
+    storageBucket: "medicine-doorstep-delivery.firebasestorage.app",
+    messagingSenderId: "703468135334",
+    appId: "1:703468135334:web:e1e7040b5426f93f71a567",
+    measurementId: "G-K3H1PQ6MKD"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window.db = db;
+  window.addDoc = addDoc;
+  window.collection = collection;
+  window.serverTimestamp = serverTimestamp;
+
+  console.log("Firebase Connected Successfully!");
+</script>
 </body>
 </html>
