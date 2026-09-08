@@ -399,6 +399,7 @@ footer strong{
 
 /* MOBILE */
 @media(max-width:900px){
+
     .hero{
         flex-direction:column;
         text-align:center;
@@ -432,6 +433,7 @@ footer strong{
 }
 
 @media(max-width:600px){
+
     .navbar{
         height:auto;
         padding:12px 15px;
@@ -501,18 +503,24 @@ footer strong{
 
 <!-- HEADER -->
 <header>
+
 <div class="navbar">
 
     <div class="logo">
+
         <div class="logo-icon">⚕</div>
+
         Medicine Doorstep
+
     </div>
 
     <nav>
+
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#order">Order</a>
         <a href="#contact">Contact</a>
+
     </nav>
 
     <a class="call-btn" href="tel:6009415805">
@@ -520,6 +528,7 @@ footer strong{
     </a>
 
 </div>
+
 </header>
 
 
@@ -544,6 +553,7 @@ footer strong{
         </p>
 
         <div class="hero-buttons">
+
             <a href="#order" class="primary-btn">
                 🛒 Order Medicine
             </a>
@@ -551,6 +561,7 @@ footer strong{
             <a href="tel:6009415805" class="secondary-btn">
                 ☎ Call Now
             </a>
+
         </div>
 
     </div>
@@ -566,8 +577,13 @@ footer strong{
 <section>
 
 <div class="section-title">
+
     <h2>Shop by Category</h2>
-    <p>Find the medicines and healthcare products you need.</p>
+
+    <p>
+        Find the medicines and healthcare products you need.
+    </p>
+
 </div>
 
 <div class="categories">
@@ -611,33 +627,62 @@ footer strong{
 <section>
 
 <div class="section-title">
+
     <h2>Why Choose Us?</h2>
+
 </div>
 
 <div class="features">
 
     <div class="feature">
+
         <div class="feature-icon">🚚</div>
+
         <h3>Doorstep Delivery</h3>
-        <p>Get your medicine delivered conveniently.</p>
+
+        <p>
+            Get your medicine delivered conveniently.
+        </p>
+
     </div>
 
+
     <div class="feature">
+
         <div class="feature-icon">📄</div>
+
         <h3>Prescription Upload</h3>
-        <p>Simply upload your prescription with your order.</p>
+
+        <p>
+            Simply upload your prescription with your order.
+        </p>
+
     </div>
 
+
     <div class="feature">
+
         <div class="feature-icon">💰</div>
+
         <h3>10% Discount</h3>
-        <p>Enjoy a special 10% discount on your order.</p>
+
+        <p>
+            Enjoy a special 10% discount on your order.
+        </p>
+
     </div>
 
+
     <div class="feature">
+
         <div class="feature-icon">📱</div>
+
         <h3>Easy Ordering</h3>
-        <p>Order easily using your mobile or computer.</p>
+
+        <p>
+            Order easily using your mobile or computer.
+        </p>
+
     </div>
 
 </div>
@@ -649,59 +694,123 @@ footer strong{
 <section id="order">
 
 <div class="section-title">
+
     <h2>Order Your Medicine</h2>
-    <p>Fill the form and send your order.</p>
+
+    <p>
+        Fill the form and send your order.
+    </p>
+
 </div>
+
 
 <div class="order-box">
 
 <form id="orderForm">
 
+
     <div class="form-group">
+
         <label>Full Name *</label>
-        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+            required
+        >
+
     </div>
 
+
     <div class="form-group">
+
         <label>Mobile Number *</label>
-        <input type="tel" id="mobile"
-               placeholder="Enter 10 digit mobile number"
-               pattern="[0-9]{10}" required>
+
+        <input
+            type="tel"
+            id="mobile"
+            placeholder="Enter 10 digit mobile number"
+            pattern="[0-9]{10}"
+            required
+        >
+
     </div>
 
+
     <div class="form-group">
+
         <label>Medicine / Product *</label>
-        <input type="text" id="medicine"
-               placeholder="Medicine name or product"
-               required>
+
+        <input
+            type="text"
+            id="medicine"
+            placeholder="Medicine name or product"
+            required
+        >
+
     </div>
 
+
     <div class="form-group">
+
         <label>Quantity</label>
-        <input type="number" id="quantity"
-               min="1" value="1">
+
+        <input
+            type="number"
+            id="quantity"
+            min="1"
+            value="1"
+        >
+
     </div>
 
+
     <div class="form-group">
+
         <label>Delivery Address *</label>
-        <textarea id="address"
-                  placeholder="Enter complete delivery address"
-                  required></textarea>
+
+        <textarea
+            id="address"
+            placeholder="Enter complete delivery address"
+            required
+        ></textarea>
+
     </div>
 
+
     <div class="form-group">
+
         <label>Delivery Status</label>
 
-        <select id="delivery" onchange="checkDelivery()">
-            <option value="Available">Delivery Available</option>
-            <option value="Out of Delivery">Out of Delivery</option>
+        <select
+            id="delivery"
+            onchange="checkDelivery()"
+        >
+
+            <option value="Available">
+                Delivery Available
+            </option>
+
+            <option value="Out of Delivery">
+                Out of Delivery
+            </option>
+
         </select>
 
-        <div id="deliveryNotice" class="delivery-status">
+
+        <div
+            id="deliveryNotice"
+            class="delivery-status"
+        >
+
             ⚠️ Currently showing Out of Delivery.
             Please contact us for assistance.
+
         </div>
+
     </div>
+
 
     <div class="form-group">
 
@@ -709,14 +818,21 @@ footer strong{
 
         <div class="file-box">
 
-            <p>📄 Upload JPG, PNG or PDF</p>
-            <p>Maximum size: <strong>50 MB</strong></p>
+            <p>
+                📄 Upload JPG, PNG or PDF
+            </p>
+
+            <p>
+                Maximum size: <strong>50 MB</strong>
+            </p>
 
             <br>
 
-            <input type="file"
-                   id="prescription"
-                   accept=".jpg,.jpeg,.png,.pdf">
+            <input
+                type="file"
+                id="prescription"
+                accept=".jpg,.jpeg,.png,.pdf"
+            >
 
             <div id="fileMessage"></div>
 
@@ -724,14 +840,28 @@ footer strong{
 
     </div>
 
-    <button type="submit" class="primary-btn"
-            style="width:100%;border:0;">
+
+    <button
+        type="submit"
+        class="primary-btn"
+        style="width:100%;border:0;"
+    >
+
         📲 Send Order on WhatsApp
+
     </button>
 
-    <div id="success" class="success">
-        ✅ Order details are ready. Opening WhatsApp...
+
+    <div
+        id="success"
+        class="success"
+    >
+
+        ✅ Order details are ready.
+        Opening WhatsApp...
+
     </div>
+
 
 </form>
 
@@ -744,32 +874,55 @@ footer strong{
 <section id="about">
 
 <div class="section-title">
-    <h2>About Medicine Doorstep Delivery</h2>
+
+    <h2>
+        About Medicine Doorstep Delivery
+    </h2>
+
 </div>
+
 
 <div class="about">
 
+
     <div class="about-card">
-        <h2>Healthcare Made Easy</h2>
+
+        <h2>
+            Healthcare Made Easy
+        </h2>
 
         <p>
+
             Medicine Doorstep Delivery makes ordering medicines
             simple and convenient. Customers can submit their
             medicine requirements and prescription online and
             contact us directly for order confirmation.
+
         </p>
+
     </div>
 
+
     <div class="about-card">
-        <h2>How It Works</h2>
+
+        <h2>
+            How It Works
+        </h2>
 
         <p>
+
             1️⃣ Enter your details.<br><br>
+
             2️⃣ Add your medicine.<br><br>
+
             3️⃣ Upload prescription if required.<br><br>
+
             4️⃣ Send the order through WhatsApp.<br><br>
+
             5️⃣ Confirm your delivery with us.
+
         </p>
+
     </div>
 
 </div>
@@ -782,15 +935,21 @@ footer strong{
 
 <div class="contact">
 
-    <h2>Need Help With Your Order?</h2>
+    <h2>
+        Need Help With Your Order?
+    </h2>
 
     <p>
         Contact Medicine Doorstep Delivery
     </p>
 
-    <a href="https://wa.me/916009415805"
-       target="_blank">
+    <a
+        href="https://wa.me/916009415805"
+        target="_blank"
+    >
+
         💬 WhatsApp: 6009415805
+
     </a>
 
 </div>
@@ -802,7 +961,10 @@ footer strong{
 <footer>
 
     <p>
-        © 2026 <strong>Medicine Doorstep Delivery</strong>
+        © 2026
+        <strong>
+            Medicine Doorstep Delivery
+        </strong>
     </p>
 
     <p style="margin-top:8px;">
@@ -818,32 +980,49 @@ footer strong{
 
 <script>
 
-/* PRESCRIPTION SIZE CHECK */
+/* =========================
+   PRESCRIPTION SIZE CHECK
+========================= */
 
-document.getElementById("prescription").addEventListener("change", function(){
+document
+.getElementById("prescription")
+.addEventListener("change", function(){
 
     const file = this.files[0];
-    const message = document.getElementById("fileMessage");
+
+    const message =
+        document.getElementById("fileMessage");
+
 
     if(!file){
+
         message.innerHTML = "";
+
         return;
     }
 
-    const maxSize = 50 * 1024 * 1024;
+
+    const maxSize =
+        50 * 1024 * 1024;
+
 
     if(file.size > maxSize){
 
         message.innerHTML =
-        "<p style='color:red;margin-top:10px;font-weight:bold;'>❌ File is larger than 50 MB.</p>";
+        "<p style='color:red;margin-top:10px;font-weight:bold;'>" +
+        "❌ File is larger than 50 MB." +
+        "</p>";
+
 
         this.value = "";
+
 
     }else{
 
         message.innerHTML =
-        "<p style='color:green;margin-top:10px;font-weight:bold;'>✅ File selected: "
-        + file.name +
+        "<p style='color:green;margin-top:10px;font-weight:bold;'>" +
+        "✅ File selected: " +
+        file.name +
         "</p>";
 
     }
@@ -851,60 +1030,87 @@ document.getElementById("prescription").addEventListener("change", function(){
 });
 
 
-/* DELIVERY CHECK */
+/* =========================
+   DELIVERY CHECK
+========================= */
 
 function checkDelivery(){
 
     const delivery =
-    document.getElementById("delivery").value;
+        document.getElementById("delivery").value;
+
 
     const notice =
-    document.getElementById("deliveryNotice");
+        document.getElementById("deliveryNotice");
+
 
     if(delivery === "Out of Delivery"){
+
         notice.style.display = "block";
+
     }else{
+
         notice.style.display = "none";
+
     }
 
 }
 
 
-/* ORDER FORM */
+/* =========================
+   ORDER FORM
+========================= */
 
-document.getElementById("orderForm").addEventListener("submit",function(e){
+document
+.getElementById("orderForm")
+.addEventListener("submit",function(e){
 
     e.preventDefault();
 
+
     const name =
-    document.getElementById("name").value;
+        document.getElementById("name").value;
+
 
     const mobile =
-    document.getElementById("mobile").value;
+        document.getElementById("mobile").value;
+
 
     const medicine =
-    document.getElementById("medicine").value;
+        document.getElementById("medicine").value;
+
 
     const quantity =
-    document.getElementById("quantity").value;
+        document.getElementById("quantity").value;
+
 
     const address =
-    document.getElementById("address").value;
+        document.getElementById("address").value;
+
 
     const delivery =
-    document.getElementById("delivery").value;
+        document.getElementById("delivery").value;
+
 
     const prescription =
-    document.getElementById("prescription").files[0];
+        document.getElementById("prescription").files[0];
 
-    let prescriptionText = "No prescription uploaded";
+
+    let prescriptionText =
+        "No prescription uploaded";
+
 
     if(prescription){
+
         prescriptionText =
-        "Prescription: " + prescription.name;
+            "Prescription: " +
+            prescription.name;
+
     }
 
+
     const message =
+
 `🏥 *MEDICINE DOORSTEP DELIVERY*
 
 📋 *New Medicine Order*
@@ -927,297 +1133,27 @@ ${delivery}
 
 Please confirm my order.`;
 
-    document.getElementById("success").style.display="block";
+
+    document
+    .getElementById("success")
+    .style.display = "block";
+
 
     const whatsappURL =
-    "https://wa.me/916009415805?text="
-    + encodeURIComponent(message);
+        "https://wa.me/916009415805?text=" +
+        encodeURIComponent(message);
+
 
     setTimeout(function(){
-        window.open(whatsappURL,"_blank");
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
     },700);
 
 });
-
-</script>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicine Doorstep</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background: #f5f7fa;
-            color: #222;
-        }
-
-        header {
-            background: #0b8f55;
-            color: white;
-            padding: 18px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .cart {
-            background: white;
-            color: #0b8f55;
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-
-        .hero {
-            background: white;
-            padding: 40px 5%;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            color: #666;
-            margin-bottom: 25px;
-        }
-
-        .search-box {
-            max-width: 600px;
-            margin: auto;
-            display: flex;
-        }
-
-        .search-box input {
-            flex: 1;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px 0 0 8px;
-            font-size: 16px;
-        }
-
-        .search-box button {
-            padding: 15px 25px;
-            border: none;
-            background: #0b8f55;
-            color: white;
-            border-radius: 0 8px 8px 0;
-            cursor: pointer;
-        }
-
-        .section {
-            padding: 30px 5%;
-        }
-
-        .section h2 {
-            margin-bottom: 20px;
-        }
-
-        .medicines {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-        }
-
-        .medicine {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .medicine h3 {
-            margin-bottom: 10px;
-        }
-
-        .price {
-            color: #0b8f55;
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .medicine button {
-            width: 100%;
-            padding: 10px;
-            background: #0b8f55;
-            color: white;
-            border: none;
-            border-radius: 7px;
-            cursor: pointer;
-        }
-
-        .tracking {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-        }
-
-        .status {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 25px;
-            text-align: center;
-        }
-
-        .step {
-            flex: 1;
-            color: #aaa;
-        }
-
-        .step.active {
-            color: #0b8f55;
-            font-weight: bold;
-        }
-
-        .step span {
-            display: block;
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
-
-        footer {
-            background: #222;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-        }
-    </style>
-</head>
-
-<body>
-
-<header>
-    <div class="logo">💊 Medicine Doorstep</div>
-    <div class="cart">🛒 Cart: <span id="cartCount">0</span></div>
-</header>
-
-<section class="hero">
-    <h1>Medicine Delivered to Your Doorstep</h1>
-    <p>Order medicines easily and get fast home delivery.</p>
-
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search medicine...">
-        <button onclick="searchMedicine()">Search</button>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Popular Medicines</h2>
-
-    <div class="medicines">
-
-        <div class="medicine">
-            <h3>Paracetamol</h3>
-            <p>500mg Tablet</p>
-            <div class="price">₹25</div>
-            <button onclick="addToCart()">Add to Cart</button>
-        </div>
-
-        <div class="medicine">
-            <h3>Vitamin C</h3>
-            <p>Tablets</p>
-            <div class="price">₹120</div>
-            <button onclick="addToCart()">Add to Cart</button>
-        </div>
-
-        <div class="medicine">
-            <h3>ORS</h3>
-            <p>Oral Rehydration</p>
-            <div class="price">₹30</div>
-            <button onclick="addToCart()">Add to Cart</button>
-        </div>
-
-        <div class="medicine">
-            <h3>Antacid</h3>
-            <p>Tablets</p>
-            <div class="price">₹60</div>
-            <button onclick="addToCart()">Add to Cart</button>
-        </div>
-
-    </div>
-</section>
-
-<section class="section">
-    <h2>📦 Track Your Order</h2>
-
-    <div class="tracking">
-
-        <p><b>Order ID:</b> #1001</p>
-
-        <div class="status">
-
-            <div class="step active">
-                <span>✓</span>
-                Order Placed
-            </div>
-
-            <div class="step active">
-                <span>⚙️</span>
-                Processing
-            </div>
-
-            <div class="step active">
-                <span>🚚</span>
-                Out for Delivery
-            </div>
-
-            <div class="step">
-                <span>✓</span>
-                Delivered
-            </div>
-
-        </div>
-
-    </div>
-</section>
-
-<footer>
-    © 2026 Medicine Doorstep | Fast & Reliable Delivery
-</footer>
-
-<script>
-
-    let cartCount = 0;
-
-    function addToCart() {
-        cartCount++;
-        document.getElementById("cartCount").innerText = cartCount;
-        alert("Medicine added to cart!");
-    }
-
-    function searchMedicine() {
-
-        let medicine = document.getElementById("searchInput").value;
-
-        if (medicine === "") {
-            alert("Please enter medicine name.");
-        } else {
-            alert("Searching for: " + medicine);
-        }
-
-    }
 
 </script>
 
