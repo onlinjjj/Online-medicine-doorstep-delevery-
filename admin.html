@@ -181,6 +181,41 @@ button:disabled{
   color:#087f5b;
 }
 
+.amount-box{
+  margin-top:12px;
+  padding:14px;
+  background:#fff8e1;
+  border:1px solid #ffe08a;
+  border-radius:10px;
+}
+
+.amount-box label{
+  display:block;
+  font-weight:bold;
+  color:#805f00;
+  margin-bottom:5px;
+}
+
+.amount-row{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.amount-row input{
+  margin:0;
+  flex:1;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.save-amount-btn{
+  background:#ff9800;
+  color:white;
+  font-weight:bold;
+  white-space:nowrap;
+}
+
 .status{
   display:inline-block;
   padding:7px 12px;
@@ -238,10 +273,6 @@ button:disabled{
   background:#dc3545;
 }
 
-.order-actions button:active{
-  transform:scale(.97);
-}
-
 .order-date{
   color:#777;
   font-size:13px;
@@ -277,6 +308,15 @@ button:disabled{
 
   .order-actions button{
     flex:1 1 45%;
+  }
+
+  .amount-row{
+    flex-direction:column;
+  }
+
+  .amount-row input,
+  .save-amount-btn{
+    width:100%;
   }
 }
 </style>
@@ -408,14 +448,12 @@ import {
   initializeApp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-
 import {
   getAuth,
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
 
 import {
   getFirestore,
@@ -427,7 +465,6 @@ import {
   deleteDoc,
   updateDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
 
 
 /* =========================================
@@ -710,13 +747,7 @@ async function loadOrders(){
         </div>
       `;
 
-      updateStats(
-        0,
-        0,
-        0,
-        0,
-        0
-      );
+      updateStats(0,0,0,0,0);
 
       return;
     }
@@ -741,30 +772,20 @@ async function loadOrders(){
       String(status).toLowerCase();
 
 
-      if(
-        statusLower === "pending"
-      ){
-
+      if(statusLower === "pending"){
         pending++;
-
-      }else if(
-        statusLower === "confirmed"
-      ){
-
+      }
+      else if(statusLower === "order received"){
+        pending++;
+      }
+      else if(statusLower === "confirmed"){
         confirmed++;
-
-      }else if(
-        statusLower === "out for delivery"
-      ){
-
+      }
+      else if(statusLower === "out for delivery"){
         outDelivery++;
-
-      }else if(
-        statusLower === "delivered"
-      ){
-
+      }
+      else if(statusLower === "delivered"){
         delivered++;
-
       }
 
 
@@ -780,15 +801,11 @@ async function loadOrders(){
       if(typeof medicine === "object"){
 
         try{
-
           medicine =
           JSON.stringify(medicine);
-
         }catch{
-
           medicine =
           "Not provided";
-
         }
 
       }
@@ -799,13 +816,12 @@ async function loadOrders(){
       const amount =
       order.total ??
       order.amount ??
-      "0";
+      "";
 
 
       /* DATE */
 
       let dateText = "";
-
 
       if(order.createdAt){
 
@@ -844,32 +860,18 @@ async function loadOrders(){
       let statusClass =
       "pending";
 
-
-      if(
-        statusLower === "confirmed"
-      ){
-
-        statusClass =
-        "confirmed";
-
-      }else if(
-        statusLower === "out for delivery"
-      ){
-
-        statusClass =
-        "out";
-
-      }else if(
-        statusLower === "delivered"
-      ){
-
-        statusClass =
-        "delivered";
-
+      if(statusLower === "confirmed"){
+        statusClass = "confirmed";
+      }
+      else if(statusLower === "out for delivery"){
+        statusClass = "out";
+      }
+      else if(statusLower === "delivered"){
+        statusClass = "delivered";
       }
 
 
-      /* ORDER */
+      /* ORDER DIV */
 
       const orderDiv =
       document.createElement("div");
@@ -918,12 +920,45 @@ async function loadOrders(){
           )}
         </p>
 
-        <p>
-          <strong>Amount:</strong>
-          ₹${escapeHTML(
-            String(amount)
-          )}
-        </p>
+
+        <!-- AMOUNT -->
+
+        <div class="amount-box">
+
+          <label>
+            💰 Total Order Amount
+          </label>
+
+          <div class="amount-row">
+
+            <input
+              type="number"
+              min="0"
+              step="0.01"
+              class="amount-input"
+              data-id="${escapeHTML(orderId)}"
+              value="${escapeHTML(String(amount))}"
+              placeholder="Enter amount e.g. 450"
+            >
+
+            <button
+              class="save-amount-btn"
+              data-action="amount"
+              data-id="${escapeHTML(orderId)}">
+
+              💰 Save Amount
+
+            </button>
+
+          </div>
+
+          <div
+            style="font-size:12px;color:#777;margin-top:7px;">
+            Customer will see this amount in Track Order.
+          </div>
+
+        </div>
+
 
         ${
           dateText
@@ -934,6 +969,7 @@ async function loadOrders(){
           `
           : ""
         }
+
 
         <span class="status ${statusClass}">
           ${escapeHTML(status)}
@@ -1006,9 +1042,7 @@ async function loadOrders(){
 
         <br><br>
 
-        ${escapeHTML(
-          error.message
-        )}
+        ${escapeHTML(error.message)}
 
       </div>
 
@@ -1053,6 +1087,14 @@ async event => {
   }
 
 
+  if(action === "amount"){
+
+    await saveAmount(orderId);
+
+    return;
+  }
+
+
   if(action === "confirmed"){
 
     await updateDeliveryStatus(
@@ -1085,6 +1127,100 @@ async event => {
   }
 
 });
+
+
+/* =========================================
+   SAVE TOTAL AMOUNT
+========================================= */
+
+async function saveAmount(orderId){
+
+  const input =
+  document.querySelector(
+    `.amount-input[data-id="${CSS.escape(orderId)}"]`
+  );
+
+
+  if(!input){
+
+    alert("❌ Amount input পাওয়া যায়নি.");
+
+    return;
+  }
+
+
+  const amountText =
+  input.value.trim();
+
+
+  if(amountText === ""){
+
+    alert(
+      "⚠️ Please enter Total Amount."
+    );
+
+    input.focus();
+
+    return;
+  }
+
+
+  const amount =
+  Number(amountText);
+
+
+  if(
+    !Number.isFinite(amount) ||
+    amount < 0
+  ){
+
+    alert(
+      "❌ Please enter a valid amount."
+    );
+
+    input.focus();
+
+    return;
+  }
+
+
+  try{
+
+    await updateDoc(
+      doc(
+        db,
+        "orders",
+        orderId
+      ),
+      {
+        total: amount,
+        amount: amount,
+        updatedAt: new Date().toISOString()
+      }
+    );
+
+
+    alert(
+      "✅ Total Amount Saved: ₹" +
+      amount.toFixed(2)
+    );
+
+
+    await loadOrders();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "❌ Amount Save হয়নি:\n" +
+      error.message
+    );
+
+  }
+
+}
 
 
 /* =========================================
@@ -1155,7 +1291,7 @@ async function updateDeliveryStatus(
         orderId
       ),
       {
-        status:status,
+        status: status,
         updatedAt:
         new Date().toISOString()
       }
