@@ -5,12 +5,15 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>Medicine Doorstep Delivery</title>
 
 <style>
+
+/* ================================
+   BASIC
+================================ */
 
 *{
 box-sizing:border-box;
@@ -27,6 +30,11 @@ body{
 background:#f4faf8;
 color:#17372e;
 }
+
+
+/* ================================
+   HEADER
+================================ */
 
 header{
 position:sticky;
@@ -79,14 +87,23 @@ text-decoration:none;
 font-weight:bold;
 }
 
-.call-btn{
+.call-btn,
+.primary-btn{
 background:#087c59;
 color:#fff;
+}
+
+.call-btn{
 padding:11px 17px;
 border-radius:25px;
 text-decoration:none;
 font-weight:bold;
 }
+
+
+/* ================================
+   HERO
+================================ */
 
 .hero{
 max-width:1200px;
@@ -150,11 +167,6 @@ text-decoration:none;
 display:inline-block;
 }
 
-.primary-btn{
-background:#087c59;
-color:#fff;
-}
-
 .primary-btn:disabled{
 opacity:.6;
 cursor:not-allowed;
@@ -178,6 +190,11 @@ font-size:110px;
 box-shadow:0 15px 40px #0001;
 }
 
+
+/* ================================
+   SECTION
+================================ */
+
 section{
 max-width:1200px;
 margin:65px auto;
@@ -199,15 +216,27 @@ margin-bottom:8px;
 color:#687b74;
 }
 
+
+/* ================================
+   CATEGORY
+================================ */
+
 .categories{
 display:grid;
 grid-template-columns:repeat(6,1fr);
 gap:15px;
 }
 
-.category{
+.category,
+.feature,
+.about-card,
+.order-box,
+.track-box{
 background:#fff;
 box-shadow:0 7px 25px #0000000d;
+}
+
+.category{
 padding:23px 10px;
 text-align:center;
 border-radius:18px;
@@ -218,6 +247,11 @@ font-size:38px;
 margin-bottom:10px;
 }
 
+
+/* ================================
+   FEATURES
+================================ */
+
 .features{
 display:grid;
 grid-template-columns:repeat(4,1fr);
@@ -225,8 +259,6 @@ gap:18px;
 }
 
 .feature{
-background:#fff;
-box-shadow:0 7px 25px #0000000d;
 padding:28px 18px;
 text-align:center;
 border-radius:20px;
@@ -247,10 +279,13 @@ color:#687a74;
 line-height:1.5;
 }
 
+
+/* ================================
+   ORDER BOX
+================================ */
+
 .order-box,
 .track-box{
-background:#fff;
-box-shadow:0 7px 25px #0000000d;
 max-width:800px;
 margin:auto;
 padding:32px;
@@ -285,6 +320,11 @@ min-height:110px;
 resize:vertical;
 }
 
+
+/* ================================
+   FILE UPLOAD
+================================ */
+
 .file-box{
 border:2px dashed #8bcdb8;
 background:#f1fbf7;
@@ -297,6 +337,11 @@ text-align:center;
 border:none;
 margin-top:12px;
 }
+
+
+/* ================================
+   SUCCESS / ERROR
+================================ */
 
 .success,
 .error{
@@ -318,6 +363,11 @@ background:#fff0f0;
 color:#b00020;
 }
 
+
+/* ================================
+   TRACK
+================================ */
+
 .track-input{
 display:flex;
 gap:10px;
@@ -336,6 +386,11 @@ border-radius:15px;
 line-height:1.8;
 }
 
+
+/* ================================
+   STATUS
+================================ */
+
 .status-badge{
 display:inline-block;
 padding:8px 16px;
@@ -345,6 +400,11 @@ color:#806300;
 font-weight:bold;
 }
 
+
+/* ================================
+   AMOUNT
+================================ */
+
 .amount-badge{
 display:inline-block;
 padding:8px 16px;
@@ -352,8 +412,46 @@ border-radius:20px;
 background:#d1f5df;
 color:#087c59;
 font-weight:bold;
-font-size:20px;
+font-size:18px;
 }
+
+.amount-card{
+margin-top:15px;
+padding:18px;
+background:#fff;
+border:1px solid #cfe4dc;
+border-radius:15px;
+}
+
+.amount-card p{
+margin:8px 0;
+}
+
+.original-amount{
+color:#555;
+font-weight:bold;
+}
+
+.discount-percent{
+color:#d35400;
+font-weight:bold;
+}
+
+.discount-amount{
+color:#d35400;
+font-weight:bold;
+}
+
+.customer-payable{
+font-size:22px;
+font-weight:bold;
+color:#087c59;
+}
+
+
+/* ================================
+   ABOUT
+================================ */
 
 .about{
 display:grid;
@@ -362,8 +460,6 @@ gap:25px;
 }
 
 .about-card{
-background:#fff;
-box-shadow:0 7px 25px #0000000d;
 padding:30px;
 border-radius:22px;
 }
@@ -377,6 +473,11 @@ margin-bottom:15px;
 color:#60736c;
 line-height:1.8;
 }
+
+
+/* ================================
+   CONTACT
+================================ */
 
 .contact{
 background:#064b91;
@@ -404,6 +505,11 @@ text-decoration:none;
 font-weight:bold;
 }
 
+
+/* ================================
+   FOOTER
+================================ */
+
 footer{
 background:#102c26;
 color:#c8d8d3;
@@ -415,6 +521,11 @@ margin-top:60px;
 footer strong{
 color:#fff;
 }
+
+
+/* ================================
+   MOBILE
+================================ */
 
 @media(max-width:900px){
 
@@ -444,6 +555,7 @@ grid-template-columns:1fr;
 }
 
 }
+
 
 @media(max-width:600px){
 
@@ -507,29 +619,43 @@ flex-direction:column;
 
 <body>
 
+
+<!-- ================================
+     HEADER
+================================ -->
+
 <header>
 
 <div class="navbar">
 
 <div class="logo">
 
-<div class="logo-icon">⚕</div>
+<div class="logo-icon">
+⚕
+</div>
 
 Medicine Doorstep
 
 </div>
 
+
 <nav>
 
 <a href="#home">Home</a>
+
 <a href="#about">About</a>
+
 <a href="#order">Order</a>
+
 <a href="#track">Track</a>
+
 <a href="#contact">Contact</a>
 
 </nav>
 
-<a class="call-btn"
+
+<a
+class="call-btn"
 href="tel:6009415805">
 
 ☎ Call
@@ -540,7 +666,14 @@ href="tel:6009415805">
 
 </header>
 
-<div class="hero" id="home">
+
+<!-- ================================
+     HERO
+================================ -->
+
+<div
+class="hero"
+id="home">
 
 <div class="hero-content">
 
@@ -548,13 +681,17 @@ href="tel:6009415805">
 🎉 GET 10% OFF
 </div>
 
+
 <h1>
 
 Your Medicines.<br>
 
-<span>Delivered to Your Door.</span>
+<span>
+Delivered to Your Door.
+</span>
 
 </h1>
+
 
 <p>
 
@@ -564,16 +701,20 @@ to your doorstep.
 
 </p>
 
+
 <div class="hero-buttons">
 
-<a href="#order"
+<a
+href="#order"
 class="primary-btn">
 
 🛒 Order Medicine
 
 </a>
 
-<a href="#track"
+
+<a
+href="#track"
 class="secondary-btn">
 
 📦 Track Order
@@ -584,13 +725,17 @@ class="secondary-btn">
 
 </div>
 
+
 <div class="hero-art">
-
 💊
-
 </div>
 
 </div>
+
+
+<!-- ================================
+     CATEGORY
+================================ -->
 
 <section>
 
@@ -606,41 +751,96 @@ Find the medicines and healthcare products you need.
 
 </div>
 
+
 <div class="categories">
 
-<div class="category">
-<div class="category-icon">💊</div>
-<h3>Pain Relief</h3>
-</div>
 
 <div class="category">
-<div class="category-icon">🌡️</div>
-<h3>Fever & Cold</h3>
+
+<div class="category-icon">
+💊
 </div>
 
-<div class="category">
-<div class="category-icon">🩸</div>
-<h3>Diabetes Care</h3>
+<h3>
+Pain Relief
+</h3>
+
 </div>
 
-<div class="category">
-<div class="category-icon">❤️</div>
-<h3>Heart Care</h3>
-</div>
 
 <div class="category">
-<div class="category-icon">🧴</div>
-<h3>Skin Care</h3>
+
+<div class="category-icon">
+🌡️
 </div>
 
-<div class="category">
-<div class="category-icon">👶</div>
-<h3>Baby Care</h3>
+<h3>
+Fever & Cold
+</h3>
+
 </div>
+
+
+<div class="category">
+
+<div class="category-icon">
+🩸
+</div>
+
+<h3>
+Diabetes Care
+</h3>
+
+</div>
+
+
+<div class="category">
+
+<div class="category-icon">
+❤️
+</div>
+
+<h3>
+Heart Care
+</h3>
+
+</div>
+
+
+<div class="category">
+
+<div class="category-icon">
+🧴
+</div>
+
+<h3>
+Skin Care
+</h3>
+
+</div>
+
+
+<div class="category">
+
+<div class="category-icon">
+👶
+</div>
+
+<h3>
+Baby Care
+</h3>
+
+</div>
+
 
 </div>
 
 </section>
+
+
+<!-- ================================
+     FEATURES
+================================ -->
 
 <section>
 
@@ -652,11 +852,15 @@ Why Choose Us?
 
 </div>
 
+
 <div class="features">
+
 
 <div class="feature">
 
-<div class="feature-icon">🚚</div>
+<div class="feature-icon">
+🚚
+</div>
 
 <h3>
 Doorstep Delivery
@@ -668,9 +872,12 @@ Get your medicine delivered conveniently.
 
 </div>
 
+
 <div class="feature">
 
-<div class="feature-icon">📄</div>
+<div class="feature-icon">
+📄
+</div>
 
 <h3>
 Prescription Upload
@@ -682,9 +889,12 @@ Upload your prescription with your order.
 
 </div>
 
+
 <div class="feature">
 
-<div class="feature-icon">💰</div>
+<div class="feature-icon">
+💰
+</div>
 
 <h3>
 10% Discount
@@ -696,9 +906,12 @@ Enjoy a special 10% discount on your order.
 
 </div>
 
+
 <div class="feature">
 
-<div class="feature-icon">📱</div>
+<div class="feature-icon">
+📱
+</div>
 
 <h3>
 Easy Ordering
@@ -710,9 +923,13 @@ Order easily using mobile or computer.
 
 </div>
 
+
 </div>
 
 </section>
+<!-- ================================
+     ORDER SECTION
+================================ -->
 
 <section id="order">
 
@@ -728,9 +945,13 @@ Fill the form and save your order.
 
 </div>
 
+
 <div class="order-box">
 
 <form id="orderForm">
+
+
+<!-- NAME -->
 
 <div class="form-group">
 
@@ -745,6 +966,9 @@ placeholder="Enter your name"
 required>
 
 </div>
+
+
+<!-- MOBILE -->
 
 <div class="form-group">
 
@@ -762,6 +986,9 @@ required>
 
 </div>
 
+
+<!-- MEDICINE -->
+
 <div class="form-group">
 
 <label>
@@ -775,6 +1002,9 @@ placeholder="Medicine name or product"
 required>
 
 </div>
+
+
+<!-- QUANTITY -->
 
 <div class="form-group">
 
@@ -791,6 +1021,9 @@ required>
 
 </div>
 
+
+<!-- ADDRESS -->
+
 <div class="form-group">
 
 <label>
@@ -803,6 +1036,9 @@ placeholder="Enter complete delivery address"
 required></textarea>
 
 </div>
+
+
+<!-- DELIVERY -->
 
 <div class="form-group">
 
@@ -824,6 +1060,9 @@ Out of Delivery
 
 </div>
 
+
+<!-- PRESCRIPTION -->
+
 <div class="form-group">
 
 <label>
@@ -837,10 +1076,8 @@ Prescription Upload
 </p>
 
 <p style="margin-top:5px">
-
 Maximum size:
 <strong>50 MB</strong>
-
 </p>
 
 <input
@@ -857,6 +1094,9 @@ style="margin-top:10px">
 
 </div>
 
+
+<!-- SUBMIT -->
+
 <button
 type="submit"
 id="submitBtn"
@@ -867,21 +1107,31 @@ style="width:100%">
 
 </button>
 
+
+<!-- SUCCESS -->
+
 <div
 id="success"
 class="success">
 </div>
+
+
+<!-- ERROR -->
 
 <div
 id="error"
 class="error">
 </div>
 
+
 </form>
 
 </div>
 
 </section>
+
+
+
 <!-- ================================
      TRACK ORDER
 ================================ -->
@@ -900,6 +1150,7 @@ Enter your Order ID to check your latest order status and amount.
 
 </div>
 
+
 <div class="track-box">
 
 <h3
@@ -909,6 +1160,7 @@ Check Order Status
 
 </h3>
 
+
 <p
 style="color:#687a74;margin-bottom:20px">
 
@@ -916,12 +1168,14 @@ Enter the Order ID received after placing your order.
 
 </p>
 
+
 <div class="track-input">
 
 <input
 type="text"
 id="trackOrderId"
 placeholder="MDD-20260909-1234">
+
 
 <button
 type="button"
@@ -935,8 +1189,6 @@ class="primary-btn">
 </div>
 
 
-<!-- TRACK RESULT -->
-
 <div
 id="trackResult"
 class="track-result">
@@ -945,6 +1197,7 @@ class="track-result">
 </div>
 
 </section>
+
 
 
 <!-- ================================
@@ -959,14 +1212,11 @@ class="track-result">
 About Medicine Doorstep Delivery
 </h2>
 
-<p>
-Simple and convenient medicine ordering.
-</p>
-
 </div>
 
 
 <div class="about">
+
 
 <div class="about-card">
 
@@ -1004,15 +1254,17 @@ How It Works
 
 5️⃣ Send order through WhatsApp.<br><br>
 
-6️⃣ Track your order status and total amount.
+6️⃣ Track your order status and amount.
 
 </p>
 
 </div>
 
+
 </div>
 
 </section>
+
 
 
 <!-- ================================
@@ -1031,6 +1283,7 @@ Need Help With Your Order?
 Contact Medicine Doorstep Delivery
 </p>
 
+
 <a
 href="https://wa.me/916009415805"
 target="_blank"
@@ -1043,6 +1296,7 @@ rel="noopener">
 </div>
 
 </section>
+
 
 
 <!-- ================================
@@ -1060,11 +1314,13 @@ Medicine Doorstep Delivery
 
 </p>
 
+
 <p style="margin-top:8px">
 
 ☎ 6009415805
 
 </p>
+
 
 <p
 style="margin-top:8px;font-size:13px">
@@ -1074,15 +1330,815 @@ Healthcare at your doorstep.
 </p>
 
 </footer>
+
+
+
 <!-- ================================
-     FIREBASE JAVASCRIPT
+     FIREBASE
 ================================ -->
 
 <script type="module">
 
+
+/* FIREBASE APP */
+
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+/* FIRESTORE */
+
+import {
+getFirestore,
+doc,
+setDoc,
+getDoc,
+serverTimestamp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+
 /* ================================
-   FIREBASE IMPORT
+   FIREBASE CONFIG
 ================================ */
+
+const firebaseConfig={
+
+apiKey:
+"AIzaSyABmq9B4NEvgtsrJIEfUhjZOqMCjGGHfpI",
+
+authDomain:
+"medicine-doorstep-delivery.firebaseapp.com",
+
+projectId:
+"medicine-doorstep-delivery",
+
+storageBucket:
+"medicine-doorstep-delivery.firebasestorage.app",
+
+messagingSenderId:
+"703468135334",
+
+appId:
+"1:703468135334:web:e1e7040b5426f93f71a567",
+
+measurementId:
+"G-K3H1PQ6MKD"
+
+};
+
+
+
+/* ================================
+   FIREBASE START
+================================ */
+
+let db=null;
+
+
+try{
+
+const app=
+initializeApp(firebaseConfig);
+
+db=
+getFirestore(app);
+
+console.log(
+"Firebase connected successfully"
+);
+
+}catch(error){
+
+console.error(
+"Firebase initialization error:",
+error
+);
+
+}
+
+
+
+/* ================================
+   ELEMENTS
+================================ */
+
+const form=
+document.getElementById(
+"orderForm"
+);
+
+
+const submitBtn=
+document.getElementById(
+"submitBtn"
+);
+
+
+const success=
+document.getElementById(
+"success"
+);
+
+
+const errorBox=
+document.getElementById(
+"error"
+);
+
+
+const prescription=
+document.getElementById(
+"prescription"
+);
+
+
+const fileMessage=
+document.getElementById(
+"fileMessage"
+);
+
+
+const trackBtn=
+document.getElementById(
+"trackBtn"
+);
+
+
+const trackOrderId=
+document.getElementById(
+"trackOrderId"
+);
+
+
+const trackResult=
+document.getElementById(
+"trackResult"
+);
+
+
+
+/* ================================
+   ESCAPE HTML
+================================ */
+
+function escapeHTML(value){
+
+return String(value ?? "")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+
+/* ================================
+   FILE CHECK
+================================ */
+
+prescription.addEventListener(
+"change",
+function(){
+
+const file=
+this.files[0];
+
+fileMessage.innerHTML="";
+
+
+if(!file){
+
+return;
+
+}
+
+
+const allowed=[
+
+"image/jpeg",
+"image/png",
+"application/pdf"
+
+];
+
+
+if(
+!allowed.includes(file.type)
+){
+
+fileMessage.innerHTML=
+"<b style='color:red'>"+
+"❌ Only JPG, PNG or PDF allowed."+
+"</b>";
+
+this.value="";
+
+return;
+
+}
+
+
+if(
+file.size >
+50 * 1024 * 1024
+){
+
+fileMessage.innerHTML=
+"<b style='color:red'>"+
+"❌ File must be below 50 MB."+
+"</b>";
+
+this.value="";
+
+return;
+
+}
+
+
+fileMessage.innerHTML=
+"<b style='color:green'>"+
+"✅ "+
+escapeHTML(file.name)+
+" selected"+
+"</b>";
+
+});
+
+
+
+/* ================================
+   CREATE ORDER ID
+================================ */
+
+function createOrderId(){
+
+const d=
+new Date();
+
+
+const year=
+d.getFullYear();
+
+
+const month=
+String(
+d.getMonth()+1
+).padStart(2,"0");
+
+
+const day=
+String(
+d.getDate()
+).padStart(2,"0");
+
+
+const random=
+Math.floor(
+1000+
+Math.random()*9000
+);
+
+
+return(
+"MDD-"+
+year+
+month+
+day+
+"-"+
+random
+);
+
+}
+
+
+
+/* ================================
+   ORDER SUBMIT
+================================ */
+
+form.addEventListener(
+"submit",
+async function(e){
+
+e.preventDefault();
+
+
+success.style.display=
+"none";
+
+errorBox.style.display=
+"none";
+
+
+submitBtn.disabled=
+true;
+
+
+submitBtn.textContent=
+"⏳ Saving Order...";
+
+
+try{
+
+
+if(!db){
+
+throw new Error(
+"Firebase connection failed."
+);
+
+}
+
+
+
+/* FORM VALUES */
+
+const name=
+document.getElementById(
+"name"
+).value.trim();
+
+
+const mobile=
+document.getElementById(
+"mobile"
+).value.trim();
+
+
+const medicine=
+document.getElementById(
+"medicine"
+).value.trim();
+
+
+const quantity=
+Number(
+document.getElementById(
+"quantity"
+).value
+);
+
+
+const address=
+document.getElementById(
+"address"
+).value.trim();
+
+
+const delivery=
+document.getElementById(
+"delivery"
+).value;
+
+
+const file=
+prescription.files[0];
+
+
+
+/* VALIDATION */
+
+if(
+name.length < 2
+){
+
+throw new Error(
+"Please enter your full name."
+);
+
+}
+
+
+if(
+! /^[0-9]{10}$/.test(
+mobile
+)
+){
+
+throw new Error(
+"Please enter valid 10 digit mobile number."
+);
+
+}
+
+
+if(!medicine){
+
+throw new Error(
+"Please enter medicine/product name."
+);
+
+}
+
+
+if(
+!Number.isInteger(quantity) ||
+quantity < 1
+){
+
+throw new Error(
+"Please enter valid quantity."
+);
+
+}
+
+
+if(
+address.length < 5
+){
+
+throw new Error(
+"Please enter complete delivery address."
+);
+
+}
+
+
+
+/* ORDER ID */
+
+const orderId=
+createOrderId();
+
+
+
+/* ================================
+   INITIAL AMOUNT
+================================ */
+
+/*
+Admin পরে Total Amount,
+Discount % এবং Final Payable
+set করতে পারবে.
+*/
+
+const totalAmount=0;
+
+const discountPercent=0;
+
+const discountAmount=0;
+
+const finalAmount=0;
+
+
+
+/* ================================
+   ORDER DATA
+================================ */
+
+const orderData={
+
+orderId:orderId,
+
+name:name,
+
+mobile:mobile,
+
+medicine:medicine,
+
+quantity:quantity,
+
+address:address,
+
+deliveryArea:delivery,
+
+
+prescriptionName:
+file ?
+file.name :
+"",
+
+
+prescriptionType:
+file ?
+file.type :
+"",
+
+
+prescriptionSize:
+file ?
+file.size :
+0,
+
+
+/* AMOUNT */
+
+totalAmount:
+totalAmount,
+
+discountPercent:
+discountPercent,
+
+discountAmount:
+discountAmount,
+
+finalAmount:
+finalAmount,
+
+
+/* STATUS */
+
+status:
+"Order Received",
+
+
+createdAt:
+serverTimestamp(),
+
+updatedAt:
+serverTimestamp()
+
+};
+
+
+
+/* ================================
+   SAVE FIRESTORE
+================================ */
+
+await setDoc(
+
+doc(
+db,
+"orders",
+orderId
+),
+
+orderData
+
+);
+
+
+
+/* ================================
+   WHATSAPP
+================================ */
+
+const whatsappText=
+
+`🛒 *NEW MEDICINE ORDER*
+
+📦 Order ID: ${orderId}
+
+👤 Name: ${name}
+
+📱 Mobile: ${mobile}
+
+💊 Medicine: ${medicine}
+
+🔢 Quantity: ${quantity}
+
+🏠 Address: ${address}
+
+🚚 Delivery: ${delivery}
+
+📄 Prescription: ${
+file ?
+file.name :
+"Not uploaded"
+}
+
+💰 Total Amount: To be updated
+
+🎁 Discount: To be updated
+
+💵 Customer Payable: To be updated
+
+📌 Status: Order Received`;
+
+
+const whatsappURL=
+
+"https://wa.me/916009415805?text="+
+encodeURIComponent(
+whatsappText
+);
+
+
+
+/* ================================
+   SUCCESS
+================================ */
+
+success.innerHTML=
+
+"✅ <strong>Order Saved Successfully!</strong><br><br>"+
+
+"📦 Order ID: <strong>"+
+escapeHTML(orderId)+
+"</strong><br><br>"+
+
+"💰 Amount will be updated by Admin.<br><br>"+
+
+"Opening WhatsApp...";
+
+
+success.style.display=
+"block";
+
+
+localStorage.setItem(
+"lastOrderId",
+orderId
+);
+
+
+
+/* ================================
+   OPEN WHATSAPP
+================================ */
+
+setTimeout(
+function(){
+
+window.location.href=
+whatsappURL;
+
+},
+500
+);
+
+
+}catch(error){
+
+console.error(
+"ORDER ERROR:",
+error
+);
+
+
+errorBox.innerHTML=
+
+"❌ <strong>Order could not be saved.</strong><br><br>"+
+
+escapeHTML(
+error.message
+)+
+
+"<br><br>"+
+
+"Please check Firestore Rules and Firebase configuration.";
+
+
+errorBox.style.display=
+"block";
+
+
+submitBtn.disabled=
+false;
+
+
+submitBtn.textContent=
+"📲 Save Order & Send WhatsApp";
+
+     
+
+}
+
+});
+
+     <!-- ================================
+     PART 3 — TRACK ORDER + FIREBASE
+================================ -->
+
+<section id="track">
+
+<div class="section-title">
+<h2>📦 Track Your Order</h2>
+<p>Enter your Order ID to check your latest order status and amount.</p>
+</div>
+
+<div class="track-box">
+
+<h3 style="color:#087c59;margin-bottom:8px">
+Check Order Status
+</h3>
+
+<p style="color:#687a74;margin-bottom:20px">
+Enter the Order ID received after placing your order.
+</p>
+
+<div class="track-input">
+
+<input
+type="text"
+id="trackOrderId"
+placeholder="MDD-20260909-1234">
+
+<button
+type="button"
+id="trackBtn"
+class="primary-btn">
+🔍 Track
+</button>
+
+</div>
+
+<div id="trackResult" class="track-result"></div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="section-title">
+<h2>About Medicine Doorstep Delivery</h2>
+</div>
+
+<div class="about">
+
+<div class="about-card">
+
+<h2>Healthcare Made Easy</h2>
+
+<p>
+Medicine Doorstep Delivery makes ordering medicines
+simple and convenient. Customers can submit their
+medicine requirements and prescription online and
+contact us directly for order confirmation.
+</p>
+
+</div>
+
+<div class="about-card">
+
+<h2>How It Works</h2>
+
+<p>
+1️⃣ Enter your details.<br><br>
+2️⃣ Add your medicine.<br><br>
+3️⃣ Upload prescription if required.<br><br>
+4️⃣ Save your order.<br><br>
+5️⃣ Send order through WhatsApp.<br><br>
+6️⃣ Track your order status and amount.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="contact">
+
+<h2>Need Help With Your Order?</h2>
+
+<p>Contact Medicine Doorstep Delivery</p>
+
+<a
+href="https://wa.me/916009415805"
+target="_blank"
+rel="noopener">
+💬 WhatsApp: 6009415805
+</a>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026
+<strong>Medicine Doorstep Delivery</strong>
+</p>
+
+<p style="margin-top:8px">
+☎ 6009415805
+</p>
+
+<p style="margin-top:8px;font-size:13px">
+Healthcare at your doorstep.
+</p>
+
+</footer>
+
+
+<!-- ================================
+     FIREBASE
+================================ -->
+
+<script type="module">
 
 import {
 initializeApp
@@ -1102,7 +2158,7 @@ from
 
 
 /* ================================
-   FIREBASE CONFIG
+FIREBASE CONFIG
 ================================ */
 
 const firebaseConfig = {
@@ -1132,55 +2188,17 @@ measurementId:
 
 
 /* ================================
-   START FIREBASE
+FIREBASE START
 ================================ */
 
-let db = null;
+const app = initializeApp(firebaseConfig);
 
-try {
-
-const app =
-initializeApp(firebaseConfig);
-
-db =
-getFirestore(app);
-
-console.log(
-"Firebase connected successfully"
-);
-
-}
-catch(error) {
-
-console.error(
-"Firebase initialization error:",
-error
-);
-
-}
+const db = getFirestore(app);
 
 
 /* ================================
-   ELEMENTS
+ELEMENTS
 ================================ */
-
-const form =
-document.getElementById("orderForm");
-
-const submitBtn =
-document.getElementById("submitBtn");
-
-const success =
-document.getElementById("success");
-
-const errorBox =
-document.getElementById("error");
-
-const prescription =
-document.getElementById("prescription");
-
-const fileMessage =
-document.getElementById("fileMessage");
 
 const trackBtn =
 document.getElementById("trackBtn");
@@ -1193,10 +2211,10 @@ document.getElementById("trackResult");
 
 
 /* ================================
-   ESCAPE HTML
+ESCAPE HTML
 ================================ */
 
-function escapeHTML(value) {
+function escapeHTML(value){
 
 return String(value ?? "")
 .replaceAll("&","&amp;")
@@ -1209,576 +2227,92 @@ return String(value ?? "")
 
 
 /* ================================
-   PRESCRIPTION CHECK
-================================ */
-
-prescription.addEventListener(
-"change",
-function() {
-
-const file =
-this.files[0];
-
-fileMessage.innerHTML = "";
-
-if(!file) {
-
-return;
-
-}
-
-
-/* ALLOWED FILE TYPES */
-
-const allowed = [
-
-"image/jpeg",
-"image/png",
-"application/pdf"
-
-];
-
-if(!allowed.includes(file.type)) {
-
-fileMessage.innerHTML =
-"<b style='color:red'>"+
-"❌ Only JPG, PNG or PDF allowed."+
-"</b>";
-
-this.value = "";
-
-return;
-
-}
-
-
-/* MAX 50 MB */
-
-if(
-file.size >
-50 * 1024 * 1024
-) {
-
-fileMessage.innerHTML =
-"<b style='color:red'>"+
-"❌ File must be below 50 MB."+
-"</b>";
-
-this.value = "";
-
-return;
-
-}
-
-
-/* SUCCESS */
-
-fileMessage.innerHTML =
-"<b style='color:green'>"+
-"✅ "+
-escapeHTML(file.name)+
-" selected"+
-"</b>";
-
-});
-
-
-/* ================================
-   CREATE ORDER ID
-================================ */
-
-function createOrderId() {
-
-const d =
-new Date();
-
-const year =
-d.getFullYear();
-
-const month =
-String(
-d.getMonth()+1
-).padStart(2,"0");
-
-const day =
-String(
-d.getDate()
-).padStart(2,"0");
-
-const random =
-Math.floor(
-1000 +
-Math.random()*9000
-);
-
-return (
-"MDD-" +
-year +
-month +
-day +
-"-" +
-random
-);
-
-}
-
-
-/* ================================
-   ORDER SUBMIT
-================================ */
-
-form.addEventListener(
-"submit",
-async function(e) {
-
-e.preventDefault();
-
-
-success.style.display =
-"none";
-
-errorBox.style.display =
-"none";
-
-
-submitBtn.disabled =
-true;
-
-submitBtn.textContent =
-"⏳ Saving Order...";
-
-
-try {
-
-
-/* FIREBASE CHECK */
-
-if(!db) {
-
-throw new Error(
-"Firebase connection failed."
-);
-
-}
-
-
-/* GET FORM DATA */
-
-const name =
-document.getElementById(
-"name"
-).value.trim();
-
-const mobile =
-document.getElementById(
-"mobile"
-).value.trim();
-
-const medicine =
-document.getElementById(
-"medicine"
-).value.trim();
-
-const quantity =
-Number(
-document.getElementById(
-"quantity"
-).value
-);
-
-const address =
-document.getElementById(
-"address"
-).value.trim();
-
-const delivery =
-document.getElementById(
-"delivery"
-).value;
-
-const file =
-prescription.files[0];
-
-
-/* ================================
-   VALIDATION
-================================ */
-
-if(name.length < 2) {
-
-throw new Error(
-"Please enter your full name."
-);
-
-}
-
-if(
-!/^[0-9]{10}$/.test(mobile)
-) {
-
-throw new Error(
-"Please enter valid 10 digit mobile number."
-);
-
-}
-
-if(!medicine) {
-
-throw new Error(
-"Please enter medicine/product name."
-);
-
-}
-
-if(
-!Number.isInteger(quantity) ||
-quantity < 1
-) {
-
-throw new Error(
-"Please enter valid quantity."
-);
-
-}
-
-if(address.length < 5) {
-
-throw new Error(
-"Please enter complete delivery address."
-);
-
-}
-
-
-/* ================================
-   ORDER ID
-================================ */
-
-const orderId =
-createOrderId();
-
-
-/* ================================
-   ORDER DATA
-================================ */
-
-const orderData = {
-
-orderId:
-orderId,
-
-name:
-name,
-
-mobile:
-mobile,
-
-medicine:
-medicine,
-
-quantity:
-quantity,
-
-address:
-address,
-
-deliveryArea:
-delivery,
-
-prescriptionName:
-file ?
-file.name :
-"",
-
-prescriptionType:
-file ?
-file.type :
-"",
-
-prescriptionSize:
-file ?
-file.size :
-0,
-
-/*
-ADMIN WILL UPDATE
-THIS AMOUNT
-*/
-
-totalAmount:
-0,
-
-status:
-"Order Received",
-
-createdAt:
-serverTimestamp(),
-
-updatedAt:
-serverTimestamp()
-
-};
-
-
-/* ================================
-   SAVE TO FIRESTORE
-================================ */
-
-await setDoc(
-
-doc(
-db,
-"orders",
-orderId
-),
-
-orderData
-
-);
-
-
-/* ================================
-   WHATSAPP MESSAGE
-================================ */
-
-const whatsappText =
-
-`🛒 *NEW MEDICINE ORDER*
-
-📦 Order ID: ${orderId}
-
-👤 Name: ${name}
-
-📱 Mobile: ${mobile}
-
-💊 Medicine: ${medicine}
-
-🔢 Quantity: ${quantity}
-
-🏠 Address: ${address}
-
-🚚 Delivery: ${delivery}
-
-📄 Prescription: ${
-file ?
-file.name :
-"Not uploaded"
-}
-
-💰 Total Amount:
-To be updated by Admin
-
-📌 Status:
-Order Received`;
-
-
-const whatsappURL =
-
-"https://wa.me/916009415805?text=" +
-
-encodeURIComponent(
-whatsappText
-);
-
-
-/* ================================
-   SUCCESS MESSAGE
-================================ */
-
-success.innerHTML =
-
-"✅ <strong>Order Saved Successfully!</strong>"+
-"<br><br>"+
-
-"📦 Order ID: <strong>"+
-escapeHTML(orderId)+
-"</strong>"+
-"<br><br>"+
-
-"💰 Total Amount: "+
-"<strong>Will be updated by Admin</strong>"+
-"<br><br>"+
-
-"📌 Status: "+
-"<strong>Order Received</strong>"+
-"<br><br>"+
-
-"Opening WhatsApp...";
-
-
-success.style.display =
-"block";
-
-
-/* SAVE LAST ORDER ID */
-
-localStorage.setItem(
-"lastOrderId",
-orderId
-);
-
-
-/* PUT ID INTO TRACK BOX */
-
-trackOrderId.value =
-orderId;
-
-
-/* ================================
-   OPEN WHATSAPP
-================================ */
-
-setTimeout(
-function() {
-
-window.location.href =
-whatsappURL;
-
-},
-500
-);
-
-
-}
-catch(error) {
-
-console.error(
-"ORDER ERROR:",
-error
-);
-
-
-errorBox.innerHTML =
-
-"❌ <strong>Order could not be saved.</strong>"+
-"<br><br>"+
-
-escapeHTML(
-error.message
-)+
-
-"<br><br>"+
-
-"Please check Firebase Firestore Rules.";
-
-
-errorBox.style.display =
-"block";
-
-
-submitBtn.disabled =
-false;
-
-submitBtn.textContent =
-"📲 Save Order & Send WhatsApp";
-
-}
-
-});
-
-
-/* ================================
-   TRACK ORDER
+TRACK ORDER
 ================================ */
 
 trackBtn.addEventListener(
 "click",
-async function() {
+async function(){
 
+trackResult.style.display="none";
 
-trackResult.style.display =
-"none";
-
-
-const id =
+const orderId =
 trackOrderId.value.trim();
 
 
-/* EMPTY ID */
-
-if(!id) {
+if(!orderId){
 
 trackResult.innerHTML =
-
 "❌ <strong>Please enter your Order ID.</strong>";
 
-trackResult.style.display =
-"block";
+trackResult.style.display="block";
 
 return;
 
 }
 
 
-/* BUTTON LOADING */
+trackBtn.disabled=true;
 
-trackBtn.disabled =
-true;
-
-trackBtn.textContent =
-"⏳ Checking...";
+trackBtn.textContent="⏳ Checking...";
 
 
-try {
+try{
 
-
-if(!db) {
-
-throw new Error(
-"Firebase connection failed."
-);
-
-}
-
-
-/* GET ORDER */
+const orderRef =
+doc(db,"orders",orderId);
 
 const snap =
-await getDoc(
-
-doc(
-db,
-"orders",
-id
-)
-
-);
+await getDoc(orderRef);
 
 
-/* ORDER NOT FOUND */
+if(!snap.exists()){
 
-if(!snap.exists()) {
+trackResult.innerHTML = `
 
-trackResult.innerHTML =
+❌ <strong>Order not found.</strong>
 
-"❌ <strong>Order not found.</strong>"+
-"<br><br>"+
-"Please check your Order ID.";
+<br><br>
 
+Please check your Order ID and try again.
 
-trackResult.style.display =
-"block";
+`;
+
+trackResult.style.display="block";
+
+return;
 
 }
-else {
 
 
-const data =
-snap.data();
+const data = snap.data();
 
 
 /* ================================
-   TOTAL AMOUNT
+AMOUNT CALCULATION
 ================================ */
 
-const amount =
+const totalAmount =
+Number(data.totalAmount || 0);
+
+const discountPercent =
+Number(data.discountPercent || 0);
+
+const discountAmount =
 Number(
-data.totalAmount ?? 0
+data.discountAmount ??
+(totalAmount * discountPercent / 100)
+);
+
+const finalAmount =
+Number(
+data.finalAmount ??
+(totalAmount - discountAmount)
 );
 
 
 /* ================================
-   STATUS
+STATUS
 ================================ */
 
 const status =
@@ -1787,113 +2321,205 @@ data.status ||
 
 
 /* ================================
-   TRACK RESULT
+CUSTOMER TRACK RESULT
 ================================ */
 
-trackResult.innerHTML =
+trackResult.innerHTML = `
 
-"📦 <strong>Order ID:</strong> "+
-escapeHTML(
-data.orderId || id
-)+
+<div style="
+background:white;
+padding:20px;
+border-radius:15px;
+border:1px solid #dceae5;
+">
 
-"<br><br>"+
-
-"👤 <strong>Name:</strong> "+
-escapeHTML(
-data.name || ""
-)+
-
-"<br><br>"+
-
-"💊 <strong>Medicine:</strong> "+
-escapeHTML(
-data.medicine || ""
-)+
-
-"<br><br>"+
-
-"🔢 <strong>Quantity:</strong> "+
-escapeHTML(
-data.quantity ?? ""
-)+
-
-"<br><br>"+
-
-"🚚 <strong>Delivery:</strong> "+
-escapeHTML(
-data.deliveryArea || ""
-)+
-
-"<br><br>"+
-
-"💰 <strong>Total Amount:</strong> "+
-
-"<span class='amount-badge'>"+
-"₹"+
-amount.toFixed(2)+
-"</span>"+
-
-"<br><br>"+
-
-"📌 <strong>Status:</strong> "+
-
-"<span class='status-badge'>"+
-escapeHTML(status)+
-"</span>";
+<h3 style="
+color:#064b91;
+margin-bottom:18px;
+">
+📦 Order Details
+</h3>
 
 
-trackResult.style.display =
-"block";
+<p>
+<strong>📦 Order ID:</strong><br>
+${escapeHTML(data.orderId || orderId)}
+</p>
 
-}
+<br>
 
-}
-catch(error) {
+
+<p>
+<strong>👤 Customer:</strong><br>
+${escapeHTML(data.name || "Not provided")}
+</p>
+
+<br>
+
+
+<p>
+<strong>💊 Medicine:</strong><br>
+${escapeHTML(data.medicine || "Not provided")}
+</p>
+
+<br>
+
+
+<p>
+<strong>🔢 Quantity:</strong><br>
+${escapeHTML(data.quantity ?? "1")}
+</p>
+
+<br>
+
+
+<p>
+<strong>🚚 Delivery:</strong><br>
+${escapeHTML(data.deliveryArea || "Not provided")}
+</p>
+
+<hr style="
+margin:20px 0;
+border:0;
+border-top:1px solid #ddd;
+">
+
+
+<h3 style="
+color:#087c59;
+margin-bottom:15px;
+">
+💰 Payment Details
+</h3>
+
+
+<p>
+<strong>Original Total:</strong>
+₹${totalAmount.toFixed(2)}
+</p>
+
+
+<p style="margin-top:10px">
+
+<strong>🎁 Discount:</strong>
+
+<span style="
+color:#d35400;
+font-weight:bold;
+">
+
+${discountPercent.toFixed(2)}%
+
+</span>
+
+</p>
+
+
+<p style="margin-top:10px">
+
+<strong>💸 Discount Amount:</strong>
+
+₹${discountAmount.toFixed(2)}
+
+</p>
+
+
+<div style="
+margin-top:15px;
+padding:15px;
+background:#e7f8ef;
+border-radius:12px;
+">
+
+<strong style="
+font-size:17px;
+color:#087c59;
+">
+
+💵 Customer Payable Amount
+
+</strong>
+
+<br><br>
+
+<span style="
+font-size:28px;
+font-weight:bold;
+color:#087c59;
+">
+
+₹${finalAmount.toFixed(2)}
+
+</span>
+
+</div>
+
+
+<hr style="
+margin:20px 0;
+border:0;
+border-top:1px solid #ddd;
+">
+
+
+<p>
+<strong>📌 Order Status:</strong>
+</p>
+
+<br>
+
+<span class="status-badge">
+
+${escapeHTML(status)}
+
+</span>
+
+</div>
+
+`;
+
+trackResult.style.display="block";
+
+
+}catch(error){
 
 console.error(
-"TRACK ERROR:",
+"Tracking Error:",
 error
 );
 
+trackResult.innerHTML = `
 
-trackResult.innerHTML =
+❌ <strong>Tracking Error</strong>
 
-"❌ <strong>Tracking Error</strong>"+
-"<br><br>"+
+<br><br>
 
-escapeHTML(
-error.message
-);
+${escapeHTML(error.message)}
 
+`;
 
-trackResult.style.display =
-"block";
+trackResult.style.display="block";
+
+}finally{
+
+trackBtn.disabled=false;
+
+trackBtn.textContent="🔍 Track";
 
 }
-
-
-/* BUTTON RESET */
-
-trackBtn.disabled =
-false;
-
-trackBtn.textContent =
-"🔍 Track";
 
 });
 
 
 /* ================================
-   AUTO LOAD LAST ORDER
+AUTO LOAD LAST ORDER
 ================================ */
 
 const lastOrderId =
-localStorage.getItem(
-"lastOrderId"
-);
+localStorage.getItem("lastOrderId");
 
-if(lastOrderId) {
+
+if(lastOrderId){
 
 trackOrderId.value =
 lastOrderId;
@@ -1903,5 +2529,4 @@ lastOrderId;
 </script>
 
 </body>
-
 </html>
