@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+6<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -2347,7 +2347,20 @@ if ("serviceWorker" in navigator) {
   });
 }
 </script>
-
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+        navigator.serviceWorker.register("/sw.js")
+        .then(function () {
+            console.log("Service Worker registered");
+        })
+        .catch(function (error) {
+            console.log("Service Worker registration failed", error);
+        });
+    });
+}
+</script>
+   
 </body>
 </html>   
 
