@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Medicine Doorstep Delivery</title>
+
 <meta name="description"
 content="Medicine Doorstep Delivery - Order medicines online with doorstep delivery.">
-
-<title>Medicine Doorstep Delivery</title>
 
 <style>
 
@@ -27,8 +26,6 @@ body{
     background:#f4faf8;
     color:#17372e;
 }
-
-/* HEADER */
 
 header{
     position:sticky;
@@ -171,7 +168,7 @@ nav a:hover{
 }
 
 .primary-btn:disabled{
-    opacity:.65;
+    opacity:.6;
     cursor:not-allowed;
 }
 
@@ -210,7 +207,7 @@ section{
     color:#687b74;
 }
 
-/* CATEGORIES */
+/* CATEGORY */
 
 .categories{
     display:grid;
@@ -224,11 +221,6 @@ section{
     text-align:center;
     border-radius:18px;
     box-shadow:0 5px 20px rgba(0,0,0,.06);
-    transition:.3s;
-}
-
-.category:hover{
-    transform:translateY(-5px);
 }
 
 .category-icon{
@@ -315,8 +307,6 @@ textarea{
     resize:vertical;
 }
 
-/* FILE */
-
 .file-box{
     border:2px dashed #8bcdb8;
     background:#f1fbf7;
@@ -328,10 +318,7 @@ textarea{
 .file-box input{
     border:none;
     background:transparent;
-    width:auto;
 }
-
-/* MESSAGES */
 
 .delivery-status{
     padding:15px;
@@ -428,7 +415,6 @@ textarea{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:35px;
-    align-items:center;
 }
 
 .about-card{
@@ -608,28 +594,21 @@ footer strong{
 
 <body>
 
-<!-- HEADER -->
-
 <header>
 
 <div class="navbar">
 
 <div class="logo">
-
 <div class="logo-icon">⚕</div>
-
 Medicine Doorstep
-
 </div>
 
 <nav>
-
 <a href="#home">Home</a>
 <a href="#about">About</a>
 <a href="#order">Order</a>
 <a href="#track">Track Order</a>
 <a href="#contact">Contact</a>
-
 </nav>
 
 <a class="call-btn" href="tel:6009415805">
@@ -689,14 +668,12 @@ delivered to your doorstep.
 <section>
 
 <div class="section-title">
-
 <h2>Shop by Category</h2>
 
 <p>
 Find the medicines and healthcare
 products you need.
 </p>
-
 </div>
 
 <div class="categories">
@@ -789,6 +766,7 @@ Fill the form and save your order.
 
 </div>
 
+
 <div class="order-box">
 
 <form id="orderForm">
@@ -815,7 +793,6 @@ type="tel"
 id="mobile"
 placeholder="Enter 10 digit mobile number"
 inputmode="numeric"
-pattern="[0-9]{10}"
 maxlength="10"
 required>
 
@@ -938,7 +915,7 @@ style="width:100%;">
 </section>
 
 
-<!-- TRACK ORDER -->
+<!-- TRACK -->
 
 <section id="track">
 
@@ -952,6 +929,7 @@ Enter your Order ID to check your latest order status.
 
 </div>
 
+
 <div class="track-box">
 
 <h3>Check Order Status</h3>
@@ -959,6 +937,7 @@ Enter your Order ID to check your latest order status.
 <p>
 Enter the Order ID received after placing your order.
 </p>
+
 
 <div class="track-input">
 
@@ -977,6 +956,7 @@ id="trackBtn">
 </button>
 
 </div>
+
 
 <div id="trackResult" class="track-result"></div>
 
@@ -1007,8 +987,7 @@ Medicine Doorstep Delivery makes
 ordering medicines simple and convenient.
 Customers can submit their medicine
 requirements and prescription online
-and contact us directly for order
-confirmation.
+and contact us directly for order confirmation.
 
 </p>
 
@@ -1058,9 +1037,13 @@ confirmation.
 
 <div class="contact">
 
-<h2>Need Help With Your Order?</h2>
+<h2>
+Need Help With Your Order?
+</h2>
 
-<p>Contact Medicine Doorstep Delivery</p>
+<p>
+Contact Medicine Doorstep Delivery
+</p>
 
 <a
 href="https://wa.me/916009415805"
@@ -1096,9 +1079,9 @@ Healthcare at your doorstep.
 </footer>
 
 
-<!-- =========================
+<!-- =====================================================
      FIREBASE
-========================= -->
+===================================================== -->
 
 <script type="module">
 
@@ -1110,23 +1093,14 @@ import {
     doc,
     setDoc,
     getDoc,
-    updateDoc,
     serverTimestamp
 }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-import {
-    getStorage,
-    ref,
-    uploadBytes,
-    getDownloadURL
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js";
 
-
-/* =========================
+/* =====================================================
    FIREBASE CONFIG
-========================= */
+===================================================== */
 
 const firebaseConfig = {
 
@@ -1153,22 +1127,32 @@ const firebaseConfig = {
 };
 
 
-/* =========================
-   START FIREBASE
-========================= */
+/* =====================================================
+   FIREBASE INITIALIZE
+===================================================== */
 
-const app = initializeApp(firebaseConfig);
+let app;
 
-const db = getFirestore(app);
+let db;
 
-const storage = getStorage(app);
+try{
 
-console.log("Firebase connected successfully");
+    app = initializeApp(firebaseConfig);
+
+    db = getFirestore(app);
+
+    console.log("Firebase connected successfully");
+
+}catch(firebaseError){
+
+    console.error("Firebase initialization error:",firebaseError);
+
+}
 
 
-/* =========================
+/* =====================================================
    ELEMENTS
-========================= */
+===================================================== */
 
 const form =
 document.getElementById("orderForm");
@@ -1204,11 +1188,11 @@ const trackResult =
 document.getElementById("trackResult");
 
 
-/* =========================
-   DELIVERY STATUS
-========================= */
+/* =====================================================
+   DELIVERY
+===================================================== */
 
-delivery.addEventListener("change", function(){
+delivery.addEventListener("change",function(){
 
     if(this.value === "Out of Delivery"){
 
@@ -1223,15 +1207,15 @@ delivery.addEventListener("change", function(){
 });
 
 
-/* =========================
-   FILE CHECK
-========================= */
+/* =====================================================
+   FILE VALIDATION
+===================================================== */
 
-prescriptionInput.addEventListener("change", function(){
-
-    const file = this.files[0];
+prescriptionInput.addEventListener("change",function(){
 
     fileMessage.innerHTML = "";
+
+    const file = this.files[0];
 
     if(!file){
         return;
@@ -1241,19 +1225,21 @@ prescriptionInput.addEventListener("change", function(){
     50 * 1024 * 1024;
 
     const allowedTypes = [
+
         "image/jpeg",
         "image/png",
         "application/pdf"
+
     ];
 
     if(!allowedTypes.includes(file.type)){
 
         fileMessage.innerHTML =
         "<p style='color:red;font-weight:bold;margin-top:10px'>" +
-        "❌ Only JPG, PNG or PDF allowed." +
+        "❌ Only JPG, PNG or PDF files are allowed." +
         "</p>";
 
-        prescriptionInput.value = "";
+        this.value = "";
 
         return;
     }
@@ -1265,7 +1251,7 @@ prescriptionInput.addEventListener("change", function(){
         "❌ File size must be below 50 MB." +
         "</p>";
 
-        prescriptionInput.value = "";
+        this.value = "";
 
         return;
     }
@@ -1278,9 +1264,9 @@ prescriptionInput.addEventListener("change", function(){
 });
 
 
-/* =========================
+/* =====================================================
    CREATE ORDER ID
-========================= */
+===================================================== */
 
 function createOrderId(){
 
@@ -1290,104 +1276,101 @@ function createOrderId(){
     now.getFullYear();
 
     const month =
-    String(now.getMonth()+1)
-    .padStart(2,"0");
+    String(now.getMonth()+1).padStart(2,"0");
 
     const day =
-    String(now.getDate())
-    .padStart(2,"0");
+    String(now.getDate()).padStart(2,"0");
 
     const random =
-    Math.floor(1000 + Math.random()*9000);
+    Math.floor(1000 + Math.random() * 9000);
 
     return "MDD-" +
-    year +
-    month +
-    day +
-    "-" +
-    random;
+           year +
+           month +
+           day +
+           "-" +
+           random;
+
 }
 
 
-/* =========================
-   SAVE ORDER
-========================= */
+/* =====================================================
+   SHOW ERROR
+===================================================== */
 
-form.addEventListener("submit", async function(e){
+function showError(message){
+
+    success.style.display = "none";
+
+    error.innerHTML =
+    "❌ " + message;
+
+    error.style.display = "block";
+
+}
+
+
+/* =====================================================
+   SHOW SUCCESS
+===================================================== */
+
+function showSuccess(orderId){
+
+    error.style.display = "none";
+
+    success.innerHTML =
+
+    "✅ ORDER SAVED SUCCESSFULLY!<br><br>" +
+
+    "📦 Your Order ID:<br>" +
+
+    "<strong style='font-size:22px'>" +
+    orderId +
+    "</strong>" +
+
+    "<br><br>" +
+
+    "📱 Opening WhatsApp...";
+
+    success.style.display = "block";
+
+}
+
+
+/* =====================================================
+   SAVE ORDER
+===================================================== */
+
+form.addEventListener("submit",async function(e){
 
     e.preventDefault();
 
     success.style.display = "none";
+
     error.style.display = "none";
+
+
+    /* CHECK FIREBASE */
+
+    if(!db){
+
+        showError(
+        "Firebase is not connected. Please refresh the page."
+        );
+
+        return;
+
+    }
+
+
+    /* DISABLE BUTTON */
 
     submitBtn.disabled = true;
 
-    submitBtn.textContent =
+    submitBtn.innerHTML =
     "⏳ Saving Order...";
 
 
     try{
 
-        /* GET VALUES */
-
-        const name =
-        document.getElementById("name")
-        .value
-        .trim();
-
-        const mobile =
-        document.getElementById("mobile")
-        .value
-        .trim();
-
-        const medicine =
-        document.getElementById("medicine")
-        .value
-        .trim();
-
-        const quantity =
-        Number(
-            document.getElementById("quantity").value
-        );
-
-        const address =
-        document.getElementById("address")
-        .value
-        .trim();
-
-        const deliveryStatus =
-        delivery.value;
-
-        const file =
-        prescriptionInput.files[0];
-
-
-        /* VALIDATION */
-
-        if(name.length < 2){
-
-            throw new Error(
-            "Please enter your full name."
-            );
-
-        }
-
-        if(!/^[0-9]{10}$/.test(mobile)){
-
-            throw new Error(
-            "Please enter a valid 10 digit mobile number."
-            );
-
-        }
-
-        if(!medicine){
-
-            throw new Error(
-            "Please enter medicine/product name."
-            );
-
-        }
-
-        if(quantity < 1){
-
-            throw n
+        /* GET
