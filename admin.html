@@ -1,486 +1,994 @@
-<script type="module">
+<!DOCTYPE html>
+<html lang="en">
 
-/* =========================================
-   PART 3 — ADMIN ACTIONS
-   Amount + Discount + Status + Delete
-========================================= */
+<head>
 
+<meta charset="UTF-8">
 
-/* =========================================
-   BUTTON HANDLER
-========================================= */
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-ordersDiv.addEventListener("click", async (event) => {
-
-    const button = event.target.closest(
-        "button[data-action]"
-    );
-
-    if (!button) return;
+<title>Medicine Doorstep Delivery - Admin</title>
 
 
-    const orderId = button.dataset.id;
-    const action = button.dataset.action;
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,sans-serif;
+}
 
 
-    /* =====================================
-       SAVE AMOUNT + DISCOUNT
-    ===================================== */
-
-    if (action === "saveAmount") {
-
-        const orderCard =
-            button.closest(".order");
-
-        if (!orderCard) return;
+body{
+background:#f3f7f5;
+color:#17372e;
+min-height:100vh;
+}
 
 
-        const totalInput =
-            orderCard.querySelector(
-                ".total-input"
-            );
+/* =========================
+   HEADER
+========================= */
 
-        const discountInput =
-            orderCard.querySelector(
-                ".discount-input"
-            );
-
-
-        const totalAmount =
-            Number(totalInput.value);
+header{
+background:#087c59;
+color:white;
+padding:20px 15px;
+text-align:center;
+box-shadow:0 3px 15px #0002;
+}
 
 
-        let discountPercent =
-            Number(discountInput.value);
+header h1{
+font-size:24px;
+}
 
 
-        /* VALIDATE TOTAL */
-
-        if (
-            !Number.isFinite(totalAmount) ||
-            totalAmount < 0
-        ) {
-
-            alert(
-                "❌ Please enter a valid Total Amount."
-            );
-
-            return;
-        }
+header p{
+margin-top:6px;
+font-size:14px;
+opacity:.9;
+}
 
 
-        /* VALIDATE DISCOUNT */
+/* =========================
+   LOGIN BOX
+========================= */
 
-        if (
-            !Number.isFinite(discountPercent) ||
-            discountPercent < 0 ||
-            discountPercent > 100
-        ) {
+#loginBox{
 
-            alert(
-                "❌ Discount must be between 0% and 100%."
-            );
+width:92%;
+max-width:420px;
 
-            return;
-        }
+margin:50px auto;
 
+background:white;
 
-        /* CALCULATE */
+padding:30px 25px;
 
-        const discountAmount =
-            totalAmount *
-            discountPercent /
-            100;
+border-radius:20px;
 
+box-shadow:
+0 8px 30px #00000015;
 
-        const finalAmount =
-            totalAmount -
-            discountAmount;
+}
 
 
-        /* SAVE */
+#loginBox h2{
 
-        await saveOrderAmount(
-            orderId,
-            totalAmount,
-            discountPercent,
-            discountAmount,
-            finalAmount
-        );
+text-align:center;
 
-        return;
-    }
+color:#087c59;
 
+margin-bottom:22px;
 
-    /* =====================================
-       DELETE
-    ===================================== */
+font-size:24px;
 
-    if (action === "delete") {
-
-        await deleteOrder(orderId);
-
-        return;
-    }
+}
 
 
-    /* =====================================
-       CONFIRMED
-    ===================================== */
+/* =========================
+   INPUT
+========================= */
 
-    if (action === "confirmed") {
+input{
 
-        await updateDeliveryStatus(
-            orderId,
-            "Confirmed"
-        );
+width:100%;
 
-        return;
-    }
+padding:14px;
 
+margin:8px 0;
 
-    /* =====================================
-       OUT FOR DELIVERY
-    ===================================== */
+border:
 
-    if (action === "out") {
+1px solid #d5e1dd;
 
-        await updateDeliveryStatus(
-            orderId,
-            "Out for Delivery"
-        );
+border-radius:10px;
 
-        return;
-    }
+font-size:16px;
+
+outline:none;
+
+background:white;
+
+}
 
 
-    /* =====================================
-       DELIVERED
-    ===================================== */
+input:focus{
 
-    if (action === "delivered") {
+border-color:#087c59;
 
-        await updateDeliveryStatus(
-            orderId,
-            "Delivered"
-        );
+box-shadow:
+0 0 0 3px #087c5915;
 
-        return;
-    }
-
-});
+}
 
 
-/* =========================================
+/* =========================
+   BUTTON
+========================= */
+
+button{
+
+border:none;
+
+border-radius:10px;
+
+padding:13px 17px;
+
+cursor:pointer;
+
+font-size:14px;
+
+font-weight:bold;
+
+}
+
+
+button:disabled{
+
+opacity:.6;
+
+cursor:not-allowed;
+
+}
+
+
+/* LOGIN BUTTON */
+
+#loginBtn{
+
+width:100%;
+
+background:#087c59;
+
+color:white;
+
+margin-top:12px;
+
+font-size:16px;
+
+}
+
+
+#loginBtn:hover{
+
+background:#066b4d;
+
+}
+
+
+/* LOGIN MESSAGE */
+
+#message{
+
+text-align:center;
+
+margin-top:15px;
+
+color:#dc3545;
+
+font-size:14px;
+
+line-height:1.5;
+
+}
+
+
+/* =========================
+   ADMIN PANEL
+========================= */
+
+#adminPanel{
+
+display:none;
+
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container{
+
+width:94%;
+
+max-width:1200px;
+
+margin:25px auto;
+
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar{
+
+background:white;
+
+padding:20px;
+
+border-radius:15px;
+
+margin-bottom:20px;
+
+box-shadow:
+0 5px 20px #00000010;
+
+overflow:hidden;
+
+}
+
+
+.topbar h2{
+
+color:#087c59;
+
+font-size:22px;
+
+margin-bottom:7px;
+
+}
+
+
+.email{
+
+color:#66756f;
+
+font-size:14px;
+
+}
+
+
+/* LOGOUT */
+
+#logoutBtn{
+
+background:#dc3545;
+
+color:white;
+
+float:right;
+
+padding:10px 15px;
+
+}
+
+
+#logoutBtn:hover{
+
+background:#bb2d3b;
+
+}
+
+
+/* =========================
+   STATISTICS
+========================= */
+
+.cards{
+
+display:grid;
+
+grid-template-columns:
+repeat(5,1fr);
+
+gap:15px;
+
+margin-bottom:20px;
+
+}
+
+
+.card{
+
+background:white;
+
+padding:20px 12px;
+
+border-radius:15px;
+
+box-shadow:
+0 5px 18px #00000010;
+
+text-align:center;
+
+}
+
+
+.card h3{
+
+font-size:30px;
+
+color:#087c59;
+
+margin-bottom:7px;
+
+}
+
+
+.card p{
+
+color:#66756f;
+
+font-size:14px;
+
+}
+
+
+/* =========================
+   ORDERS BOX
+========================= */
+
+.ordersBox{
+
+background:white;
+
+padding:20px;
+
+border-radius:15px;
+
+box-shadow:
+0 5px 20px #00000010;
+
+}
+
+
+.ordersBox h2{
+
+color:#087c59;
+
+margin-bottom:15px;
+
+font-size:21px;
+
+}
+
+
+/* =========================
+   REFRESH BUTTON
+========================= */
+
+.refresh{
+
+background:#087c59;
+
+color:white;
+
+margin-bottom:18px;
+
+}
+
+
+.refresh:hover{
+
+background:#066b4d;
+
+}
+
+
+/* =========================
+   ORDER CARD
+========================= */
+
+.order{
+
+border:
+
+1px solid #dce6e2;
+
+border-radius:15px;
+
+padding:18px;
+
+margin-bottom:18px;
+
+background:#fbfdfc;
+
+}
+
+
+.order p{
+
+margin:8px 0;
+
+line-height:1.5;
+
+word-break:break-word;
+
+}
+
+
+.order strong{
+
+color:#087c59;
+
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status{
+
+display:inline-block;
+
+padding:8px 14px;
+
+border-radius:25px;
+
+margin-top:10px;
+
+font-size:13px;
+
+font-weight:bold;
+
+}
+
+
+.status.pending{
+
+background:#fff3cd;
+
+color:#856404;
+
+}
+
+
+.status.confirmed{
+
+background:#d1e7dd;
+
+color:#0f5132;
+
+}
+
+
+.status.out{
+
+background:#cfe2ff;
+
+color:#084298;
+
+}
+
+
+.status.delivered{
+
+background:#e2d9f3;
+
+color:#432874;
+
+}
+
+
+/* =========================
+   AMOUNT SECTION
+========================= */
+
+.amount-box{
+
+margin-top:18px;
+
+padding:18px;
+
+background:#eefaf5;
+
+border:
+
+1px solid #b7dfcf;
+
+border-radius:14px;
+
+}
+
+
+.amount-box h3{
+
+color:#087c59;
+
+margin-bottom:14px;
+
+font-size:18px;
+
+}
+
+
+.amount-row{
+
+display:grid;
+
+grid-template-columns:
+1fr 1fr;
+
+gap:12px;
+
+}
+
+
+.amount-field label{
+
+display:block;
+
+font-weight:bold;
+
+font-size:13px;
+
+color:#555;
+
+margin-bottom:6px;
+
+}
+
+
+.amount-input{
+
+width:100%;
+
+padding:12px;
+
+border:
+
+1px solid #ccd9d5;
+
+border-radius:9px;
+
+font-size:16px;
+
+margin:0;
+
+}
+
+
+/* =========================
    SAVE AMOUNT
-========================================= */
+========================= */
 
-async function saveOrderAmount(
-    orderId,
-    totalAmount,
-    discountPercent,
-    discountAmount,
-    finalAmount
-) {
+.save-amount-btn{
 
-    try {
+width:100%;
 
-        await updateDoc(
-            doc(
-                db,
-                "orders",
-                orderId
-            ),
-            {
+margin-top:13px;
 
-                totalAmount:
-                    Number(totalAmount),
+background:#087c59;
 
-                discountPercent:
-                    Number(discountPercent),
+color:white;
 
-                discountAmount:
-                    Number(discountAmount),
-
-                finalAmount:
-                    Number(finalAmount),
-
-                updatedAt:
-                    new Date().toISOString()
-
-            }
-        );
-
-
-        alert(
-            "✅ Amount Saved Successfully!\n\n" +
-
-            "💰 Total Amount: ₹" +
-            totalAmount.toFixed(2) +
-
-            "\n🎁 Discount: " +
-            discountPercent.toFixed(2) +
-            "%" +
-
-            "\n💸 Discount Amount: ₹" +
-            discountAmount.toFixed(2) +
-
-            "\n💵 Customer Payable: ₹" +
-            finalAmount.toFixed(2)
-        );
-
-
-        await loadOrders();
-
-
-    } catch (error) {
-
-        console.error(
-            "Amount Save Error:",
-            error
-        );
-
-
-        alert(
-            "❌ Amount Save হয়নি.\n\n" +
-            error.message
-        );
-
-    }
+font-weight:bold;
 
 }
 
 
-/* =========================================
-   DELETE ORDER
-========================================= */
+.save-amount-btn:hover{
 
-async function deleteOrder(orderId) {
-
-    const confirmDelete =
-        confirm(
-            "⚠️ এই Order টি permanently Delete করতে চান?"
-        );
-
-
-    if (!confirmDelete) {
-
-        return;
-
-    }
-
-
-    try {
-
-        await deleteDoc(
-            doc(
-                db,
-                "orders",
-                orderId
-            )
-        );
-
-
-        alert(
-            "✅ Order Deleted Successfully"
-        );
-
-
-        await loadOrders();
-
-
-    } catch (error) {
-
-        console.error(
-            "Delete Error:",
-            error
-        );
-
-
-        alert(
-            "❌ Order Delete হয়নি.\n\n" +
-            error.message
-        );
-
-    }
+background:#066b4d;
 
 }
 
 
-/* =========================================
-   UPDATE ORDER STATUS
-========================================= */
+/* =========================
+   AMOUNT SUMMARY
+========================= */
 
-async function updateDeliveryStatus(
-    orderId,
-    status
-) {
+.amount-summary{
 
-    try {
+margin-top:15px;
 
-        await updateDoc(
-            doc(
-                db,
-                "orders",
-                orderId
-            ),
-            {
+background:white;
 
-                status:
-                    status,
+padding:15px;
 
-                updatedAt:
-                    new Date().toISOString()
+border:
 
-            }
-        );
+1px solid #dce6e2;
 
-
-        alert(
-            "✅ Status Updated Successfully!\n\n" +
-            "📌 Status: " +
-            status
-        );
-
-
-        await loadOrders();
-
-
-    } catch (error) {
-
-        console.error(
-            "Status Update Error:",
-            error
-        );
-
-
-        alert(
-            "❌ Status Update হয়নি.\n\n" +
-            error.message
-        );
-
-    }
+border-radius:10px;
 
 }
 
 
-/* =========================================
-   DASHBOARD STATISTICS
-========================================= */
+.amount-summary p{
 
-function updateStats(
-    total,
-    pending,
-    confirmed,
-    outDelivery,
-    delivered
-) {
-
-    document.getElementById(
-        "totalOrders"
-    ).textContent =
-        total;
-
-
-    document.getElementById(
-        "pendingOrders"
-    ).textContent =
-        pending;
-
-
-    document.getElementById(
-        "confirmedOrders"
-    ).textContent =
-        confirmed;
-
-
-    document.getElementById(
-        "outDeliveryOrders"
-    ).textContent =
-        outDelivery;
-
-
-    document.getElementById(
-        "deliveredOrders"
-    ).textContent =
-        delivered;
+margin:8px 0;
 
 }
 
 
-/* =========================================
-   REFRESH
-========================================= */
+.final-amount{
 
-refreshBtn.addEventListener(
-    "click",
-    async () => {
+font-size:22px;
 
-        refreshBtn.disabled = true;
+font-weight:bold;
 
-        refreshBtn.textContent =
-            "⏳ Loading...";
+color:#087c59;
+
+}
 
 
-        try {
+.discount-text{
 
-            await loadOrders();
+color:#d35400;
 
-        } catch (error) {
+font-weight:bold;
 
-            console.error(error);
-
-        }
+}
 
 
-        refreshBtn.disabled = false;
+/* =========================
+   ORDER ACTIONS
+========================= */
 
-        refreshBtn.textContent =
-            "🔄 Refresh Orders";
+.order-actions{
 
-    }
-);
+display:flex;
+
+flex-wrap:wrap;
+
+gap:9px;
+
+margin-top:16px;
+
+}
 
 
-/* =========================================
-   END PART 3
-========================================= */
+.order-actions button{
 
-</script>
-<!-- =========================================
-     ADMIN.HTML — PART 2
-     DASHBOARD + CUSTOMER ORDERS
-========================================= -->
+color:white;
+
+font-weight:bold;
+
+}
+
+
+.confirm-btn{
+
+background:#198754;
+
+}
+
+
+.delivery-btn{
+
+background:#0d6efd;
+
+}
+
+
+.delivered-btn{
+
+background:#6f42c1;
+
+}
+
+
+.delete-btn{
+
+background:#dc3545;
+
+}
+
+
+/* =========================
+   DATE
+========================= */
+
+.order-date{
+
+color:#777;
+
+font-size:13px;
+
+margin-top:10px;
+
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+
+text-align:center;
+
+padding:35px 15px;
+
+color:#777;
+
+}
+
+
+.error{
+
+color:#dc3545;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+.cards{
+
+grid-template-columns:
+repeat(3,1fr);
+
+}
+
+}
+
+
+@media(max-width:600px){
+
+header h1{
+
+font-size:19px;
+
+}
+
+
+.container{
+
+width:94%;
+
+margin:18px auto;
+
+}
+
+
+.topbar{
+
+padding:17px;
+
+}
+
+
+.topbar h2{
+
+font-size:19px;
+
+}
+
+
+.cards{
+
+grid-template-columns:
+1fr 1fr;
+
+gap:10px;
+
+}
+
+
+.card{
+
+padding:16px 8px;
+
+}
+
+
+.card h3{
+
+font-size:26px;
+
+}
+
+
+.card p{
+
+font-size:12px;
+
+}
+
+
+.ordersBox{
+
+padding:15px;
+
+}
+
+
+.order{
+
+padding:15px;
+
+}
+
+
+.amount-row{
+
+grid-template-columns:
+1fr;
+
+}
+
+
+.order-actions button{
+
+flex:
+1 1 45%;
+
+}
+
+
+#logoutBtn{
+
+padding:9px 12px;
+
+font-size:12px;
+
+}
+
+}
+
+
+@media(max-width:380px){
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+
+.order-actions button{
+
+flex:1 1 100%;
+
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<h1>
+💊 Online Medicine Doorstep Delivery
+</h1>
+
+<p>
+Admin Panel
+</p>
+
+</header>
+
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<div id="loginBox">
+
+<h2>
+🔐 Admin Login
+</h2>
+
+
+<input
+type="email"
+id="email"
+placeholder="Admin Email"
+autocomplete="email"
+>
+
+
+<input
+type="password"
+id="password"
+placeholder="Password"
+autocomplete="current-password"
+>
+
+
+<button
+id="loginBtn"
+type="button"
+>
+
+Login
+
+</button>
+
+
+<div id="message">
+</div>
+
+</div>
+
+
+<!-- =========================
+     ADMIN PANEL
+========================= -->
 
 <div id="adminPanel">
 
+
 <div class="container">
+
 
 <!-- TOP BAR -->
 
 <div class="topbar">
 
-<button id="logoutBtn">
+
+<button
+id="logoutBtn"
+type="button"
+>
+
 Logout
+
 </button>
+
 
 <h2>
 📊 Admin Dashboard
 </h2>
 
+
 <div class="email">
+
 Logged in as:
-<span id="adminEmail"></span>
-</div>
+
+<span id="adminEmail">
+</span>
 
 </div>
 
 
-<!-- =====================================
+</div>
+
+
+<!-- =========================
      STATISTICS
-===================================== -->
+========================= -->
 
 <div class="cards">
+
 
 <div class="card">
 
@@ -546,14 +1054,16 @@ Delivered
 
 </div>
 
+
 </div>
 
 
-<!-- =====================================
-     ORDERS BOX
-===================================== -->
+<!-- =========================
+     ORDERS
+========================= -->
 
 <div class="ordersBox">
+
 
 <h2>
 📦 Customer Orders
@@ -562,7 +1072,9 @@ Delivered
 
 <button
 class="refresh"
-id="refreshBtn">
+id="refreshBtn"
+type="button"
+>
 
 🔄 Refresh Orders
 
@@ -579,91 +1091,83 @@ id="refreshBtn">
 
 </div>
 
+
+</div>
+
+
 </div>
 
 </div>
 
-</div>
+   <script type="module">
 
-
-<!-- =========================================
-     PART 2 FIREBASE SCRIPT
-========================================= -->
-
-<script type="module">
+/* =========================================
+   FIREBASE IMPORT
+========================================= */
 
 import {
-initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
-getAuth,
-signInWithEmailAndPassword,
-onAuthStateChanged,
-signOut
-}
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
-getFirestore,
-collection,
-getDocs,
-query,
-orderBy,
-doc,
-deleteDoc,
-updateDoc
-}
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  orderBy,
+  doc,
+  deleteDoc,
+  updateDoc
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =====================================
+/* =========================================
    FIREBASE CONFIG
-===================================== */
+========================================= */
 
 const firebaseConfig = {
 
-apiKey:
-"AIzaSyABmq9B4NEvgtsrJIEfUhjZOqMCjGGHfpI",
+  apiKey:
+  "AIzaSyABmq9B4NEvgtsrJIEfUhjZOqMCjGGHfpI",
 
-authDomain:
-"medicine-doorstep-delivery.firebaseapp.com",
+  authDomain:
+  "medicine-doorstep-delivery.firebaseapp.com",
 
-projectId:
-"medicine-doorstep-delivery",
+  projectId:
+  "medicine-doorstep-delivery",
 
-storageBucket:
-"medicine-doorstep-delivery.firebasestorage.app",
+  storageBucket:
+  "medicine-doorstep-delivery.firebasestorage.app",
 
-messagingSenderId:
-"703468135334",
+  messagingSenderId:
+  "703468135334",
 
-appId:
-"1:703468135334:web:56254d5608fe0cd371a567",
+  appId:
+  "1:703468135334:web:56254d5608fe0cd371a567",
 
-measurementId:
-"G-14XLF1S53T"
-
+  measurementId:
+  "G-14XLF1S53T"
 };
 
 
-/* =====================================
+/* =========================================
    ADMIN EMAIL
-===================================== */
+========================================= */
 
 const ADMIN_EMAIL =
 "abhijit123kar12@gmail.com";
 
 
-/* =====================================
-   FIREBASE START
-===================================== */
+/* =========================================
+   START FIREBASE
+========================================= */
 
 const app =
 initializeApp(firebaseConfig);
@@ -675,1505 +1179,1364 @@ const db =
 getFirestore(app);
 
 
-/* =====================================
-   ELEMENTS
-===================================== */
+/* =========================================
+   HTML ELEMENTS
+========================================= */
 
 const loginBox =
-document.getElementById(
-"loginBox"
-);
+document.getElementById("loginBox");
 
 const adminPanel =
-document.getElementById(
-"adminPanel"
-);
+document.getElementById("adminPanel");
 
 const emailInput =
-document.getElementById(
-"email"
-);
+document.getElementById("email");
 
 const passwordInput =
-document.getElementById(
-"password"
-);
+document.getElementById("password");
 
 const loginBtn =
-document.getElementById(
-"loginBtn"
-);
+document.getElementById("loginBtn");
 
 const logoutBtn =
-document.getElementById(
-"logoutBtn"
-);
+document.getElementById("logoutBtn");
 
 const message =
-document.getElementById(
-"message"
-);
+document.getElementById("message");
 
 const adminEmail =
-document.getElementById(
-"adminEmail"
-);
+document.getElementById("adminEmail");
 
 const ordersDiv =
-document.getElementById(
-"orders"
-);
+document.getElementById("orders");
 
 const refreshBtn =
-document.getElementById(
-"refreshBtn"
-);
+document.getElementById("refreshBtn");
 
 
-/* =====================================
+/* =========================================
    ESCAPE HTML
-===================================== */
+========================================= */
 
 function escapeHTML(value){
 
-return String(
-value ?? ""
-)
-.replaceAll(
-"&",
-"&amp;"
-)
-.replaceAll(
-"<",
-"&lt;"
-)
-.replaceAll(
-">",
-"&gt;"
-)
-.replaceAll(
-'"',
-"&quot;"
-)
-.replaceAll(
-"'",
-"&#039;"
-);
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 
 }
 
 
-/* =====================================
-   LOGIN
-===================================== */
+/* =========================================
+   ADMIN LOGIN
+========================================= */
 
 loginBtn.addEventListener(
 "click",
-async () => {
+async function(){
 
-const email =
-emailInput.value.trim();
+  const email =
+  emailInput.value.trim();
 
-const password =
-passwordInput.value;
+  const password =
+  passwordInput.value;
 
+  message.textContent = "";
 
-message.textContent =
-"";
+  if(!email || !password){
 
+    message.textContent =
+    "Please enter email and password.";
 
-if(
-!email ||
-!password
-){
-
-message.textContent =
-"Please enter email and password.";
-
-return;
-
-}
+    return;
+  }
 
 
-if(
-email.toLowerCase() !==
-ADMIN_EMAIL.toLowerCase()
-){
+  if(
+    email.toLowerCase() !==
+    ADMIN_EMAIL.toLowerCase()
+  ){
 
-message.textContent =
-"❌ This email is not authorized.";
+    message.textContent =
+    "❌ This email is not authorized.";
 
-return;
-
-}
-
-
-loginBtn.disabled =
-true;
-
-loginBtn.textContent =
-"Logging in...";
+    return;
+  }
 
 
-try{
+  loginBtn.disabled = true;
 
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
+  loginBtn.textContent =
+  "Logging in...";
 
-}catch(error){
 
-console.error(error);
+  try{
 
-message.textContent =
-"❌ Login failed: " +
-error.message;
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
 
-loginBtn.disabled =
-false;
+  }
 
-loginBtn.textContent =
-"Login";
+  catch(error){
 
-}
+    console.error(error);
+
+    message.textContent =
+    "❌ Login failed: " +
+    error.message;
+
+    loginBtn.disabled = false;
+
+    loginBtn.textContent =
+    "Login";
+  }
 
 });
 
 
-/* =====================================
+/* =========================================
    AUTH STATE
-===================================== */
+========================================= */
 
 onAuthStateChanged(
 auth,
-async user => {
+async function(user){
 
-if(user){
+  if(user){
 
-if(
-!user.email ||
-user.email.toLowerCase() !==
-ADMIN_EMAIL.toLowerCase()
-){
+    if(
+      !user.email ||
+      user.email.toLowerCase() !==
+      ADMIN_EMAIL.toLowerCase()
+    ){
 
-await signOut(auth);
+      await signOut(auth);
 
-message.textContent =
-"❌ You are not authorized.";
+      message.textContent =
+      "❌ You are not authorized.";
 
-return;
-
-}
-
-
-loginBox.style.display =
-"none";
-
-adminPanel.style.display =
-"block";
-
-adminEmail.textContent =
-user.email;
+      return;
+    }
 
 
-await loadOrders();
+    loginBox.style.display =
+    "none";
+
+    adminPanel.style.display =
+    "block";
+
+    adminEmail.textContent =
+    user.email;
 
 
-}else{
+    await loadOrders();
 
-loginBox.style.display =
-"block";
+  }
 
-adminPanel.style.display =
-"none";
+  else{
 
-}
+    loginBox.style.display =
+    "block";
+
+    adminPanel.style.display =
+    "none";
+
+    loginBtn.disabled =
+    false;
+
+    loginBtn.textContent =
+    "Login";
+  }
 
 });
 
 
-/* =====================================
+/* =========================================
    LOGOUT
-===================================== */
+========================================= */
 
 logoutBtn.addEventListener(
 "click",
-async () => {
+async function(){
 
-await signOut(auth);
+  try{
 
-location.reload();
+    await signOut(auth);
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+  }
 
 });
 
 
-/* =====================================
+/* =========================================
    LOAD ORDERS
-===================================== */
+========================================= */
 
 async function loadOrders(){
 
-ordersDiv.innerHTML =
-`
-<div class="empty">
-⏳ Loading orders...
-</div>
-`;
+  ordersDiv.innerHTML =
+  '<div class="empty">⏳ Loading orders...</div>';
 
 
-try{
+  try{
 
-const ordersRef =
-collection(
-db,
-"orders"
-);
+    const ordersRef =
+    collection(db,"orders");
 
-
-let snapshot;
+    let snapshot;
 
 
-/* TRY SORTED ORDERS */
+    /* Try newest first */
 
-try{
+    try{
 
-const q =
-query(
-ordersRef,
-orderBy(
-"createdAt",
-"desc"
-)
-);
+      const q =
+      query(
+        ordersRef,
+        orderBy("createdAt","desc")
+      );
+
+      snapshot =
+      await getDocs(q);
+
+    }
+
+    catch(error){
+
+      console.log(
+        "createdAt sorting unavailable, loading normally."
+      );
+
+      snapshot =
+      await getDocs(ordersRef);
+    }
 
 
-snapshot =
-await getDocs(q);
+    let total = 0;
+
+    let pending = 0;
+
+    let confirmed = 0;
+
+    let outDelivery = 0;
+
+    let delivered = 0;
 
 
-}catch(error){
+    ordersDiv.innerHTML = "";
 
-console.warn(
-"Sorting failed. Loading normally."
-);
 
-snapshot =
-await getDocs(
-ordersRef
-);
+    /* =====================================
+       NO ORDERS
+    ===================================== */
+
+    if(snapshot.empty){
+
+      ordersDiv.innerHTML = `
+        <div class="empty">
+          📦 No orders received yet.
+        </div>
+      `;
+
+      updateStats(
+        0,
+        0,
+        0,
+        0,
+        0
+      );
+
+      return;
+    }
+
+
+    /* =====================================
+       EACH ORDER
+    ===================================== */
+
+    snapshot.forEach(
+    function(orderDoc){
+
+      const order =
+      orderDoc.data();
+
+      const orderId =
+      orderDoc.id;
+
+
+      total++;
+
+
+      /* =================================
+         STATUS
+      ================================= */
+
+      const status =
+      order.status ||
+      "Order Received";
+
+
+      const statusLower =
+      String(status)
+      .toLowerCase();
+
+
+      if(
+        statusLower === "pending" ||
+        statusLower === "order received"
+      ){
+
+        pending++;
+
+      }
+
+      else if(
+        statusLower === "confirmed"
+      ){
+
+        confirmed++;
+
+      }
+
+      else if(
+        statusLower === "out for delivery"
+      ){
+
+        outDelivery++;
+
+      }
+
+      else if(
+        statusLower === "delivered"
+      ){
+
+        delivered++;
+      }
+
+
+      /* =================================
+         TOTAL AMOUNT
+      ================================= */
+
+      const totalAmount =
+      Number(
+        order.totalAmount ?? 0
+      );
+
+
+      /* =================================
+         DISCOUNT %
+      ================================= */
+
+      const discountPercent =
+      Number(
+        order.discountPercent ?? 0
+      );
+
+
+      /* =================================
+         DISCOUNT AMOUNT
+      ================================= */
+
+      const discountAmount =
+      Number(
+        order.discountAmount ??
+        (
+          totalAmount *
+          discountPercent /
+          100
+        )
+      );
+
+
+      /* =================================
+         FINAL PAYABLE
+      ================================= */
+
+      const finalAmount =
+      Number(
+        order.finalAmount ??
+        (
+          totalAmount -
+          discountAmount
+        )
+      );
+
+
+      /* =================================
+         DATE
+      ================================= */
+
+      let dateText = "";
+
+
+      if(order.createdAt){
+
+        try{
+
+          if(
+            typeof order.createdAt.toDate ===
+            "function"
+          ){
+
+            dateText =
+            order.createdAt
+            .toDate()
+            .toLocaleString();
+
+          }
+
+          else{
+
+            dateText =
+            new Date(
+              order.createdAt
+            ).toLocaleString();
+          }
+
+        }
+
+        catch(error){
+
+          dateText = "";
+        }
+      }
+
+
+      /* =================================
+         STATUS CLASS
+      ================================= */
+
+      let statusClass =
+      "pending";
+
+
+      if(
+        statusLower === "confirmed"
+      ){
+
+        statusClass =
+        "confirmed";
+
+      }
+
+      else if(
+        statusLower === "out for delivery"
+      ){
+
+        statusClass =
+        "out";
+
+      }
+
+      else if(
+        statusLower === "delivered"
+      ){
+
+        statusClass =
+        "delivered";
+      }
+
+
+      /* =================================
+         MEDICINE
+      ================================= */
+
+      let medicine =
+      order.medicine ||
+      "Not provided";
+
+
+      if(
+        typeof medicine ===
+        "object"
+      ){
+
+        try{
+
+          medicine =
+          JSON.stringify(
+            medicine
+          );
+
+        }
+
+        catch(error){
+
+          medicine =
+          "Not provided";
+        }
+      }
+
+
+      /* =================================
+         DELIVERY
+      ================================= */
+
+      const delivery =
+      order.deliveryArea ||
+      order.delivery ||
+      "Not provided";
+
+
+      /* =================================
+         CUSTOMER PHONE
+      ================================= */
+
+      const phone =
+      order.mobile ||
+      order.phone ||
+      "Not provided";
+
+
+      /* =================================
+         CREATE ORDER CARD
+      ================================= */
+
+      const orderDiv =
+      document.createElement("div");
+
+      orderDiv.className =
+      "order";
+
+
+      orderDiv.innerHTML = `
+
+        <p>
+          <strong>📦 Order ID:</strong>
+          ${escapeHTML(orderId)}
+        </p>
+
+
+        <p>
+          <strong>👤 Customer:</strong>
+          ${escapeHTML(
+            order.name ||
+            "Not provided"
+          )}
+        </p>
+
+
+        <p>
+          <strong>📱 Phone:</strong>
+          ${escapeHTML(phone)}
+        </p>
+
+
+        <p>
+          <strong>🏠 Address:</strong>
+          ${escapeHTML(
+            order.address ||
+            "Not provided"
+          )}
+        </p>
+
+
+        <p>
+          <strong>💊 Medicine:</strong>
+          ${escapeHTML(
+            String(medicine)
+          )}
+        </p>
+
+
+        <p>
+          <strong>🔢 Quantity:</strong>
+          ${escapeHTML(
+            order.quantity ??
+            "1"
+          )}
+        </p>
+
+
+        <p>
+          <strong>🚚 Delivery:</strong>
+          ${escapeHTML(delivery)}
+        </p>
+
+
+        <!-- CUSTOMER AMOUNT -->
+
+        <div class="amount-summary">
+
+          <p>
+            <strong>
+              💰 Original Amount:
+            </strong>
+
+            ₹${totalAmount.toFixed(2)}
+          </p>
+
+
+          <p>
+            <strong>
+              🎁 Discount:
+            </strong>
+
+            <span class="discount-text">
+
+              ${discountPercent.toFixed(2)}%
+
+            </span>
+          </p>
+
+
+          <p>
+            <strong>
+              💸 Discount Amount:
+            </strong>
+
+            ₹${discountAmount.toFixed(2)}
+          </p>
+
+
+          <p>
+            <strong>
+              💵 Customer Payable:
+            </strong>
+
+            <span class="final-amount">
+
+              ₹${finalAmount.toFixed(2)}
+
+            </span>
+          </p>
+
+        </div>
+
+
+        ${
+          dateText
+          ?
+          `
+          <p class="order-date">
+
+            🕒 ${escapeHTML(dateText)}
+
+          </p>
+          `
+          :
+          ""
+        }
+
+
+        <span
+          class="status ${statusClass}"
+        >
+
+          ${escapeHTML(status)}
+
+        </span>
+
+
+        <!-- ===========================
+             ADMIN AMOUNT SETTING
+        ============================ -->
+
+        <div class="amount-box">
+
+          <h3>
+            💰 Set Customer Amount
+          </h3>
+
+
+          <div class="amount-row">
+
+
+            <div class="amount-field">
+
+              <label>
+                Original Amount ₹
+              </label>
+
+
+              <input
+                type="number"
+                class="amount-input total-input"
+                data-id="${escapeHTML(orderId)}"
+                value="${totalAmount}"
+                min="0"
+                step="0.01"
+                placeholder="Example: 1000"
+              >
+
+            </div>
+
+
+            <div class="amount-field">
+
+              <label>
+                Discount %
+              </label>
+
+
+              <input
+                type="number"
+                class="amount-input discount-input"
+                data-id="${escapeHTML(orderId)}"
+                value="${discountPercent}"
+                min="0"
+                max="100"
+                step="0.01"
+                placeholder="Example: 10"
+              >
+
+            </div>
+
+          </div>
+
+
+          <!-- LIVE PREVIEW -->
+
+          <div class="amount-summary">
+
+            <p>
+
+              Original Amount:
+
+              ₹<span class="preview-total">
+
+                ${totalAmount.toFixed(2)}
+
+              </span>
+
+            </p>
+
+
+            <p>
+
+              Discount:
+
+              <span class="preview-discount-percent">
+
+                ${discountPercent.toFixed(2)}
+
+              </span>%
+
+            </p>
+
+
+            <p>
+
+              Discount Amount:
+
+              ₹<span class="preview-discount">
+
+                ${discountAmount.toFixed(2)}
+
+              </span>
+
+            </p>
+
+
+            <p>
+
+              <strong>
+                Customer Payable:
+              </strong>
+
+              ₹<span class="preview-final">
+
+                ${finalAmount.toFixed(2)}
+
+              </span>
+
+            </p>
+
+          </div>
+
+
+          <button
+            class="save-amount-btn"
+            data-action="saveAmount"
+            data-id="${escapeHTML(orderId)}"
+          >
+
+            💾 Save Amount & Discount
+
+          </button>
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="order-actions">
+
+
+          <button
+            class="confirm-btn"
+            data-action="confirmed"
+            data-id="${escapeHTML(orderId)}"
+          >
+
+            ✅ Confirm Order
+
+          </button>
+
+
+          <button
+            class="delivery-btn"
+            data-action="out"
+            data-id="${escapeHTML(orderId)}"
+          >
+
+            🚚 Out for Delivery
+
+          </button>
+
+
+          <button
+            class="delivered-btn"
+            data-action="delivered"
+            data-id="${escapeHTML(orderId)}"
+          >
+
+            📦 Delivered
+
+          </button>
+
+
+          <button
+            class="delete-btn"
+            data-action="delete"
+            data-id="${escapeHTML(orderId)}"
+          >
+
+            🗑️ Delete Order
+
+          </button>
+
+
+        </div>
+
+      `;
+
+
+      ordersDiv.appendChild(
+        orderDiv
+      );
+
+
+      /* =================================
+         LIVE DISCOUNT CALCULATION
+      ================================= */
+
+      const totalInput =
+      orderDiv.querySelector(
+        ".total-input"
+      );
+
+
+      const discountInput =
+      orderDiv.querySelector(
+        ".discount-input"
+      );
+
+
+      const previewTotal =
+      orderDiv.querySelector(
+        ".preview-total"
+      );
+
+
+      const previewDiscountPercent =
+      orderDiv.querySelector(
+        ".preview-discount-percent"
+      );
+
+
+      const previewDiscount =
+      orderDiv.querySelector(
+        ".preview-discount"
+      );
+
+
+      const previewFinal =
+      orderDiv.querySelector(
+        ".preview-final"
+      );
+
+
+      function previewAmount(){
+
+        const t =
+        Number(
+          totalInput.value
+        ) || 0;
+
+
+        let d =
+        Number(
+          discountInput.value
+        ) || 0;
+
+
+        if(d < 0){
+
+          d = 0;
+        }
+
+
+        if(d > 100){
+
+          d = 100;
+        }
+
+
+        const discount =
+        t * d / 100;
+
+
+        const final =
+        t - discount;
+
+
+        previewTotal.textContent =
+        t.toFixed(2);
+
+
+        previewDiscountPercent.textContent =
+        d.toFixed(2);
+
+
+        previewDiscount.textContent =
+        discount.toFixed(2);
+
+
+        previewFinal.textContent =
+        final.toFixed(2);
+      }
+
+
+      totalInput.addEventListener(
+        "input",
+        previewAmount
+      );
+
+
+      discountInput.addEventListener(
+        "input",
+        previewAmount
+      );
+
+    });
+
+
+    /* =================================
+       UPDATE DASHBOARD
+    ================================= */
+
+    updateStats(
+      total,
+      pending,
+      confirmed,
+      outDelivery,
+      delivered
+    );
+
+  }
+
+
+  catch(error){
+
+    console.error(error);
+
+
+    ordersDiv.innerHTML = `
+
+      <div class="empty error">
+
+        ❌ Unable to load orders.
+
+        <br><br>
+
+        ${escapeHTML(
+          error.message
+        )}
+
+      </div>
+
+    `;
+
+  }
 
 }
-
-
-let total =
-0;
-
-let pending =
-0;
-
-let confirmed =
-0;
-
-let outDelivery =
-0;
-
-let delivered =
-0;
-
-
-ordersDiv.innerHTML =
-"";
-
-
-if(
-snapshot.empty
-){
-
-ordersDiv.innerHTML =
-`
-<div class="empty">
-
-📦 No orders received yet.
-
-</div>
-`;
-
-
-updateStats(
-0,
-0,
-0,
-0,
-0
-);
-
-return;
-
-}
-
-
-/* =====================================
-   EACH ORDER
-===================================== */
-
-snapshot.forEach(
-orderDoc => {
-
-const order =
-orderDoc.data();
-
-const orderId =
-orderDoc.id;
-
-
-total++;
-
-
-/* STATUS */
-
-const status =
-order.status ||
-"Order Received";
-
-
-const statusLower =
-String(status)
-.toLowerCase();
-
-
-if(
-statusLower ===
-"pending" ||
-statusLower ===
-"order received"
-){
-
-pending++;
-
-}else if(
-statusLower ===
-"confirmed"
-){
-
-confirmed++;
-
-}else if(
-statusLower ===
-"out for delivery"
-){
-
-outDelivery++;
-
-}else if(
-statusLower ===
-"delivered"
-){
-
-delivered++;
-
-}
-
-
-/* =====================================
-   AMOUNT
-===================================== */
-
-const totalAmount =
-Number(
-order.totalAmount ?? 0
-);
-
-
-const discountPercent =
-Number(
-order.discountPercent ?? 0
-);
-
-
-const discountAmount =
-Number(
-order.discountAmount ??
-(
-totalAmount *
-discountPercent /
-100
-)
-);
-
-
-const finalAmount =
-Number(
-order.finalAmount ??
-(
-totalAmount -
-discountAmount
-)
-);
-
-
-/* =====================================
-   DATE
-===================================== */
-
-let dateText =
-"";
-
-
-if(
-order.createdAt
-){
-
-try{
-
-if(
-typeof order.createdAt.toDate ===
-"function"
-){
-
-dateText =
-order.createdAt
-.toDate()
-.toLocaleString();
-
-}else{
-
-dateText =
-new Date(
-order.createdAt
-)
-.toLocaleString();
-
-}
-
-}catch(error){
-
-dateText =
-"";
-
-}
-
-}
-
-
-/* =====================================
-   STATUS CLASS
-===================================== */
-
-let statusClass =
-"pending";
-
-
-if(
-statusLower ===
-"confirmed"
-){
-
-statusClass =
-"confirmed";
-
-}else if(
-statusLower ===
-"out for delivery"
-){
-
-statusClass =
-"out";
-
-}else if(
-statusLower ===
-"delivered"
-){
-
-statusClass =
-"delivered";
-
-}
-
-
-/* =====================================
-   MEDICINE
-===================================== */
-
-let medicine =
-order.medicine ||
-"Not provided";
-
-
-if(
-typeof medicine ===
-"object"
-){
-
-try{
-
-medicine =
-JSON.stringify(
-medicine
-);
-
-}catch{
-
-medicine =
-"Not provided";
-
-}
-
-}
-
-
-/* =====================================
-   ORDER CARD
-===================================== */
-
-const orderDiv =
-document.createElement(
-"div"
-);
-
-orderDiv.className =
-"order";
-
-
-orderDiv.innerHTML = `
-
-<p>
-
-<strong>
-📦 Order ID:
-</strong>
-
-${escapeHTML(orderId)}
-
-</p>
-
-
-<p>
-
-<strong>
-👤 Customer:
-</strong>
-
-${escapeHTML(
-order.name ||
-"Not provided"
-)}
-
-</p>
-
-
-<p>
-
-<strong>
-📱 Phone:
-</strong>
-
-${escapeHTML(
-order.mobile ||
-order.phone ||
-"Not provided"
-)}
-
-</p>
-
-
-<p>
-
-<strong>
-🏠 Address:
-</strong>
-
-${escapeHTML(
-order.address ||
-"Not provided"
-)}
-
-</p>
-
-
-<p>
-
-<strong>
-💊 Medicine:
-</strong>
-
-${escapeHTML(
-String(medicine)
-)}
-
-</p>
-
-
-<p>
-
-<strong>
-🔢 Quantity:
-</strong>
-
-${escapeHTML(
-order.quantity ??
-"1"
-)}
-
-</p>
-
-
-<p>
-
-<strong>
-🚚 Delivery:
-</strong>
-
-${escapeHTML(
-order.deliveryArea ||
-"Not provided"
-)}
-
-</p>
-
-
-<!-- =================================
-     AMOUNT SUMMARY
-================================= -->
-
-<div class="amount-summary">
-
-<p>
-
-<strong>
-💰 Total Amount:
-</strong>
-
-₹${totalAmount.toFixed(2)}
-
-</p>
-
-
-<p>
-
-<strong>
-🎁 Discount:
-</strong>
-
-<span class="discount-text">
-
-${discountPercent.toFixed(2)}%
-
-</span>
-
-</p>
-
-
-<p>
-
-<strong>
-💸 Discount Amount:
-</strong>
-
-₹${discountAmount.toFixed(2)}
-
-</p>
-
-
-<p>
-
-<strong>
-💵 Customer Payable:
-</strong>
-
-<span class="final-amount">
-
-₹${finalAmount.toFixed(2)}
-
-</span>
-
-</p>
-
-</div>
-
-
-${
-dateText
-?
-`
-<p class="order-date">
-
-🕒 ${escapeHTML(
-dateText
-)}
-
-</p>
-`
-:
-""
-}
-
-
-<span class="status ${statusClass}">
-
-${escapeHTML(
-status
-)}
-
-</span>
-
-
-<!-- =================================
-     AMOUNT SETTINGS
-================================= -->
-
-<div class="amount-box">
-
-<h3>
-💰 Set Customer Amount
-</h3>
-
-
-<div class="amount-row">
-
-
-<div class="amount-field">
-
-<label>
-Total Amount ₹
-</label>
-
-
-<input
-
-type="number"
-
-class="amount-input total-input"
-
-data-id="${escapeHTML(
-orderId
-)}"
-
-value="${totalAmount}"
-
-min="0"
-
-step="0.01"
-
-placeholder="Example: 1000">
-
-</div>
-
-
-<div class="amount-field">
-
-<label>
-Discount %
-</label>
-
-
-<input
-
-type="number"
-
-class="amount-input discount-input"
-
-data-id="${escapeHTML(
-orderId
-)}"
-
-value="${discountPercent}"
-
-min="0"
-
-max="100"
-
-step="0.01"
-
-placeholder="Example: 10">
-
-</div>
-
-</div>
-
-
-<!-- LIVE PREVIEW -->
-
-<div class="amount-summary">
-
-<p>
-
-Total:
-
-₹<span class="preview-total">
-
-${totalAmount.toFixed(2)}
-
-</span>
-
-</p>
-
-
-<p>
-
-Discount:
-
-<span class="preview-discount-percent">
-
-${discountPercent.toFixed(2)}
-
-</span>%
-
-</p>
-
-
-<p>
-
-Discount Amount:
-
-₹<span class="preview-discount">
-
-${discountAmount.toFixed(2)}
-
-</span>
-
-</p>
-
-
-<p>
-
-Final Payable:
-
-<strong>
-
-₹<span class="preview-final">
-
-${finalAmount.toFixed(2)}
-
-</span>
-
-</strong>
-
-</p>
-
-</div>
-
-
-<button
-
-class="save-amount-btn"
-
-data-action="saveAmount"
-
-data-id="${escapeHTML(
-orderId
-)}">
-
-💾 Save Amount & Discount
-
-</button>
-
-</div>
-
-
-<!-- =================================
-     ACTION BUTTONS
-================================= -->
-
-<div class="order-actions">
-
-
-<button
-
-class="confirm-btn"
-
-data-action="confirmed"
-
-data-id="${escapeHTML(
-orderId
-)}">
-
-✅ Confirm Order
-
-</button>
-
-
-<button
-
-class="delivery-btn"
-
-data-action="out"
-
-data-id="${escapeHTML(
-orderId
-)}">
-
-🚚 Out for Delivery
-
-</button>
-
-
-<button
-
-class="delivered-btn"
-
-data-action="delivered"
-
-data-id="${escapeHTML(
-orderId
-)}">
-
-📦 Delivered
-
-</button>
-
-
-<button
-
-class="delete-btn"
-
-data-action="delete"
-
-data-id="${escapeHTML(
-orderId
-)}">
-
-🗑️ Delete Order
-
-</button>
-
-</div>
-
-`;
-
-
-ordersDiv.appendChild(
-orderDiv
-);
-
-
-/* =====================================
-   LIVE AMOUNT PREVIEW
-===================================== */
-
-const totalInput =
-orderDiv.querySelector(
-".total-input"
-);
-
-
-const discountInput =
-orderDiv.querySelector(
-".discount-input"
-);
-
-
-const previewTotal =
-orderDiv.querySelector(
-".preview-total"
-);
-
-
-const previewDiscountPercent =
-orderDiv.querySelector(
-".preview-discount-percent"
-);
-
-
-const previewDiscount =
-orderDiv.querySelector(
-".preview-discount"
-);
-
-
-const previewFinal =
-orderDiv.querySelector(
-".preview-final"
-);
-
-
-function previewAmount(){
-
-const total =
-Number(
-totalInput.value
-) || 0;
-
-
-let discount =
-Number(
-discountInput.value
-) || 0;
-
-
-if(
-discount < 0
-){
-
-discount =
-0;
-
-}
-
-
-if(
-discount > 100
-){
-
-discount =
-100;
-
-}
-
-
-const discountAmount =
-total *
-discount /
-100;
-
-
-const finalAmount =
-total -
-discountAmount;
-
-
-previewTotal.textContent =
-total.toFixed(2);
-
-
-previewDiscountPercent.textContent =
-discount.toFixed(2);
-
-
-previewDiscount.textContent =
-discountAmount.toFixed(2);
-
-
-previewFinal.textContent =
-finalAmount.toFixed(2);
-
-}
-
-
-totalInput.addEventListener(
-"input",
-previewAmount
-);
-
-
-discountInput.addEventListener(
-"input",
-previewAmount
-);
-
-});
-
-
-/* UPDATE STATS */
-
-updateStats(
-total,
-pending,
-confirmed,
-outDelivery,
-delivered
-);
-
-
-}catch(error){
-
-console.error(error);
-
-
-ordersDiv.innerHTML = `
-
-<div class="empty error">
-
-❌ Unable to load orders.
-
-<br><br>
-
-${escapeHTML(
-error.message
-)}
-
-</div>
-
-`;
-
-}
-
-}
-
-
-/* =====================================
-   PART 2 END
-===================================== */
-
-</script>
-<script type="module">
-
-/* =========================================
-   PART 3
-   ADMIN ACTIONS
-========================================= */
-
-
-/* =========================================
+      /* =========================================
    ORDER BUTTON HANDLER
 ========================================= */
 
-ordersDiv.addEventListener("click", async function(event){
+ordersDiv.addEventListener(
+"click",
+async function(event){
 
-    const button =
-        event.target.closest("button[data-action]");
+  const button =
+  event.target.closest(
+    "button[data-action]"
+  );
 
-    if(!button) return;
-
-
-    const orderId =
-        button.dataset.id;
-
-    const action =
-        button.dataset.action;
+  if(!button) return;
 
 
-    /* =====================================
-       SAVE AMOUNT + DISCOUNT
-    ===================================== */
+  const orderId =
+  button.dataset.id;
 
-    if(action === "saveAmount"){
-
-        const orderCard =
-            button.closest(".order");
-
-        if(!orderCard){
-
-            alert("❌ Order card not found.");
-
-            return;
-        }
+  const action =
+  button.dataset.action;
 
 
-        const totalInput =
-            orderCard.querySelector(".total-input");
+  /* =====================================
+     SAVE AMOUNT + DISCOUNT
+  ===================================== */
 
-        const discountInput =
-            orderCard.querySelector(".discount-input");
+  if(action === "saveAmount"){
 
+    const orderCard =
+    button.closest(".order");
 
-        const totalAmount =
-            Number(totalInput.value);
+    const totalInput =
+    orderCard.querySelector(
+      ".total-input"
+    );
 
-
-        let discountPercent =
-            Number(discountInput.value);
-
-
-        /* TOTAL VALIDATION */
-
-        if(
-            !Number.isFinite(totalAmount) ||
-            totalAmount < 0
-        ){
-
-            alert(
-                "❌ Please enter a valid Total Amount."
-            );
-
-            return;
-        }
+    const discountInput =
+    orderCard.querySelector(
+      ".discount-input"
+    );
 
 
-        /* DISCOUNT VALIDATION */
-
-        if(
-            !Number.isFinite(discountPercent) ||
-            discountPercent < 0 ||
-            discountPercent > 100
-        ){
-
-            alert(
-                "❌ Discount must be between 0% and 100%."
-            );
-
-            return;
-        }
+    const totalAmount =
+    Number(totalInput.value);
 
 
-        /* CALCULATE DISCOUNT */
-
-        const discountAmount =
-            totalAmount *
-            discountPercent /
-            100;
+    let discountPercent =
+    Number(discountInput.value);
 
 
-        /* FINAL CUSTOMER AMOUNT */
+    if(
+      !Number.isFinite(totalAmount) ||
+      totalAmount < 0
+    ){
 
-        const finalAmount =
-            totalAmount -
-            discountAmount;
+      alert(
+        "❌ Please enter a valid amount."
+      );
 
-
-        await saveOrderAmount(
-            orderId,
-            totalAmount,
-            discountPercent,
-            discountAmount,
-            finalAmount
-        );
-
-        return;
+      return;
     }
 
 
-    /* =====================================
-       DELETE ORDER
-    ===================================== */
+    if(
+      !Number.isFinite(discountPercent) ||
+      discountPercent < 0 ||
+      discountPercent > 100
+    ){
 
-    if(action === "delete"){
+      alert(
+        "❌ Discount must be between 0% and 100%."
+      );
 
-        await deleteOrder(orderId);
-
-        return;
+      return;
     }
 
 
-    /* =====================================
-       CONFIRM ORDER
-    ===================================== */
-
-    if(action === "confirmed"){
-
-        await updateDeliveryStatus(
-            orderId,
-            "Confirmed"
-        );
-
-        return;
-    }
+    const discountAmount =
+    totalAmount *
+    discountPercent /
+    100;
 
 
-    /* =====================================
-       OUT FOR DELIVERY
-    ===================================== */
-
-    if(action === "out"){
-
-        await updateDeliveryStatus(
-            orderId,
-            "Out for Delivery"
-        );
-
-        return;
-    }
+    const finalAmount =
+    totalAmount -
+    discountAmount;
 
 
-    /* =====================================
-       DELIVERED
-    ===================================== */
+    button.disabled = true;
 
-    if(action === "delivered"){
+    button.textContent =
+    "Saving...";
 
-        await updateDeliveryStatus(
-            orderId,
-            "Delivered"
-        );
 
-        return;
-    }
+    await saveOrderAmount(
+      orderId,
+      totalAmount,
+      discountPercent,
+      discountAmount,
+      finalAmount
+    );
+
+
+    button.disabled = false;
+
+    button.textContent =
+    "💾 Save Amount & Discount";
+
+
+    return;
+  }
+
+
+  /* =====================================
+     DELETE ORDER
+  ===================================== */
+
+  if(action === "delete"){
+
+    await deleteOrder(
+      orderId
+    );
+
+    return;
+  }
+
+
+  /* =====================================
+     CONFIRM ORDER
+  ===================================== */
+
+  if(action === "confirmed"){
+
+    await updateDeliveryStatus(
+      orderId,
+      "Confirmed"
+    );
+
+    return;
+  }
+
+
+  /* =====================================
+     OUT FOR DELIVERY
+  ===================================== */
+
+  if(action === "out"){
+
+    await updateDeliveryStatus(
+      orderId,
+      "Out for Delivery"
+    );
+
+    return;
+  }
+
+
+  /* =====================================
+     DELIVERED
+  ===================================== */
+
+  if(action === "delivered"){
+
+    await updateDeliveryStatus(
+      orderId,
+      "Delivered"
+    );
+
+    return;
+  }
 
 });
 
 
 /* =========================================
-   SAVE AMOUNT TO FIRESTORE
+   SAVE AMOUNT FUNCTION
 ========================================= */
 
 async function saveOrderAmount(
-    orderId,
-    totalAmount,
-    discountPercent,
-    discountAmount,
-    finalAmount
+  orderId,
+  totalAmount,
+  discountPercent,
+  discountAmount,
+  finalAmount
 ){
 
-    try{
+  try{
 
-        await updateDoc(
-            doc(
-                db,
-                "orders",
-                orderId
-            ),
-            {
+    await updateDoc(
+      doc(
+        db,
+        "orders",
+        orderId
+      ),
+      {
 
-                totalAmount:
-                    Number(totalAmount),
+        totalAmount:
+        totalAmount,
 
-                discountPercent:
-                    Number(discountPercent),
+        discountPercent:
+        discountPercent,
 
-                discountAmount:
-                    Number(discountAmount),
+        discountAmount:
+        discountAmount,
 
-                finalAmount:
-                    Number(finalAmount),
+        finalAmount:
+        finalAmount,
 
-                updatedAt:
-                    new Date().toISOString()
+        updatedAt:
+        new Date().toISOString()
 
-            }
-        );
-
-
-        alert(
-            "✅ Amount Saved Successfully!\n\n" +
-
-            "💰 Total Amount: ₹" +
-            totalAmount.toFixed(2) +
-
-            "\n🎁 Discount: " +
-            discountPercent.toFixed(2) +
-            "%" +
-
-            "\n💸 Discount Amount: ₹" +
-            discountAmount.toFixed(2) +
-
-            "\n💵 Customer Payable: ₹" +
-            finalAmount.toFixed(2)
-        );
+      }
+    );
 
 
-        /* RELOAD ORDERS */
+    alert(
+      "✅ Amount Saved Successfully!\n\n" +
 
-        await loadOrders();
+      "Original Amount: ₹" +
+      totalAmount.toFixed(2) +
+
+      "\nDiscount: " +
+      discountPercent.toFixed(2) +
+      "%" +
+
+      "\nDiscount Amount: ₹" +
+      discountAmount.toFixed(2) +
+
+      "\nCustomer Payable: ₹" +
+      finalAmount.toFixed(2)
+    );
 
 
-    }catch(error){
+    await loadOrders();
 
-        console.error(
-            "Amount Save Error:",
-            error
-        );
+  }
+
+  catch(error){
+
+    console.error(error);
 
 
-        alert(
-            "❌ Amount Save হয়নি.\n\n" +
-            error.message
-        );
+    alert(
+      "❌ Amount save হয়নি.\n\n" +
+      error.message
+    );
 
-    }
+  }
 
 }
 
 
 /* =========================================
-   DELETE ORDER
+   DELETE ORDER FUNCTION
 ========================================= */
 
-async function deleteOrder(orderId){
+async function deleteOrder(
+  orderId
+){
 
-    const confirmDelete =
-        confirm(
-            "⚠️ এই Order টি permanently Delete করতে চান?"
-        );
-
-
-    if(!confirmDelete){
-
-        return;
-
-    }
+  const confirmDelete =
+  confirm(
+    "⚠️ এই Order টি permanently delete করতে চান?\n\n" +
+    "Order ID: " +
+    orderId
+  );
 
 
-    try{
+  if(!confirmDelete){
 
-        await deleteDoc(
-            doc(
-                db,
-                "orders",
-                orderId
-            )
-        );
+    return;
+  }
 
 
-        alert(
-            "✅ Order Deleted Successfully!"
-        );
+  try{
+
+    await deleteDoc(
+      doc(
+        db,
+        "orders",
+        orderId
+      )
+    );
 
 
-        await loadOrders();
+    alert(
+      "✅ Order Deleted Successfully."
+    );
 
 
-    }catch(error){
+    await loadOrders();
 
-        console.error(
-            "Delete Error:",
-            error
-        );
+  }
+
+  catch(error){
+
+    console.error(error);
 
 
-        alert(
-            "❌ Order Delete হয়নি.\n\n" +
-            error.message
-        );
+    alert(
+      "❌ Order delete হয়নি.\n\n" +
+      error.message
+    );
 
-    }
+  }
 
 }
 
 
 /* =========================================
-   UPDATE ORDER STATUS
+   UPDATE DELIVERY STATUS
 ========================================= */
 
 async function updateDeliveryStatus(
-    orderId,
-    status
+  orderId,
+  status
 ){
 
-    try{
+  try{
 
-        await updateDoc(
-            doc(
-                db,
-                "orders",
-                orderId
-            ),
-            {
+    await updateDoc(
+      doc(
+        db,
+        "orders",
+        orderId
+      ),
+      {
 
-                status:
-                    status,
+        status:
+        status,
 
-                updatedAt:
-                    new Date().toISOString()
+        updatedAt:
+        new Date().toISOString()
 
-            }
-        );
-
-
-        alert(
-            "✅ Status Updated Successfully!\n\n" +
-            "📌 " +
-            status
-        );
+      }
+    );
 
 
-        await loadOrders();
+    alert(
+      "✅ Status Updated Successfully!\n\n" +
+      "Order ID: " +
+      orderId +
+      "\nStatus: " +
+      status
+    );
 
 
-    }catch(error){
+    await loadOrders();
 
-        console.error(
-            "Status Update Error:",
-            error
-        );
+  }
+
+  catch(error){
+
+    console.error(error);
 
 
-        alert(
-            "❌ Status Update হয়নি.\n\n" +
-            error.message
-        );
+    alert(
+      "❌ Status update হয়নি.\n\n" +
+      error.message
+    );
 
-    }
+  }
 
 }
 
@@ -2183,41 +2546,72 @@ async function updateDeliveryStatus(
 ========================================= */
 
 function updateStats(
-    total,
-    pending,
-    confirmed,
-    outDelivery,
-    delivered
+  total,
+  pending,
+  confirmed,
+  outDelivery,
+  delivered
 ){
 
-    document.getElementById(
-        "totalOrders"
-    ).textContent =
-        total;
+  const totalElement =
+  document.getElementById(
+    "totalOrders"
+  );
+
+  const pendingElement =
+  document.getElementById(
+    "pendingOrders"
+  );
+
+  const confirmedElement =
+  document.getElementById(
+    "confirmedOrders"
+  );
+
+  const outDeliveryElement =
+  document.getElementById(
+    "outDeliveryOrders"
+  );
+
+  const deliveredElement =
+  document.getElementById(
+    "deliveredOrders"
+  );
 
 
-    document.getElementById(
-        "pendingOrders"
-    ).textContent =
-        pending;
+  if(totalElement){
+
+    totalElement.textContent =
+    total;
+  }
 
 
-    document.getElementById(
-        "confirmedOrders"
-    ).textContent =
-        confirmed;
+  if(pendingElement){
+
+    pendingElement.textContent =
+    pending;
+  }
 
 
-    document.getElementById(
-        "outDeliveryOrders"
-    ).textContent =
-        outDelivery;
+  if(confirmedElement){
+
+    confirmedElement.textContent =
+    confirmed;
+  }
 
 
-    document.getElementById(
-        "deliveredOrders"
-    ).textContent =
-        delivered;
+  if(outDeliveryElement){
+
+    outDeliveryElement.textContent =
+    outDelivery;
+  }
+
+
+  if(deliveredElement){
+
+    deliveredElement.textContent =
+    delivered;
+  }
 
 }
 
@@ -2227,41 +2621,74 @@ function updateStats(
 ========================================= */
 
 refreshBtn.addEventListener(
-    "click",
-    async function(){
+"click",
+async function(){
 
-        refreshBtn.disabled =
-            true;
+  refreshBtn.disabled =
+  true;
 
-
-        refreshBtn.textContent =
-            "⏳ Loading...";
-
-
-        try{
-
-            await loadOrders();
-
-        }catch(error){
-
-            console.error(error);
-
-        }
+  refreshBtn.textContent =
+  "⏳ Loading...";
 
 
-        refreshBtn.disabled =
-            false;
+  await loadOrders();
 
 
-        refreshBtn.textContent =
-            "🔄 Refresh Orders";
+  refreshBtn.disabled =
+  false;
 
-    }
-);
+  refreshBtn.textContent =
+  "🔄 Refresh Orders";
+
+});
 
 
 /* =========================================
-   END PART 3
+   AUTO REFRESH EVERY 30 SECONDS
 ========================================= */
 
+setInterval(
+function(){
+
+  if(
+    adminPanel.style.display !==
+    "none"
+  ){
+
+    loadOrders();
+
+  }
+
+},
+30000);
+
+
+/* =========================================
+   ENTER KEY LOGIN
+========================================= */
+
+passwordInput.addEventListener(
+"keydown",
+function(event){
+
+  if(event.key === "Enter"){
+
+    loginBtn.click();
+
+  }
+
+});
+
+
+/* =========================================
+   FINISHED
+========================================= */
+
+console.log(
+"✅ Admin Panel Loaded Successfully"
+);
+
 </script>
+
+</body>
+</html>
