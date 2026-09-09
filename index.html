@@ -2,488 +2,88 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Medicine Doorstep Delivery</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#f4faf8;
-    color:#17372e;
-}
-
-header{
-    position:sticky;
-    top:0;
-    z-index:9999;
-    background:#fff;
-    box-shadow:0 3px 18px rgba(0,0,0,.08);
-}
-
-.navbar{
-    max-width:1200px;
-    margin:auto;
-    padding:12px 18px;
-    min-height:75px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    color:#087c59;
-    font-size:20px;
-    font-weight:800;
-}
-
-.logo-icon{
-    width:45px;
-    height:45px;
-    border-radius:14px;
-    background:#087c59;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:25px;
-}
-
-nav{
-    display:flex;
-    gap:20px;
-    align-items:center;
-}
-
-nav a{
-    color:#17372e;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-.call-btn{
-    background:#087c59;
-    color:white;
-    padding:12px 18px;
-    border-radius:25px;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-.hero{
-    max-width:1200px;
-    margin:25px auto;
-    padding:55px 30px;
-    border-radius:28px;
-    background:linear-gradient(135deg,#dcf8ed,#edf8ff);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:30px;
-}
-
-.hero-content{
-    max-width:650px;
-}
-
-.discount{
-    display:inline-block;
-    background:#ff7900;
-    color:white;
-    padding:9px 17px;
-    border-radius:25px;
-    font-weight:bold;
-    margin-bottom:15px;
-}
-
-.hero h1{
-    font-size:48px;
-    line-height:1.15;
-    color:#064b91;
-    margin-bottom:18px;
-}
-
-.hero h1 span{
-    color:#087c59;
-}
-
-.hero p{
-    font-size:18px;
-    line-height:1.7;
-    color:#526961;
-    margin-bottom:25px;
-}
-
-.hero-buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-}
-
-.primary-btn,
-.secondary-btn{
-    padding:14px 23px;
-    border-radius:28px;
-    font-weight:bold;
-    font-size:16px;
-    border:none;
-    cursor:pointer;
-    text-decoration:none;
-    display:inline-block;
-}
-
-.primary-btn{
-    background:#087c59;
-    color:white;
-}
-
-.secondary-btn{
-    background:white;
-    color:#087c59;
-    border:2px solid #087c59;
-}
-
-.primary-btn:disabled{
-    opacity:.6;
-}
-
-.hero-art{
-    width:330px;
-    height:260px;
-    background:white;
-    border-radius:35px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:120px;
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
-}
-
-section{
-    max-width:1200px;
-    margin:65px auto;
-    padding:0 18px;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.section-title h2{
-    color:#064b91;
-    font-size:32px;
-    margin-bottom:8px;
-}
-
-.section-title p{
-    color:#687b74;
-}
-
-.categories{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:15px;
-}
-
-.category{
-    background:white;
-    padding:23px 10px;
-    text-align:center;
-    border-radius:18px;
-    box-shadow:0 5px 20px rgba(0,0,0,.06);
-}
-
-.category-icon{
-    font-size:38px;
-    margin-bottom:10px;
-}
-
-.features{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
-}
-
-.feature{
-    background:white;
-    padding:28px 18px;
-    text-align:center;
-    border-radius:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,.06);
-}
-
-.feature-icon{
-    font-size:38px;
-    margin-bottom:12px;
-}
-
-.feature h3{
-    color:#064b91;
-    margin-bottom:8px;
-}
-
-.feature p{
-    color:#687a74;
-    line-height:1.5;
-}
-
-.order-box,
-.track-box{
-    max-width:800px;
-    margin:auto;
-    background:white;
-    padding:32px;
-    border-radius:25px;
-    box-shadow:0 10px 35px rgba(0,0,0,.08);
-}
-
-.form-group{
-    margin-bottom:18px;
-}
-
-.form-group label{
-    display:block;
-    font-weight:bold;
-    margin-bottom:7px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select,
-.track-input input{
-    width:100%;
-    padding:14px;
-    border:1px solid #d4e2dd;
-    border-radius:12px;
-    font-size:16px;
-    outline:none;
-    background:white;
-}
-
-textarea{
-    min-height:110px;
-    resize:vertical;
-}
-
-.file-box{
-    border:2px dashed #8bcdb8;
-    background:#f1fbf7;
-    padding:20px;
-    border-radius:15px;
-    text-align:center;
-}
-
-.file-box input{
-    border:none;
-    margin-top:12px;
-}
-
-.success{
-    display:none;
-    margin-top:18px;
-    padding:18px;
-    background:#e7f8ef;
-    color:#087c59;
-    border-radius:12px;
-    text-align:center;
-    line-height:1.7;
-}
-
-.error{
-    display:none;
-    margin-top:18px;
-    padding:18px;
-    background:#fff0f0;
-    color:#b00020;
-    border-radius:12px;
-    text-align:center;
-    line-height:1.6;
-}
-
-.track-input{
-    display:flex;
-    gap:10px;
-}
-
-.track-input input{
-    flex:1;
-}
-
-.track-result{
-    display:none;
-    margin-top:20px;
-    padding:20px;
-    background:#f2faf7;
-    border-radius:15px;
-    line-height:1.8;
-}
-
-.status-badge{
-    display:inline-block;
-    padding:8px 16px;
-    border-radius:20px;
-    background:#fff0c2;
-    color:#806300;
-    font-weight:bold;
-}
-
-.about{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px;
-}
-
-.about-card{
-    background:white;
-    padding:30px;
-    border-radius:22px;
-    box-shadow:0 8px 25px rgba(0,0,0,.06);
-}
-
-.about-card h2{
-    color:#064b91;
-    margin-bottom:15px;
-}
-
-.about-card p{
-    color:#60736c;
-    line-height:1.8;
-}
-
-.contact{
-    background:#064b91;
-    color:white;
-    border-radius:25px;
-    padding:40px 20px;
-    text-align:center;
-}
-
-.contact h2{
-    margin-bottom:10px;
-}
-
-.contact p{
-    margin-bottom:20px;
-}
-
-.contact a{
-    display:inline-block;
-    background:white;
-    color:#064b91;
-    padding:13px 22px;
-    border-radius:25px;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-footer{
-    background:#102c26;
-    color:#c8d8d3;
-    text-align:center;
-    padding:28px 15px;
-    margin-top:60px;
-}
-
-footer strong{
-    color:white;
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+html{scroll-behavior:smooth}
+body{background:#f4faf8;color:#17372e}
+header{position:sticky;top:0;z-index:999;background:#fff;box-shadow:0 3px 18px #0001}
+.navbar{max-width:1200px;margin:auto;padding:12px 18px;min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{display:flex;align-items:center;gap:10px;color:#087c59;font-size:20px;font-weight:800}
+.logo-icon{width:44px;height:44px;border-radius:13px;background:#087c59;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px}
+nav{display:flex;gap:18px}
+nav a{color:#17372e;text-decoration:none;font-weight:bold}
+.call-btn,.primary-btn{background:#087c59;color:#fff}
+.call-btn{padding:11px 17px;border-radius:25px;text-decoration:none;font-weight:bold}
+.hero{max-width:1200px;margin:25px auto;padding:55px 30px;border-radius:28px;background:linear-gradient(135deg,#dcf8ed,#edf8ff);display:flex;align-items:center;justify-content:space-between;gap:30px}
+.hero-content{max-width:650px}
+.discount{display:inline-block;background:#ff7900;color:#fff;padding:9px 17px;border-radius:25px;font-weight:bold;margin-bottom:15px}
+.hero h1{font-size:48px;line-height:1.15;color:#064b91;margin-bottom:18px}
+.hero h1 span{color:#087c59}
+.hero p{font-size:18px;line-height:1.7;color:#526961;margin-bottom:25px}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.primary-btn,.secondary-btn{padding:14px 23px;border-radius:28px;font-weight:bold;font-size:16px;border:none;cursor:pointer;text-decoration:none;display:inline-block}
+.secondary-btn{background:#fff;color:#087c59;border:2px solid #087c59}
+.hero-art{width:320px;height:250px;background:#fff;border-radius:35px;display:flex;align-items:center;justify-content:center;font-size:110px;box-shadow:0 15px 40px #0001}
+section{max-width:1200px;margin:65px auto;padding:0 18px}
+.section-title{text-align:center;margin-bottom:30px}
+.section-title h2{color:#064b91;font-size:32px;margin-bottom:8px}
+.section-title p{color:#687b74}
+.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:15px}
+.category,.feature,.about-card,.order-box,.track-box{background:#fff;box-shadow:0 7px 25px #0000000d}
+.category{padding:23px 10px;text-align:center;border-radius:18px}
+.category-icon{font-size:38px;margin-bottom:10px}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.feature{padding:28px 18px;text-align:center;border-radius:20px}
+.feature-icon{font-size:38px;margin-bottom:12px}
+.feature h3{color:#064b91;margin-bottom:8px}
+.feature p{color:#687a74;line-height:1.5}
+.order-box,.track-box{max-width:800px;margin:auto;padding:32px;border-radius:25px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-weight:bold;margin-bottom:7px}
+.form-group input,.form-group textarea,.form-group select,.track-input input{width:100%;padding:14px;border:1px solid #d4e2dd;border-radius:12px;font-size:16px;outline:none;background:#fff}
+textarea{min-height:110px;resize:vertical}
+.file-box{border:2px dashed #8bcdb8;background:#f1fbf7;padding:20px;border-radius:15px;text-align:center}
+.file-box input{border:none;margin-top:12px}
+.success,.error{display:none;margin-top:18px;padding:18px;border-radius:12px;text-align:center;line-height:1.7}
+.success{background:#e7f8ef;color:#087c59}
+.error{background:#fff0f0;color:#b00020}
+.track-input{display:flex;gap:10px}
+.track-input input{flex:1}
+.track-result{display:none;margin-top:20px;padding:20px;background:#f2faf7;border-radius:15px;line-height:1.8}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.about-card{padding:30px;border-radius:22px}
+.about-card h2{color:#064b91;margin-bottom:15px}
+.about-card p{color:#60736c;line-height:1.8}
+.contact{background:#064b91;color:#fff;border-radius:25px;padding:40px 20px;text-align:center}
+.contact h2{margin-bottom:10px}
+.contact p{margin-bottom:20px}
+.contact a{display:inline-block;background:#fff;color:#064b91;padding:13px 22px;border-radius:25px;text-decoration:none;font-weight:bold}
+footer{background:#102c26;color:#c8d8d3;text-align:center;padding:28px 15px;margin-top:60px}
+footer strong{color:#fff}
 
 @media(max-width:900px){
-
-    .hero{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .hero h1{
-        font-size:40px;
-    }
-
-    .hero-buttons{
-        justify-content:center;
-    }
-
-    .categories{
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .features{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .about{
-        grid-template-columns:1fr;
-    }
+.hero{flex-direction:column;text-align:center}
+.hero h1{font-size:40px}
+.hero-buttons{justify-content:center}
+.categories{grid-template-columns:repeat(3,1fr)}
+.features{grid-template-columns:repeat(2,1fr)}
+.about{grid-template-columns:1fr}
 }
-
 @media(max-width:600px){
-
-    .navbar{
-        flex-wrap:wrap;
-    }
-
-    nav{
-        order:3;
-        width:100%;
-        justify-content:center;
-        gap:13px;
-    }
-
-    nav a{
-        font-size:13px;
-    }
-
-    .call-btn{
-        font-size:13px;
-        padding:10px 13px;
-    }
-
-    .hero{
-        margin:15px;
-        padding:38px 18px;
-    }
-
-    .hero h1{
-        font-size:33px;
-    }
-
-    .hero-art{
-        width:260px;
-        height:190px;
-        font-size:90px;
-    }
-
-    .categories{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .features{
-        grid-template-columns:1fr;
-    }
-
-    .order-box,
-    .track-box{
-        padding:22px 16px;
-    }
-
-    .track-input{
-        flex-direction:column;
-    }
+.navbar{flex-wrap:wrap}
+nav{order:3;width:100%;justify-content:center;gap:10px}
+nav a{font-size:12px}
+.call-btn{font-size:13px;padding:10px 13px}
+.hero{margin:15px;padding:38px 18px}
+.hero h1{font-size:32px}
+.hero-art{width:260px;height:190px;font-size:90px}
+.categories{grid-template-columns:repeat(2,1fr)}
+.features{grid-template-columns:1fr}
+.order-box,.track-box{padding:22px 16px}
+.track-input{flex-direction:column}
 }
 </style>
 </head>
@@ -502,13 +102,11 @@ Medicine Doorstep
 <a href="#home">Home</a>
 <a href="#about">About</a>
 <a href="#order">Order</a>
-<a href="#track">Track Order</a>
+<a href="#track">Track</a>
 <a href="#contact">Contact</a>
 </nav>
 
-<a class="call-btn" href="tel:6009415805">
-☎ Call
-</a>
+<a class="call-btn" href="tel:6009415805">☎ Call</a>
 
 </div>
 </header>
@@ -517,9 +115,7 @@ Medicine Doorstep
 
 <div class="hero-content">
 
-<div class="discount">
-🎉 GET 10% OFF
-</div>
+<div class="discount">🎉 GET 10% OFF</div>
 
 <h1>
 Your Medicines.<br>
@@ -533,22 +129,13 @@ to your doorstep.
 </p>
 
 <div class="hero-buttons">
-
-<a href="#order" class="primary-btn">
-🛒 Order Medicine
-</a>
-
-<a href="#track" class="secondary-btn">
-📦 Track Order
-</a>
-
+<a href="#order" class="primary-btn">🛒 Order Medicine</a>
+<a href="#track" class="secondary-btn">📦 Track Order</a>
 </div>
 
 </div>
 
-<div class="hero-art">
-💊
-</div>
+<div class="hero-art">💊</div>
 
 </div>
 
@@ -561,38 +148,14 @@ to your doorstep.
 
 <div class="categories">
 
-<div class="category">
-<div class="category-icon">💊</div>
-<h3>Pain Relief</h3>
-</div>
-
-<div class="category">
-<div class="category-icon">🌡️</div>
-<h3>Fever & Cold</h3>
-</div>
-
-<div class="category">
-<div class="category-icon">🩸</div>
-<h3>Diabetes Care</h3>
-</div>
-
-<div class="category">
-<div class="category-icon">❤️</div>
-<h3>Heart Care</h3>
-</div>
-
-<div class="category">
-<div class="category-icon">🧴</div>
-<h3>Skin Care</h3>
-</div>
-
-<div class="category">
-<div class="category-icon">👶</div>
-<h3>Baby Care</h3>
-</div>
+<div class="category"><div class="category-icon">💊</div><h3>Pain Relief</h3></div>
+<div class="category"><div class="category-icon">🌡️</div><h3>Fever & Cold</h3></div>
+<div class="category"><div class="category-icon">🩸</div><h3>Diabetes Care</h3></div>
+<div class="category"><div class="category-icon">❤️</div><h3>Heart Care</h3></div>
+<div class="category"><div class="category-icon">🧴</div><h3>Skin Care</h3></div>
+<div class="category"><div class="category-icon">👶</div><h3>Baby Care</h3></div>
 
 </div>
-
 </section>
 
 <section>
@@ -628,7 +191,6 @@ to your doorstep.
 </div>
 
 </div>
-
 </section>
 
 <section id="order">
@@ -649,58 +211,30 @@ to your doorstep.
 
 <div class="form-group">
 <label>Mobile Number *</label>
-<input
-type="tel"
-id="mobile"
-placeholder="Enter 10 digit mobile number"
-inputmode="numeric"
-maxlength="10"
-required>
+<input type="tel" id="mobile" placeholder="10 digit mobile number" maxlength="10" inputmode="numeric" required>
 </div>
 
 <div class="form-group">
 <label>Medicine / Product *</label>
-<input
-type="text"
-id="medicine"
-placeholder="Medicine name or product"
-required>
+<input type="text" id="medicine" placeholder="Medicine name or product" required>
 </div>
 
 <div class="form-group">
 <label>Quantity *</label>
-<input
-type="number"
-id="quantity"
-min="1"
-value="1"
-required>
+<input type="number" id="quantity" min="1" value="1" required>
 </div>
 
 <div class="form-group">
 <label>Delivery Address *</label>
-<textarea
-id="address"
-placeholder="Enter complete delivery address"
-required></textarea>
+<textarea id="address" placeholder="Enter complete delivery address" required></textarea>
 </div>
 
 <div class="form-group">
-
 <label>Delivery Area</label>
-
 <select id="delivery">
-
-<option value="Delivery Available">
-Delivery Available
-</option>
-
-<option value="Out of Delivery">
-Out of Delivery
-</option>
-
+<option value="Delivery Available">Delivery Available</option>
+<option value="Out of Delivery">Out of Delivery</option>
 </select>
-
 </div>
 
 <div class="form-group">
@@ -710,77 +244,47 @@ Out of Delivery
 <div class="file-box">
 
 <p>📄 JPG, PNG or PDF</p>
+<p style="margin-top:5px">Maximum size: <strong>50 MB</strong></p>
 
-<p style="margin-top:5px;">
-Maximum size: <strong>50 MB</strong>
-</p>
+<input type="file" id="prescription" accept=".jpg,.jpeg,.png,.pdf">
 
-<input
-type="file"
-id="prescription"
-accept=".jpg,.jpeg,.png,.pdf">
-
-<div id="fileMessage"></div>
+<div id="fileMessage" style="margin-top:10px"></div>
 
 </div>
-
 </div>
 
-<button
-type="submit"
-id="submitBtn"
-class="primary-btn"
-style="width:100%;">
-
+<button type="submit" id="submitBtn" class="primary-btn" style="width:100%">
 📲 Save Order & Send WhatsApp
-
 </button>
 
 <div id="success" class="success"></div>
 <div id="error" class="error"></div>
 
 </form>
-
 </div>
-
 </section>
 
 <section id="track">
 
 <div class="section-title">
-
 <h2>📦 Track Your Order</h2>
-
-<p>
-Enter your Order ID to check your latest order status.
-</p>
-
+<p>Enter your Order ID to check your latest order status.</p>
 </div>
 
 <div class="track-box">
 
-<h3 style="color:#087c59;margin-bottom:8px;">
-Check Order Status
-</h3>
+<h3 style="color:#087c59;margin-bottom:8px">Check Order Status</h3>
 
-<p style="color:#687a74;margin-bottom:20px;">
+<p style="color:#687a74;margin-bottom:20px">
 Enter the Order ID received after placing your order.
 </p>
 
 <div class="track-input">
 
-<input
-type="text"
-id="trackOrderId"
-placeholder="MDD-20260909-1234">
+<input type="text" id="trackOrderId" placeholder="MDD-20260909-1234">
 
-<button
-type="button"
-id="trackBtn"
-class="primary-btn">
-
+<button type="button" id="trackBtn" class="primary-btn">
 🔍 Track
-
 </button>
 
 </div>
@@ -788,7 +292,6 @@ class="primary-btn">
 <div id="trackResult" class="track-result"></div>
 
 </div>
-
 </section>
 
 <section id="about">
@@ -800,22 +303,17 @@ class="primary-btn">
 <div class="about">
 
 <div class="about-card">
-
 <h2>Healthcare Made Easy</h2>
-
 <p>
 Medicine Doorstep Delivery makes ordering medicines
 simple and convenient. Customers can submit their
 medicine requirements and prescription online and
 contact us directly for order confirmation.
 </p>
-
 </div>
 
 <div class="about-card">
-
 <h2>How It Works</h2>
-
 <p>
 1️⃣ Enter your details.<br><br>
 2️⃣ Add your medicine.<br><br>
@@ -824,11 +322,9 @@ contact us directly for order confirmation.
 5️⃣ Send order through WhatsApp.<br><br>
 6️⃣ Track your order status.
 </p>
-
 </div>
 
 </div>
-
 </section>
 
 <section id="contact">
@@ -836,428 +332,292 @@ contact us directly for order confirmation.
 <div class="contact">
 
 <h2>Need Help With Your Order?</h2>
-
 <p>Contact Medicine Doorstep Delivery</p>
 
-<a
-href="https://wa.me/916009415805"
-target="_blank"
-rel="noopener">
-
+<a href="https://wa.me/916009415805" target="_blank">
 💬 WhatsApp: 6009415805
-
 </a>
 
 </div>
-
 </section>
 
 <footer>
 
-<p>
-© 2026 <strong>Medicine Doorstep Delivery</strong>
-</p>
-
-<p style="margin-top:8px;">
-☎ 6009415805
-</p>
-
-<p style="margin-top:8px;font-size:13px;">
-Healthcare at your doorstep.
-</p>
+<p>© 2026 <strong>Medicine Doorstep Delivery</strong></p>
+<p style="margin-top:8px">☎ 6009415805</p>
+<p style="margin-top:8px;font-size:13px">Healthcare at your doorstep.</p>
 
 </footer>
 
 
-<!-- FIREBASE -->
-
 <script type="module">
+
+/* ================================
+   FIREBASE
+================================ */
 
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
-    getFirestore,
-    doc,
-    setDoc,
-    getDoc,
-    serverTimestamp
+getFirestore,
+doc,
+setDoc,
+getDoc,
+serverTimestamp
 }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* FIREBASE CONFIG */
-
 const firebaseConfig = {
 
-    apiKey:
-    "AIzaSyABmq9B4NEvgtsrJIEfUhjZOqMCjGGHfpI",
+apiKey:"AIzaSyABmq9B4NEvgtsrJIEfUhjZOqMCjGGHfpI",
 
-    authDomain:
-    "medicine-doorstep-delivery.firebaseapp.com",
+authDomain:"medicine-doorstep-delivery.firebaseapp.com",
 
-    projectId:
-    "medicine-doorstep-delivery",
+projectId:"medicine-doorstep-delivery",
 
-    storageBucket:
-    "medicine-doorstep-delivery.firebasestorage.app",
+storageBucket:"medicine-doorstep-delivery.firebasestorage.app",
 
-    messagingSenderId:
-    "703468135334",
+messagingSenderId:"703468135334",
 
-    appId:
-    "1:703468135334:web:e1e7040b5426f93f71a567",
+appId:"1:703468135334:web:e1e7040b5426f93f71a567",
 
-    measurementId:
-    "G-K3H1PQ6MKD"
+measurementId:"G-K3H1PQ6MKD"
+
 };
 
-
-/* FIREBASE INITIALIZE */
 
 let db;
 
 try{
 
-    const app = initializeApp(firebaseConfig);
+const app=initializeApp(firebaseConfig);
 
-    db = getFirestore(app);
+db=getFirestore(app);
 
-    console.log("Firebase connected");
+console.log("Firebase connected successfully");
 
-}catch(firebaseError){
+}catch(err){
 
-    console.error(
-        "Firebase initialization error:",
-        firebaseError
-    );
+console.error("Firebase error:",err);
 
 }
 
 
-/* ELEMENTS */
+/* ================================
+   ELEMENTS
+================================ */
 
-const form =
-document.getElementById("orderForm");
+const form=document.getElementById("orderForm");
+const submitBtn=document.getElementById("submitBtn");
 
-const submitBtn =
-document.getElementById("submitBtn");
+const success=document.getElementById("success");
+const errorBox=document.getElementById("error");
 
-const success =
-document.getElementById("success");
+const prescription=document.getElementById("prescription");
+const fileMessage=document.getElementById("fileMessage");
 
-const errorBox =
-document.getElementById("error");
-
-const prescription =
-document.getElementById("prescription");
-
-const fileMessage =
-document.getElementById("fileMessage");
-
-const trackBtn =
-document.getElementById("trackBtn");
-
-const trackOrderId =
-document.getElementById("trackOrderId");
-
-const trackResult =
-document.getElementById("trackResult");
+const trackBtn=document.getElementById("trackBtn");
+const trackOrderId=document.getElementById("trackOrderId");
+const trackResult=document.getElementById("trackResult");
 
 
-/* FILE CHECK */
+/* ================================
+   FILE CHECK
+================================ */
 
-prescription.addEventListener(
-"change",
-function(){
+prescription.addEventListener("change",function(){
 
-    const file = this.files[0];
+const file=this.files[0];
 
-    fileMessage.innerHTML = "";
+fileMessage.innerHTML="";
 
-    if(!file){
-        return;
-    }
+if(!file)return;
 
-    const allowedTypes = [
-        "image/jpeg",
-        "image/png",
-        "application/pdf"
-    ];
+const allowed=[
+"image/jpeg",
+"image/png",
+"application/pdf"
+];
 
-    const maxSize =
-    50 * 1024 * 1024;
+if(!allowed.includes(file.type)){
 
-    if(!allowedTypes.includes(file.type)){
+fileMessage.innerHTML=
+"<b style='color:red'>❌ Only JPG, PNG or PDF allowed.</b>";
 
-        fileMessage.innerHTML =
-        "<b style='color:red'>❌ Only JPG, PNG or PDF allowed.</b>";
+this.value="";
 
-        prescription.value = "";
+return;
+}
 
-        return;
-    }
+if(file.size>50*1024*1024){
 
-    if(file.size > maxSize){
+fileMessage.innerHTML=
+"<b style='color:red'>❌ File must be below 50 MB.</b>";
 
-        fileMessage.innerHTML =
-        "<b style='color:red'>❌ File must be below 50 MB.</b>";
+this.value="";
 
-        prescription.value = "";
+return;
+}
 
-        return;
-    }
-
-    fileMessage.innerHTML =
-    "<b style='color:green'>✅ " +
-    file.name +
-    " selected</b>";
+fileMessage.innerHTML=
+"<b style='color:green'>✅ "+file.name+" selected</b>";
 
 });
 
 
-/* CREATE ORDER ID */
+/* ================================
+   ORDER ID
+================================ */
 
 function createOrderId(){
 
-    const now = new Date();
+const d=new Date();
 
-    const year =
-    now.getFullYear();
+const year=d.getFullYear();
 
-    const month =
-    String(now.getMonth()+1)
-    .padStart(2,"0");
+const month=String(d.getMonth()+1).padStart(2,"0");
 
-    const day =
-    String(now.getDate())
-    .padStart(2,"0");
+const day=String(d.getDate()).padStart(2,"0");
 
-    const random =
-    Math.floor(
-        1000 +
-        Math.random()*9000
-    );
+const random=Math.floor(1000+Math.random()*9000);
 
-    return (
-        "MDD-" +
-        year +
-        month +
-        day +
-        "-" +
-        random
-    );
+return "MDD-"+year+month+day+"-"+random;
+
 }
 
 
-/* SAVE ORDER */
+/* ================================
+   ORDER SUBMIT
+================================ */
 
-form.addEventListener(
-"submit",
-async function(e){
+form.addEventListener("submit",async function(e){
 
-    e.preventDefault();
+e.preventDefault();
 
-    success.style.display = "none";
-    errorBox.style.display = "none";
+success.style.display="none";
+errorBox.style.display="none";
 
-    submitBtn.disabled = true;
+submitBtn.disabled=true;
+submitBtn.textContent="⏳ Saving Order...";
 
-    submitBtn.textContent =
-    "⏳ Saving Order...";
 
+try{
 
-    try{
+if(!db){
 
-        /* CHECK FIREBASE */
+throw new Error(
+"Firebase connection failed."
+);
 
-        if(!db){
+}
 
-            throw new Error(
-                "Firebase is not connected. Please check Firebase configuration."
-            );
 
-        }
+const name=document.getElementById("name").value.trim();
 
+const mobile=document.getElementById("mobile").value.trim();
 
-        /* GET FORM DATA */
+const medicine=document.getElementById("medicine").value.trim();
 
-        const name =
-        document.getElementById("name")
-        .value
-        .trim();
+const quantity=Number(
+document.getElementById("quantity").value
+);
 
-        const mobile =
-        document.getElementById("mobile")
-        .value
-        .trim();
+const address=document.getElementById("address").value.trim();
 
-        const medicine =
-        document.getElementById("medicine")
-        .value
-        .trim();
+const delivery=document.getElementById("delivery").value;
 
-        const quantity =
-        Number(
-            document.getElementById("quantity")
-            .value
-        );
+const file=prescription.files[0];
 
-        const address =
-        document.getElementById("address")
-        .value
-        .trim();
 
-        const delivery =
-        document.getElementById("delivery")
-        .value;
+if(name.length<2){
 
-        const file =
-        prescription.files[0];
+throw new Error("Please enter your full name.");
 
+}
 
-        /* VALIDATION */
+if(!/^[0-9]{10}$/.test(mobile)){
 
-        if(name.length < 2){
+throw new Error("Please enter valid 10 digit mobile number.");
 
-            throw new Error(
-                "Please enter your full name."
-            );
+}
 
-        }
+if(!medicine){
 
-        if(!/^[0-9]{10}$/.test(mobile)){
+throw new Error("Please enter medicine/product name.");
 
-            throw new Error(
-                "Please enter a valid 10 digit mobile number."
-            );
+}
 
-        }
+if(!Number.isInteger(quantity)||quantity<1){
 
-        if(!medicine){
+throw new Error("Please enter valid quantity.");
 
-            throw new Error(
-                "Please enter medicine/product name."
-            );
+}
 
-        }
+if(address.length<5){
 
-        if(
-            !Number.isInteger(quantity) ||
-            quantity < 1
-        ){
+throw new Error("Please enter complete delivery address.");
 
-            throw new Error(
-                "Please enter a valid quantity."
-            );
+}
 
-        }
 
-        if(address.length < 5){
+const orderId=createOrderId();
 
-            throw new Error(
-                "Please enter complete delivery address."
-            );
 
-        }
+const orderData={
 
+orderId:orderId,
 
-        /* FILE INFO */
+name:name,
 
-        let prescriptionName = "";
+mobile:mobile,
 
-        let prescriptionType = "";
+medicine:medicine,
 
-        let prescriptionSize = 0;
+quantity:quantity,
 
-        if(file){
+address:address,
 
-            prescriptionName =
-            file.name;
+deliveryArea:delivery,
 
-            prescriptionType =
-            file.type;
+prescriptionName:file?file.name:"",
 
-            prescriptionSize =
-            file.size;
+prescriptionType:file?file.type:"",
 
-        }
+prescriptionSize:file?file.size:0,
 
+status:"Order Received",
 
-        /* ORDER ID */
+createdAt:serverTimestamp(),
 
-        const orderId =
-        createOrderId();
+updatedAt:serverTimestamp()
 
+};
 
-        /* ORDER DATA */
 
-        const orderData = {
+console.log("Saving order:",orderData);
 
-            orderId: orderId,
 
-            name: name,
+/* FIRESTORE */
 
-            mobile: mobile,
+await setDoc(
 
-            medicine: medicine,
+doc(db,"orders",orderId),
 
-            quantity: quantity,
+orderData
 
-            address: address,
+);
 
-            deliveryArea: delivery,
 
-            prescriptionName:
-            prescriptionName,
+console.log("Order saved:",orderId);
 
-            prescriptionType:
-            prescriptionType,
 
-            prescriptionSize:
-            prescriptionSize,
+/* WHATSAPP */
 
-            status:
-            "Order Received",
+const whatsappText=
 
-            createdAt:
-            serverTimestamp(),
-
-            updatedAt:
-            serverTimestamp()
-
-        };
-
-
-        console.log(
-            "Saving:",
-            orderData
-        );
-
-
-        /* FIRESTORE SAVE */
-
-        await setDoc(
-            doc(
-                db,
-                "orders",
-                orderId
-            ),
-            orderData
-        );
-
-
-        console.log(
-            "ORDER SAVED:",
-            orderId
-        );
-
-
-        /* WHATSAPP */
-
-        const whatsappText =
-
-`🛒 NEW MEDICINE ORDER
+`🛒 *NEW MEDICINE ORDER*
 
 📦 Order ID: ${orderId}
 
@@ -1273,46 +633,173 @@ async function(e){
 
 🚚 Delivery: ${delivery}
 
-📄 Prescription: ${
-file ? file.name : "Not uploaded"
-}
+📄 Prescription: ${file?file.name:"Not uploaded"}
 
 📌 Status: Order Received`;
 
 
-        const whatsappURL =
-        "https://wa.me/916009415805?text=" +
-        encodeURIComponent(
-            whatsappText
-        );
+const whatsappURL=
+"https://wa.me/916009415805?text="+
+encodeURIComponent(whatsappText);
 
 
-        /* SUCCESS MESSAGE */
+/* SUCCESS */
 
-        success.innerHTML =
+success.innerHTML=
 
-        "✅ <strong>Order Saved Successfully!</strong><br><br>" +
+"✅ <strong>Order Saved Successfully!</strong><br><br>"+
 
-        "📦 Order ID: <strong>" +
-        orderId +
-        "</strong><br><br>" +
+"📦 Order ID: <strong>"+orderId+"</strong><br><br>"+
 
-        "Opening WhatsApp...";
+"Opening WhatsApp...";
 
-
-        success.style.display =
-        "block";
+success.style.display="block";
 
 
-        /* SAVE ORDER ID LOCALLY */
-
-        localStorage.setItem(
-            "lastOrderId",
-            orderId
-        );
+localStorage.setItem("lastOrderId",orderId);
 
 
-        /* OPEN WHATSAPP */
+/* OPEN WHATSAPP */
 
-        setTimeout(
-            function(){
+window.location.href=whatsappURL;
+
+
+}catch(err){
+
+console.error("ORDER ERROR:",err);
+
+errorBox.innerHTML=
+"❌ <strong>Order could not be saved.</strong><br><br>"+
+err.message+
+"<br><br>"+
+"Please check Firebase Firestore Rules.";
+
+errorBox.style.display="block";
+
+submitBtn.disabled=false;
+
+submitBtn.textContent=
+"📲 Save Order & Send WhatsApp";
+
+}
+
+});
+
+
+/* ================================
+   TRACK ORDER
+================================ */
+
+trackBtn.addEventListener("click",async function(){
+
+trackResult.style.display="none";
+
+const id=trackOrderId.value.trim();
+
+if(!id){
+
+trackResult.innerHTML=
+"❌ Please enter your Order ID.";
+
+trackResult.style.display="block";
+
+return;
+
+}
+
+trackBtn.disabled=true;
+trackBtn.textContent="⏳ Checking...";
+
+
+try{
+
+if(!db){
+
+throw new Error("Firebase connection failed.");
+
+}
+
+
+const snap=await getDoc(
+doc(db,"orders",id)
+);
+
+
+if(!snap.exists()){
+
+trackResult.innerHTML=
+"❌ <strong>Order not found.</strong><br><br>"+
+"Please check your Order ID.";
+
+trackResult.style.display="block";
+
+}else{
+
+const data=snap.data();
+
+trackResult.innerHTML=
+
+"📦 <strong>Order ID:</strong> "+
+(data.orderId||id)+
+"<br><br>"+
+
+"👤 <strong>Name:</strong> "+
+(data.name||"")+
+"<br><br>"+
+
+"💊 <strong>Medicine:</strong> "+
+(data.medicine||"")+
+"<br><br>"+
+
+"🔢 <strong>Quantity:</strong> "+
+(data.quantity||"")+
+"<br><br>"+
+
+"🚚 <strong>Delivery:</strong> "+
+(data.deliveryArea||"")+
+"<br><br>"+
+
+"📌 <strong>Status:</strong> "+
+"<span class='status-badge'>"+
+(data.status||"Order Received")+
+"</span>";
+
+trackResult.style.display="block";
+
+}
+
+}catch(err){
+
+console.error("TRACK ERROR:",err);
+
+trackResult.innerHTML=
+"❌ Tracking error:<br><br>"+
+err.message;
+
+trackResult.style.display="block";
+
+}
+
+trackBtn.disabled=false;
+trackBtn.textContent="🔍 Track";
+
+});
+
+
+/* ================================
+   AUTO LOAD LAST ORDER
+================================ */
+
+const lastOrderId=
+localStorage.getItem("lastOrderId");
+
+if(lastOrderId){
+
+trackOrderId.value=lastOrderId;
+
+}
+
+</script>
+
+</body>
+</html>
