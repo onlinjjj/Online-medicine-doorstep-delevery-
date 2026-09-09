@@ -6,15 +6,11 @@
 
 <title>Medicine Doorstep Delivery</title>
 
-<meta name="description"
-content="Medicine Doorstep Delivery - Order medicines online with doorstep delivery.">
-
 <style>
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
     font-family:Arial,Helvetica,sans-serif;
 }
 
@@ -38,8 +34,8 @@ header{
 .navbar{
     max-width:1200px;
     margin:auto;
-    min-height:78px;
-    padding:12px 20px;
+    padding:12px 18px;
+    min-height:75px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -49,34 +45,34 @@ header{
 .logo{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:10px;
     color:#087c59;
-    font-size:21px;
+    font-size:20px;
     font-weight:800;
 }
 
 .logo-icon{
-    width:48px;
-    height:48px;
+    width:45px;
+    height:45px;
+    border-radius:14px;
+    background:#087c59;
+    color:white;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#087c59;
-    color:#fff;
-    border-radius:14px;
-    font-size:27px;
+    font-size:25px;
 }
 
 nav{
     display:flex;
+    gap:20px;
     align-items:center;
-    gap:25px;
 }
 
 nav a{
+    color:#17372e;
     text-decoration:none;
-    color:#18372f;
-    font-weight:700;
+    font-weight:bold;
 }
 
 nav a:hover{
@@ -86,24 +82,22 @@ nav a:hover{
 .call-btn{
     background:#087c59;
     color:white;
+    padding:12px 18px;
+    border-radius:25px;
     text-decoration:none;
-    padding:13px 20px;
-    border-radius:28px;
     font-weight:bold;
 }
 
-/* HERO */
-
 .hero{
     max-width:1200px;
-    margin:28px auto;
-    padding:65px 35px;
-    border-radius:30px;
+    margin:25px auto;
+    padding:55px 30px;
+    border-radius:28px;
     background:linear-gradient(135deg,#dcf8ed,#edf8ff);
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:40px;
+    gap:30px;
 }
 
 .hero-content{
@@ -114,17 +108,17 @@ nav a:hover{
     display:inline-block;
     background:#ff7900;
     color:white;
-    padding:10px 18px;
+    padding:9px 17px;
     border-radius:25px;
     font-weight:bold;
-    margin-bottom:18px;
+    margin-bottom:15px;
 }
 
 .hero h1{
-    font-size:52px;
-    line-height:1.1;
+    font-size:48px;
+    line-height:1.15;
     color:#064b91;
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 .hero h1 span{
@@ -132,82 +126,77 @@ nav a:hover{
 }
 
 .hero p{
-    color:#526961;
     font-size:18px;
     line-height:1.7;
-    margin-bottom:28px;
+    color:#526961;
+    margin-bottom:25px;
 }
 
 .hero-buttons{
     display:flex;
-    gap:15px;
+    gap:12px;
     flex-wrap:wrap;
 }
 
 .primary-btn,
 .secondary-btn{
-    display:inline-block;
-    padding:15px 25px;
-    border-radius:30px;
-    font-size:16px;
+    padding:14px 23px;
+    border-radius:28px;
     font-weight:bold;
-    text-decoration:none;
-    cursor:pointer;
+    font-size:16px;
     border:none;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-block;
 }
 
 .primary-btn{
     background:#087c59;
-    color:#fff;
+    color:white;
 }
 
 .secondary-btn{
-    background:#fff;
+    background:white;
     color:#087c59;
     border:2px solid #087c59;
 }
 
 .primary-btn:disabled{
     opacity:.6;
-    cursor:not-allowed;
 }
 
 .hero-art{
-    width:350px;
-    height:290px;
-    background:#fff;
-    border-radius:40px;
+    width:330px;
+    height:260px;
+    background:white;
+    border-radius:35px;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:125px;
+    font-size:120px;
     box-shadow:0 15px 40px rgba(0,0,0,.08);
 }
 
-/* SECTION */
-
 section{
     max-width:1200px;
-    margin:70px auto;
-    padding:0 20px;
+    margin:65px auto;
+    padding:0 18px;
 }
 
 .section-title{
     text-align:center;
-    margin-bottom:35px;
+    margin-bottom:30px;
 }
 
 .section-title h2{
     color:#064b91;
-    font-size:34px;
-    margin-bottom:10px;
+    font-size:32px;
+    margin-bottom:8px;
 }
 
 .section-title p{
     color:#687b74;
 }
-
-/* CATEGORY */
 
 .categories{
     display:grid;
@@ -216,41 +205,35 @@ section{
 }
 
 .category{
-    background:#fff;
-    padding:25px 10px;
+    background:white;
+    padding:23px 10px;
     text-align:center;
     border-radius:18px;
     box-shadow:0 5px 20px rgba(0,0,0,.06);
 }
 
 .category-icon{
-    font-size:40px;
-    margin-bottom:12px;
+    font-size:38px;
+    margin-bottom:10px;
 }
-
-.category h3{
-    font-size:15px;
-}
-
-/* FEATURES */
 
 .features{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:20px;
+    gap:18px;
 }
 
 .feature{
-    background:#fff;
-    padding:30px 20px;
-    border-radius:20px;
+    background:white;
+    padding:28px 18px;
     text-align:center;
+    border-radius:20px;
     box-shadow:0 5px 20px rgba(0,0,0,.06);
 }
 
 .feature-icon{
-    font-size:40px;
-    margin-bottom:15px;
+    font-size:38px;
+    margin-bottom:12px;
 }
 
 .feature h3{
@@ -263,42 +246,43 @@ section{
     line-height:1.5;
 }
 
-/* ORDER */
-
-.order-box{
-    background:#fff;
+.order-box,
+.track-box{
     max-width:800px;
     margin:auto;
-    padding:35px;
+    background:white;
+    padding:32px;
     border-radius:25px;
     box-shadow:0 10px 35px rgba(0,0,0,.08);
 }
 
 .form-group{
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 .form-group label{
     display:block;
     font-weight:bold;
-    margin-bottom:8px;
+    margin-bottom:7px;
 }
 
 .form-group input,
 .form-group textarea,
-.form-group select{
+.form-group select,
+.track-input input{
     width:100%;
-    padding:15px;
+    padding:14px;
     border:1px solid #d4e2dd;
     border-radius:12px;
-    outline:none;
     font-size:16px;
-    background:#fff;
+    outline:none;
+    background:white;
 }
 
 .form-group input:focus,
 .form-group textarea:focus,
-.form-group select:focus{
+.form-group select:focus,
+.track-input input:focus{
     border-color:#087c59;
 }
 
@@ -310,70 +294,45 @@ textarea{
 .file-box{
     border:2px dashed #8bcdb8;
     background:#f1fbf7;
-    padding:22px;
+    padding:20px;
     border-radius:15px;
     text-align:center;
 }
 
 .file-box input{
     border:none;
-    background:transparent;
+    margin-top:12px;
 }
 
 .delivery-status{
-    padding:15px;
+    display:none;
+    margin-top:10px;
+    padding:13px;
     background:#fff7e8;
     border-left:5px solid #ff9800;
-    border-radius:10px;
-    margin-top:10px;
-    display:none;
+    border-radius:8px;
 }
 
 .success{
     display:none;
-    margin-top:20px;
+    margin-top:18px;
+    padding:18px;
     background:#e7f8ef;
     color:#087c59;
-    padding:18px;
     border-radius:12px;
     text-align:center;
-    font-weight:bold;
     line-height:1.7;
 }
 
 .error{
     display:none;
-    margin-top:20px;
+    margin-top:18px;
+    padding:18px;
     background:#fff0f0;
     color:#b00020;
-    padding:18px;
     border-radius:12px;
     text-align:center;
-    font-weight:bold;
     line-height:1.6;
-}
-
-/* TRACK */
-
-.track-box{
-    max-width:700px;
-    margin:auto;
-    background:#fff;
-    padding:35px;
-    border-radius:25px;
-    box-shadow:0 10px 35px rgba(0,0,0,.08);
-    text-align:center;
-}
-
-.track-box h3{
-    color:#087c59;
-    font-size:25px;
-    margin-bottom:10px;
-}
-
-.track-box p{
-    color:#687a74;
-    margin-bottom:20px;
 }
 
 .track-input{
@@ -383,44 +342,36 @@ textarea{
 
 .track-input input{
     flex:1;
-    padding:15px;
-    border:1px solid #d4e2dd;
-    border-radius:12px;
-    font-size:16px;
-    outline:none;
 }
 
 .track-result{
     display:none;
-    margin-top:25px;
+    margin-top:20px;
     padding:20px;
-    border-radius:15px;
     background:#f2faf7;
-    text-align:left;
+    border-radius:15px;
+    line-height:1.8;
 }
 
 .status-badge{
     display:inline-block;
-    padding:10px 18px;
-    border-radius:25px;
+    padding:8px 16px;
+    border-radius:20px;
     background:#fff0c2;
     color:#806300;
     font-weight:bold;
-    margin-top:10px;
 }
-
-/* ABOUT */
 
 .about{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:35px;
+    gap:25px;
 }
 
 .about-card{
-    background:#fff;
-    padding:35px;
-    border-radius:25px;
+    background:white;
+    padding:30px;
+    border-radius:22px;
     box-shadow:0 8px 25px rgba(0,0,0,.06);
 }
 
@@ -430,23 +381,20 @@ textarea{
 }
 
 .about-card p{
-    line-height:1.8;
     color:#60736c;
+    line-height:1.8;
 }
-
-/* CONTACT */
 
 .contact{
     background:#064b91;
-    color:#fff;
+    color:white;
     border-radius:25px;
-    padding:45px 25px;
+    padding:40px 20px;
     text-align:center;
 }
 
 .contact h2{
-    font-size:32px;
-    margin-bottom:12px;
+    margin-bottom:10px;
 }
 
 .contact p{
@@ -455,29 +403,25 @@ textarea{
 
 .contact a{
     display:inline-block;
-    background:#fff;
+    background:white;
     color:#064b91;
+    padding:13px 22px;
+    border-radius:25px;
     text-decoration:none;
-    padding:14px 25px;
-    border-radius:30px;
     font-weight:bold;
 }
-
-/* FOOTER */
 
 footer{
     background:#102c26;
     color:#c8d8d3;
     text-align:center;
-    padding:30px 15px;
-    margin-top:70px;
+    padding:28px 15px;
+    margin-top:60px;
 }
 
 footer strong{
-    color:#fff;
+    color:white;
 }
-
-/* MOBILE */
 
 @media(max-width:900px){
 
@@ -505,19 +449,11 @@ footer strong{
     .about{
         grid-template-columns:1fr;
     }
-
-    .hero-art{
-        width:280px;
-        height:220px;
-        font-size:90px;
-    }
 }
 
 @media(max-width:600px){
 
     .navbar{
-        height:auto;
-        padding:12px 15px;
         flex-wrap:wrap;
     }
 
@@ -525,39 +461,31 @@ footer strong{
         order:3;
         width:100%;
         justify-content:center;
-        gap:16px;
+        gap:13px;
     }
 
     nav a{
-        font-size:14px;
-    }
-
-    .call-btn{
-        padding:10px 14px;
         font-size:13px;
     }
 
-    .logo{
-        font-size:16px;
-    }
-
-    .logo-icon{
-        width:40px;
-        height:40px;
+    .call-btn{
+        font-size:13px;
+        padding:10px 13px;
     }
 
     .hero{
         margin:15px;
-        padding:40px 18px;
-        border-radius:22px;
+        padding:38px 18px;
     }
 
     .hero h1{
-        font-size:34px;
+        font-size:33px;
     }
 
-    .hero p{
-        font-size:16px;
+    .hero-art{
+        width:260px;
+        height:190px;
+        font-size:90px;
     }
 
     .categories{
@@ -568,34 +496,21 @@ footer strong{
         grid-template-columns:1fr;
     }
 
-    .order-box{
-        padding:22px 17px;
-    }
-
+    .order-box,
     .track-box{
-        padding:25px 17px;
+        padding:22px 16px;
     }
 
     .track-input{
         flex-direction:column;
     }
-
-    section{
-        margin:50px auto;
-    }
-
-    .section-title h2{
-        font-size:28px;
-    }
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-
 <div class="navbar">
 
 <div class="logo">
@@ -616,7 +531,6 @@ Medicine Doorstep
 </a>
 
 </div>
-
 </header>
 
 
@@ -636,10 +550,9 @@ Your Medicines.<br>
 </h1>
 
 <p>
-Order your medicines online quickly
-and conveniently. Upload your
-prescription and get your order
-delivered to your doorstep.
+Order your medicines online quickly and conveniently.
+Upload your prescription and get your order delivered
+to your doorstep.
 </p>
 
 <div class="hero-buttons">
@@ -669,11 +582,7 @@ delivered to your doorstep.
 
 <div class="section-title">
 <h2>Shop by Category</h2>
-
-<p>
-Find the medicines and healthcare
-products you need.
-</p>
+<p>Find the medicines and healthcare products you need.</p>
 </div>
 
 <div class="categories">
@@ -765,7 +674,6 @@ Fill the form and save your order.
 </p>
 
 </div>
-
 
 <div class="order-box">
 
@@ -870,16 +778,11 @@ Please contact us for assistance.
 
 <div class="file-box">
 
-<p>
-📄 Upload JPG, PNG or PDF
-</p>
+<p>📄 JPG, PNG or PDF</p>
 
-<p>
-Maximum size:
-<strong>50 MB</strong>
+<p style="margin-top:5px;">
+Maximum size: <strong>50 MB</strong>
 </p>
-
-<br>
 
 <input
 type="file"
@@ -929,34 +832,33 @@ Enter your Order ID to check your latest order status.
 
 </div>
 
-
 <div class="track-box">
 
-<h3>Check Order Status</h3>
+<h3 style="color:#087c59;margin-bottom:8px;">
+Check Order Status
+</h3>
 
-<p>
+<p style="color:#687a74;margin-bottom:20px;">
 Enter the Order ID received after placing your order.
 </p>
-
 
 <div class="track-input">
 
 <input
 type="text"
 id="trackOrderId"
-placeholder="Example: MDD-20260909-1234">
+placeholder="MDD-20260909-1234">
 
 <button
 type="button"
-class="primary-btn"
-id="trackBtn">
+id="trackBtn"
+class="primary-btn">
 
 🔍 Track
 
 </button>
 
 </div>
-
 
 <div id="trackResult" class="track-result"></div>
 
@@ -982,46 +884,25 @@ id="trackBtn">
 <h2>Healthcare Made Easy</h2>
 
 <p>
-
-Medicine Doorstep Delivery makes
-ordering medicines simple and convenient.
-Customers can submit their medicine
-requirements and prescription online
-and contact us directly for order confirmation.
-
+Medicine Doorstep Delivery makes ordering medicines
+simple and convenient. Customers can submit their
+medicine requirements and prescription online and
+contact us directly for order confirmation.
 </p>
 
 </div>
-
 
 <div class="about-card">
 
 <h2>How It Works</h2>
 
 <p>
-
-1️⃣ Enter your details.
-
-<br><br>
-
-2️⃣ Add your medicine.
-
-<br><br>
-
-3️⃣ Upload prescription if required.
-
-<br><br>
-
-4️⃣ Save your order.
-
-<br><br>
-
-5️⃣ Send order through WhatsApp.
-
-<br><br>
-
+1️⃣ Enter your details.<br><br>
+2️⃣ Add your medicine.<br><br>
+3️⃣ Upload prescription if required.<br><br>
+4️⃣ Save your order.<br><br>
+5️⃣ Send order through WhatsApp.<br><br>
 6️⃣ Track your order status.
-
 </p>
 
 </div>
@@ -1037,13 +918,9 @@ and contact us directly for order confirmation.
 
 <div class="contact">
 
-<h2>
-Need Help With Your Order?
-</h2>
+<h2>Need Help With Your Order?</h2>
 
-<p>
-Contact Medicine Doorstep Delivery
-</p>
+<p>Contact Medicine Doorstep Delivery</p>
 
 <a
 href="https://wa.me/916009415805"
@@ -1059,13 +936,10 @@ rel="noopener">
 </section>
 
 
-<!-- FOOTER -->
-
 <footer>
 
 <p>
-© 2026
-<strong>Medicine Doorstep Delivery</strong>
+© 2026 <strong>Medicine Doorstep Delivery</strong>
 </p>
 
 <p style="margin-top:8px;">
@@ -1079,9 +953,9 @@ Healthcare at your doorstep.
 </footer>
 
 
-<!-- =====================================================
+<!-- =========================
      FIREBASE
-===================================================== -->
+========================= -->
 
 <script type="module">
 
@@ -1098,9 +972,7 @@ import {
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =====================================================
-   FIREBASE CONFIG
-===================================================== */
+/* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
@@ -1127,32 +999,16 @@ const firebaseConfig = {
 };
 
 
-/* =====================================================
-   FIREBASE INITIALIZE
-===================================================== */
+/* START FIREBASE */
 
-let app;
+const app = initializeApp(firebaseConfig);
 
-let db;
+const db = getFirestore(app);
 
-try{
-
-    app = initializeApp(firebaseConfig);
-
-    db = getFirestore(app);
-
-    console.log("Firebase connected successfully");
-
-}catch(firebaseError){
-
-    console.error("Firebase initialization error:",firebaseError);
-
-}
+console.log("Firebase connected successfully");
 
 
-/* =====================================================
-   ELEMENTS
-===================================================== */
+/* ELEMENTS */
 
 const form =
 document.getElementById("orderForm");
@@ -1163,10 +1019,10 @@ document.getElementById("submitBtn");
 const success =
 document.getElementById("success");
 
-const error =
+const errorBox =
 document.getElementById("error");
 
-const prescriptionInput =
+const prescription =
 document.getElementById("prescription");
 
 const fileMessage =
@@ -1188,9 +1044,7 @@ const trackResult =
 document.getElementById("trackResult");
 
 
-/* =====================================================
-   DELIVERY
-===================================================== */
+/* DELIVERY */
 
 delivery.addEventListener("change",function(){
 
@@ -1207,15 +1061,13 @@ delivery.addEventListener("change",function(){
 });
 
 
-/* =====================================================
-   FILE VALIDATION
-===================================================== */
+/* PRESCRIPTION CHECK */
 
-prescriptionInput.addEventListener("change",function(){
-
-    fileMessage.innerHTML = "";
+prescription.addEventListener("change",function(){
 
     const file = this.files[0];
+
+    fileMessage.innerHTML = "";
 
     if(!file){
         return;
@@ -1225,21 +1077,19 @@ prescriptionInput.addEventListener("change",function(){
     50 * 1024 * 1024;
 
     const allowedTypes = [
-
         "image/jpeg",
         "image/png",
         "application/pdf"
-
     ];
 
     if(!allowedTypes.includes(file.type)){
 
         fileMessage.innerHTML =
         "<p style='color:red;font-weight:bold;margin-top:10px'>" +
-        "❌ Only JPG, PNG or PDF files are allowed." +
+        "❌ Only JPG, PNG or PDF allowed." +
         "</p>";
 
-        this.value = "";
+        prescription.value = "";
 
         return;
     }
@@ -1251,7 +1101,7 @@ prescriptionInput.addEventListener("change",function(){
         "❌ File size must be below 50 MB." +
         "</p>";
 
-        this.value = "";
+        prescription.value = "";
 
         return;
     }
@@ -1264,9 +1114,7 @@ prescriptionInput.addEventListener("change",function(){
 });
 
 
-/* =====================================================
-   CREATE ORDER ID
-===================================================== */
+/* CREATE ORDER ID */
 
 function createOrderId(){
 
@@ -1276,101 +1124,223 @@ function createOrderId(){
     now.getFullYear();
 
     const month =
-    String(now.getMonth()+1).padStart(2,"0");
+    String(now.getMonth()+1)
+    .padStart(2,"0");
 
     const day =
-    String(now.getDate()).padStart(2,"0");
+    String(now.getDate())
+    .padStart(2,"0");
 
     const random =
-    Math.floor(1000 + Math.random() * 9000);
+    Math.floor(1000 + Math.random()*9000);
 
     return "MDD-" +
-           year +
-           month +
-           day +
-           "-" +
-           random;
-
+    year +
+    month +
+    day +
+    "-" +
+    random;
 }
 
 
-/* =====================================================
-   SHOW ERROR
-===================================================== */
-
-function showError(message){
-
-    success.style.display = "none";
-
-    error.innerHTML =
-    "❌ " + message;
-
-    error.style.display = "block";
-
-}
-
-
-/* =====================================================
-   SHOW SUCCESS
-===================================================== */
-
-function showSuccess(orderId){
-
-    error.style.display = "none";
-
-    success.innerHTML =
-
-    "✅ ORDER SAVED SUCCESSFULLY!<br><br>" +
-
-    "📦 Your Order ID:<br>" +
-
-    "<strong style='font-size:22px'>" +
-    orderId +
-    "</strong>" +
-
-    "<br><br>" +
-
-    "📱 Opening WhatsApp...";
-
-    success.style.display = "block";
-
-}
-
-
-/* =====================================================
-   SAVE ORDER
-===================================================== */
+/* SAVE ORDER */
 
 form.addEventListener("submit",async function(e){
 
     e.preventDefault();
 
     success.style.display = "none";
-
-    error.style.display = "none";
-
-
-    /* CHECK FIREBASE */
-
-    if(!db){
-
-        showError(
-        "Firebase is not connected. Please refresh the page."
-        );
-
-        return;
-
-    }
-
-
-    /* DISABLE BUTTON */
+    errorBox.style.display = "none";
 
     submitBtn.disabled = true;
 
-    submitBtn.innerHTML =
+    submitBtn.textContent =
     "⏳ Saving Order...";
-
 
     try{
 
-        /* GET
+        const name =
+        document.getElementById("name")
+        .value
+        .trim();
+
+        const mobile =
+        document.getElementById("mobile")
+        .value
+        .trim();
+
+        const medicine =
+        document.getElementById("medicine")
+        .value
+        .trim();
+
+        const quantity =
+        Number(
+            document.getElementById("quantity").value
+        );
+
+        const address =
+        document.getElementById("address")
+        .value
+        .trim();
+
+        const deliveryArea =
+        delivery.value;
+
+        const file =
+        prescription.files[0];
+
+
+        /* VALIDATION */
+
+        if(name.length < 2){
+
+            throw new Error(
+                "Please enter your full name."
+            );
+
+        }
+
+
+        if(!/^[0-9]{10}$/.test(mobile)){
+
+            throw new Error(
+                "Please enter a valid 10 digit mobile number."
+            );
+
+        }
+
+
+        if(!medicine){
+
+            throw new Error(
+                "Please enter medicine/product name."
+            );
+
+        }
+
+
+        if(!Number.isInteger(quantity) || quantity < 1){
+
+            throw new Error(
+                "Please enter a valid quantity."
+            );
+
+        }
+
+
+        if(address.length < 5){
+
+            throw new Error(
+                "Please enter complete delivery address."
+            );
+
+        }
+
+
+        /* FILE INFORMATION */
+
+        let prescriptionName = "";
+
+        let prescriptionType = "";
+
+        let prescriptionSize = 0;
+
+        if(file){
+
+            prescriptionName =
+            file.name;
+
+            prescriptionType =
+            file.type;
+
+            prescriptionSize =
+            file.size;
+
+        }
+
+
+        /* CREATE ORDER ID */
+
+        const orderId =
+        createOrderId();
+
+
+        /* ORDER DATA */
+
+        const orderData = {
+
+            orderId: orderId,
+
+            name: name,
+
+            mobile: mobile,
+
+            medicine: medicine,
+
+            quantity: quantity,
+
+            address: address,
+
+            deliveryArea: deliveryArea,
+
+            prescriptionName:
+            prescriptionName,
+
+            prescriptionType:
+            prescriptionType,
+
+            prescriptionSize:
+            prescriptionSize,
+
+            status:
+            "Order Received",
+
+            createdAt:
+            serverTimestamp(),
+
+            updatedAt:
+            serverTimestamp()
+
+        };
+
+
+        console.log("Saving order:",orderData);
+
+
+        /* SAVE TO FIRESTORE */
+
+        await setDoc(
+            doc(db,"orders",orderId),
+            orderData
+        );
+
+
+        console.log(
+            "ORDER SAVED:",
+            orderId
+        );
+
+
+        /* WHATSAPP MESSAGE */
+
+        let whatsappMessage =
+`🛒 *NEW MEDICINE ORDER*
+
+📦 *Order ID:* ${orderId}
+
+👤 *Name:* ${name}
+
+📱 *Mobile:* ${mobile}
+
+💊 *Medicine:* ${medicine}
+
+🔢 *Quantity:* ${quantity}
+
+🏠 *Address:* ${address}
+
+🚚 *Delivery:* ${deliveryArea}
+
+📄 *Prescription:* ${
+    file ? file.name : "Not uploaded"
+}
