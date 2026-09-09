@@ -269,9 +269,7 @@ section{
 
 .categories{
     display:grid;
-    grid-template-columns:
-    repeat(6,1fr);
-
+    grid-template-columns:repeat(6,1fr);
     gap:15px;
 }
 
@@ -311,8 +309,7 @@ section{
 .features{
     display:grid;
 
-    grid-template-columns:
-    repeat(4,1fr);
+    grid-template-columns:repeat(4,1fr);
 
     gap:20px;
 }
@@ -432,7 +429,7 @@ textarea{
 
 
 /* =========================
-   STATUS MESSAGE
+   MESSAGES
 ========================= */
 
 .delivery-status{
@@ -539,6 +536,10 @@ textarea{
     outline:none;
 }
 
+.track-input input:focus{
+    border-color:#087c59;
+}
+
 .track-result{
     display:none;
 
@@ -569,6 +570,72 @@ textarea{
     margin-top:10px;
 }
 
+.track-loading{
+    text-align:center;
+    color:#087c59;
+    font-weight:bold;
+}
+
+.track-error{
+    color:#b00020;
+    background:#fff0f0;
+    padding:18px;
+    border-radius:12px;
+}
+
+.order-details{
+    line-height:1.8;
+}
+
+.order-details strong{
+    color:#17372e;
+}
+
+
+/* =========================
+   STATUS TIMELINE
+========================= */
+
+.status-timeline{
+    margin-top:22px;
+    padding-top:10px;
+}
+
+.status-step{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:10px 0;
+
+    color:#9aa9a4;
+    font-weight:bold;
+}
+
+.status-dot{
+    width:30px;
+    height:30px;
+
+    border-radius:50%;
+
+    background:#dce7e3;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+}
+
+.status-step.active{
+    color:#087c59;
+}
+
+.status-step.active .status-dot{
+    background:#087c59;
+    color:#fff;
+}
+
 
 /* =========================
    ABOUT
@@ -577,8 +644,7 @@ textarea{
 .about{
     display:grid;
 
-    grid-template-columns:
-    1fr 1fr;
+    grid-template-columns:1fr 1fr;
 
     gap:35px;
 
@@ -690,13 +756,11 @@ footer strong{
     }
 
     .categories{
-        grid-template-columns:
-        repeat(3,1fr);
+        grid-template-columns:repeat(3,1fr);
     }
 
     .features{
-        grid-template-columns:
-        repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
     .about{
@@ -763,8 +827,7 @@ footer strong{
     }
 
     .categories{
-        grid-template-columns:
-        repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
     .features{
@@ -1353,8 +1416,8 @@ Check Order Status
 </h3>
 
 <p>
-Your Order ID was shown after placing
-your order.
+Enter the Order ID you received
+after placing your order.
 </p>
 
 
@@ -1363,9 +1426,11 @@ your order.
 <input
 type="text"
 id="trackOrderId"
-placeholder="Enter Order ID">
+placeholder="Example: MDD-20260909-A7K3"
+autocomplete="off">
 
 <button
+type="button"
 class="primary-btn"
 id="trackBtn">
 
@@ -1532,17 +1597,31 @@ Healthcare at your doorstep.
 
 </footer>
 
-<!-- FIREBASE -->
+
+
+<!-- =========================
+     FIREBASE
+========================= -->
+
 <script type="module">
 
-import { initializeApp }
+import {
+    initializeApp
+}
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
+
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  serverTimestamp
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp,
+    doc,
+    setDoc,
+    getDoc,
+    query,
+    where,
+    getDocs
 }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
@@ -1552,13 +1631,28 @@ from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 ========================= */
 
 const firebaseConfig = {
-  apiKey: "AIzaSyABmq9B4NEvgtsrJIEfUhjZOqMCjGGHfpI",
-  authDomain: "medicine-doorstep-delivery.firebaseapp.com",
-  projectId: "medicine-doorstep-delivery",
-  storageBucket: "medicine-doorstep-delivery.firebasestorage.app",
-  messagingSenderId: "703468135334",
-  appId: "1:703468135334:web:e1e7040b5426f93f71a567",
-  measurementId: "G-K3H1PQ6MKD"
+
+    apiKey:
+    "AIzaSyABmq9B4NEvgtsrJIEfUhjZOqMCjGGHfpI",
+
+    authDomain:
+    "medicine-doorstep-delivery.firebaseapp.com",
+
+    projectId:
+    "medicine-doorstep-delivery",
+
+    storageBucket:
+    "medicine-doorstep-delivery.firebasestorage.app",
+
+    messagingSenderId:
+    "703468135334",
+
+    appId:
+    "1:703468135334:web:e1e7040b5426f93f71a567",
+
+    measurementId:
+    "G-K3H1PQ6MKD"
+
 };
 
 
@@ -1566,337 +1660,106 @@ const firebaseConfig = {
    START FIREBASE
 ========================= */
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const app =
+initializeApp(firebaseConfig);
 
-console.log("Firebase Connected Successfully");
+const db =
+getFirestore(app);
+
+console.log(
+"Firebase Connected Successfully"
+);
 
 
 /* =========================
    GET ELEMENTS
 ========================= */
 
-const form = document.getElementById("orderForm");
-const prescriptionInput = document.getElementById("prescription");
-const fileMessage = document.getElementById("fileMessage");
+const form =
+document.getElementById("orderForm");
 
-const delivery = document.getElementById("delivery");
-const deliveryNotice = document.getElementById("deliveryNotice");
+const prescriptionInput =
+document.getElementById("prescription");
 
-const success = document.getElementById("success");
-const error = document.getElementById("error");
-const submitBtn = document.getElementById("submitBtn");
+const fileMessage =
+document.getElementById("fileMessage");
+
+const delivery =
+document.getElementById("delivery");
+
+const deliveryNotice =
+document.getElementById("deliveryNotice");
+
+const success =
+document.getElementById("success");
+
+const error =
+document.getElementById("error");
+
+const submitBtn =
+document.getElementById("submitBtn");
+
+const trackBtn =
+document.getElementById("trackBtn");
+
+const trackOrderId =
+document.getElementById("trackOrderId");
+
+const trackResult =
+document.getElementById("trackResult");
 
 
 /* =========================
    DELIVERY STATUS
 ========================= */
 
-if (delivery) {
+delivery.addEventListener(
+"change",
+() => {
 
-  delivery.addEventListener("change", () => {
+    if(
+        delivery.value ===
+        "Out of Delivery"
+    ){
 
-    if (delivery.value === "Out of Delivery") {
-      deliveryNotice.style.display = "block";
-    } else {
-      deliveryNotice.style.display = "none";
+        deliveryNotice.style.display =
+        "block";
+
+    }else{
+
+        deliveryNotice.style.display =
+        "none";
+
     }
 
-  });
-
-}
+});
 
 
 /* =========================
    PRESCRIPTION CHECK
 ========================= */
 
-if (prescriptionInput) {
+prescriptionInput.addEventListener(
+"change",
+() => {
 
-  prescriptionInput.addEventListener("change", () => {
-
-    const file = prescriptionInput.files[0];
-
-    if (!file) {
-      fileMessage.innerHTML = "";
-      return;
-    }
-
-    const maxSize = 50 * 1024 * 1024;
-
-    const allowedTypes = [
-      "image/jpeg",
-      "image/png",
-      "application/pdf"
-    ];
-
-    if (!allowedTypes.includes(file.type)) {
-
-      fileMessage.innerHTML =
-        "<p style='color:red;font-weight:bold;margin-top:10px'>" +
-        "❌ Only JPG, PNG or PDF allowed." +
-        "</p>";
-
-      prescriptionInput.value = "";
-      return;
-    }
-
-    if (file.size > maxSize) {
-
-      fileMessage.innerHTML =
-        "<p style='color:red;font-weight:bold;margin-top:10px'>" +
-        "❌ File size must be below 50 MB." +
-        "</p>";
-
-      prescriptionInput.value = "";
-      return;
-    }
-
-    fileMessage.innerHTML =
-      "<p style='color:green;font-weight:bold;margin-top:10px'>" +
-      "✅ " + file.name + " selected" +
-      "</p>";
-
-  });
-
-}
-
-
-/* =========================
-   ORDER SUBMIT
-========================= */
-
-form.addEventListener("submit", async (e) => {
-
-  e.preventDefault();
-
-  success.style.display = "none";
-  error.style.display = "none";
-
-  submitBtn.disabled = true;
-  submitBtn.textContent = "⏳ Saving Order...";
-
-
-  /* GET FORM DATA */
-
-  const name =
-    document.getElementById("name").value.trim();
-
-  const mobile =
-    document.getElementById("mobile").value.trim();
-
-  const medicine =
-    document.getElementById("medicine").value.trim();
-
-  const quantity =
-    Number(document.getElementById("quantity").value) || 1;
-
-  const address =
-    document.getElementById("address").value.trim();
-
-  const deliveryStatus =
-    delivery.value;
-
-  const prescription =
+    const file =
     prescriptionInput.files[0];
 
+    if(!file){
 
-  /* =========================
-     VALIDATION
-  ========================= */
+        fileMessage.innerHTML =
+        "";
 
-  if (!name || !mobile || !medicine || !address) {
+        return;
 
-    error.textContent =
-      "❌ Please fill all required fields.";
+    }
 
-    error.style.display = "block";
 
-    submitBtn.disabled = false;
-    submitBtn.textContent =
-      "📲 Save Order & Send WhatsApp";
+    const maxSize =
+    50 * 1024 * 1024;
 
-    return;
-  }
 
+    const allowedTypes = [
 
-  if (!/^[0-9]{10}$/.test(mobile)) {
-
-    error.textContent =
-      "❌ Please enter a valid 10 digit mobile number.";
-
-    error.style.display = "block";
-
-    submitBtn.disabled = false;
-    submitBtn.textContent =
-      "📲 Save Order & Send WhatsApp";
-
-    return;
-  }
-
-
-  /* =========================
-     ORDER DATA
-  ========================= */
-
-  const orderData = {
-
-    customerName: name,
-
-    name: name,
-
-    mobile: mobile,
-
-    phone: mobile,
-
-    medicine: medicine,
-
-    quantity: quantity,
-
-    address: address,
-
-    deliveryArea: deliveryStatus,
-
-    deliveryStatus: deliveryStatus,
-
-    orderStatus: "Pending",
-
-    status: "Pending",
-
-    prescriptionName:
-      prescription ? prescription.name : "",
-
-    prescriptionType:
-      prescription ? prescription.type : "",
-
-    createdAt: serverTimestamp()
-
-  };
-
-
-  /* =========================
-     SAVE FIRESTORE
-  ========================= */
-
-  try {
-
-    const orderRef = await addDoc(
-      collection(db, "orders"),
-      orderData
-    );
-
-
-    console.log(
-      "ORDER SAVED:",
-      orderRef.id
-    );
-
-
-    /* =========================
-       WHATSAPP
-    ========================= */
-
-    const prescriptionText =
-      prescription
-        ? "📄 Prescription: " + prescription.name
-        : "📄 Prescription: Not uploaded";
-
-
-    const message =
-
-`🏥 *MEDICINE DOORSTEP DELIVERY*
-
-📋 *NEW MEDICINE ORDER*
-
-🆔 Order ID: ${orderRef.id}
-
-👤 Customer: ${name}
-
-📱 Mobile: ${mobile}
-
-💊 Medicine: ${medicine}
-
-🔢 Quantity: ${quantity}
-
-📍 Address:
-${address}
-
-🚚 Delivery Area:
-${deliveryStatus}
-
-${prescriptionText}
-
-🎉 10% Discount
-
-Please confirm my order.`;
-
-
-    /* SUCCESS MESSAGE */
-
-    success.innerHTML =
-      "✅ <b>Order Saved Successfully!</b><br>" +
-      "🆔 Order ID: " + orderRef.id +
-      "<br><br>" +
-      "Opening WhatsApp...";
-
-    success.style.display = "block";
-
-
-    /* OPEN WHATSAPP */
-
-    const whatsappURL =
-      "https://wa.me/916009415805?text=" +
-      encodeURIComponent(message);
-
-
-    setTimeout(() => {
-
-      window.open(
-        whatsappURL,
-        "_blank"
-      );
-
-    }, 700);
-
-
-    /* RESET FORM */
-
-    form.reset();
-
-    fileMessage.innerHTML = "";
-
-    deliveryNotice.style.display = "none";
-
-
-  }
-
-  catch (err) {
-
-    console.error(
-      "FIREBASE ERROR:",
-      err
-    );
-
-
-    error.innerHTML =
-      "❌ <b>Order save হয়নি.</b><br><br>" +
-      "Firebase Firestore Rules check করুন.<br>" +
-      "Error: " + err.message;
-
-
-    error.style.display = "block";
-
-  }
-
-
-  submitBtn.disabled = false;
-
-  submitBtn.textContent =
-    "📲 Save Order & Send WhatsApp";
-
-});
-
-</script>
-
-     
-
+        "image/jpeg",
