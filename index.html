@@ -308,9 +308,7 @@ section{
 
 .features{
     display:grid;
-
     grid-template-columns:repeat(4,1fr);
-
     gap:20px;
 }
 
@@ -344,7 +342,7 @@ section{
 
 
 /* =========================
-   ORDER BOX
+   ORDER
 ========================= */
 
 .order-box{
@@ -381,8 +379,7 @@ section{
 
     padding:15px;
 
-    border:
-    1px solid #d4e2dd;
+    border:1px solid #d4e2dd;
 
     border-radius:12px;
 
@@ -410,8 +407,7 @@ textarea{
 ========================= */
 
 .file-box{
-    border:
-    2px dashed #8bcdb8;
+    border:2px dashed #8bcdb8;
 
     background:#f1fbf7;
 
@@ -437,8 +433,7 @@ textarea{
 
     background:#fff7e8;
 
-    border-left:
-    5px solid #ff9800;
+    border-left:5px solid #ff9800;
 
     border-radius:10px;
 
@@ -455,7 +450,7 @@ textarea{
     background:#e7f8ef;
     color:#087c59;
 
-    padding:18px;
+    padding:20px;
 
     border-radius:12px;
 
@@ -474,7 +469,7 @@ textarea{
     background:#fff0f0;
     color:#b00020;
 
-    padding:18px;
+    padding:20px;
 
     border-radius:12px;
 
@@ -483,6 +478,8 @@ textarea{
     font-weight:bold;
 
     line-height:1.6;
+
+    word-break:break-word;
 }
 
 
@@ -527,13 +524,15 @@ textarea{
 
     padding:15px;
 
-    border:
-    1px solid #d4e2dd;
+    border:1px solid #d4e2dd;
 
     border-radius:12px;
 
     font-size:16px;
+
     outline:none;
+
+    text-transform:uppercase;
 }
 
 .track-input input:focus{
@@ -545,19 +544,36 @@ textarea{
 
     margin-top:25px;
 
-    padding:20px;
+    padding:22px;
 
     border-radius:15px;
 
     background:#f2faf7;
 
     text-align:left;
+
+    line-height:1.8;
+}
+
+.track-result h4{
+    color:#064b91;
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+.track-row{
+    padding:8px 0;
+    border-bottom:1px solid #dbeae5;
+}
+
+.track-row:last-child{
+    border-bottom:none;
 }
 
 .status-badge{
     display:inline-block;
 
-    padding:10px 18px;
+    padding:8px 16px;
 
     border-radius:25px;
 
@@ -567,73 +583,7 @@ textarea{
 
     font-weight:bold;
 
-    margin-top:10px;
-}
-
-.track-loading{
-    text-align:center;
-    color:#087c59;
-    font-weight:bold;
-}
-
-.track-error{
-    color:#b00020;
-    background:#fff0f0;
-    padding:18px;
-    border-radius:12px;
-}
-
-.order-details{
-    line-height:1.8;
-}
-
-.order-details strong{
-    color:#17372e;
-}
-
-
-/* =========================
-   STATUS TIMELINE
-========================= */
-
-.status-timeline{
-    margin-top:22px;
-    padding-top:10px;
-}
-
-.status-step{
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    padding:10px 0;
-
-    color:#9aa9a4;
-    font-weight:bold;
-}
-
-.status-dot{
-    width:30px;
-    height:30px;
-
-    border-radius:50%;
-
-    background:#dce7e3;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    flex-shrink:0;
-}
-
-.status-step.active{
-    color:#087c59;
-}
-
-.status-step.active .status-dot{
-    background:#087c59;
-    color:#fff;
+    margin-top:5px;
 }
 
 
@@ -780,17 +730,13 @@ footer strong{
     .navbar{
         height:auto;
         padding:12px 15px;
-
         flex-wrap:wrap;
     }
 
     nav{
         order:3;
-
         width:100%;
-
         justify-content:center;
-
         gap:16px;
     }
 
@@ -921,7 +867,6 @@ href="tel:6009415805">
 </header>
 
 
-
 <!-- =========================
      HERO
 ========================= -->
@@ -987,7 +932,6 @@ class="secondary-btn">
 </div>
 
 
-
 <!-- =========================
      CATEGORIES
 ========================= -->
@@ -1009,7 +953,6 @@ products you need.
 
 
 <div class="categories">
-
 
 <div class="category">
 
@@ -1088,11 +1031,9 @@ Baby Care
 
 </div>
 
-
 </div>
 
 </section>
-
 
 
 <!-- =========================
@@ -1190,7 +1131,6 @@ or computer.
 </section>
 
 
-
 <!-- =========================
      ORDER
 ========================= -->
@@ -1211,7 +1151,6 @@ Fill the form and send your order.
 
 
 <div class="order-box">
-
 
 <form id="orderForm">
 
@@ -1388,7 +1327,6 @@ class="error">
 </section>
 
 
-
 <!-- =========================
      TRACK ORDER
 ========================= -->
@@ -1402,8 +1340,7 @@ class="error">
 </h2>
 
 <p>
-Enter your Order ID to check your
-latest order status.
+Enter your Order ID to check your latest order status.
 </p>
 
 </div>
@@ -1416,8 +1353,7 @@ Check Order Status
 </h3>
 
 <p>
-Enter the Order ID you received
-after placing your order.
+Example: MDD-20260909-ABCDE
 </p>
 
 
@@ -1426,8 +1362,7 @@ after placing your order.
 <input
 type="text"
 id="trackOrderId"
-placeholder="Example: MDD-20260909-A7K3"
-autocomplete="off">
+placeholder="Enter Order ID">
 
 <button
 type="button"
@@ -1444,13 +1379,11 @@ id="trackBtn">
 <div
 id="trackResult"
 class="track-result">
-
 </div>
 
 </div>
 
 </section>
-
 
 
 <!-- =========================
@@ -1531,7 +1464,6 @@ How It Works
 </section>
 
 
-
 <!-- =========================
      CONTACT
 ========================= -->
@@ -1561,7 +1493,6 @@ rel="noopener">
 </div>
 
 </section>
-
 
 
 <!-- =========================
@@ -1598,31 +1529,31 @@ Healthcare at your doorstep.
 </footer>
 
 
-
 <!-- =========================
      FIREBASE
 ========================= -->
 
 <script type="module">
 
-import {
-    initializeApp
-}
+import { initializeApp }
+
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
 import {
+
     getFirestore,
-    collection,
-    addDoc,
-    serverTimestamp,
+
     doc,
+
     setDoc,
+
     getDoc,
-    query,
-    where,
-    getDocs
+
+    serverTimestamp
+
 }
+
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
@@ -1657,7 +1588,7 @@ const firebaseConfig = {
 
 
 /* =========================
-   START FIREBASE
+   INITIALIZE
 ========================= */
 
 const app =
@@ -1667,16 +1598,25 @@ const db =
 getFirestore(app);
 
 console.log(
-"Firebase Connected Successfully"
+"Firebase connected successfully"
 );
 
 
 /* =========================
-   GET ELEMENTS
+   ELEMENTS
 ========================= */
 
 const form =
 document.getElementById("orderForm");
+
+const submitBtn =
+document.getElementById("submitBtn");
+
+const success =
+document.getElementById("success");
+
+const error =
+document.getElementById("error");
 
 const prescriptionInput =
 document.getElementById("prescription");
@@ -1690,15 +1630,6 @@ document.getElementById("delivery");
 const deliveryNotice =
 document.getElementById("deliveryNotice");
 
-const success =
-document.getElementById("success");
-
-const error =
-document.getElementById("error");
-
-const submitBtn =
-document.getElementById("submitBtn");
-
 const trackBtn =
 document.getElementById("trackBtn");
 
@@ -1710,12 +1641,52 @@ document.getElementById("trackResult");
 
 
 /* =========================
-   DELIVERY STATUS
+   CREATE ORDER ID
+========================= */
+
+function createOrderID(){
+
+    const now =
+    new Date();
+
+    const year =
+    now.getFullYear();
+
+    const month =
+    String(
+        now.getMonth() + 1
+    ).padStart(2,"0");
+
+    const day =
+    String(
+        now.getDate()
+    ).padStart(2,"0");
+
+    const random =
+    Math.random()
+    .toString(36)
+    .substring(2,7)
+    .toUpperCase();
+
+    return (
+        "MDD-" +
+        year +
+        month +
+        day +
+        "-" +
+        random
+    );
+
+}
+
+
+/* =========================
+   DELIVERY
 ========================= */
 
 delivery.addEventListener(
 "change",
-() => {
+function(){
 
     if(
         delivery.value ===
@@ -1725,7 +1696,8 @@ delivery.addEventListener(
         deliveryNotice.style.display =
         "block";
 
-    }else{
+    }
+    else{
 
         deliveryNotice.style.display =
         "none";
@@ -1736,30 +1708,40 @@ delivery.addEventListener(
 
 
 /* =========================
-   PRESCRIPTION CHECK
+   FILE CHECK
 ========================= */
 
 prescriptionInput.addEventListener(
 "change",
-() => {
+function(){
 
     const file =
     prescriptionInput.files[0];
 
     if(!file){
 
-        fileMessage.innerHTML =
-        "";
+        fileMessage.innerHTML = "";
 
         return;
 
     }
 
 
-    const maxSize =
-    50 * 1024 * 1024;
-
-
     const allowedTypes = [
 
         "image/jpeg",
+        "image/png",
+        "application/pdf"
+
+    ];
+
+
+    if(
+        !allowedTypes.includes(
+            file.type
+        )
+    ){
+
+        fileMessage.innerHTML =
+        "<p style='color:red;font-weight:bold;margin-top:10px'>" +
+        "❌ Only JPG,
