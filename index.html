@@ -1891,24 +1891,59 @@ function showLoginMessage(
 ========================= */
 
 let recaptchaVerifier = null;
+/* RECAPTCHA */
+
+let recaptchaVerifier = null;
+
+function setupRecaptcha(){
 
 try{
 
-  recaptchaVerifier =
-    new RecaptchaVerifier(
-      auth,
-      "recaptcha-container",
-      {
-        size:"normal"
-      }
-    );
+if(recaptchaVerifier){
+
+try{
+recaptchaVerifier.clear();
+}catch(e){}
+
+recaptchaVerifier = null;
+
+}
+
+recaptchaVerifier = new RecaptchaVerifier(
+auth,
+"recaptcha-container",
+{
+size:"normal",
+
+callback:function(){
+
+console.log("reCAPTCHA verified");
+
+},
+
+"expired-callback":function(){
+
+console.log("reCAPTCHA expired");
+
+}
+
+}
+);
+
+return true;
 
 }catch(error){
 
-  console.error(
-    "Recaptcha error:",
-    error
-  );
+console.error("RECAPTCHA ERROR:",error);
+
+showLoginMessage(
+"❌ Security verification could not start.<br><br>" +
+escapeHTML(error.message)
+);
+
+return false;
+
+}
 
 }
 
