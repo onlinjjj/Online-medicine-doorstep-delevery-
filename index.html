@@ -15,542 +15,311 @@ content="width=device-width, initial-scale=1.0">
 <style>
 
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:Arial,sans-serif;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
 }
 
 html{
-scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-background:#f4faf8;
-color:#17372e;
+  background:#f4faf8;
+  color:#17372e;
 }
 
-/* HEADER */
-
 header{
-position:sticky;
-top:0;
-z-index:999;
-background:#fff;
-box-shadow:0 3px 18px #0001;
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:#fff;
+  box-shadow:0 3px 18px rgba(0,0,0,.08);
 }
 
 .navbar{
-max-width:1200px;
-margin:auto;
-padding:12px 18px;
-min-height:70px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
-flex-wrap:wrap;
+  max-width:1200px;
+  margin:auto;
+  padding:12px 18px;
+  min-height:70px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:15px;
+  flex-wrap:wrap;
 }
 
 .logo{
-display:flex;
-align-items:center;
-gap:10px;
-color:#087c59;
-font-size:20px;
-font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  color:#087c59;
+  font-size:20px;
+  font-weight:800;
 }
 
 .logo-icon{
-width:44px;
-height:44px;
-border-radius:13px;
-background:#087c59;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:24px;
+  width:44px;
+  height:44px;
+
+  border-radius:13px;
+
+  background:#087c59;
+  color:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:24px;
 }
 
 nav{
-display:flex;
-gap:16px;
-flex-wrap:wrap;
-justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:14px;
+  flex-wrap:wrap;
 }
 
 nav a{
-color:#17372e;
-text-decoration:none;
-font-weight:bold;
+  color:#17372e;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:14px;
 }
 
 nav a:hover{
-color:#087c59;
+  color:#087c59;
 }
 
 .call-btn{
-background:#087c59;
-color:#fff;
-padding:11px 17px;
-border-radius:25px;
-text-decoration:none;
-font-weight:bold;
+  background:#087c59;
+  color:#fff;
+
+  padding:11px 17px;
+
+  border-radius:25px;
+
+  text-decoration:none;
+  font-weight:bold;
 }
 
-/* HERO */
-
 .hero{
-max-width:1200px;
-margin:25px auto;
-padding:55px 30px;
-border-radius:28px;
-background:linear-gradient(
-135deg,
-#dcf8ed,
-#edf8ff
-);
+  max-width:1200px;
 
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:30px;
+  margin:25px auto;
+  padding:55px 30px;
+
+  border-radius:28px;
+
+  background:linear-gradient(
+    135deg,
+    #dcf8ed,
+    #edf8ff
+  );
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:30px;
 }
 
 .hero-content{
-max-width:650px;
+  max-width:650px;
 }
 
 .discount{
-display:inline-block;
-background:#ff7900;
-color:#fff;
-padding:9px 17px;
-border-radius:25px;
-font-weight:bold;
-margin-bottom:15px;
+  display:inline-block;
+
+  background:#ff7900;
+  color:#fff;
+
+  padding:9px 17px;
+
+  border-radius:25px;
+
+  font-weight:bold;
+
+  margin-bottom:15px;
 }
 
 .hero h1{
-font-size:48px;
-line-height:1.15;
-color:#064b91;
-margin-bottom:18px;
+  font-size:48px;
+  line-height:1.15;
+
+  color:#064b91;
+
+  margin-bottom:18px;
 }
 
 .hero h1 span{
-color:#087c59;
+  color:#087c59;
 }
 
 .hero p{
-font-size:18px;
-line-height:1.7;
-color:#526961;
-margin-bottom:25px;
+  font-size:18px;
+  line-height:1.7;
+
+  color:#526961;
+
+  margin-bottom:25px;
 }
 
 .hero-buttons{
-display:flex;
-gap:12px;
-flex-wrap:wrap;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
 }
 
 .primary-btn,
 .secondary-btn{
-padding:14px 23px;
-border-radius:28px;
-font-weight:bold;
-font-size:16px;
-border:none;
-cursor:pointer;
-text-decoration:none;
-display:inline-block;
+  padding:14px 23px;
+
+  border-radius:28px;
+
+  font-weight:bold;
+  font-size:16px;
+
+  border:none;
+  cursor:pointer;
+
+  text-decoration:none;
+
+  display:inline-block;
 }
 
 .primary-btn{
-background:#087c59;
-color:#fff;
+  background:#087c59;
+  color:#fff;
+}
+
+.primary-btn:hover{
+  background:#066849;
 }
 
 .secondary-btn{
-background:#fff;
-color:#087c59;
-border:2px solid #087c59;
+  background:#fff;
+  color:#087c59;
+
+  border:2px solid #087c59;
+}
+
+.secondary-btn:hover{
+  background:#087c59;
+  color:#fff;
 }
 
 .hero-art{
-width:320px;
-height:250px;
-background:#fff;
-border-radius:35px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:110px;
-box-shadow:0 15px 40px #0001;
+  width:320px;
+  height:250px;
+
+  background:#fff;
+
+  border-radius:35px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:110px;
+
+  box-shadow:0 15px 40px rgba(0,0,0,.08);
 }
 
-/* SECTIONS */
-
 section{
-max-width:1200px;
-margin:65px auto;
-padding:0 18px;
+  max-width:1200px;
+  margin:65px auto;
+  padding:0 18px;
 }
 
 .section-title{
-text-align:center;
-margin-bottom:30px;
+  text-align:center;
+  margin-bottom:30px;
 }
 
 .section-title h2{
-color:#064b91;
-font-size:32px;
-margin-bottom:8px;
+  color:#064b91;
+  font-size:32px;
+  margin-bottom:8px;
 }
 
 .section-title p{
-color:#687b74;
+  color:#687b74;
+  line-height:1.6;
 }
-
-/* CATEGORY */
-
-.categories{
-display:grid;
-grid-template-columns:repeat(6,1fr);
-gap:15px;
-}
-
-.category{
-background:#fff;
-padding:23px 10px;
-text-align:center;
-border-radius:18px;
-box-shadow:0 7px 25px #0000000d;
-}
-
-.category-icon{
-font-size:38px;
-margin-bottom:10px;
-}
-
-/* FEATURES */
-
-.features{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px;
-}
-
-.feature{
-background:#fff;
-padding:28px 18px;
-text-align:center;
-border-radius:20px;
-box-shadow:0 7px 25px #0000000d;
-}
-
-.feature-icon{
-font-size:38px;
-margin-bottom:12px;
-}
-
-.feature h3{
-color:#064b91;
-margin-bottom:8px;
-}
-
-.feature p{
-color:#687a74;
-line-height:1.5;
-}
-
-/* LOGIN */
-
-.login-box{
-background:#fff;
-max-width:600px;
-margin:auto;
-padding:30px;
-border-radius:25px;
-box-shadow:0 7px 25px #0000000d;
-}
-
-.login-box h3{
-color:#087c59;
-text-align:center;
-font-size:26px;
-margin-bottom:10px;
-}
-
-.login-box p{
-text-align:center;
-color:#687a74;
-margin-bottom:20px;
-}
-
-.login-input{
-width:100%;
-padding:15px;
-border:1px solid #d4e2dd;
-border-radius:12px;
-font-size:17px;
-margin-bottom:12px;
-outline:none;
-}
-
-.recaptcha-box{
-margin:15px 0;
-display:flex;
-justify-content:center;
-min-height:78px;
-}
-
-.login-message{
-display:none;
-padding:15px;
-margin-top:15px;
-border-radius:12px;
-text-align:center;
-line-height:1.6;
-}
-
-.login-success{
-background:#e7f8ef;
-color:#087c59;
-}
-
-.login-error{
-background:#fff0f0;
-color:#b00020;
-}
-
-/* ORDER */
-
-.order-box{
-background:#fff;
-max-width:800px;
-margin:auto;
-padding:32px;
-border-radius:25px;
-box-shadow:0 7px 25px #0000000d;
-}
-
-.form-group{
-margin-bottom:18px;
-}
-
-.form-group label{
-display:block;
-font-weight:bold;
-margin-bottom:7px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select{
-width:100%;
-padding:14px;
-border:1px solid #d4e2dd;
-border-radius:12px;
-font-size:16px;
-outline:none;
-background:#fff;
-}
-
-textarea{
-min-height:110px;
-resize:vertical;
-}
-
-.file-box{
-border:2px dashed #8bcdb8;
-background:#f1fbf7;
-padding:20px;
-border-radius:15px;
-text-align:center;
-}
-
-/* TRACK */
-
-.track-box{
-background:#fff;
-max-width:800px;
-margin:auto;
-padding:32px;
-border-radius:25px;
-box-shadow:0 7px 25px #0000000d;
-}
-
-.track-input{
-display:flex;
-gap:10px;
-}
-
-.track-input input{
-flex:1;
-padding:14px;
-border:1px solid #d4e2dd;
-border-radius:12px;
-font-size:16px;
-outline:none;
-}
-
-.track-result{
-display:none;
-margin-top:20px;
-padding:20px;
-background:#f2faf7;
-border-radius:15px;
-line-height:1.8;
-}
-
-/* ABOUT */
-
-.about{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:25px;
-}
-
-.about-card{
-background:#fff;
-padding:30px;
-border-radius:22px;
-box-shadow:0 7px 25px #0000000d;
-}
-
-.about-card h2{
-color:#064b91;
-margin-bottom:15px;
-}
-
-.about-card p{
-color:#60736c;
-line-height:1.8;
-}
-
-/* CONTACT */
-
-.contact{
-background:#064b91;
-color:#fff;
-border-radius:25px;
-padding:40px 20px;
-text-align:center;
-}
-
-.contact h2{
-margin-bottom:10px;
-}
-
-.contact p{
-margin-bottom:20px;
-}
-
-.contact a{
-display:inline-block;
-background:#fff;
-color:#064b91;
-padding:13px 22px;
-border-radius:25px;
-text-decoration:none;
-font-weight:bold;
-}
-
-/* FOOTER */
-
-footer{
-background:#102c26;
-color:#c8d8d3;
-text-align:center;
-padding:28px 15px;
-margin-top:60px;
-}
-
-/* MOBILE */
 
 @media(max-width:900px){
 
-.hero{
-flex-direction:column;
-text-align:center;
-}
+  .hero{
+    flex-direction:column;
+    text-align:center;
+  }
 
-.hero h1{
-font-size:40px;
-}
+  .hero-buttons{
+    justify-content:center;
+  }
 
-.hero-buttons{
-justify-content:center;
-}
-
-.categories{
-grid-template-columns:repeat(3,1fr);
-}
-
-.features{
-grid-template-columns:repeat(2,1fr);
-}
-
-.about{
-grid-template-columns:1fr;
-}
+  .hero h1{
+    font-size:40px;
+  }
 
 }
 
 @media(max-width:600px){
 
-.navbar{
-justify-content:center;
-}
+  .navbar{
+    justify-content:center;
+  }
 
-nav{
-width:100%;
-gap:10px;
-}
+  .logo{
+    width:100%;
+    justify-content:center;
+    font-size:18px;
+  }
 
-nav a{
-font-size:12px;
-}
+  nav{
+    width:100%;
+    gap:9px;
+  }
 
-.logo{
-font-size:17px;
-}
+  nav a{
+    font-size:12px;
+  }
 
-.hero{
-margin:15px;
-padding:38px 18px;
-}
+  .call-btn{
+    padding:9px 14px;
+    font-size:13px;
+  }
 
-.hero h1{
-font-size:32px;
-}
+  .hero{
+    margin:15px;
+    padding:38px 18px;
+  }
 
-.hero-art{
-width:260px;
-height:190px;
-font-size:90px;
-}
+  .hero h1{
+    font-size:32px;
+  }
 
-.categories{
-grid-template-columns:repeat(2,1fr);
-}
+  .hero p{
+    font-size:16px;
+  }
 
-.features{
-grid-template-columns:1fr;
-}
+  .hero-art{
+    width:250px;
+    height:180px;
+    font-size:85px;
+  }
 
-.order-box,
-.track-box,
-.login-box{
-padding:22px 16px;
-}
-
-.track-input{
-flex-direction:column;
-}
+  .section-title h2{
+    font-size:27px;
+  }
 
 }
 
@@ -560,7 +329,6 @@ flex-direction:column;
 
 <body>
 
-
 <!-- HEADER -->
 
 <header>
@@ -569,7 +337,9 @@ flex-direction:column;
 
 <div class="logo">
 
-<div class="logo-icon">⚕</div>
+<div class="logo-icon">
+⚕
+</div>
 
 Medicine Doorstep
 
@@ -608,7 +378,9 @@ href="tel:6009415805">
 
 <!-- HERO -->
 
-<div class="hero" id="home">
+<div
+class="hero"
+id="home">
 
 <div class="hero-content">
 
@@ -618,7 +390,9 @@ href="tel:6009415805">
 
 <h1>
 
-Your Medicines.<br>
+Your Medicines.
+
+<br>
 
 <span>
 Delivered to Your Door.
@@ -630,6 +404,8 @@ Delivered to Your Door.
 
 Order your medicines online quickly
 and conveniently.
+
+<br><br>
 
 Login with your mobile number and OTP,
 place your order and track it anytime.
@@ -665,738 +441,310 @@ class="secondary-btn">
 </div>
 
 </div>
+  .categories{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:15px;
+}
+
+.category{
+  background:#fff;
+  padding:23px 10px;
+  text-align:center;
+  border-radius:18px;
 
+  box-shadow:0 7px 25px rgba(0,0,0,.05);
 
-<!-- CATEGORIES -->
+  transition:transform .2s;
+}
 
-<section>
+.category:hover{
+  transform:translateY(-5px);
+}
 
-<div class="section-title">
+.category-icon{
+  font-size:38px;
+  margin-bottom:10px;
+}
 
-<h2>
-Shop by Category
-</h2>
+.category h3{
+  color:#17372e;
+  font-size:16px;
+}
 
-<p>
-Find medicines and healthcare products.
-</p>
 
-</div>
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
 
-<div class="categories">
+.feature{
+  background:#fff;
+  padding:28px 18px;
+  text-align:center;
+  border-radius:20px;
 
-<div class="category">
-<div class="category-icon">💊</div>
-<h3>Pain Relief</h3>
-</div>
+  box-shadow:0 7px 25px rgba(0,0,0,.05);
 
-<div class="category">
-<div class="category-icon">🌡️</div>
-<h3>Fever & Cold</h3>
-</div>
+  transition:transform .2s;
+}
 
-<div class="category">
-<div class="category-icon">🩸</div>
-<h3>Diabetes Care</h3>
-</div>
+.feature:hover{
+  transform:translateY(-5px);
+}
 
-<div class="category">
-<div class="category-icon">❤️</div>
-<h3>Heart Care</h3>
-</div>
+.feature-icon{
+  font-size:38px;
+  margin-bottom:12px;
+}
 
-<div class="category">
-<div class="category-icon">🧴</div>
-<h3>Skin Care</h3>
-</div>
+.feature h3{
+  color:#064b91;
+  margin-bottom:8px;
+}
 
-<div class="category">
-<div class="category-icon">👶</div>
-<h3>Baby Care</h3>
-</div>
+.feature p{
+  color:#687a74;
+  line-height:1.5;
+}
 
-</div>
 
-</section>
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
 
+.about-card{
+  background:#fff;
+  padding:30px;
+  border-radius:22px;
 
-<!-- FEATURES -->
+  box-shadow:0 7px 25px rgba(0,0,0,.05);
+}
 
-<section>
+.about-card h2{
+  color:#064b91;
+  margin-bottom:15px;
+}
 
-<div class="section-title">
+.about-card p{
+  color:#60736c;
+  line-height:1.8;
+}
 
-<h2>
-Why Choose Us?
-</h2>
 
-</div>
+@media(max-width:900px){
 
-<div class="features">
+  .categories{
+    grid-template-columns:repeat(3,1fr);
+  }
 
-<div class="feature">
+  .features{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-<div class="feature-icon">🚚</div>
+  .about{
+    grid-template-columns:1fr;
+  }
 
-<h3>
-Doorstep Delivery
-</h3>
+}
 
-<p>
-Get your medicine delivered conveniently.
-</p>
 
-</div>
+@media(max-width:600px){
 
-<div class="feature">
+  .categories{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-<div class="feature-icon">📄</div>
+  .features{
+    grid-template-columns:1fr;
+  }
 
-<h3>
-Prescription Upload
-</h3>
+  .about-card{
+    padding:22px 18px;
+  }
 
-<p>
-Upload your prescription with your order.
-</p>
+}
 
-</div>
+  .login-box{
+  background:#fff;
 
-<div class="feature">
+  max-width:600px;
 
-<div class="feature-icon">💰</div>
+  margin:auto;
 
-<h3>
-10% Discount
-</h3>
+  padding:30px;
 
-<p>
-Enjoy a special 10% discount.
-</p>
+  border-radius:25px;
 
-</div>
+  box-shadow:0 7px 25px rgba(0,0,0,.06);
+}
 
-<div class="feature">
+.login-box h3{
+  color:#087c59;
 
-<div class="feature-icon">📱</div>
+  text-align:center;
 
-<h3>
-Easy Ordering
-</h3>
+  font-size:26px;
 
-<p>
-Order using mobile or computer.
-</p>
+  margin-bottom:10px;
+}
 
-</div>
+.login-box p{
+  text-align:center;
 
-</div>
+  color:#687a74;
 
-</section>
+  margin-bottom:20px;
+}
 
+.login-input{
+  width:100%;
 
-<!-- LOGIN -->
+  padding:15px;
 
-<section id="login">
+  border:1px solid #d4e2dd;
 
-<div class="section-title">
+  border-radius:12px;
 
-<h2>
-🔐 Customer Login
-</h2>
+  font-size:17px;
 
-<p>
-Login with your mobile number and OTP.
-</p>
+  margin-bottom:12px;
 
-</div>
+  outline:none;
+}
 
-<div class="login-box">
+.login-input:focus{
+  border-color:#087c59;
 
-<h3>
-Mobile OTP Login
-</h3>
+  box-shadow:0 0 0 3px rgba(8,124,89,.10);
+}
 
-<p>
-Enter your mobile number to receive OTP.
-</p>
+.recaptcha-box{
+  margin:15px 0;
 
-<input
-type="tel"
-id="phoneNumber"
-class="login-input"
-placeholder="10 digit mobile number"
-maxlength="10"
-inputmode="numeric"
-autocomplete="tel">
+  display:flex;
 
-<!-- IMPORTANT: reCAPTCHA -->
+  justify-content:center;
 
-<div
-id="recaptcha-container"
-class="recaptcha-box">
-</div>
+  align-items:center;
 
-<button
-type="button"
-id="sendOtpBtn"
-class="primary-btn"
-style="width:100%">
+  min-height:78px;
 
-📱 Send OTP
+  overflow:hidden;
+}
 
-</button>
+.login-message{
+  display:none;
 
-<div
-id="otpArea"
-style="display:none;margin-top:15px">
+  padding:15px;
 
-<input
-type="text"
-id="otpCode"
-class="login-input"
-placeholder="Enter 6 digit OTP"
-maxlength="6"
-inputmode="numeric"
-autocomplete="one-time-code">
+  margin-top:15px;
 
-<button
-type="button"
-id="verifyOtpBtn"
-class="primary-btn"
-style="width:100%">
+  border-radius:12px;
 
-✅ Verify OTP & Login
+  text-align:center;
 
-</button>
+  line-height:1.6;
 
-</div>
+  word-break:break-word;
+}
 
-<div
-id="loginMessage"
-class="login-message">
-</div>
+.login-success{
+  background:#e7f8ef;
 
-</div>
+  color:#087c59;
+}
 
-</section>
+.login-error{
+  background:#fff0f0;
 
+  color:#b00020;
+}
 
-<!-- ORDER -->
+@media(max-width:600px){
 
-<section id="order">
+  .login-box{
+    padding:22px 16px;
+  }
 
-<div class="section-title">
-
-<h2>
-🛒 Order Your Medicine
-</h2>
-
-<p>
-Login first, then place your order.
-</p>
-
-</div>
-
-<div class="order-box">
-
-<div
-id="loginRequired"
-style="
-background:#fff7df;
-color:#765900;
-padding:18px;
-border-radius:15px;
-text-align:center;
-margin-bottom:20px;
-">
-
-🔐 Please login before placing an order.
-
-<br><br>
-
-<a
-href="#login"
-class="primary-btn">
-
-Customer Login
-
-</a>
-
-</div>
-
-<form
-id="orderForm"
-style="display:none">
-
-<div class="form-group">
-
-<label>
-Full Name *
-</label>
-
-<input
-type="text"
-id="name"
-placeholder="Enter your name"
-required>
-
-</div>
-
-<div class="form-group">
-
-<label>
-Mobile Number *
-</label>
-
-<input
-type="tel"
-id="mobile"
-maxlength="10"
-readonly>
-
-</div>
-
-<div class="form-group">
-
-<label>
-Medicine / Product *
-</label>
-
-<input
-type="text"
-id="medicine"
-placeholder="Medicine name or product"
-required>
-
-</div>
-
-<div class="form-group">
-
-<label>
-Quantity *
-</label>
-
-<input
-type="number"
-id="quantity"
-min="1"
-value="1"
-required>
-
-</div>
-
-<div class="form-group">
-
-<label>
-Delivery Address *
-</label>
-
-<textarea
-id="address"
-placeholder="Enter complete delivery address"
-required>
-</textarea>
-
-</div>
-
-<div class="form-group">
-
-<label>
-Delivery Area
-</label>
-
-<select id="delivery">
-
-<option>
-Delivery Available
-</option>
-
-<option>
-Out of Delivery
-</option>
-
-</select>
-
-</div>
-
-<div class="form-group">
-
-<label>
-Prescription Upload
-</label>
-
-<div class="file-box">
-
-📄 JPG, PNG or PDF
-
-<br><br>
-
-Maximum size:
-<strong>50 MB</strong>
-
-<br><br>
-
-<input
-type="file"
-id="prescription"
-accept=".jpg,.jpeg,.png,.pdf">
-
-<div id="fileMessage"></div>
-
-</div>
-
-</div>
-
-<button
-type="submit"
-id="submitBtn"
-class="primary-btn"
-style="width:100%">
-
-📲 Save Order & Send WhatsApp
-
-</button>
-
-<div
-id="success"
-style="
-display:none;
-margin-top:18px;
-padding:18px;
-border-radius:12px;
-background:#e7f8ef;
-color:#087c59;
-text-align:center;
-">
-</div>
-
-<div
-id="error"
-style="
-display:none;
-margin-top:18px;
-padding:18px;
-border-radius:12px;
-background:#fff0f0;
-color:#b00020;
-text-align:center;
-">
-</div>
-
-</form>
-
-</div>
-
-</section>
-<!-- ORDER HISTORY -->
-
-<section id="history">
-
-<div class="section-title">
-
-<h2>
-📋 My Order History
-</h2>
-
-<p>
-Login with the same mobile number to see your previous orders.
-</p>
-
-</div>
-
-<div
-id="historyLogin"
-style="
-background:#fff;
-padding:25px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 7px 25px #0000000d;
-">
-
-🔐 Please login to view your order history.
-
-<br><br>
-
-<a
-href="#login"
-class="primary-btn">
-
-Customer Login
-
-</a>
-
-</div>
-
-<div
-id="historyContent"
-style="display:none">
-
-<div id="historyList"></div>
-
-</div>
-
-</section>
-
-
-<!-- TRACK ORDER -->
-
-<section id="track">
-
-<div class="section-title">
-
-<h2>
-📦 Track Your Order
-</h2>
-
-<p>
-Enter your Order ID to check your order status and amount.
-</p>
-
-</div>
-
-<div class="track-box">
-
-<h3
-style="
-color:#087c59;
-margin-bottom:8px;
-">
-
-Check Order Status
-
-</h3>
-
-<p
-style="
-color:#687a74;
-margin-bottom:20px;
-">
-
-Enter the Order ID received after placing your order.
-
-</p>
-
-<div class="track-input">
-
-<input
-type="text"
-id="trackOrderId"
-placeholder="MDD-20260914-1234">
-
-<button
-type="button"
-id="trackBtn"
-class="primary-btn">
-
-🔍 Track
-
-</button>
-
-</div>
-
-<div
-id="trackResult"
-class="track-result">
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section id="about">
-
-<div class="section-title">
-
-<h2>
-About Medicine Doorstep Delivery
-</h2>
-
-</div>
-
-<div class="about">
-
-<div class="about-card">
-
-<h2>
-Healthcare Made Easy
-</h2>
-
-<p>
-
-Medicine Doorstep Delivery makes ordering medicines
-simple and convenient.
-
-Customers can login using their mobile number and OTP,
-submit their medicine requirements and prescription online,
-and track their orders.
-
-</p>
-
-</div>
-
-
-<div class="about-card">
-
-<h2>
-How It Works
-</h2>
-
-<p>
-
-1️⃣ Login with your mobile number.
-<br><br>
-
-2️⃣ Verify OTP.
-<br><br>
-
-3️⃣ Enter medicine details.
-<br><br>
-
-4️⃣ Upload prescription if required.
-<br><br>
-
-5️⃣ Save your order.
-<br><br>
-
-6️⃣ Track your order anytime.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section id="contact">
-
-<div class="contact">
-
-<h2>
-Need Help With Your Order?
-</h2>
-
-<p>
-Contact Medicine Doorstep Delivery
-</p>
-
-<a
-href="https://wa.me/916009415805"
-target="_blank"
-rel="noopener">
-
-💬 WhatsApp: 6009415805
-
-</a>
-
-</div>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-<p>
-
-© 2026
-<strong>
-Medicine Doorstep Delivery
-</strong>
-
-</p>
-
-<p
-style="margin-top:8px">
-
-☎ 6009415805
-
-</p>
-
-<p
-style="
-margin-top:8px;
-font-size:13px;
-">
-
-Healthcare at your doorstep.
-
-</p>
-
-</footer>
-
-
-<!-- FIREBASE SCRIPT START -->
-
+}
+  
 <script type="module">
 
 import {
-initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
-getFirestore,
-collection,
-query,
-where,
-getDocs,
-doc,
-setDoc,
-getDoc,
-serverTimestamp
-}
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
+  getAuth,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
-getAuth,
-RecaptchaVerifier,
-signInWithPhoneNumber,
-onAuthStateChanged,
-signOut
-}
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+  getFirestore,
+  collection,
+  query,
+  where,
+  getDocs,
+  doc,
+  setDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* FIREBASE CONFIG */
+/* =========================
+   FIREBASE CONFIG
+========================= */
 
 const firebaseConfig = {
-  apiKey: "AIzaSyABmq9B4NEvgtsrJIEfUhjZOqMCjGGHfpI",
-  authDomain: "medicine-doorstep-delivery.firebaseapp.com",
-  projectId: "medicine-doorstep-delivery",
-  storageBucket: "medicine-doorstep-delivery.firebasestorage.app",
-  messagingSenderId: "703468135334",
-  appId: "1:703468135334:web:56254d5608fe0cd371a567",
-  measurementId: "G-14XLF1S53T"
+
+  apiKey:
+  "AIzaSyABmq9B4NEvgtsrJIEfUhjZOqMCjGGHfpI",
+
+  authDomain:
+  "medicine-doorstep-delivery.firebaseapp.com",
+
+  projectId:
+  "medicine-doorstep-delivery",
+
+  storageBucket:
+  "medicine-doorstep-delivery.firebasestorage.app",
+
+  messagingSenderId:
+  "703468135334",
+
+  appId:
+  "1:703468135334:web:e1e7040b5426f93f71a567",
+
+  measurementId:
+  "G-K3H1PQ6MKD"
+
 };
 
-/* INITIALIZE FIREBASE */
+
+/* =========================
+   INITIALIZE FIREBASE
+========================= */
 
 const app =
 initializeApp(firebaseConfig);
 
-const db =
-getFirestore(app);
-
 const auth =
 getAuth(app);
 
+const db =
+getFirestore(app);
 
-/* GET ELEMENTS */
+
+/* =========================
+   ELEMENTS
+========================= */
 
 const phoneNumber =
 document.getElementById("phoneNumber");
@@ -1416,404 +764,902 @@ document.getElementById("otpCode");
 const loginMessage =
 document.getElementById("loginMessage");
 
-const orderForm =
-document.getElementById("orderForm");
 
-const loginRequired =
-document.getElementById("loginRequired");
-
-const mobileInput =
-document.getElementById("mobile");
-
-const historyLogin =
-document.getElementById("historyLogin");
-
-const historyContent =
-document.getElementById("historyContent");
-
-const historyList =
-document.getElementById("historyList");
-
-const trackBtn =
-document.getElementById("trackBtn");
-
-const trackOrderId =
-document.getElementById("trackOrderId");
-
-const trackResult =
-document.getElementById("trackResult");
-
-const prescription =
-document.getElementById("prescription");
-
-const fileMessage =
-document.getElementById("fileMessage");
-
-const success =
-document.getElementById("success");
-
-const errorBox =
-document.getElementById("error");
-
-const submitBtn =
-document.getElementById("submitBtn");
-
-
-/* ESCAPE HTML */
-
-function escapeHTML(value){
-
-return String(value ?? "")
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-
-}
-
-
-/* LOGIN MESSAGE */
+/* =========================
+   MESSAGE
+========================= */
 
 function showLoginMessage(
-message,
-successType = false
+  message,
+  success = false
 ){
 
-loginMessage.innerHTML =
-message;
+  loginMessage.innerHTML =
+    message;
 
-loginMessage.className =
-"login-message " +
-(
-successType
-?
-"login-success"
-:
-"login-error"
-);
+  loginMessage.className =
+    "login-message " +
+    (
+      success
+      ? "login-success"
+      : "login-error"
+    );
 
-loginMessage.style.display =
-"block";
-
+  loginMessage.style.display =
+    "block";
 }
 
 
-/* RECAPTCHA */
+/* =========================
+   RECAPTCHA
+========================= */
 
 let recaptchaVerifier = null;
 
+let recaptchaWidgetId = null;
+
+
 function createRecaptcha(){
 
-try{
+  try{
 
-if(recaptchaVerifier){
+    if(recaptchaVerifier){
 
-try{
+      try{
 
-recaptchaVerifier.clear();
+        recaptchaVerifier.clear();
 
-}catch(e){}
+      }catch(e){}
 
-recaptchaVerifier = null;
+      recaptchaVerifier =
+        null;
+
+    }
+
+
+    const container =
+      document.getElementById(
+        "recaptcha-container"
+      );
+
+
+    if(!container){
+
+      console.error(
+        "reCAPTCHA container not found"
+      );
+
+      return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    recaptchaVerifier =
+      new RecaptchaVerifier(
+        auth,
+        "recaptcha-container",
+        {
+
+          size:"normal",
+
+          callback:function(){
+
+            console.log(
+              "reCAPTCHA verified"
+            );
+
+          },
+
+          "expired-callback":
+          function(){
+
+            showLoginMessage(
+              "❌ Security verification expired. Please verify again."
+            );
+
+          },
+
+          "error-callback":
+          function(){
+
+            showLoginMessage(
+              "❌ Security verification failed. Please reload the page."
+            );
+
+          }
+
+        }
+      );
+
+
+    recaptchaVerifier
+      .render()
+      .then(
+        function(widgetId){
+
+          recaptchaWidgetId =
+            widgetId;
+
+          console.log(
+            "reCAPTCHA loaded successfully"
+          );
+
+        }
+      )
+      .catch(
+        function(error){
+
+          console.error(
+            "reCAPTCHA render error:",
+            error
+          );
+
+          showLoginMessage(
+            "❌ Security verification could not be loaded.<br><br>" +
+            "Please check Firebase Authorized Domains."
+          );
+
+        }
+      );
+
+
+  }catch(error){
+
+    console.error(
+      "reCAPTCHA setup error:",
+      error
+    );
+
+    showLoginMessage(
+      "❌ Security verification could not be loaded.<br><br>" +
+      "Please reload the page."
+    );
+
+  }
 
 }
 
-recaptchaVerifier =
-new RecaptchaVerifier(
-auth,
-"recaptcha-container",
-{
 
-size:"normal",
-
-callback:function(){
-
-console.log(
-"reCAPTCHA verified"
-);
-
-},
-
-"expired-callback":
-function(){
-
-showLoginMessage(
-"❌ reCAPTCHA expired. Please verify again."
-);
-
-}
-
-}
-);
-
-recaptchaVerifier.render()
-.then(function(widgetId){
-
-window.recaptchaWidgetId =
-widgetId;
-
-console.log(
-"reCAPTCHA ready"
-);
-
-})
-.catch(function(error){
-
-console.error(
-"reCAPTCHA render error:",
-error
-);
-
-showLoginMessage(
-"❌ reCAPTCHA could not load. Please reload the page."
-);
-
-});
-
-}catch(error){
-
-console.error(
-"reCAPTCHA setup error:",
-error
-);
-
-showLoginMessage(
-"❌ Security verification could not be loaded."
-);
-
-}
-
-}
-
-
-/* CREATE reCAPTCHA AFTER PAGE LOAD */
+/* =========================
+   LOAD RECAPTCHA
+========================= */
 
 window.addEventListener(
-"load",
-function(){
+  "load",
+  function(){
 
-setTimeout(
-function(){
+    setTimeout(
+      function(){
 
-createRecaptcha();
+        createRecaptcha();
 
-},
-500
+      },
+      1000
+    );
+
+  }
 );
 
-});
 
-
-/* SEND OTP */
+/* =========================
+   SEND OTP
+========================= */
 
 sendOtpBtn.addEventListener(
-"click",
-async function(){
+  "click",
+  async function(){
 
-const mobile =
-phoneNumber.value.trim();
+    const mobile =
+      phoneNumber.value.trim();
 
 
-if(!/^[0-9]{10}$/.test(mobile)){
+    if(
+      !/^[0-9]{10}$/.test(mobile)
+    ){
 
-showLoginMessage(
-"❌ Please enter a valid 10 digit mobile number."
+      showLoginMessage(
+        "❌ Please enter a valid 10 digit mobile number."
+      );
+
+      return;
+
+    }
+
+
+    if(!recaptchaVerifier){
+
+      showLoginMessage(
+        "⏳ Security verification is loading. Please wait a moment."
+      );
+
+      createRecaptcha();
+
+      return;
+
+    }
+
+
+    sendOtpBtn.disabled =
+      true;
+
+    sendOtpBtn.textContent =
+      "⏳ Sending OTP...";
+
+
+    try{
+
+      const phone =
+        "+91" + mobile;
+
+
+      const confirmationResult =
+        await signInWithPhoneNumber(
+          auth,
+          phone,
+          recaptchaVerifier
+        );
+
+
+      window.confirmationResult =
+        confirmationResult;
+
+
+      otpArea.style.display =
+        "block";
+
+
+      showLoginMessage(
+        "✅ OTP sent successfully to +91 " +
+        mobile,
+        true
+      );
+
+
+      sendOtpBtn.textContent =
+        "✅ OTP Sent";
+
+
+    }catch(error){
+
+      console.error(
+        "SEND OTP ERROR:",
+        error
+      );
+
+
+      let message =
+        error.message || "Unknown error";
+
+
+      if(
+        error.code ===
+        "auth/invalid-phone-number"
+      ){
+
+        message =
+          "Invalid mobile number.";
+
+      }
+
+
+      if(
+        error.code ===
+        "auth/too-many-requests"
+      ){
+
+        message =
+          "Too many attempts. Please try again later.";
+
+      }
+
+
+      if(
+        error.code ===
+        "auth/operation-not-allowed"
+      ){
+
+        message =
+          "Phone Authentication is not enabled in Firebase.";
+
+      }
+
+
+      showLoginMessage(
+        "❌ OTP could not be sent.<br><br>" +
+        message
+      );
+
+
+      sendOtpBtn.disabled =
+        false;
+
+      sendOtpBtn.textContent =
+        "📱 Send OTP";
+
+
+      createRecaptcha();
+
+    }
+
+  }
 );
 
-return;
 
-}
-
-
-if(!recaptchaVerifier){
-
-showLoginMessage(
-"❌ Security verification is not ready. Please wait a moment and try again."
-);
-
-createRecaptcha();
-
-return;
-
-}
-
-
-sendOtpBtn.disabled =
-true;
-
-sendOtpBtn.textContent =
-"⏳ Sending OTP...";
-
-
-try{
-
-const phone =
-"+91" + mobile;
-
-
-const confirmationResult =
-await signInWithPhoneNumber(
-auth,
-phone,
-recaptchaVerifier
-);
-
-
-window.confirmationResult =
-confirmationResult;
-
-
-otpArea.style.display =
-"block";
-
-
-showLoginMessage(
-"✅ OTP sent successfully to +91 " +
-mobile,
-true
-);
-
-
-sendOtpBtn.textContent =
-"✅ OTP Sent";
-
-
-}catch(error){
-
-console.error(
-"OTP ERROR:",
-error
-);
-
-
-showLoginMessage(
-"❌ OTP could not be sent.<br><br>" +
-escapeHTML(error.message)
-);
-
-
-sendOtpBtn.disabled =
-false;
-
-sendOtpBtn.textContent =
-"📱 Send OTP";
-
-
-/* RESET reCAPTCHA */
-
-createRecaptcha();
-
-}
-
-});
-
-
-/* VERIFY OTP */
+/* =========================
+   VERIFY OTP
+========================= */
 
 verifyOtpBtn.addEventListener(
-"click",
-async function(){
+  "click",
+  async function(){
 
-const code =
-otpCode.value.trim();
+    const code =
+      otpCode.value.trim();
 
 
-if(!/^[0-9]{6}$/.test(code)){
+    if(
+      !/^[0-9]{6}$/.test(code)
+    ){
 
-showLoginMessage(
-"❌ Please enter the 6 digit OTP."
+      showLoginMessage(
+        "❌ Please enter the 6 digit OTP."
+      );
+
+      return;
+
+    }
+
+
+    if(
+      !window.confirmationResult
+    ){
+
+      showLoginMessage(
+        "❌ Please request OTP first."
+      );
+
+      return;
+
+    }
+
+
+    verifyOtpBtn.disabled =
+      true;
+
+    verifyOtpBtn.textContent =
+      "⏳ Verifying...";
+
+
+    try{
+
+      await
+      window.confirmationResult
+      .confirm(code);
+
+
+      showLoginMessage(
+        "✅ Login successful!",
+        true
+      );
+
+
+      verifyOtpBtn.textContent =
+        "✅ Logged In";
+
+
+    }catch(error){
+
+      console.error(
+        "VERIFY OTP ERROR:",
+        error
+      );
+
+
+      showLoginMessage(
+        "❌ OTP verification failed.<br><br>" +
+        (error.message || "")
+      );
+
+
+      verifyOtpBtn.disabled =
+        false;
+
+      verifyOtpBtn.textContent =
+        "✅ Verify OTP & Login";
+
+    }
+
+  }
 );
 
-return;
+
+/* =========================
+   AUTH STATE
+========================= */
+
+onAuthStateChanged(
+  auth,
+  function(user){
+
+    if(user){
+
+      console.log(
+        "Customer logged in:",
+        user.phoneNumber
+      );
+
+
+      const mobile =
+        (user.phoneNumber || "")
+        .replace("+91","");
+
+
+      phoneNumber.value =
+        mobile;
+
+
+      /* ORDER LOGIN STATE */
+
+      const loginRequired =
+        document.getElementById(
+          "loginRequired"
+        );
+
+      const orderForm =
+        document.getElementById(
+          "orderForm"
+        );
+
+      const mobileInput =
+        document.getElementById(
+          "mobile"
+        );
+
+
+      if(loginRequired)
+        loginRequired.style.display =
+          "none";
+
+
+      if(orderForm)
+        orderForm.style.display =
+          "block";
+
+
+      if(mobileInput)
+        mobileInput.value =
+          mobile;
+
+
+      /* HISTORY */
+
+      const historyLogin =
+        document.getElementById(
+          "historyLogin"
+        );
+
+      const historyContent =
+        document.getElementById(
+          "historyContent"
+        );
+
+
+      if(historyLogin)
+        historyLogin.style.display =
+          "none";
+
+
+      if(historyContent)
+        historyContent.style.display =
+          "block";
+
+
+      /* LOGOUT */
+
+      createLogoutButton();
+
+
+    }else{
+
+      console.log(
+        "No customer logged in"
+      );
+
+
+      const loginRequired =
+        document.getElementById(
+          "loginRequired"
+        );
+
+      const orderForm =
+        document.getElementById(
+          "orderForm"
+        );
+
+
+      if(loginRequired)
+        loginRequired.style.display =
+          "block";
+
+
+      if(orderForm)
+        orderForm.style.display =
+          "none";
+
+
+      const historyLogin =
+        document.getElementById(
+          "historyLogin"
+        );
+
+      const historyContent =
+        document.getElementById(
+          "historyContent"
+        );
+
+
+      if(historyLogin)
+        historyLogin.style.display =
+          "block";
+
+
+      if(historyContent)
+        historyContent.style.display =
+          "none";
+
+
+    }
+
+  }
+);
+
+
+/* =========================
+   LOGOUT BUTTON
+========================= */
+
+function createLogoutButton(){
+
+  const navbar =
+    document.querySelector(
+      ".navbar"
+    );
+
+
+  if(!navbar)
+    return;
+
+
+  const old =
+    document.getElementById(
+      "logoutBtn"
+    );
+
+
+  if(old)
+    old.remove();
+
+
+  const button =
+    document.createElement(
+      "button"
+    );
+
+
+  button.id =
+    "logoutBtn";
+
+
+  button.textContent =
+    "🚪 Logout";
+
+
+  button.style.cssText =
+
+    "background:#fff0f0;" +
+    "color:#b00020;" +
+    "border:1px solid #ffcccc;" +
+    "padding:9px 15px;" +
+    "border-radius:20px;" +
+    "font-weight:bold;" +
+    "cursor:pointer;";
+
+
+  button.addEventListener(
+    "click",
+    async function(){
+
+      try{
+
+        await signOut(auth);
+
+        location.reload();
+
+      }catch(error){
+
+        console.error(
+          "LOGOUT ERROR:",
+          error
+        );
+
+      }
+
+    }
+  );
+
+
+  navbar.appendChild(
+    button
+  );
 
 }
 
 
-if(!window.confirmationResult){
+/* =========================
+   FINAL
+========================= */
 
-showLoginMessage(
-"❌ Please request OTP first."
+console.log(
+  "Firebase OTP system loaded."
 );
 
-return;
+</script>
+
+  /* AUTH STATE */
+
+onAuthStateChanged(auth, async (user) => {
+
+if (user) {
+
+const phone = user.phoneNumber || "";
+const cleanPhone = phone.replace("+91","");
+
+phoneNumber.value = cleanPhone;
+mobileInput.value = cleanPhone;
+
+loginRequired.style.display = "none";
+orderForm.style.display = "block";
+
+historyLogin.style.display = "none";
+historyContent.style.display = "block";
+
+/* LOGOUT BUTTON */
+
+const navbar = document.querySelector(".navbar");
+
+let logoutBtn = document.getElementById("logoutBtn");
+
+if (!logoutBtn) {
+
+logoutBtn = document.createElement("button");
+
+logoutBtn.id = "logoutBtn";
+logoutBtn.textContent = "Logout";
+
+logoutBtn.style.cssText =
+"background:#fff0f0;" +
+"color:#b00020;" +
+"border:1px solid #ffcccc;" +
+"padding:9px 15px;" +
+"border-radius:20px;" +
+"font-weight:bold;" +
+"cursor:pointer;";
+
+navbar.appendChild(logoutBtn);
 
 }
 
+logoutBtn.onclick = async () => {
 
-verifyOtpBtn.disabled =
-true;
+try {
 
-verifyOtpBtn.textContent =
-"⏳ Verifying...";
+await signOut(auth);
 
+location.reload();
 
-try{
+} catch (error) {
 
-await window.confirmationResult.confirm(
-code
-);
+console.error(error);
 
+}
 
-showLoginMessage(
-"✅ Login successful!",
-true
-);
+};
 
+/* LOAD HISTORY */
 
-}catch(error){
+await loadOrderHistory(user.uid);
 
-console.error(
-"VERIFY ERROR:",
-error
-);
+} else {
 
+loginRequired.style.display = "block";
+orderForm.style.display = "none";
 
-showLoginMessage(
-"❌ OTP verification failed.<br><br>" +
-escapeHTML(error.message)
-);
-
-
-verifyOtpBtn.disabled =
-false;
-
-verifyOtpBtn.textContent =
-"✅ Verify OTP & Login";
+historyLogin.style.display = "block";
+historyContent.style.display = "none";
 
 }
 
 });
+
+
+/* ORDER HISTORY */
+
+async function loadOrderHistory(uid) {
+
+historyList.innerHTML =
+"<div class='history-empty'>" +
+"⏳ Loading your orders..." +
+"</div>";
+
+try {
+
+const q = query(
+collection(db, "orders"),
+where("uid", "==", uid)
+);
+
+const snapshot = await getDocs(q);
+
+if (snapshot.empty) {
+
+historyList.innerHTML =
+"<div class='history-empty'>" +
+"📦 You have no previous orders yet." +
+"</div>";
+
+return;
+
+}
+
+let orders = [];
+
+snapshot.forEach((item) => {
+
+orders.push({
+id: item.id,
+data: item.data()
+});
+
+});
+
+orders.sort((a,b) => {
+
+const ta = a.data.createdAt?.seconds || 0;
+const tb = b.data.createdAt?.seconds || 0;
+
+return tb - ta;
+
+});
+
+historyList.innerHTML = "";
+
+orders.forEach((item) => {
+
+const data = item.data;
+
+const card = document.createElement("div");
+
+card.style.cssText =
+"background:#fff;" +
+"padding:20px;" +
+"margin-bottom:15px;" +
+"border-radius:18px;" +
+"box-shadow:0 5px 20px #0000000d;";
+
+card.innerHTML =
+
+"<h3 style='color:#087c59;margin-bottom:12px'>" +
+
+"📦 Order " +
+
+escapeHTML(data.orderId || item.id) +
+
+"</h3>" +
+
+"<p style='line-height:1.8'>" +
+
+"👤 <strong>Name:</strong> " +
+escapeHTML(data.name || "") +
+
+"<br>" +
+
+"💊 <strong>Medicine:</strong> " +
+escapeHTML(data.medicine || "") +
+
+"<br>" +
+
+"🔢 <strong>Quantity:</strong> " +
+escapeHTML(data.quantity || "") +
+
+"<br>" +
+
+"🚚 <strong>Delivery:</strong> " +
+escapeHTML(data.deliveryArea || "") +
+
+"<br>" +
+
+"📌 <strong>Status:</strong> " +
+escapeHTML(data.status || "Order Received") +
+
+"</p>" +
+
+"<br>" +
+
+"<button " +
+"class='secondary-btn history-track-btn' " +
+"data-order='" +
+escapeHTML(data.orderId || item.id) +
+"'>" +
+
+"🔍 Track This Order" +
+
+"</button>";
+
+historyList.appendChild(card);
+
+});
+
+document
+.querySelectorAll(".history-track-btn")
+.forEach((button) => {
+
+button.addEventListener("click", function() {
+
+trackOrderId.value =
+this.getAttribute("data-order");
+
+document
+.getElementById("track")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+setTimeout(() => {
+
+trackBtn.click();
+
+},500);
+
+});
+
+});
+
+} catch (error) {
+
+console.error("HISTORY ERROR:", error);
+
+historyList.innerHTML =
+"<div class='history-empty'>" +
+"❌ Could not load order history." +
+"<br><br>" +
+escapeHTML(error.message) +
+"</div>";
+
+}
+
+}
 
 
 /* FILE CHECK */
 
-prescription.addEventListener(
-"change",
-function(){
+prescription.addEventListener("change", function() {
 
-const file =
-this.files[0];
+const file = this.files[0];
 
 fileMessage.innerHTML = "";
 
-if(!file){
-
-return;
-
-}
-
+if (!file) return;
 
 const allowedTypes = [
-
 "image/jpeg",
 "image/png",
 "application/pdf"
-
 ];
 
-
-if(!allowedTypes.includes(file.type)){
+if (!allowedTypes.includes(file.type)) {
 
 fileMessage.innerHTML =
 "<b style='color:red'>" +
@@ -1826,9 +1672,7 @@ return;
 
 }
 
-
-if(file.size >
-50 * 1024 * 1024){
+if (file.size > 50 * 1024 * 1024) {
 
 fileMessage.innerHTML =
 "<b style='color:red'>" +
@@ -1841,7 +1685,6 @@ return;
 
 }
 
-
 fileMessage.innerHTML =
 "<b style='color:green'>" +
 "✅ " +
@@ -1852,491 +1695,88 @@ escapeHTML(file.name) +
 });
 
 
-/* AUTH STATE */
+/* SAVE ORDER */
 
-onAuthStateChanged(
-auth,
-async function(user){
-
-if(user){
-
-const phone =
-user.phoneNumber || "";
-
-const cleanPhone =
-phone.replace("+91","");
-
-
-mobileInput.value =
-cleanPhone;
-
-phoneNumber.value =
-cleanPhone;
-
-
-loginRequired.style.display =
-"none";
-
-orderForm.style.display =
-"block";
-
-
-historyLogin.style.display =
-"none";
-
-historyContent.style.display =
-"block";
-
-
-/* LOGOUT BUTTON */
-
-const userArea =
-document.querySelector(".navbar");
-
-
-const oldLogout =
-document.getElementById("logoutBtn");
-
-if(oldLogout){
-
-oldLogout.remove();
-
-}
-
-
-const logoutBtn =
-document.createElement("button");
-
-logoutBtn.id =
-"logoutBtn";
-
-logoutBtn.textContent =
-"Logout";
-
-logoutBtn.style.cssText =
-
-"background:#fff0f0;" +
-"color:#b00020;" +
-"border:1px solid #ffcccc;" +
-"padding:9px 15px;" +
-"border-radius:20px;" +
-"font-weight:bold;" +
-"cursor:pointer;";
-
-
-logoutBtn.onclick =
-async function(){
-
-await signOut(auth);
-
-location.reload();
-
-};
-
-
-userArea.appendChild(
-logoutBtn
-);
-
-
-/* LOAD HISTORY */
-
-await loadOrderHistory(
-user.uid
-);
-
-
-}else{
-
-loginRequired.style.display =
-"block";
-
-orderForm.style.display =
-"none";
-
-historyLogin.style.display =
-"block";
-
-historyContent.style.display =
-"none";
-
-}
-
-});
-
-
-/* LOAD ORDER HISTORY */
-
-async function loadOrderHistory(uid){
-
-historyList.innerHTML =
-
-"<div class='history-empty'>" +
-"⏳ Loading your orders..." +
-"</div>";
-
-
-try{
-
-const q =
-query(
-collection(db,"orders"),
-where("uid","==",uid)
-);
-
-
-const snapshot =
-await getDocs(q);
-
-
-if(snapshot.empty){
-
-historyList.innerHTML =
-
-"<div class='history-empty'>" +
-"📦 You have no previous orders yet." +
-"</div>";
-
-return;
-
-}
-
-
-let orders = [];
-
-
-snapshot.forEach(
-function(item){
-
-orders.push({
-
-id:item.id,
-
-data:item.data()
-
-});
-
-});
-
-
-orders.sort(
-function(a,b){
-
-const ta =
-a.data.createdAt?.seconds || 0;
-
-const tb =
-b.data.createdAt?.seconds || 0;
-
-return tb - ta;
-
-});
-
-
-historyList.innerHTML = "";
-
-
-orders.forEach(
-function(item){
-
-const data =
-item.data;
-
-
-const status =
-data.status ||
-"Order Received";
-
-
-const card =
-document.createElement("div");
-
-
-card.className =
-"order-card";
-
-
-card.innerHTML =
-
-"<h3>" +
-
-"📦 Order " +
-
-escapeHTML(
-data.orderId || item.id
-) +
-
-"</h3>" +
-
-"<p>" +
-
-"👤 <strong>Name:</strong> " +
-
-escapeHTML(
-data.name || ""
-) +
-
-"<br>" +
-
-"💊 <strong>Medicine:</strong> " +
-
-escapeHTML(
-data.medicine || ""
-) +
-
-"<br>" +
-
-"🔢 <strong>Quantity:</strong> " +
-
-escapeHTML(
-data.quantity || ""
-) +
-
-"<br>" +
-
-"🚚 <strong>Delivery:</strong> " +
-
-escapeHTML(
-data.deliveryArea || ""
-) +
-
-"</p>" +
-
-"<br>" +
-
-"<span class='history-status'>" +
-
-"📌 " +
-
-escapeHTML(status) +
-
-"</span>" +
-
-"<br><br>" +
-
-"<button " +
-
-"class='secondary-btn history-track-btn' " +
-
-"data-order='" +
-
-escapeHTML(
-data.orderId || item.id
-) +
-
-"'>" +
-
-"🔍 Track This Order" +
-
-"</button>";
-
-
-historyList.appendChild(card);
-
-});
-
-
-document
-.querySelectorAll(
-".history-track-btn"
-)
-.forEach(
-function(button){
-
-button.addEventListener(
-"click",
-function(){
-
-trackOrderId.value =
-this.dataset.order;
-
-document
-.getElementById("track")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-setTimeout(
-function(){
-
-trackBtn.click();
-
-},
-500
-);
-
-});
-
-});
-
-
-}catch(error){
-
-console.error(
-"HISTORY ERROR:",
-error
-);
-
-
-historyList.innerHTML =
-
-"<div class='history-empty'>" +
-
-"❌ Could not load order history." +
-
-"<br><br>" +
-
-escapeHTML(
-error.message
-) +
-
-"</div>";
-
-}
-
-}
-     /* SAVE ORDER */
-
-orderForm.addEventListener(
-"submit",
-async function(e){
+orderForm.addEventListener("submit", async function(e) {
 
 e.preventDefault();
 
-const user =
-auth.currentUser;
+const user = auth.currentUser;
 
-if(!user){
+if (!user) {
 
-alert(
-"Please login first."
-);
+alert("Please login first.");
 
-location.hash =
-"login";
+location.hash = "login";
 
 return;
 
 }
 
+success.style.display = "none";
+errorBox.style.display = "none";
 
-success.style.display =
-"none";
+submitBtn.disabled = true;
+submitBtn.textContent = "⏳ Saving Order...";
 
-errorBox.style.display =
-"none";
-
-submitBtn.disabled =
-true;
-
-submitBtn.textContent =
-"⏳ Saving Order...";
-
-
-try{
+try {
 
 const name =
-document.getElementById("name")
-.value.trim();
+document.getElementById("name").value.trim();
 
 const mobile =
-document.getElementById("mobile")
-.value.trim();
+document.getElementById("mobile").value.trim();
 
 const medicine =
-document.getElementById("medicine")
-.value.trim();
+document.getElementById("medicine").value.trim();
 
 const quantity =
-Number(
-document.getElementById("quantity")
-.value
-);
+Number(document.getElementById("quantity").value);
 
 const address =
-document.getElementById("address")
-.value.trim();
+document.getElementById("address").value.trim();
 
 const delivery =
-document.getElementById("delivery")
-.value;
+document.getElementById("delivery").value;
 
 const file =
 prescription.files[0];
 
+if (name.length < 2) {
+throw new Error("Please enter your full name.");
+}
 
-if(name.length < 2){
+if (!/^[0-9]{10}$/.test(mobile)) {
+throw new Error("Invalid mobile number.");
+}
 
-throw new Error(
-"Please enter your full name."
-);
+if (!medicine) {
+throw new Error("Please enter medicine/product.");
+}
 
+if (!Number.isInteger(quantity) || quantity < 1) {
+throw new Error("Please enter valid quantity.");
+}
+
+if (address.length < 5) {
+throw new Error("Please enter complete address.");
 }
 
 
-if(!/^[0-9]{10}$/.test(mobile)){
+/* ORDER ID */
 
-throw new Error(
-"Invalid mobile number."
-);
+const d = new Date();
 
-}
-
-
-if(!medicine){
-
-throw new Error(
-"Please enter medicine/product."
-);
-
-}
-
-
-if(
-!Number.isInteger(quantity)
-||
-quantity < 1
-){
-
-throw new Error(
-"Please enter valid quantity."
-);
-
-}
-
-
-if(address.length < 5){
-
-throw new Error(
-"Please enter complete address."
-);
-
-}
-
-
-/* CREATE ORDER ID */
-
-const d =
-new Date();
-
-const year =
-d.getFullYear();
+const year = d.getFullYear();
 
 const month =
-String(
-d.getMonth()+1
-).padStart(2,"0");
+String(d.getMonth()+1).padStart(2,"0");
 
 const day =
-String(
-d.getDate()
-).padStart(2,"0");
+String(d.getDate()).padStart(2,"0");
 
 const random =
-Math.floor(
-1000 +
-Math.random()*9000
-);
+Math.floor(1000 + Math.random()*9000);
 
 const orderId =
 "MDD-" +
@@ -2351,76 +1791,57 @@ random;
 
 const orderData = {
 
-orderId:orderId,
+orderId: orderId,
 
-uid:user.uid,
+uid: user.uid,
 
-mobile:mobile,
+mobile: mobile,
 
-name:name,
+name: name,
 
-medicine:medicine,
+medicine: medicine,
 
-quantity:quantity,
+quantity: quantity,
 
-address:address,
+address: address,
 
-deliveryArea:delivery,
+deliveryArea: delivery,
 
 prescriptionName:
-file
-?
-file.name
-:
-"",
+file ? file.name : "",
 
 prescriptionType:
-file
-?
-file.type
-:
-"",
+file ? file.type : "",
 
 prescriptionSize:
-file
-?
-file.size
-:
-0,
+file ? file.size : 0,
 
-totalAmount:0,
+totalAmount: 0,
 
-discountPercent:10,
+discountPercent: 10,
 
-discountAmount:0,
+discountAmount: 0,
 
-finalAmount:0,
+finalAmount: 0,
 
-status:
-"Order Received",
+status: "Order Received",
 
-createdAt:
-serverTimestamp(),
+createdAt: serverTimestamp(),
 
-updatedAt:
-serverTimestamp()
+updatedAt: serverTimestamp()
 
 };
 
 
-/* SAVE TO FIRESTORE */
+/* FIRESTORE SAVE */
 
 await setDoc(
-doc(
-db,
-"orders",
-orderId
-),
+doc(db,"orders",orderId),
 orderData
 );
 
 
-/* WHATSAPP MESSAGE */
+/* WHATSAPP */
 
 const whatsappText =
 
@@ -2441,29 +1862,18 @@ const whatsappText =
 🚚 Delivery: ${delivery}
 
 📄 Prescription: ${
-file
-?
-file.name
-:
-"Not uploaded"
+file ? file.name : "Not uploaded"
 }
 
-📌 Status:
-Order Received`;
+📌 Status: Order Received`;
 
-
-/* WHATSAPP URL */
 
 const whatsappURL =
-
 "https://wa.me/916009415805?text=" +
-
-encodeURIComponent(
-whatsappText
-);
+encodeURIComponent(whatsappText);
 
 
-/* SUCCESS MESSAGE */
+/* SUCCESS */
 
 success.innerHTML =
 
@@ -2472,9 +1882,7 @@ success.innerHTML =
 "<br><br>" +
 
 "📦 Order ID: <strong>" +
-
 escapeHTML(orderId) +
-
 "</strong>" +
 
 "<br><br>" +
@@ -2485,57 +1893,34 @@ escapeHTML(orderId) +
 
 "Opening WhatsApp...";
 
+success.style.display = "block";
 
-success.style.display =
-"block";
-
-
-/* SAVE LAST ORDER */
 
 localStorage.setItem(
 "lastOrderId",
 orderId
 );
 
-trackOrderId.value =
-orderId;
+trackOrderId.value = orderId;
 
 
 /* REFRESH HISTORY */
 
-await loadOrderHistory(
-user.uid
-);
+await loadOrderHistory(user.uid);
 
 
-/* OPEN WHATSAPP */
+/* WHATSAPP */
 
-setTimeout(
-function(){
+setTimeout(() => {
 
-window.location.href =
-whatsappURL;
+window.location.href = whatsappURL;
 
-},
-800
-);
+},800);
 
 
-/* RESET FORM */
+} catch (error) {
 
-orderForm.reset();
-
-mobileInput.value =
-mobile;
-
-
-}catch(error){
-
-console.error(
-"ORDER ERROR:",
-error
-);
-
+console.error("ORDER ERROR:",error);
 
 errorBox.innerHTML =
 
@@ -2543,23 +1928,13 @@ errorBox.innerHTML =
 
 "<br><br>" +
 
-escapeHTML(
-error.message
-) +
+escapeHTML(error.message);
 
-"<br><br>" +
-
-"Please check Firebase Firestore Rules.";
-
-
-errorBox.style.display =
-"block";
+errorBox.style.display = "block";
 
 }
 
-
-submitBtn.disabled =
-false;
+submitBtn.disabled = false;
 
 submitBtn.textContent =
 "📲 Save Order & Send WhatsApp";
@@ -2569,244 +1944,141 @@ submitBtn.textContent =
 
 /* TRACK ORDER */
 
-trackBtn.addEventListener(
-"click",
-async function(){
+trackBtn.addEventListener("click", async function() {
 
-trackResult.style.display =
-"none";
+trackResult.style.display = "none";
 
+const id = trackOrderId.value.trim();
 
-const id =
-trackOrderId.value.trim();
-
-
-if(!id){
+if (!id) {
 
 trackResult.innerHTML =
-
 "❌ <strong>Please enter your Order ID.</strong>";
 
-trackResult.style.display =
-"block";
+trackResult.style.display = "block";
 
 return;
 
 }
 
+trackBtn.disabled = true;
+trackBtn.textContent = "⏳ Checking...";
 
-trackBtn.disabled =
-true;
+try {
 
-trackBtn.textContent =
-"⏳ Checking...";
-
-
-try{
-
-const snap =
-await getDoc(
-doc(
-db,
-"orders",
-id
-)
+const snap = await getDoc(
+doc(db,"orders",id)
 );
 
-
-if(!snap.exists()){
+if (!snap.exists()) {
 
 trackResult.innerHTML =
-
 "❌ <strong>Order not found.</strong>" +
-
 "<br><br>" +
-
 "Please check your Order ID.";
 
-trackResult.style.display =
-"block";
+trackResult.style.display = "block";
 
 return;
 
 }
 
-
-const data =
-snap.data();
-
+const data = snap.data();
 
 const totalAmount =
-Number(
-data.totalAmount ?? 0
-);
-
+Number(data.totalAmount || 0);
 
 const discountPercent =
-Number(
-data.discountPercent ?? 0
-);
-
+Number(data.discountPercent || 0);
 
 const discountAmount =
 Number(
 data.discountAmount ??
-(
-totalAmount *
-discountPercent /
-100
-)
+(totalAmount * discountPercent / 100)
 );
-
 
 const finalAmount =
 Number(
 data.finalAmount ??
-(
-totalAmount -
-discountAmount
-)
+(totalAmount - discountAmount)
 );
 
-
 const status =
-data.status ||
-"Order Received";
+data.status || "Order Received";
 
 
 trackResult.innerHTML =
 
 "📦 <strong>Order ID:</strong> " +
-
-escapeHTML(
-data.orderId || id
-) +
+escapeHTML(data.orderId || id) +
 
 "<br><br>" +
 
 "👤 <strong>Name:</strong> " +
-
-escapeHTML(
-data.name || ""
-) +
+escapeHTML(data.name || "") +
 
 "<br><br>" +
 
 "💊 <strong>Medicine:</strong> " +
-
-escapeHTML(
-data.medicine || ""
-) +
+escapeHTML(data.medicine || "") +
 
 "<br><br>" +
 
 "🔢 <strong>Quantity:</strong> " +
-
-escapeHTML(
-data.quantity ?? ""
-) +
+escapeHTML(data.quantity ?? "") +
 
 "<br><br>" +
 
 "🚚 <strong>Delivery:</strong> " +
-
-escapeHTML(
-data.deliveryArea || ""
-) +
+escapeHTML(data.deliveryArea || "") +
 
 "<br><br>" +
 
-"💰 <strong>Total Amount:</strong><br>" +
-
-"<span class='amount-badge'>" +
-
-"₹" +
-
+"💰 <strong>Total Amount:</strong> ₹" +
 totalAmount.toFixed(2) +
 
-"</span>" +
-
 "<br><br>" +
 
-"🎁 <strong>Discount:</strong><br>" +
-
-"<span class='discount-badge'>" +
-
+"🎁 <strong>Discount:</strong> " +
 discountPercent.toFixed(2) +
-
 "% OFF" +
 
-"</span>" +
-
 "<br><br>" +
 
-"💸 <strong>Discount Amount:</strong><br>" +
-
-"<span class='discount-badge'>" +
-
-"₹" +
-
+"💸 <strong>Discount Amount:</strong> ₹" +
 discountAmount.toFixed(2) +
 
-"</span>" +
-
 "<br><br>" +
 
-"💵 <strong>Customer Payable:</strong><br>" +
-
-"<span class='amount-badge'>" +
-
-"₹" +
-
+"💵 <strong>Customer Payable:</strong> ₹" +
 finalAmount.toFixed(2) +
-
-"</span>" +
 
 "<br><br>" +
 
 "📌 <strong>Status:</strong><br>" +
 
-"<span class='status-badge'>" +
-
+"<strong style='color:#087c59;font-size:18px'>" +
 escapeHTML(status) +
-
-"</span>";
-
-
-trackResult.style.display =
-"block";
+"</strong>";
 
 
-}catch(error){
+trackResult.style.display = "block";
 
-console.error(
-"TRACK ERROR:",
-error
-);
+} catch (error) {
 
+console.error("TRACK ERROR:",error);
 
 trackResult.innerHTML =
-
 "❌ <strong>Tracking Error</strong>" +
-
 "<br><br>" +
+escapeHTML(error.message);
 
-escapeHTML(
-error.message
-);
-
-
-trackResult.style.display =
-"block";
+trackResult.style.display = "block";
 
 }
 
-
-trackBtn.disabled =
-false;
-
-trackBtn.textContent =
-"🔍 Track";
+trackBtn.disabled = false;
+trackBtn.textContent = "🔍 Track";
 
 });
 
@@ -2814,57 +2086,45 @@ trackBtn.textContent =
 /* LAST ORDER */
 
 const lastOrderId =
-localStorage.getItem(
-"lastOrderId"
-);
+localStorage.getItem("lastOrderId");
 
-if(lastOrderId){
+if (lastOrderId) {
 
-trackOrderId.value =
-lastOrderId;
+trackOrderId.value = lastOrderId;
 
 }
 
 
 /* SERVICE WORKER */
 
-if(
-"serviceWorker"
-in navigator
-){
+if ("serviceWorker" in navigator) {
 
-window.addEventListener(
-"load",
-function(){
+window.addEventListener("load",() => {
 
 navigator.serviceWorker
 .register("./sw.js")
-.then(
-function(){
+.then(() => {
 
 console.log(
 "Service Worker registered."
 );
 
-}
-)
-.catch(
-function(error){
+})
+.catch((error) => {
 
 console.log(
 "Service Worker error:",
 error
 );
 
-}
-);
+});
 
 });
 
 }
 
 
-/* FINAL */
+/* PAGE READY */
 
 console.log(
 "Medicine Doorstep Delivery loaded successfully."
